@@ -14,13 +14,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Pane pane = new HBox(15);
-		
-			Image cellImage = new Image("https://images.unsplash.com/photo-1533035353720-f1c6a75cd8ab?ixlib=rb-1.2.1&w=1000&q=80");
-			ImageView cellImage2 = new ImageView(cellImage);
-			cellImage2.setFitHeight(32);
-			cellImage2.setFitWidth(32);
-			pane.getChildren().add(cellImage2);
+Pane pane = new HBox(150);
+			Pane pane = new HBox(150);
+			CellType test;
+			test = new CellType("https://nerdvarsity.files.wordpress.com/2016/06/yellowbx.jpg?w=1108&h=737&crop=1",100.0,100.0);
+			pane.getChildren().add(test.getCellImage());
             
 			
 			BorderPane root = new BorderPane();
