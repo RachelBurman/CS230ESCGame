@@ -1,16 +1,13 @@
 package application;
 
 public class Enemy extends Movables {
-	int playerXLocation;
-	int playerYLocation;
+	String enemyName;
 
-	public Enemy(int currentXLocation, int currentYLocation, int playerXLocation, int playerYLocation) {
+	public Enemy(int currentXLocation, int currentYLocation, String enemyName) {
 		super(currentXLocation, currentYLocation);
-		this.playerXLocation = playerXLocation;
-		this.playerYLocation = playerYLocation;
+		this.enemyName = enemyName;
 		// TODO Auto-generated constructor stub
 	}
-	
 	
 
 }

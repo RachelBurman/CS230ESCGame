@@ -7,6 +7,11 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
+<<<<<<< Updated upstream
+=======
+	private static final int WINDOW_WIDTH = 800;
+	private static final int WINDOW_HEIGHT = 600;
+>>>>>>> Stashed changes
 	@Override
 	public void start(Stage primaryStage) {
 		try {
