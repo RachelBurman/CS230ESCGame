@@ -11,10 +11,11 @@ import javafx.scene.layout.Pane;
 
 
 public class Main extends Application {
+	private static final int WINDOW_WIDTH = 1200;
+	private static final int WINDOW_HEIGHT = 800;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-Pane pane = new HBox(150);
 			Pane pane = new HBox(150);
 			CellType test;
 			test = new CellType("https://nerdvarsity.files.wordpress.com/2016/06/yellowbx.jpg?w=1108&h=737&crop=1",100.0,100.0);
@@ -22,7 +23,7 @@ Pane pane = new HBox(150);
             
 			
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(pane,400,400);
+			Scene scene = new Scene(pane,WINDOW_WIDTH,WINDOW_HEIGHT);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
