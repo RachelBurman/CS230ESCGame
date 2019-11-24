@@ -10,14 +10,12 @@ public class CellType {
 	Image cellImage;
 	ImageView cellImage2;
 	
-	public CellType(String cellImageLocation, double x, double y) {
+	public CellType(String cellImageLocation) {
 		//Pane pane = new HBox(15);
 		this.cellImage = new Image(cellImageLocation);
 		this.cellImage2 = new ImageView(cellImage);
 		this.cellImage2.setFitHeight(32);
 		this.cellImage2.setFitWidth(32);
-		this.cellImage2.setX(x);
-		this.cellImage2.setY(y);
 		//pane.getChildren().add(cellImage2);
 	}
 	
