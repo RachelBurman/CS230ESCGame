@@ -1,3 +1,11 @@
+This file has the code that was in loading level file but ive edited it to display some cell types that ive
+coded but realsie that this isnt the best way to display the gameboard as we need to surround the gameboard 
+around where the player is.
+
+
+
+
+
 package application;
 
 import java.io.File;
