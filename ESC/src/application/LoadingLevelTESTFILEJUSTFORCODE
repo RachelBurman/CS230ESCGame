@@ -87,3 +87,14 @@ public class LoadLevel {
 		}
 	}
 }
+
+
+
+
+
+code for main which allows this to work
+Pane rootPane = LoadLevel.loadLevel("resources/test.txt");
+			Scene scene = new Scene(rootPane,WINDOW_WIDTH,WINDOW_HEIGHT);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
