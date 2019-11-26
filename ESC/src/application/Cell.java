@@ -5,12 +5,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class CellType {
+public class Cell {
 
 	Image cellImage;
 	ImageView cellImage2;
 	
-	public CellType(String cellImageLocation) {
+	public Cell(String cellImageLocation) {
 		//Pane pane = new HBox(15);
 		this.cellImage = new Image(cellImageLocation);
 		this.cellImage2 = new ImageView(cellImage);

@@ -1,7 +1,7 @@
-package application;
+package moving;
 
 import javafx.scene.image.Image;
-public class Movables {
+public class Movable {
 	int currentXLocation;
 	int currentYLocation;
 	Image image;
@@ -19,7 +19,7 @@ public class Movables {
 	public void setCurrentYLocation(int currentYLocation) {
 		this.currentYLocation = currentYLocation;
 	}
-	public Movables(int currentXLocation, int currentYLocation) {
+	public Movable(int currentXLocation, int currentYLocation) {
 		this.currentXLocation = currentXLocation;
 		this.currentYLocation = currentYLocation;
 		
