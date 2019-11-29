@@ -3,7 +3,7 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Goal extends CellType {
+public class Goal extends Cell {
 	
 	
 	public Goal() {

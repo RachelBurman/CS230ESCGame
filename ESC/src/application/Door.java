@@ -3,7 +3,7 @@ package application;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Door extends CellType {
+public class Door extends Cell {
 	
 	Image DoorColour;
 	ImageView DoorColour2;
