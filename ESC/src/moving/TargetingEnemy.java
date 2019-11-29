@@ -1,6 +1,6 @@
-package application;
+package moving;
 
-public class TargetingEnemy extends Enemy {
+public abstract class TargetingEnemy extends Enemy {
 	int playerXLocation;
 	int playerYLocation;
 

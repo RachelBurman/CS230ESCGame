@@ -1,6 +1,6 @@
-package application;
+package moving;
 
-public class Enemy extends Movables {
+public class Enemy extends Movable {
 	String enemyName;
 
 	public Enemy(int currentXLocation, int currentYLocation, String enemyName) {

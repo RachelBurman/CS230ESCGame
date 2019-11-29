@@ -2,7 +2,7 @@ package application;
 
 import javafx.scene.image.ImageView;
 
-public class Wall extends CellType {
+public class Wall extends Cell {
 	
 	public Wall() {
             
