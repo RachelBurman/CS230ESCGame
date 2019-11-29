@@ -3,7 +3,7 @@ package application;
 public class UserProfile {
 	private String userName;
 	private int levelAchieved;
-	private CellType[][] levelWhenSaved;
+	private Cell[][] levelWhenSaved;
 	
 	public UserProfile(String userName) {
 		this.userName = userName;
@@ -20,7 +20,7 @@ public class UserProfile {
 		return userName;
 	}
 	
-	public CellType[][] getLevelWhenSaved() {
+	public Cell[][] getLevelWhenSaved() {
 		return levelWhenSaved;
 	}
 	

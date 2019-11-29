@@ -6,14 +6,14 @@ import java.util.Scanner;
 
 public class LoadLevel {
 	//public static char[][] loadLevel(String file) {
-	public static CellType[][] loadLevel(String file) {
+	public static Cell[][] loadLevel(String file) {
 		try
 		{
 			File f = new File(file);
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			CellType[][] level = new CellType[x][y];
+			Cell[][] level = new Cell[x][y];
 			//char[][] level = new char[x][y];
 			in.nextLine();
 			for (int i = 0; i<x; i++) {
