@@ -9,7 +9,7 @@ public class UserProfile {
 		this.userName = userName;
 		levelAchieved = 0;
 		//or 1 depending on how we decide to do it
-		//levelWhenSaved = null;
+		levelWhenSaved = null;
 	}
 	
 	public int getUserLevel() {

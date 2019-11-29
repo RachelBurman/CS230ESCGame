@@ -38,7 +38,7 @@ public class LoadLevel {
 					} else if (s.charAt(o) == 'T') {
 						level[i][o] = new Token();
 					}
-					//level[i][o]=s.charAt(o);
+					//level[i][o]=s.charAt(o)
 				}
 			}
 			while (in.hasNextLine()) {
