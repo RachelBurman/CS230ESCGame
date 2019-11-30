@@ -53,4 +53,21 @@ public class LoadLevel {
 			return null;
 		}
 	}
+	public static int getWidth(String file) {
+		try
+		{
+			File f = new File(file);
+			Scanner in = new Scanner(f);
+			in.nextInt();
+			int y = in.nextInt();
+			
+			in.close();
+			return y;
+		} 
+		catch (FileNotFoundException exception) 
+		{
+			System.out.println("ERROR: Level File does not exist.");
+			return 0;
+		}
+	}
 }
