@@ -1,0 +1,156 @@
+this code doesnt work and needs alot of revisions I plan on using liams test program and just implementing
+all the example code below into his one to make it do what we want :)
+
+package application;
+	
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.canvas.Canvas;
+
+
+public class Main extends Application {
+
+	private static final int WINDOW_WIDTH = 1200;
+	private static final int WINDOW_HEIGHT = 800;
+
+	private int playerX = 0;
+    private int playerY = 0;
+    
+    private boolean gotStartLocation = false;
+    
+    private Pane rootPane = new Pane();
+    
+	public void start(Stage primaryStage) {
+		try {
+
+			drawGame(primaryStage);
+			gotStartLocation = true;
+
+			
+			
+				
+			
+			
+                  
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void processKeyEvent(KeyEvent event,int playerX, int playerY,Stage primaryStage) {
+		switch (event.getCode()) {
+			
+		    case RIGHT:
+		    	// Right key was pressed. So move the player right by one cell.
+	        	playerX = playerX + 1;
+	        	break;
+		    case LEFT:
+		    	playerX = playerX - 1;
+		    	break;
+		    case UP:
+		    	playerY = playerY + 1;
+		    	break;
+		    case DOWN:
+		    	playerY = playerY - 1;
+		    	break;
+	        default:
+	        	// Do nothing
+	        	break;
+		}
+		
+		// Redraw game as the player may have moved.
+		drawGame(primaryStage);
+
+	}
+	
+	public void drawGame(Stage primaryStage) {
+
+		rootPane.getChildren().clear();
+		
+		
+		Cell[][] level = LoadLevel.loadLevel("resources/test.txt");
+		
+		int y = level.length;
+		int x = LoadLevel.getWidth("resources/test.txt");
+		
+		GridPane panes = new GridPane();
+        panes.setVgap(1);
+        panes.setHgap(1);
+		
+       if (gotStartLocation = false) {
+		for (int i = 0; i<y; i++) {
+			
+			for (int o = 0; o<x; o++) {
+				
+				if (level[i][o] instanceof Player) {
+					playerX = o;
+					playerY = i;
+					System.out.println(playerX);
+					System.out.println(playerY);
+				}
+				
+				//panes.add(level[i][o].getCellImage(),o,i);
+			}
+			
+		}
+       }
+		
+		int scopeXmin;
+		int scopeXmax;
+		int scopeYmin;
+		int scopeYmax;
+		
+		if (playerX - 3 < 0) {
+			scopeXmin = 0;
+		} else {
+			scopeXmin = playerX - 3;
+		}
+		if (playerX + 4 > x) {
+			scopeXmax = x;
+		} else {
+			scopeXmax = playerX + 4;
+		}
+		if (playerY - 3 < 0) {
+			scopeYmin = 0;
+		} else {
+			scopeYmin = playerY - 3;
+		}
+		if (playerY + 4 > y) {
+			//System.out.println(playerY);
+			//System.out.println(y);
+			scopeYmax = y;
+			//System.out.println(scopeYmax);
+		} else {
+			scopeYmax = playerY + 4;
+			System.out.println(scopeYmax);
+		}
+		
+		for (int i = scopeYmin; i<scopeYmax; i++) {
+			for (int o = scopeXmin; o<scopeXmax; o++) {
+				panes.add(level[i][o].getCellImage(),o,i);
+			}
+		}
+		
+		
+        rootPane.getChildren().addAll(panes);
+				
+		Scene scene = new Scene(rootPane,WINDOW_WIDTH,WINDOW_HEIGHT);
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event,playerX,playerY,primaryStage));
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+}
+
