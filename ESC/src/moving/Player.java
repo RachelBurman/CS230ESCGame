@@ -1,5 +1,6 @@
-package movables;
+package moving;
 
+import application.Cell;
 import javafx.scene.image.ImageView;
 
 public class Player extends Cell {
