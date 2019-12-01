@@ -2,6 +2,7 @@ package application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
+import moving.Player;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -15,10 +16,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
-			Cell[][] level = LoadLevel.loadLevel("resources/test.txt");
+			Cell[][] level = LoadLevel.loadLevel("test.txt");
 			
 			int y = level.length;
-			int x = LoadLevel.getWidth("resources/test.txt");
+			int x = LoadLevel.getWidth("test.txt");
 			
 			GridPane panes = new GridPane();
             panes.setVgap(1);
