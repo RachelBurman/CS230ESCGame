@@ -4,9 +4,9 @@ import javafx.scene.image.ImageView;
 
 public class Wall extends Cell {
 	
-	public Wall() {
+	public Wall(String wallImageLocation) {
             
-            super.setImage("https://images.unsplash.com/photo-1520758594221-872948699332?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+            super(wallImageLocation);
             
 	}
 	

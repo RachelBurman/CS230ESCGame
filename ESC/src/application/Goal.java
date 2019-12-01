@@ -6,9 +6,9 @@ import javafx.scene.image.ImageView;
 public class Goal extends Cell {
 	
 	
-	public Goal() {
+	public Goal(String goalImageLocation) {
 				
-		super.setImage("gate.png");
+		super(goalImageLocation);
 		
 	}	
 		
