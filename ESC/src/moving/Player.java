@@ -8,9 +8,9 @@ public class Player extends Movable {
 	private int currentXLocation;
 	private int currentYLocation;
 	
-	public Player(String playerImageLocation, int currentXLocation, int currentYLocation) {
+	public Player(int currentXLocation, int currentYLocation) {
 
-		super(playerImageLocation, currentXLocation, currentYLocation);
+		super("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png", currentXLocation, currentYLocation);
 		this.currentXLocation = currentXLocation;
 		this.currentYLocation = currentYLocation;
 	

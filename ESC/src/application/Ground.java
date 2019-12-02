@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 
 public class Ground extends Cell{
 
-	public Ground(String groundImageLocation) {
-            super(groundImageLocation);
+	public Ground() {
+            super("https://www.colorcombos.com/images/colors/999999.png");
 	}
 	
 	public ImageView getGroundImage() {
