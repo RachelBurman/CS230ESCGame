@@ -43,26 +43,46 @@ public class Main extends Application {
 	}
 	
 	public void processKeyEvent(KeyEvent event,int playerX, int playerY,Stage primaryStage) {
+		char dir;
 		switch (event.getCode()) {
 			
 		    case RIGHT:
 		    	// Right key was pressed. So move the player right by one cell.
+<<<<<<< Updated upstream
 	        	playerX = playerX + 1;
 	        	
+=======
+	        	dir='r';
+>>>>>>> Stashed changes
 	        	break;
 		    case LEFT:
-		    	playerX = playerX - 1;
+		    	dir='l';
 		    	break;
 		    case UP:
-		    	playerY = playerY + 1;
+		    	dir='u';
 		    	break;
 		    case DOWN:
-		    	playerY = playerY - 1;
+		    	dir='d';
 		    	break;
 	        default:
 	        	// Do nothing
 	        	break;
 		}
+		
+		for (int y=0; y<map.length;y++) {
+			for (int x=0;x<map[0].length; x++) {
+				if (dir =='r') {
+					map[x+1][y] = player;
+					map[x][y] = cell;
+				} else if (dir =='l') {
+					map[x-1][y] = player;
+					map[x][y] = cell;
+				} else if (dir =='u') {
+					map[x][y+1] = player;
+					map[x][y] = cell;
+				} else if (dir =='d') {
+					map[x-1][y-1] = player;
+					map[x][y] = cell;
 		
 		// Redraw game as the player may have moved.
 		drawGame(primaryStage);
