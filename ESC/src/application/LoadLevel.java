@@ -42,6 +42,8 @@ public class LoadLevel {
 						//level[i][o] = new Ground();
 					} else if (s.charAt(o) == 'T') {
 						level[i][o] = new Token();
+					} else if(s.charAt(o) == 'K') {
+						level[i][o] = new Key("http://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png");
 					}
 					//level[i][o]=s.charAt(o)
 				}
