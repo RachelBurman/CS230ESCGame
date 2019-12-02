@@ -26,7 +26,6 @@ public class LoadLevel {
 					} else if (s.charAt(o) == 'G') {
 						//level[i][o] = new Goal("gate.png");
 						level[i][o] = new Ground("https://www.colorcombos.com/images/colors/999999.png");
-
 					} else if (s.charAt(o) == 'W') {
 						level[i][o] = new Water("https://www.bhp.com/-/media/images/2018-water-report/180828_wr2018cover.jpg?mh=844&h=844&w=1500&la=en&hash=16406F779CD04F31FE68780D8A645746DB1A5A0C");
 					} else if (s.charAt(o) == 'P') {
@@ -38,7 +37,6 @@ public class LoadLevel {
 					} else if (s.charAt(o) == 'S') {
 						//level[i][o] = new Start();
 						level[i][o] = new Ground("https://www.colorcombos.com/images/colors/999999.png");
-
 					} else if (s.charAt(o) == 'T') {
 						level[i][o] = new Token("https://img.pngio.com/token-png-1-png-image-token-png-300_277.png");
 					}
