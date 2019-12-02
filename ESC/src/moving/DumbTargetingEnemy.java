@@ -20,8 +20,6 @@ public class DumbTargetingEnemy extends TargetingEnemy {
 		newLocation[2] = currentYLocation;
 		return newLocation;
 		
-		
-		
 	}
 	
 	public int moveX(int currentXLocation, int totalXMovement) {

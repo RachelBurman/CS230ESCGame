@@ -1,6 +1,9 @@
 package moving;
 
 import application.Cell;
+import application.LoadLevel;
+import application.Wall;
+import application.Level;
 
 
 public class StraightLineEnemy extends NonTargetingEnemy{
@@ -14,7 +17,7 @@ public class StraightLineEnemy extends NonTargetingEnemy{
 		// facing is up down left right 
 	}
 	public int moveY(int currentYLocation,int currentXLocation, char facing) {
-		if (currentYLocation == 0) {
+		if (currentYLocation+1.name="Wall") {
 			facing = 'd';
 		} else if (currentYLocation = level.length) {
 			facing = 'u';
@@ -28,9 +31,9 @@ public class StraightLineEnemy extends NonTargetingEnemy{
 		
 	}
 	public int moveX(int currentYLocation, int currentXLocation, char facing) {
-		if (currentXLocation == 0) {
+		if (level[currentXLocation-1][currentYLocation]) instanceof Wall) {
 			facing = 'l';
-		} else if (currentXLocation = level.length) {
+		} else if (currentXLocation = LoadLevel.getWidth(file).length|| (currentXLocation+1 instanceof Wall)) {
 			facing = 'r';
 		}
 		if (facing=='r') {

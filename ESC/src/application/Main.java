@@ -2,6 +2,7 @@ package application;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
+import application.Level;
 import moving.Player;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -16,6 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			
+			Level level1 = new Level("test.txt");
 			Cell[][] level = LoadLevel.loadLevel("test.txt");
 			
 			int y = level.length;
