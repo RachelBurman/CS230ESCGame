@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import moving.Player;
+
 public class LoadLevel {
 	//public static char[][] loadLevel(String file) {
 	public static Cell[][] loadLevel(String file) {
@@ -36,7 +38,8 @@ public class LoadLevel {
 						level[i][o] = new Boot("http://pngimg.com/uploads/boots/boots_PNG7801.png");
 					} else if (s.charAt(o) == 'S') {
 						//level[i][o] = new Start();
-						level[i][o] = new Ground("https://www.colorcombos.com/images/colors/999999.png");
+						level[i][o] = new Player("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png", o, i);
+						//level[i][o] = new Ground("https://www.colorcombos.com/images/colors/999999.png");
 					} else if (s.charAt(o) == 'T') {
 						level[i][o] = new Token("https://img.pngio.com/token-png-1-png-image-token-png-300_277.png");
 					}
