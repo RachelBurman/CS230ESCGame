@@ -4,8 +4,8 @@ import javafx.scene.image.ImageView;
 
 public class Boot extends Cell{
 
-	public Boot(String bootImageLocation) {
-            super(bootImageLocation);
+	public Boot() {
+            super("http://pngimg.com/uploads/boots/boots_PNG7801.png");
 	}
 	
 	public ImageView getBootImage() {

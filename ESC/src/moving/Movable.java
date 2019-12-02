@@ -1,3 +1,4 @@
+
 package moving;
 
 import javafx.scene.image.Image;
@@ -39,3 +40,4 @@ public class Movable {
 	
 	
 }
+
