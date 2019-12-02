@@ -1,11 +1,19 @@
 package moving;
 
+
+import application.Cell;
 import javafx.scene.image.Image;
-public class Movable {
+
+public class Movable extends Cell {
 	int currentXLocation;
 	int currentYLocation;
-	Image image;
 	
+	public Movable (String movableImageLocation, int currentXLocation, int currentYLocation) {
+		super(movableImageLocation);
+		this.currentXLocation = currentXLocation;
+		this.currentYLocation = currentYLocation;
+
+	}
 	
 	public int getCurrentXLocation() {
 		return currentXLocation;
@@ -19,6 +27,8 @@ public class Movable {
 	public void setCurrentYLocation(int currentYLocation) {
 		this.currentYLocation = currentYLocation;
 	}
+	
+	/*
 	public Movable(int currentXLocation, int currentYLocation) {
 		this.currentXLocation = currentXLocation;
 		this.currentYLocation = currentYLocation;
@@ -26,7 +36,7 @@ public class Movable {
 		
 		// TODO Auto-generated constructor stub
 	}
-	
+	*/
 	
 	
 	
