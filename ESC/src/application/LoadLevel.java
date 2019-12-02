@@ -42,6 +42,8 @@ public class LoadLevel {
 						//level[i][o] = new Ground("https://www.colorcombos.com/images/colors/999999.png");
 					} else if (s.charAt(o) == 'T') {
 						level[i][o] = new Token("https://img.pngio.com/token-png-1-png-image-token-png-300_277.png");
+					} else if(s.charAt(o) == 'K') {
+						level[i][o] = new Key("http://www.pngmart.com/files/8/Key-PNG-Free-Image-1.png");
 					}
 					//level[i][o]=s.charAt(o)
 				}
