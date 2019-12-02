@@ -1,10 +1,34 @@
 package moving;
 
-public class StraightLineEnemy extends NonTargetingEnemy{
+import application.Cell;
 
-	public StraightLineEnemy(int currentXLocation, int currentYLocation, String enemyName) {
+public class StraightLineEnemy extends NonTargetingEnemy{
+	char facing;
+
+	public StraightLineEnemy(int currentXLocation, int currentYLocation, String enemyName, char facing) {
+		
 		super(currentXLocation, currentYLocation, enemyName);
-		// TODO Auto-generated constructor stub
+		this.facing = facing;
+		
+		// facing is up down left right 
 	}
+	public int moveY(int currentXLocation, char facing) {
+		if (facing=='u') {
+			currentYLocation = currentYLocation+1;
+		} else if (facing=='d') {
+			currentYLocation = currentYLocation-1;
+		} 
+		return currentYLocation;
+		
+	}
+	public int moveX(int currentXLocation,char facing) {
+		if (facing=='r') {
+			currentXLocation = currentXLocation+1;
+		} else if (facing=='l') {
+			currentXLocation = currentXLocation-1;
+		} 
+		return currentXLocation;
+	}
+	
 
 }

@@ -7,6 +7,12 @@ public class Movable {
 	Image image;
 	
 	
+	public Movable(int currentXLocation, int currentYLocation) {
+		this.currentXLocation = currentXLocation;
+		this.currentYLocation = currentYLocation;
+		
+	}
+	
 	public int getCurrentXLocation() {
 		return currentXLocation;
 	}
@@ -19,15 +25,16 @@ public class Movable {
 	public void setCurrentYLocation(int currentYLocation) {
 		this.currentYLocation = currentYLocation;
 	}
-	public Movable(int currentXLocation, int currentYLocation) {
-		this.currentXLocation = currentXLocation;
-		this.currentYLocation = currentYLocation;
+	
+	
+	public int moveY(int currentYLocation) {
+		return currentYLocation;
 		
-		
-		// TODO Auto-generated constructor stub
 	}
 	
-	
+	public int moveX(int currentXLocation) {
+		return currentXLocation;
+	}
 	
 	
 	

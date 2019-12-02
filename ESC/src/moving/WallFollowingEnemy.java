@@ -6,5 +6,6 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		super(currentXLocation, currentYLocation, enemyName);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 }
