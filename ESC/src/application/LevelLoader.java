@@ -96,7 +96,14 @@ public class LevelLoader {
 						level[newX][newY] = new Fire("Fire", false,false, newX, newY);
 					} else if (s.charAt(newX) == 'D') {
 						level[newX][newY] = new Door("Door", false,false, newX, newY);
-						
+					} else if (s.charAt(newX) == 'B') {
+						level[newX][newY] = new Boot("Boots", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'F') {
+						level[newX][newY] = new Flipper("Flipper", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'T') {
+						level[newX][newY] = new Token("Token", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'K') {
+						level[newX][newY] = new TokenDoor("TokenDoor", false,false, newX, newY);
 					 //Add new Cells here, new Cells created through this
 					}else if (s.charAt(newX) == ' ') {
 						level[newX][newY] = new Cell("Cell", true,true, newX, newY);
