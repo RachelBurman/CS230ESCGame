@@ -13,6 +13,81 @@ import java.util.Scanner;
  */
 public class LevelLoader {
 	//Method to get Size of map
+	
+	public static Map ultimateLevelLoader (String file) {
+		try {
+			File f = new File(file);
+			Scanner in = new Scanner(f);
+			int[] size = new int[2];
+			int sizex = in.nextInt();
+			int sizey = in.nextInt();
+			size[0] = sizex;
+			size[1] = sizey;
+			
+			int[] start = new int[2];
+			int startx = in.nextInt();
+			int starty = in.nextInt();
+			start[0] = startx;
+			start[1] = starty;
+			int[] info = new int[3];
+			int StraightEnemyx = in.nextInt();// get startX
+			int StraightEnemyy = in.nextInt();//get startY
+			int StraightEnemyDir = in.nextInt();// get directionfacing
+			info[0] = StraightEnemyx;
+			info[1] = StraightEnemyy;
+			info[2] = StraightEnemyDir;
+			
+			Cell[][] level = new Cell[sizex][sizey];
+			for (int newY = 0; newY < sizey; newY++) {
+				String s = in.nextLine();
+				for (int newX = 0; newX < sizex; newX++) {
+					if (s.charAt(newX) == '#') {
+						level[newX][newY] = new Wall("Wall", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'G') {
+						level[newX][newY] = new Goal("Goal", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'W') {
+						level[newX][newY] = new Water("Water", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'F') {
+						level[newX][newY] = new Fire("Fire", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'R') {
+						level[newX][newY] = new Door("red door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'B') {
+						level[newX][newY] = new Door("blue door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'D') {
+						level[newX][newY] = new Door("green door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'A') {
+						level[newX][newY] = new Key("red", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'C') {
+						level[newX][newY] = new Key("blue", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'E') {
+						level[newX][newY] = new Key("green", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'S') {
+						level[newX][newY] = new Door("Door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'B') {
+						level[newX][newY] = new Boot("Boots", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'F') {
+						level[newX][newY] = new Flipper("Flipper", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'T') {
+						level[newX][newY] = new Token("Token", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'K') {
+						level[newX][newY] = new TokenDoor("TokenDoor", false,false, newX, newY);
+					 //Add new Cells here, new Cells created through this
+					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, R redDoor, W Water,   Cell , #  Wall
+
+						} else if (s.charAt(newX) == ' ') {
+						level[newX][newY] = new Cell("Cell", true,true, newX, newY);
+
+					}
+				}
+			
+			
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+			return null;
+		}
+		
+		
+	}
 	public static int[] getSize(String file) {
 		try {
 			File f = new File(file);
