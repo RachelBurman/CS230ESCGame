@@ -1,0 +1,13 @@
+Dimension
+10
+10
+PlayerStart
+1
+1
+StraightEnemyStart
+3
+3
+3
+6
+6
+6

@@ -12,6 +12,9 @@ public class Player extends Movable {
 	
 	private Image playerImg;
 	private ImageView playerView;
+	int redKey=0;
+	int greenKey=0;
+	int blueKey=0;
 	public Player(String name, int[] location) {
 		super (name);
 		super.name = name;
@@ -22,6 +25,28 @@ public class Player extends Movable {
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);
 		
+	}
+	public void addRedKey() {
+		this.redKey = redKey+1;
+	}
+	
+	public void addBlueKey() {
+		this.blueKey = blueKey+1;
+	}
+	
+	public void addGreenKey() {
+		this.greenKey = greenKey+1;
+	}
+	public void minusRedKey() {
+		this.redKey = redKey-1;
+	}
+	
+	public void minusBlueKey() {
+		this.blueKey = blueKey-1;
+	}
+	
+	public void minusGreenKey() {
+		this.greenKey = greenKey-1;
 	}
 
 	public void setName(String name) {

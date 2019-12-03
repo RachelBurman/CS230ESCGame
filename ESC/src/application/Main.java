@@ -18,15 +18,6 @@ public class Main extends Application {
 	private static final int WINDOW_WIDTH = 600;
 	private static final int WINDOW_HEIGHT = 400;
 
-	// The dimensions of the canvas
-	private static final int CANVAS_WIDTH = 400;
-	private static final int CANVAS_HEIGHT = 300;
-
-	// The size of each cell
-	private static int GRID_CELL_WIDTH = 50;
-	private static int GRID_CELL_HEIGHT = 50;
-
-	private Canvas canvas;
 
 	public void start(Stage primaryStage) {
 		GridPane grid = new GridPane();
@@ -70,20 +61,25 @@ public class Main extends Application {
 			
 		    case RIGHT:
 		    	// Right key was pressed. So move the player right by one cell.
+		    	openDoor(player, actualMap,player.getxLocation()+1,player.getyLocation());
 	        	player.moveRight();
+	        	
 	        	break;
 		    case LEFT:
 		    	// Left key was pressed. So move the player left by one cell.
+		    	openDoor(player, actualMap,player.getxLocation()-1,player.getyLocation());
 		    	player.moveLeft();
 		    	
 	        	break;
 		    case UP:
 		    	// Up key was pressed. So move the player up by one cell.
+		    	openDoor(player, actualMap,player.getxLocation(),player.getyLocation()-1);
 	        	player.moveUp();
 	        	
 	        	break;
 		    case DOWN:
 		    	// Down key was pressed. So move the player down by one cell.
+		    	openDoor(player, actualMap,player.getxLocation(),player.getyLocation()+1);
 	        	player.moveDown();
 	        	
 	        	break;	
@@ -92,6 +88,23 @@ public class Main extends Application {
 	        	// Do nothing
 	        	break;
 		}
+		
+		int LocalXLocation = player.getxLocation();
+		int LocalYLocation = player.getyLocation();
+		if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("red")) {
+			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
+			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
+			player.addRedKey();
+		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("blue")) {
+			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
+			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
+			player.addBlueKey();
+		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("green")) {
+			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
+			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
+			player.addGreenKey();
+		}
+		
 		
 		if (enemy1.getFacing() == 'u' || enemy1.getFacing() == 'd') {
 			enemy1.moveY(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
@@ -109,6 +122,22 @@ public class Main extends Application {
 		
 		// Consume the event. This means we mark it as dealt with. This stops other GUI nodes (buttons etc) responding to it.
 		event.consume();
+	}
+	public void openDoor (Player player, Map actualMap, int nextX, int nextY) {
+		
+    	if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("red door")) {
+    		actualMap.getCell(nextX, nextY).changePlayerPass();
+    		actualMap.getCell(nextX, nextY).changeEnemyPass();
+    		player.minusRedKey();
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("green door")) {
+    		actualMap.getCell(nextX, nextY).changePlayerPass();
+    		actualMap.getCell(nextX, nextY).changeEnemyPass();
+    		player.minusGreenKey();
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("blue door")) {
+    		actualMap.getCell(nextX, nextY).changePlayerPass();
+    		actualMap.getCell(nextX, nextY).changeEnemyPass();
+    		player.minusBlueKey();
+    	}
 	}
 
 	public static void main(String[] args) {

@@ -67,5 +67,19 @@ public class Cell {
 	public int getyCoordinate() {
 		return yCoordinate;
 	}
+
+
+	public String getName() {
+		return name;
+	}
+	
+	public void changePlayerPass() {
+		this.playerPass = true;
+		
+	}
+	public void changeEnemyPass() {
+		this.enemyPass = true;
+		
+	}
 	
 }

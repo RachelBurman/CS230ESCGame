@@ -26,6 +26,15 @@ public class Map {
 		
 		
 	}
+	
+	public void removeCell (Map map, int xLocation, int yLocation) {
+		mapActual[xLocation][yLocation]= null;
+		
+	}
+	public void addCell(Map mapActual, int xLocation, int yLocation) {
+		this.mapActual[xLocation][yLocation] = new Cell("Cell", true, true, xLocation, yLocation);
+	}
+	
 
 
 	public Cell[][] getMapActual() {
@@ -60,6 +69,7 @@ public class Map {
 	public StraightLineEnemy getEnemy1() {
 		return enemy1;
 	}
+	
 	
 	
 

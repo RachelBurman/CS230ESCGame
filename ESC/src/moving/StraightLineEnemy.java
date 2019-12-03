@@ -11,13 +11,12 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 		super(name, info);
 		this.xLocation = info[0];
 		this.yLocation = info[1];
-		this.frontX = super.xLocation;
-		this.frontY = super.yLocation;
+		
 		this.EnemyImg = new Image("https://www.tynker.com/projects/images/11c17d23871d29107e27a3dd350096500389fc83/green-stickman---pick.png");
 		this.EnemyView = new ImageView(this.EnemyImg);
 		this.EnemyView.setFitHeight(CELL_SIZE);
 		this.EnemyView.setFitWidth(CELL_SIZE);
-		// info[3] is either 1,2,3,4 up =1, down = 2, right = 3, left = 4
+		// info[2] is either 1,2,3,4 up =1, down = 2, right = 3, left = 4
 		switch (info[2]) {
 	    case 1:
 	    	super.facing ='u';

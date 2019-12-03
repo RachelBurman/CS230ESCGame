@@ -94,11 +94,22 @@ public class LevelLoader {
 						level[newX][newY] = new Water("Water", false,false, newX, newY);
 					} else if (s.charAt(newX) == 'F') {
 						level[newX][newY] = new Fire("Fire", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'R') {
+						level[newX][newY] = new Door("red door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'B') {
+						level[newX][newY] = new Door("blue door", false,false, newX, newY);
 					} else if (s.charAt(newX) == 'D') {
-						level[newX][newY] = new Door("Door", false,false, newX, newY);
-						
-					 //Add new Cells here, new Cells created through this
-					}else if (s.charAt(newX) == ' ') {
+						level[newX][newY] = new Door("green door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'A') {
+						level[newX][newY] = new Key("red", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'C') {
+						level[newX][newY] = new Key("blue", true,false, newX, newY);
+					} else if (s.charAt(newX) == 'E') {
+						level[newX][newY] = new Key("green", true,false, newX, newY);
+					//Add new Cells here, new Cells created through this
+					// # wall, G goal, W water, F fire, R red door, B blue door, D green door,  Cell
+					// A redKey, C blueKey, E greenKey
+					} else if (s.charAt(newX) == ' ') {
 						level[newX][newY] = new Cell("Cell", true,true, newX, newY);
 					
 					}
