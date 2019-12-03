@@ -103,6 +103,14 @@ public class Main extends Application {
 			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
 			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
 			player.addGreenKey();
+		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("boots")) {
+			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
+			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
+			player.changeBoot();
+		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("flippers")) {
+			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
+			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
+			player.changeFlipper();
 		}
 		
 		
@@ -125,18 +133,24 @@ public class Main extends Application {
 	}
 	public void openDoor (Player player, Map actualMap, int nextX, int nextY) {
 		
-    	if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("red door")) {
+		
+		
+    	if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("red door") && player.getRedKey()>0) {
     		actualMap.getCell(nextX, nextY).changePlayerPass();
     		actualMap.getCell(nextX, nextY).changeEnemyPass();
     		player.minusRedKey();
-    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("green door")) {
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("green door") && player.getGreenKey()>0) {
     		actualMap.getCell(nextX, nextY).changePlayerPass();
     		actualMap.getCell(nextX, nextY).changeEnemyPass();
     		player.minusGreenKey();
-    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("blue door")) {
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("blue door") && player.getBlueKey()>0) {
     		actualMap.getCell(nextX, nextY).changePlayerPass();
     		actualMap.getCell(nextX, nextY).changeEnemyPass();
     		player.minusBlueKey();
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("fire") && player.getBoots()== true) {
+    		actualMap.getCell(nextX, nextY).changePlayerPass();
+    	} else if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("water") && player.getFlippers()== true) {
+    		actualMap.getCell(nextX, nextY).changePlayerPass();
     	}
 	}
 

@@ -15,6 +15,8 @@ public class Player extends Movable {
 	int redKey=0;
 	int greenKey=0;
 	int blueKey=0;
+	boolean flippers= false;
+	boolean boots = false;
 	public Player(String name, int[] location) {
 		super (name);
 		super.name = name;
@@ -26,6 +28,19 @@ public class Player extends Movable {
 		this.playerView.setFitWidth(CELL_SIZE);
 		
 	}
+	public boolean getFlippers() {
+		return flippers;
+	}
+	public boolean getBoots() {
+		return boots;
+	}
+	public void changeFlipper() {
+		this.flippers = !this.flippers;
+	}
+	public void changeBoot() {
+		this.boots = !this.boots;
+	}
+	
 	public void addRedKey() {
 		this.redKey = redKey+1;
 	}
@@ -36,6 +51,15 @@ public class Player extends Movable {
 	
 	public void addGreenKey() {
 		this.greenKey = greenKey+1;
+	}
+	public int getRedKey() {
+		return redKey;
+	}
+	public int getGreenKey() {
+		return greenKey;
+	}
+	public int getBlueKey() {
+		return blueKey;
 	}
 	public void minusRedKey() {
 		this.redKey = redKey-1;

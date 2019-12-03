@@ -9,7 +9,7 @@ public class Flipper extends Cell {
 		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
 		this.playerPass = playerPass;
 		this.enemyPass = enemyPass;
-		super.cellImage = new Image("http://pngimg.com/uploads/flippers/flippers_PNG37472.png");
+		super.cellImage = new Image("https://images-na.ssl-images-amazon.com/images/I/51mQCH%2BavOL._SX425_.jpg");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
