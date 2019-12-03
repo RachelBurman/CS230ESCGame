@@ -2,42 +2,48 @@ package moving;
 
 
 import application.Cell;
+import application.Map;
 import javafx.scene.image.Image;
 
-public class Movable extends Cell {
-	int currentXLocation;
-	int currentYLocation;
+import javafx.scene.image.Image;
+public abstract class Movable {
+	protected String name;
+	protected int xLocation;
+	protected int yLocation;
+	protected Map map;
+	final int CELL_SIZE= 50;
 	
-	public Movable (String movableImageLocation, int currentXLocation, int currentYLocation) {
-		super(movableImageLocation);
-		this.currentXLocation = currentXLocation;
-		this.currentYLocation = currentYLocation;
-
+	public Movable(String name) {
+		this.name = name;
+		
 	}
 	
-	public int getCurrentXLocation() {
+	public int getXLocation() {
+		return xLocation;
+	}
+	public void setXLocation(int xLocation) {
+		this.xLocation = xLocation;
+	}
+	public int getYLocation() {
+		return yLocation;
+	}
+	public void setYLocation(int currentYLocation) {
+		this.yLocation = yLocation;
+	}
+	
+	
+	public int moveY(int currentYLocation) {
+		return currentYLocation;
+		
+	}
+	
+	public int moveX(int currentXLocation) {
 		return currentXLocation;
 	}
-	public void setCurrentXLocation(int currentXLocation) {
-		this.currentXLocation = currentXLocation;
-	}
-	public int getCurrentYLocation() {
-		return currentYLocation;
-	}
-	public void setCurrentYLocation(int currentYLocation) {
-		this.currentYLocation = currentYLocation;
-	}
 	
-	/*
-	public Movable(int currentXLocation, int currentYLocation) {
-		this.currentXLocation = currentXLocation;
-		this.currentYLocation = currentYLocation;
-		
-		
-		// TODO Auto-generated constructor stub
+	public void setMap (Map map) {
+		this.map = map;
 	}
-	*/
-	
 	
 	
 	

@@ -1,16 +1,24 @@
 package application;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Fire extends Cell{
+public class Fire extends Cell {
 
-	public Fire() {
-            super("https://png.pngtree.com/png-clipart/20190918/ourmid/pngtree-flaming-fire-3406488-png-image_1737532.jpg");
-	}
-	
-	public ImageView getFireImage() {
+	public Fire(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate) {
+		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+		this.playerPass = playerPass;
+		this.enemyPass = enemyPass;
+		super.cellImage = new Image("https://png.pngtree.com/png-clipart/20190918/ourmid/pngtree-flaming-fire-3406488-png-image_1737532.jpg");
+		super.cellView = new ImageView(cellImage);
+		super.cellView.setFitHeight(CELL_SIZE);
+		super.cellView.setFitWidth(CELL_SIZE);
 		
-		return super.getCellImage();
+	}
+	public ImageView getFireView() {
+		
+		return super.getView();
 		
 	}
+
 }
