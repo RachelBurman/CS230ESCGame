@@ -71,18 +71,43 @@ public class LevelLoader {
 			return null;
 		}
 	}
+	
+	
+	
+	public static int[] getDumbEnemy(String file) {
+		try {
+			File f = new File(file);
+			Scanner in = new Scanner(f);
+			for (int i=0; i<7;i++) {
+				in.nextLine();
+			}
+			int[] info = new int[2];
+			System.out.println(info[0]+ " a" + info[1]);
+			info[0] = in.nextInt();
+			info[1] = in.nextInt();
+			in.close();
+			return info;
+
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+			return null;
+		}
+	}
 	//Method to get StraightEnemy start location
 		public static int[] getTeleporter(String file) {
 			try {
 				File f = new File(file);
 				Scanner in = new Scanner(f);
-				for (int i=0; i<7;i++) {
+				for (int i=0; i<9;i++) {
 					in.nextLine();
 				}
 				int[] info = new int[4];
 				info[0] = in.nextInt();
+				System.out.println(info[0]);
 				info[1] = in.nextInt();
+				System.out.println(info[1]);
 				info[2] = in.nextInt();
+				System.out.println(info[2]);
 				info[3] = in.nextInt();
 				in.close();
 				return info;
@@ -99,7 +124,7 @@ public class LevelLoader {
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			for (int i=0;i<10;i++) {
+			for (int i=0;i<12;i++) {
 				in.nextLine();
 			}
 			Cell[][] level = new Cell[x][y];
