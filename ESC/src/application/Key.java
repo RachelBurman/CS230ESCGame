@@ -5,12 +5,12 @@ import javafx.scene.image.ImageView;
 
 public class Key extends Cell {
 
-	public Key(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate) {
-		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+	public Key(String name, int xCoordinate, int yCoordinate) {
+		super(name, xCoordinate, yCoordinate);
 		// TODO Auto-generated constructor stub
 		this.name = name;
-		this.playerPass = playerPass;
-		this.enemyPass = enemyPass;
+		this.playerPass = true;
+		this.enemyPass = false;
 		Image image = null;
 		if (name.equalsIgnoreCase("red")) {
 			 image = new Image("https://cdn3.iconfinder.com/data/icons/soda-red/512/key.png");

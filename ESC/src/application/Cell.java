@@ -18,6 +18,19 @@ public class Cell {
 	int linkX;
 	int linkY;
 	
+	public Cell(String name, int xCoordinate, int yCoordinate ) {
+		this.name = name;
+		this.playerPass = true;
+		this.enemyPass = true;
+	    Image image = new Image("https://www.colorcombos.com/images/colors/999999.png");
+		this.cellImage = image;
+		this.cellView = new ImageView(cellImage);
+		this.cellView.setFitHeight(CELL_SIZE);
+		this.cellView.setFitWidth(CELL_SIZE);
+		this.xCoordinate = xCoordinate;
+		this.yCoordinate = yCoordinate;
+	}
+	
 	public int getLinkX() {
 		return linkX;
 	}
@@ -38,18 +51,7 @@ public class Cell {
 	}
 
 
-	public Cell(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate ) {
-		this.name = name;
-		this.playerPass = playerPass;
-		this.enemyPass = enemyPass;
-	    Image image = new Image("https://www.colorcombos.com/images/colors/999999.png");
-		this.cellImage = image;
-		this.cellView = new ImageView(cellImage);
-		this.cellView.setFitHeight(CELL_SIZE);
-		this.cellView.setFitWidth(CELL_SIZE);
-		this.xCoordinate = xCoordinate;
-		this.yCoordinate = yCoordinate;
-	}
+	
 	
 	
 	public void setCellImage(Image cellImage) {

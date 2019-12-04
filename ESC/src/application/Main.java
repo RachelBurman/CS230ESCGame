@@ -37,15 +37,65 @@ public class Main extends Application {
 
 	public GridPane drawGame(Map actualMap, GridPane grid, Player player, StraightLineEnemy enemy1) {
 		grid.getChildren().clear();
+		
+		int scopeXmin;
+		int scopeXmax;
+		int scopeYmin;
+		int scopeYmax;
+		int width = actualMap.getMapLength();
+		int height = actualMap.getMapHeight();
+
+		if (player.getxLocation() - 3 < 0) {
+			scopeXmin = 0;
+		} else {
+			scopeXmin = player.getxLocation() - 3;
+		}
+		if (player.getxLocation() + 4 > width) {
+			scopeXmax = width;
+		} else {
+			scopeXmax = player.getxLocation() + 4;
+		}
+		if (player.getyLocation() - 3 < 0) {
+			scopeYmin = 0;
+		} else {
+			scopeYmin = player.getyLocation() - 3;
+		}
+		if (player.getyLocation() + 4 > height) {
+			//System.out.println(playerY);
+			//System.out.println(y);
+			scopeYmax = height;
+			//System.out.println(scopeYmax);
+		} else {
+			scopeYmax = player.getyLocation() + 4;
+		}
+
+		for (int newY = scopeYmin; newY<scopeYmax; newY++) {
+			for (int NewX = scopeXmin; NewX<scopeXmax; NewX++) {
+				grid.add(actualMap.getCell(NewX, newY).getView(), NewX, newY);
+			}
+		}
 		// Draw Grid using GridPane
-		for (int y = 0; y < actualMap.getMapHeight(); y++) {
+		/*for (int y = 0; y < actualMap.getMapHeight(); y++) {
 			for (int x = 0; x < actualMap.getMapLength(); x++) {
 				// Add new types of cells here
 				grid.add(actualMap.getCell(x, y).getView(), x, y);
 			}
 		}
+		*/
 		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
-		grid.add(enemy1.getEnemyView(), enemy1.getXLocation(), enemy1.getYLocation());
+		if (enemy1.getXLocation()<scopeXmax && enemy1.getXLocation()>scopeXmin) {
+			if (enemy1.getYLocation()<scopeYmax && enemy1.getYLocation()>scopeYmin) {
+				grid.add(enemy1.getEnemyView(), enemy1.getXLocation(), enemy1.getYLocation());
+			}
+			
+		}
+		if (actualMap.getDummieAt(0).getXLocation()<scopeXmax && actualMap.getDummieAt(0).getXLocation()>scopeXmin) {
+			if (actualMap.getDummieAt(0).getYLocation()<scopeYmax && actualMap.getDummieAt(0).getYLocation()>scopeYmin) {
+				grid.add(actualMap.getDummieAt(0).getEnemyView(), actualMap.getDummieAt(0).getXLocation(), actualMap.getDummieAt(0).getYLocation());
+			}
+			
+		}
+		
 
 		return grid;
 	}
@@ -109,7 +159,6 @@ public class Main extends Application {
 			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
 			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
 			player.addToken();
-			System.out.println(player.getTokens());
 		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("teleporter")) {
 			player.teleport();
 		}

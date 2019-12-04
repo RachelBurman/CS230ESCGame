@@ -5,10 +5,10 @@ import javafx.scene.image.ImageView;
 
 public class Wall extends Cell{
 	
-	public Wall (String name, boolean playerPass,boolean enemyPass, int xCoordinate, int yCoordinate) {
-		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
-		this.playerPass = playerPass;
-		this.enemyPass = enemyPass;
+	public Wall (String name, int xCoordinate, int yCoordinate) {
+		super(name, xCoordinate, yCoordinate);
+		this.playerPass = false;
+		this.enemyPass = false;
 	    super.cellImage = new Image("https://img.theculturetrip.com/768x432/wp-content/uploads/2018/03/c8dad0.jpg");
 	    super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

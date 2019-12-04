@@ -5,11 +5,11 @@ import javafx.scene.image.ImageView;
 
 public class Goal extends Cell {
 
-	public Goal(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate) {
-		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+	public Goal(String name, int xCoordinate, int yCoordinate) {
+		super(name, xCoordinate, yCoordinate);
 		// TODO Auto-generated constructor stub
-		this.playerPass = playerPass;
-		this.enemyPass = enemyPass;
+		this.playerPass = true;
+		this.enemyPass = false;
 		super.cellImage = new Image("https://media.4rgos.it/i/Argos/7426560_R_Z001A?w=750&h=440&qlt=70");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

@@ -5,12 +5,12 @@ import javafx.scene.image.ImageView;
 
 public class Door extends Cell {
 
-	public Door(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate) {
-		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+	public Door(String name, int xCoordinate, int yCoordinate) {
+		super(name, xCoordinate, yCoordinate);
 		this.name = name;
 		Image image = null;;
-		this.playerPass = playerPass;
-		this.enemyPass = enemyPass;
+		this.playerPass = false;
+		this.enemyPass = false;
 		if (name.equalsIgnoreCase("red door")) {
 			 image = new Image("https://windowsupplydirectltd.co.uk/wp-content/uploads/2017/10/TR04-Cezanne-signal-red.jpg");
 		} else if (name.equalsIgnoreCase("blue door")) {

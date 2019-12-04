@@ -71,18 +71,43 @@ public class LevelLoader {
 			return null;
 		}
 	}
+	
+	
+	
+	public static int[] getDumbEnemy(String file) {
+		try {
+			File f = new File(file);
+			Scanner in = new Scanner(f);
+			for (int i=0; i<7;i++) {
+				in.nextLine();
+			}
+			int[] info = new int[2];
+			System.out.println(info[0]+ " a" + info[1]);
+			info[0] = in.nextInt();
+			info[1] = in.nextInt();
+			in.close();
+			return info;
+
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+			return null;
+		}
+	}
 	//Method to get StraightEnemy start location
 		public static int[] getTeleporter(String file) {
 			try {
 				File f = new File(file);
 				Scanner in = new Scanner(f);
-				for (int i=0; i<7;i++) {
+				for (int i=0; i<9;i++) {
 					in.nextLine();
 				}
 				int[] info = new int[4];
 				info[0] = in.nextInt();
+				System.out.println(info[0]);
 				info[1] = in.nextInt();
+				System.out.println(info[1]);
 				info[2] = in.nextInt();
+				System.out.println(info[2]);
 				info[3] = in.nextInt();
 				in.close();
 				return info;
@@ -99,7 +124,7 @@ public class LevelLoader {
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			for (int i=0;i<10;i++) {
+			for (int i=0;i<12;i++) {
 				in.nextLine();
 			}
 			Cell[][] level = new Cell[x][y];
@@ -107,40 +132,40 @@ public class LevelLoader {
 				String s = in.nextLine();
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
-						level[newX][newY] = new Wall("wall", false,false, newX, newY);
+						level[newX][newY] = new Wall("wall", newX, newY);
 					} else if (s.charAt(newX) == 'G') {
-						level[newX][newY] = new Goal("goal", true,false, newX, newY);
+						level[newX][newY] = new Goal("goal", newX, newY);
 					} else if (s.charAt(newX) == 'W') {
-						level[newX][newY] = new Water("water", false,false, newX, newY);
+						level[newX][newY] = new Water("water", newX, newY);
 					} else if (s.charAt(newX) == 'F') {
-						level[newX][newY] = new Fire("fire", false,false, newX, newY);
+						level[newX][newY] = new Fire("fire", newX, newY);
 					} else if (s.charAt(newX) == 'R') {
-						level[newX][newY] = new Door("red door", false,false, newX, newY);
+						level[newX][newY] = new Door("red door", newX, newY);
 					} else if (s.charAt(newX) == 'B') {
-						level[newX][newY] = new Door("blue door", false,false, newX, newY);
+						level[newX][newY] = new Door("blue door",newX, newY);
 					} else if (s.charAt(newX) == 'D') {
-						level[newX][newY] = new Door("green door", false,false, newX, newY);
+						level[newX][newY] = new Door("green door", newX, newY);
 					} else if (s.charAt(newX) == 'A') {
-						level[newX][newY] = new Key("red", true,false, newX, newY);
+						level[newX][newY] = new Key("red", newX, newY);
 					} else if (s.charAt(newX) == 'C') {
-						level[newX][newY] = new Key("blue", true,false, newX, newY);
+						level[newX][newY] = new Key("blue", newX, newY);
 					} else if (s.charAt(newX) == 'E') {
-						level[newX][newY] = new Key("green", true,false, newX, newY);
+						level[newX][newY] = new Key("green", newX, newY);
 					}  else if (s.charAt(newX) == 'H') {
-						level[newX][newY] = new Boot("boots", true,false, newX, newY);
+						level[newX][newY] = new Boot("boots", newX, newY);
 					} else if (s.charAt(newX) == 'I') {
-						level[newX][newY] = new Flipper("flippers", true,false, newX, newY);
+						level[newX][newY] = new Flipper("flippers", newX, newY);
 					} else if (s.charAt(newX) == 'T') {
-						level[newX][newY] = new Token("token", true,false, newX, newY);
+						level[newX][newY] = new Token("token", newX, newY);
 					} else if (s.charAt(newX) == 'U') {
-						level[newX][newY] = new TokenDoor("token door", false,false, newX, newY);
+						level[newX][newY] = new TokenDoor("token door", newX, newY);
 					} else if (s.charAt(newX) == 'S') {
-							level[newX][newY] = new Teleporter("teleporter", true,false, newX, newY, file);
+							level[newX][newY] = new Teleporter("teleporter", newX, newY, file);
 					 //Add new Cells here, new Cells created through this
 					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, H Boots, I Flipper, R redDoor,T Token, U Token Door, W Water,   Cell , #  Wall
 						// Flipper, Boots, Token, Token door
 						} else if (s.charAt(newX) == ' ') {
-						level[newX][newY] = new Cell("Cell", true,true, newX, newY);
+						level[newX][newY] = new Cell("Cell", newX, newY);
 
 					}
 				}
