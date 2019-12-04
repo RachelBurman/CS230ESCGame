@@ -4,17 +4,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Goal extends Cell {
-	
-	
-	public Goal(String goalImageLocation) {
-				
-		super(goalImageLocation);
-		
-	}	
-		
-		public ImageView getGoalImage() {
-			
-			return super.getCellImage();
-	}
 
+	public Goal(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate) {
+		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+		// TODO Auto-generated constructor stub
+		this.playerPass = playerPass;
+		this.enemyPass = enemyPass;
+		super.cellImage = new Image("https://media.4rgos.it/i/Argos/7426560_R_Z001A?w=750&h=440&qlt=70");
+		super.cellView = new ImageView(cellImage);
+		super.cellView.setFitHeight(CELL_SIZE);
+		super.cellView.setFitWidth(CELL_SIZE);
+		
+	}
+	public ImageView getGoalView() {
+		
+		return super.getView();
+		
+	}
 }
