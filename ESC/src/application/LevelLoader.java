@@ -1,6 +1,4 @@
 package application;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;    
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -102,27 +100,6 @@ public class LevelLoader {
 		}
 	}
 	*/
-	//Method to get TeleporterLinks
-			public static int[] getTeleporter(String file) {
-				try {
-					File f = new File(file);
-					Scanner in = new Scanner(f);
-					for (int i=0; i<7;i++) {
-						in.nextLine();
-					}
-					int[] info = new int[4];
-					info[0] = in.nextInt();
-					info[1] = in.nextInt();
-					info[2] = in.nextInt();
-					info[3] = in.nextInt();
-					in.close();
-					return info;
-
-				} catch (FileNotFoundException exception) {
-					System.out.println("ERROR: Level File does not exist.");
-					return null;
-				}
-			}
 
 
 
@@ -135,8 +112,8 @@ public class LevelLoader {
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			for (int i=0;i<10;i++) {
-				System.out.println(in.nextLine());
+			for (int i=0;i<6;i++) {
+				in.nextLine();
 
 			}
 			Cell[][] level = new Cell[x][y];
@@ -145,7 +122,6 @@ public class LevelLoader {
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", false,false, newX, newY);
-						System.out.println("Wall" + newX);
 					} else if (s.charAt(newX) == 'G') {
 						level[newX][newY] = new Goal("goal", true,false, newX, newY);
 					} else if (s.charAt(newX) == 'W') {
