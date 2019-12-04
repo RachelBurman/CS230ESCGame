@@ -6,10 +6,12 @@ import javafx.scene.image.ImageView;
 public class Teleporter extends Cell {
 	int linkX;
 	int linkY;
-	public Teleporter(String name, boolean playerPass, boolean enemyPass,int xCoordinate, int yCoordinate, String file) {
+	public Teleporter(String name,int xCoordinate, int yCoordinate, String file) {
 		
-		super(name, playerPass, enemyPass, xCoordinate, yCoordinate);
+		super(name, xCoordinate, yCoordinate);
 		int info[] =LevelLoader.getTeleporter(file);
+		this.playerPass = true;
+		this.enemyPass = false;
 		super.cellImage = new Image("https://vignette.wikia.nocookie.net/tpt2/images/6/61/RobloxScreenShot20170613_031040281.png/revision/latest?cb=20170613085120");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

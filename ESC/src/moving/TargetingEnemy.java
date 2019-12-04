@@ -1,13 +1,13 @@
 package moving;
 
-public abstract class TargettingEnemy extends Enemy {
+public abstract class TargetingEnemy extends Enemy {
 	
 	int playerx;
 	int playery;
 	int distanceXToPlayer;
 	int distanceYToPlayer;
 
-	public TargettingEnemy(String name, int[] location) {
+	public TargetingEnemy(String name, int[] location) {
 		super(name, location);
 		// TODO Auto-generated constructor stub
 	}

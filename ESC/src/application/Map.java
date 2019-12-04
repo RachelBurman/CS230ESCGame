@@ -1,6 +1,7 @@
 package application;
 
 
+import moving.DumbTargetingEnemy;
 import moving.Player;
 import moving.StraightLineEnemy;
 
@@ -11,6 +12,11 @@ public class Map {
 	private int start[];
 	private Player player1;
 	private StraightLineEnemy enemy1;
+	StraightLineEnemy[] StraightEnemyList;
+	WallFollowingEnemy[] WallFollowingList;
+	DumbTargetingEnemy[] DumbTargettingList;
+	//SmartTargetingEnemy[] SmartTargetingList;
+	
 	private int teleporterLink[];
 	
 	
@@ -31,7 +37,7 @@ public class Map {
 		
 	}
 	public void addCell(Map mapActual, int xLocation, int yLocation) {
-		this.mapActual[xLocation][yLocation] = new Cell("Cell", true, true, xLocation, yLocation);
+		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
 	}
 
 

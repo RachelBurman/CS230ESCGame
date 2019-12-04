@@ -3,9 +3,9 @@ package moving;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class DumbTargettingEnemy extends TargettingEnemy {
-
-	public DumbTargettingEnemy(String name, int[] info) {
+public class DumbTargetingEnemy extends TargetingEnemy {
+	
+	public DumbTargetingEnemy(String name, int[] info) {
 		super(name, info);
 		// TODO Auto-generated constructor stub
 		this.xLocation = info[0];
@@ -36,4 +36,5 @@ public class DumbTargettingEnemy extends TargettingEnemy {
 	//Method for Enemy to move Y Coords
 		
 
-	}
+}
+
