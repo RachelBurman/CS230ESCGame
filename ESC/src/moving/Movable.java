@@ -13,7 +13,6 @@ public abstract class Movable {
 	
 	public Movable(String name) {
 		this.name = name;
-		
 	}
 	
 	public int getXLocation() {
@@ -30,17 +29,38 @@ public abstract class Movable {
 	}
 	
 	
-	public int moveY(int currentYLocation) {
-		return currentYLocation;
-		
+	public void moveUp() {
+		if (validMove(xLocation, yLocation-1, map )) {
+			this.yLocation = yLocation-1;
+		}
 	}
 	
-	public int moveX(int currentXLocation) {
-		return currentXLocation;
+	public void moveDown() {
+		if (validMove(xLocation, yLocation+1, map )) {
+			this.yLocation = yLocation+1;
+		}
+	}
+	public void moveRight() {
+		if (validMove(xLocation+1, yLocation, map )) {
+			this.xLocation = xLocation+1;
+		}
 	}
 	
+	public void moveLeft() {
+		if (validMove(xLocation-1, yLocation, map )) {
+			this.xLocation = xLocation-1;
+		}
+	}
 	public void setMap (Map map) {
 		this.map = map;
+	}
+	
+	protected boolean validMove(int newXLocation, int newYLocation, Map map) {
+		if (map.getCell(newXLocation, newYLocation).getPlayerPass()) {
+			return true;
+			} else {
+				return false;
+			}
 	}
 	
 	

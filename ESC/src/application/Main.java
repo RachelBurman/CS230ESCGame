@@ -109,7 +109,6 @@ public class Main extends Application {
 			actualMap.removeCell(actualMap, player.getxLocation(), player.getyLocation());
 			actualMap.addCell(actualMap, player.getxLocation(), player.getyLocation());
 			player.addToken();
-			System.out.println(player.getTokens());
 		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("teleporter")) {
 			player.teleport();
 		}

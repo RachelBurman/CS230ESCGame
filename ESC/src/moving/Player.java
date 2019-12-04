@@ -128,35 +128,4 @@ public class Player extends Movable {
 	public ImageView getPlayerView() {
 		return playerView;
 	}
-	// Check if move is outof bounds
-	private boolean validMove(int xLocation, int yLocation, int newXLocation, int newYLocation, Map map) {
-		if (map.getCell(newXLocation, newYLocation).getPlayerPass()) {
-			return true;
-			} else {
-				return false;
-			}
-	}
-	
-	public void moveUp() {
-		if (validMove(xLocation, yLocation, xLocation, yLocation-1, map )) {
-			this.yLocation = yLocation-1;
-		}
-	}
-	
-	public void moveDown() {
-		if (validMove(xLocation, yLocation, xLocation, yLocation+1, map )) {
-			this.yLocation = yLocation+1;
-		}
-	}
-	public void moveRight() {
-		if (validMove(xLocation, yLocation, xLocation+1, yLocation, map )) {
-			this.xLocation = xLocation+1;
-		}
-	}
-	
-	public void moveLeft() {
-		if (validMove(xLocation, yLocation, xLocation-1, yLocation, map )) {
-			this.xLocation = xLocation-1;
-		}
-	}
 }
