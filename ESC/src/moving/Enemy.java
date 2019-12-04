@@ -15,7 +15,7 @@ public abstract class Enemy extends Movable {
 		
 		// TODO Auto-generated constructor stub
 	}
-	private boolean validMove(int xLocation, int yLocation, int newXLocation, int newYLocation, Map map) {
+	protected boolean validMove(int xLocation, int yLocation, int newXLocation, int newYLocation, Map map) {
 		if (map.getCell(newXLocation, newYLocation).getEnemyPass()) {
 			
 			return true;

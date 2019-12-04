@@ -4,14 +4,12 @@ package moving;
 import application.Cell;
 import application.Map;
 import javafx.scene.image.Image;
-
-import javafx.scene.image.Image;
 public abstract class Movable {
 	protected String name;
 	protected int xLocation;
 	protected int yLocation;
 	protected Map map;
-	final int CELL_SIZE= 50;
+	final int CELL_SIZE= 32;
 	
 	public Movable(String name) {
 		this.name = name;

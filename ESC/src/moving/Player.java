@@ -1,6 +1,5 @@
 package moving;
 
-import java.util.ArrayList;
 
 import application.Map;
 import javafx.scene.image.Image;
@@ -15,6 +14,7 @@ public class Player extends Movable {
 	int redKey=0;
 	int greenKey=0;
 	int blueKey=0;
+	int tokens=0;
 	boolean flippers= false;
 	boolean boots = false;
 	public Player(String name, int[] location) {
@@ -27,6 +27,27 @@ public class Player extends Movable {
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);
 		
+	}
+	public int getTokens() {
+		return tokens;
+	}
+	
+	public void teleport() {
+		int newX= map.getCell(getXLocation(), getYLocation()).getLinkX();
+		int newY= map.getCell(getXLocation(), getYLocation()).getLinkY();
+		this.xLocation = newX;
+		this.yLocation = newY;
+	}
+	
+	public void addToken() {
+		this.tokens = tokens+1;
+	}
+	
+	public void takeTokens() {
+		this.tokens = 0;
+	}
+	public void setTokens(int tokens) {
+		this.tokens = tokens;
 	}
 	public boolean getFlippers() {
 		return flippers;

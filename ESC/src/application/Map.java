@@ -1,6 +1,5 @@
 package application;
 
-import java.util.Arrays;
 
 import moving.Player;
 import moving.StraightLineEnemy;
@@ -12,6 +11,7 @@ public class Map {
 	private int start[];
 	private Player player1;
 	private StraightLineEnemy enemy1;
+	private int teleporterLink[];
 	
 	
 	public Map (String file) {
@@ -24,7 +24,6 @@ public class Map {
 		this.player1 = new Player("name",LevelLoader.getPlayerStart(file));
 		this.enemy1 = new StraightLineEnemy("Straight enemy", LevelLoader.getStraightEnemy(file));
 		
-		
 	}
 	
 	public void removeCell (Map map, int xLocation, int yLocation) {
@@ -34,7 +33,6 @@ public class Map {
 	public void addCell(Map mapActual, int xLocation, int yLocation) {
 		this.mapActual[xLocation][yLocation] = new Cell("Cell", true, true, xLocation, yLocation);
 	}
-	
 
 
 	public Cell[][] getMapActual() {

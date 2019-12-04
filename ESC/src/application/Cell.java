@@ -2,10 +2,6 @@ package application;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-
-import java.io.File;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,12 +10,34 @@ public class Cell {
 	String name;
 	Image cellImage;
 	ImageView cellView;
-	final int CELL_SIZE= 50;
+	final int CELL_SIZE= 32;
 	int xCoordinate;
 	int yCoordinate;
 	boolean playerPass;
 	boolean enemyPass;
+	int linkX;
+	int linkY;
 	
+	public int getLinkX() {
+		return linkX;
+	}
+
+
+	public void setLinkX(int linkX) {
+		this.linkX = linkX;
+	}
+
+
+	public int getLinkY() {
+		return linkY;
+	}
+
+
+	public void setLinkY(int linkY) {
+		this.linkY = linkY;
+	}
+
+
 	public Cell(String name, boolean playerPass, boolean enemyPass, int xCoordinate, int yCoordinate ) {
 		this.name = name;
 		this.playerPass = playerPass;

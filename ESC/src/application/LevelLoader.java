@@ -71,6 +71,27 @@ public class LevelLoader {
 			return null;
 		}
 	}
+	//Method to get StraightEnemy start location
+		public static int[] getTeleporter(String file) {
+			try {
+				File f = new File(file);
+				Scanner in = new Scanner(f);
+				for (int i=0; i<7;i++) {
+					in.nextLine();
+				}
+				int[] info = new int[4];
+				info[0] = in.nextInt();
+				info[1] = in.nextInt();
+				info[2] = in.nextInt();
+				info[3] = in.nextInt();
+				in.close();
+				return info;
+
+			} catch (FileNotFoundException exception) {
+				System.out.println("ERROR: Level File does not exist.");
+				return null;
+			}
+		}
 	// Load file
 	public static Cell[][] loadLevel(String file) {
 		try {
@@ -78,9 +99,8 @@ public class LevelLoader {
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			for (int i=0;i<6;i++) {
+			for (int i=0;i<10;i++) {
 				in.nextLine();
-
 			}
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
@@ -113,7 +133,9 @@ public class LevelLoader {
 					} else if (s.charAt(newX) == 'T') {
 						level[newX][newY] = new Token("token", true,false, newX, newY);
 					} else if (s.charAt(newX) == 'U') {
-						level[newX][newY] = new TokenDoor("tokenDoor", false,false, newX, newY);
+						level[newX][newY] = new TokenDoor("token door", false,false, newX, newY);
+					} else if (s.charAt(newX) == 'S') {
+							level[newX][newY] = new Teleporter("teleporter", true,false, newX, newY, file);
 					 //Add new Cells here, new Cells created through this
 					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, H Boots, I Flipper, R redDoor,T Token, U Token Door, W Water,   Cell , #  Wall
 						// Flipper, Boots, Token, Token door
