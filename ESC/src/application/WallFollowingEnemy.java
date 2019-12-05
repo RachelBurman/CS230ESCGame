@@ -10,8 +10,8 @@ import moving.NonTargetingEnemy;
 public class WallFollowingEnemy extends NonTargetingEnemy {
 	
 
-	public WallFollowingEnemy(String name, int[] info) {
-		super(name, info);
+	public WallFollowingEnemy(String name,Cell[][] mapActual, int[] info) {
+		super(name, mapActual, info);
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 
@@ -46,11 +46,11 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 	//Method for Enemy to move Y Coords
 	public void moveY(int xLocation,int yLocation, char facing) {
 		
-		if (map.getCell(xLocation, yLocation+1).getEnemyPass()==false && facing== 'u') {
+		if (mapActual[xLocation][yLocation+1].getEnemyPass()==false && facing== 'u') {
 			this.facing = 'r';			
 			moveX(xLocation,yLocation,this.facing);
 			
-		} else if (map.getCell(xLocation, yLocation-1).getEnemyPass()==false && facing =='d') {
+		} else if (mapActual[xLocation][yLocation-1].getEnemyPass()==false && facing =='d') {
 			this.facing = 'l';
 			moveX(xLocation,yLocation,this.facing);
 
@@ -67,13 +67,13 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 	//Method for Enemy to move X Coords
 	public void moveX(int xLocation, int yLocation, char facing) {
 		if ( facing=='r') {
-			if (map.getCell(xLocation+1, yLocation).getEnemyPass()==false) {
+			if (mapActual[xLocation+1][yLocation].getEnemyPass()==false) {
 				this.facing = 'd';
 				moveY(xLocation,yLocation,this.facing);
 			}
 
 		} else if (facing =='l') {
-			if (map.getCell(xLocation-1, yLocation).getEnemyPass()==false) {
+			if (mapActual[xLocation][yLocation].getEnemyPass()==false) {
 				this.facing = 'u';
 				moveY(xLocation,yLocation,this.facing);
 			}

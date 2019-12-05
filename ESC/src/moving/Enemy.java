@@ -1,5 +1,6 @@
 package moving;
 
+import application.Cell;
 import application.Map;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -8,8 +9,8 @@ public abstract class Enemy extends Movable {
 	protected Image EnemyImg;
 	protected ImageView EnemyView;
 
-	public Enemy(String name, int[] location) {
-		super(name);
+	public Enemy(String name, Cell[][] mapActual, int[] location) {
+		super(name, mapActual);
 		super.xLocation = location[0];
 		super.yLocation = location[1];
 		

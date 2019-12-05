@@ -1,5 +1,8 @@
 package moving;
 
+import java.io.File;
+
+import application.Cell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -7,12 +10,14 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 	int frontX;
 	int frontY;
 
-	public StraightLineEnemy(String name, int[] info) {
-		super(name, info);
+	public StraightLineEnemy(String name, Cell[][] mapActual, int[] info) {
+		super(name,mapActual, info);
 		this.xLocation = info[0];
 		this.yLocation = info[1];
-		
-		this.EnemyImg = new Image("file:enemy.png");
+		File file = new File("./src/StraightEnemy.png");
+	  Image image = new Image(file.toURI().toString());
+	  //"https://www.tynker.com/projects/images/11c17d23871d29107e27a3dd350096500389fc83/green-stickman---pick.png
+		this.EnemyImg = image;
 		this.EnemyView = new ImageView(this.EnemyImg);
 		this.EnemyView.setFitHeight(CELL_SIZE);
 		this.EnemyView.setFitWidth(CELL_SIZE);
@@ -39,9 +44,9 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 	}
 	//Method for Enemy to move Y Coords
 	public void moveY(int xLocation,int yLocation, char facing) {
-		if (map.getCell(xLocation, yLocation-1).getEnemyPass()==false && facing== 'u') {
+		if (mapActual[xLocation][yLocation-1].getEnemyPass()==false && facing== 'u') {
 			this.facing = 'd';
-		} else if (map.getCell(xLocation, yLocation+1).getEnemyPass()==false && facing =='d') {
+		} else if (mapActual[xLocation][yLocation+1].getEnemyPass()==false && facing =='d') {
 			this.facing = 'u';
 		}
 		if (facing=='u') {
@@ -54,12 +59,12 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 	//Method for Enemy to move X Coords
 	public void moveX(int xLocation, int yLocation, char facing) {
 		if ( facing=='r') {
-			if (map.getCell(xLocation+1, yLocation).getEnemyPass()==false) {
+			if (mapActual[xLocation+1][yLocation].getEnemyPass()==false) {
 				this.facing = 'l';
 			}
 			
 		} else if (facing =='l') {
-			if (map.getCell(xLocation-1, yLocation).getEnemyPass()==false) {
+			if (mapActual[xLocation-1][yLocation].getEnemyPass()==false) {
 				this.facing = 'r';
 			}
 		}
