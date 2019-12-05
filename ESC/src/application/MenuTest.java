@@ -1,4 +1,5 @@
 package application;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,11 +21,14 @@ import java.io.*;
 import java.net.*;
 
 public class MenuTest {
-	@FXML private Label resultBox;
+	@FXML private Label testLabel;
 	@FXML private Button playButton;
 	@FXML private MenuButton profilesMenu;
-	@FXML private MenuItem profile1;
-	@FXML private MenuItem profile2;
+	@FXML private MenuItem profile1MenuItem;
+	@FXML private MenuItem profile2MenuItem;
+	@FXML private MenuItem profile3MenuItem;
+	@FXML private MenuItem profile4MenuItem;
+	@FXML private MenuItem profile5MenuItem;
 	@FXML private TextField profileNameBox;
 	@FXML private Label profileNameLabel;
 	@FXML private Button createButton;
@@ -34,39 +38,85 @@ public class MenuTest {
 	@FXML private Label questionLabel;
 	@FXML private Button profile1Button;
 	@FXML private Button profile2Button;
+	@FXML private Button profile3Button;
+	@FXML private Button profile4Button;
+	@FXML private Button profile5Button;
   @FXML private Button createProfileButton;
-	@FXML private MenuButton levelSelect;
-	@FXML private MenuItem level1;
-	@FXML private MenuItem level2;
-	@FXML private MenuItem level3;
-	@FXML private MenuItem level4;
-	@FXML private MenuItem level5;
-	@FXML private Label messageOfTheDay;
+	@FXML private MenuButton levelSelectMenu;
+	@FXML private MenuItem level1MenuItem;
+	@FXML private MenuItem level2MenuItem;
+	@FXML private MenuItem level3MenuItem;
+	@FXML private MenuItem level4MenuItem;
+	@FXML private MenuItem level5MenuItem;
+	@FXML private Label messageOfTheDayLabel;
 
 	@FXML
 	private void initialize() {
+		String s = "";
 		try {
 			File f = new File("Profiles.txt");
 			Scanner in = new Scanner(f);
 			if(in.hasNextLine()) {
-				profile1.setText(in.nextLine());
-				profile1.setVisible(true);
-				if(in.hasNextLine()) {
-					profile2.setText(in.nextLine());
-					profile2.setVisible(true);
+				s = in.nextLine();
+				if (!(s.equals(""))) {
+					profile1MenuItem.setText(s);
+					profile1MenuItem.setVisible(true);
+					profile2MenuItem.setVisible(false);
+					profile3MenuItem.setVisible(false);
+					profile4MenuItem.setVisible(false);
+					profile5MenuItem.setVisible(false);
+					if(in.hasNextLine()) {
+						s = in.nextLine();
+						if (!(s.equals(""))) {
+							profile2MenuItem.setText(s);
+							profile2MenuItem.setVisible(true);
+							profile3MenuItem.setVisible(false);
+							profile4MenuItem.setVisible(false);
+							profile5MenuItem.setVisible(false);
+							if(in.hasNextLine()) {
+								s = in.nextLine();
+								if (!(s.equals(""))) {
+									profile3MenuItem.setText(s);
+									profile3MenuItem.setVisible(true);
+									profile4MenuItem.setVisible(false);
+									profile5MenuItem.setVisible(false);
+									if(in.hasNextLine()) {
+										s = in.nextLine();
+										if (!(s.equals(""))) {
+											profile4MenuItem.setText(s);
+											profile4MenuItem.setVisible(true);
+											profile5MenuItem.setVisible(false);
+											if(in.hasNextLine()) {
+												s = in.nextLine();
+												if (!(s.equals(""))) {
+													profile5MenuItem.setText(s);
+													profile5MenuItem.setVisible(true);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 		catch (FileNotFoundException exception)
 		{
-			System.out.println("ERROR: Level File does not exist.");
+			System.out.println("ERROR: File not found");
+			profile1MenuItem.setVisible(false);
+			profile2MenuItem.setVisible(false);
+			profile3MenuItem.setVisible(false);
+			profile4MenuItem.setVisible(false);
+			profile5MenuItem.setVisible(false);
 		}
-		messageOfTheDay.setText(getMessage());
+		messageOfTheDayLabel.setText(getMessage());
 	}
 
 	@FXML
-	private void handleStartButton(ActionEvent event) {
-        		resultBox.setText("Pressed");
+	private void handleStartButtonAction(ActionEvent event) {
+        		testLabel.setText("Pressed");
 	}
 
 	@FXML
@@ -75,19 +125,19 @@ public class MenuTest {
 
 		    case RIGHT:
 		    	// Right key was pressed. So move the player right by one cell.
-	        	resultBox.setText("Right");
+	        	testLabel.setText("Right");
 	        	break;
 		    case LEFT:
 		    	// Right key was pressed. So move the player right by one cell.
-	        	resultBox.setText("Left");
+	        	testLabel.setText("Left");
 	        	break;
 		    case UP:
 		    	// Right key was pressed. So move the player right by one cell.
-	        	resultBox.setText("Up");
+	        	testLabel.setText("Up");
 	        	break;
 		    case DOWN:
 		    	// Right key was pressed. So move the player right by one cell.
-	        	resultBox.setText("Down");
+	        	testLabel.setText("Down");
 	        	break;
 	        default:
 	        	// Do nothing
@@ -97,69 +147,218 @@ public class MenuTest {
 	}
 
 	@FXML
-	private void handleProfileButton(ActionEvent event) {
-		levelSelect.setVisible(false);
+	private void handleProfileButtonAction(ActionEvent event) {
+		levelSelectMenu.setVisible(false);
 		playButton.setVisible(false);
 		createProfileButton.setVisible(false);
 		profilesMenu.setVisible(false);
 		createButton.setVisible(true);
 		profileNameBox.setVisible(true);
 		profileNameLabel.setVisible(true);
-		/*Parent root;
-        try {
-						FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-						root = fxmlLoader.load();
-						Stage stage = new Stage();
-            stage.setTitle("Profile Creation");
-            stage.setScene(new Scene(root));
-            stage.show();
-            // Hide this current window (if this is what you want)
-            //((Node)(event.getSource())).getScene().getWindow().hide();
-					} catch(Exception e) {
-						e.printStackTrace();
-					}
-					*/
-			/*try {
-					FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Profile.fxml"));
-		    	Pane root1 = (Pane) fxmlLoader.load();
-					Stage stage = new Stage();
-					//Pane root1 = (Pane)FXMLLoader.load(getClass().getResource("/Profile.fxml"));
-					//Scene scene = new Scene(root1,707,483);
-
-		    	//stage.initModality(Modality.APPLICATION_MODAL);
-		    	//stage.initStyle(StageStyle.UNDECORATED);
-		    	stage.setTitle("Profile Creation");
-		    	stage.setScene(new Scene(root1));
-		    	stage.show();
-				} catch(Exception e) {
-					e.printStackTrace();
-				}
-				*/
 	}
 
 	@FXML
-	private void createButtonPressed(ActionEvent event) {
-					if(!profile1.isVisible())
+	private void handleCreateButtonAction(ActionEvent event) {
+					if(!profile1MenuItem.isVisible())
 					{
-        		profile1.setText(profileNameBox.getText());
-						profile1.setVisible(true);
-						profileNameBox.setText("");
-						createButton.setVisible(false);
-						profileNameBox.setVisible(false);
-						profileNameLabel.setVisible(false);
-						createProfileButton.setVisible(true);
-						level1.setVisible(true);
-					} else if (!profile2.isVisible())
-					{
-						profile2.setText(profileNameBox.getText());
-						profile2.setVisible(true);
+						try {
+							File outputFile = new File ("Profiles.txt");
+							PrintWriter out = null;
+							out = new PrintWriter (outputFile);
+							out.println (profileNameBox.getText());
+							out.println ("");
+							out.println ("");
+							out.println ("");
+							out.println ("");
+							out.println ("1");
+							out.close ();
+						} catch (FileNotFoundException e) {
+							System.out.println ("ERROR: Level File does not exist");
+						}
+        		profile1MenuItem.setText(profileNameBox.getText());
+						profile1MenuItem.setVisible(true);
 						profileNameBox.setText("");
 						createButton.setVisible(false);
 						profileNameBox.setVisible(false);
 						profileNameLabel.setVisible(false);
 						createProfileButton.setVisible(true);
 						profilesMenu.setVisible(true);
-						level1.setVisible(true);
+					} else if (!profile2MenuItem.isVisible())	{
+						String profile1Name = "";
+						String profile1Level = "";
+						try {
+							File f = new File("Profiles.txt");
+							Scanner in = new Scanner(f);
+						 	profile1Name = in.nextLine();
+							in.nextLine();
+							in.nextLine();
+							in.nextLine();
+							in.nextLine();
+							profile1Level = in.nextLine();
+						} catch (FileNotFoundException exception) {
+							System.out.println("ERROR: Level File does not exist.");
+						}
+						try {
+							File outputFile = new File ("Profiles.txt");
+							PrintWriter out = null;
+							out = new PrintWriter (outputFile);
+							out.println (profile1Name);
+							out.println (profileNameBox.getText());
+							out.println ("");
+							out.println ("");
+							out.println ("");
+							out.println (profile1Level);
+							out.println ("1");
+							out.close ();
+						} catch (FileNotFoundException e) {
+							System.out.println ("ERROR: Level File does not exist");
+						}
+						profile2MenuItem.setText(profileNameBox.getText());
+						profile2MenuItem.setVisible(true);
+						profileNameBox.setText("");
+						createButton.setVisible(false);
+						profileNameBox.setVisible(false);
+						profileNameLabel.setVisible(false);
+						createProfileButton.setVisible(true);
+						profilesMenu.setVisible(true);
+					} else if (!profile3MenuItem.isVisible())	{
+							String profile1Name = "";
+							String profile1Level = "";
+							String profile2Name = "";
+							String profile2Level = "";
+							try {
+								File f = new File("Profiles.txt");
+								Scanner in = new Scanner(f);
+							 	profile1Name = in.nextLine();
+								profile2Name = in.nextLine();
+								in.nextLine();
+								in.nextLine();
+								in.nextLine();
+								profile1Level = in.nextLine();
+								profile2Level = in.nextLine();
+							} catch (FileNotFoundException exception) {
+								System.out.println("ERROR: Level File does not exist.");
+							}
+							try {
+								File outputFile = new File ("Profiles.txt");
+								PrintWriter out = null;
+								out = new PrintWriter (outputFile);
+								out.println (profile1Name);
+								out.println (profile2Name);
+								out.println (profileNameBox.getText());
+								out.println ("");
+								out.println ("");
+								out.println (profile1Level);
+								out.println (profile2Level);
+								out.println ("1");
+								out.close ();
+							} catch (FileNotFoundException e) {
+								System.out.println ("ERROR: Level File does not exist");
+							}
+							profile3MenuItem.setText(profileNameBox.getText());
+							profile3MenuItem.setVisible(true);
+							profileNameBox.setText("");
+							createButton.setVisible(false);
+							profileNameBox.setVisible(false);
+							profileNameLabel.setVisible(false);
+							createProfileButton.setVisible(true);
+							profilesMenu.setVisible(true);
+						} else if (!profile4MenuItem.isVisible())	{
+								String profile1Name = "";
+								String profile1Level = "";
+								String profile2Name = "";
+								String profile2Level = "";
+								String profile3Name = "";
+								String profile3Level = "";
+								try {
+									File f = new File("Profiles.txt");
+									Scanner in = new Scanner(f);
+								 	profile1Name = in.nextLine();
+									profile2Name = in.nextLine();
+									profile3Name = in.nextLine();
+									in.nextLine();
+									in.nextLine();
+									profile1Level = in.nextLine();
+									profile2Level = in.nextLine();
+									profile3Level = in.nextLine();
+								} catch (FileNotFoundException exception) {
+									System.out.println("ERROR: Level File does not exist.");
+								}
+								try {
+									File outputFile = new File ("Profiles.txt");
+									PrintWriter out = null;
+									out = new PrintWriter (outputFile);
+									out.println (profile1Name);
+									out.println (profile2Name);
+									out.println (profile3Name);
+									out.println (profileNameBox.getText());
+									out.println ("");
+									out.println (profile1Level);
+									out.println (profile2Level);
+									out.println (profile3Level);
+									out.println ("1");
+									out.close ();
+								} catch (FileNotFoundException e) {
+									System.out.println ("ERROR: Level File does not exist");
+								}
+								profile4MenuItem.setText(profileNameBox.getText());
+								profile4MenuItem.setVisible(true);
+								profileNameBox.setText("");
+								createButton.setVisible(false);
+								profileNameBox.setVisible(false);
+								profileNameLabel.setVisible(false);
+								createProfileButton.setVisible(true);
+								profilesMenu.setVisible(true);
+							} else if (!profile5MenuItem.isVisible())	{
+									String profile1Name = "";
+									String profile1Level = "";
+									String profile2Name = "";
+									String profile2Level = "";
+									String profile3Name = "";
+									String profile3Level = "";
+									String profile4Name = "";
+									String profile4Level = "";
+									try {
+										File f = new File("Profiles.txt");
+										Scanner in = new Scanner(f);
+									 	profile1Name = in.nextLine();
+										profile2Name = in.nextLine();
+										profile3Name = in.nextLine();
+										profile4Name = in.nextLine();
+										in.nextLine();
+										profile1Level = in.nextLine();
+										profile2Level = in.nextLine();
+										profile3Level = in.nextLine();
+										profile4Level = in.nextLine();
+									} catch (FileNotFoundException exception) {
+										System.out.println("ERROR: Level File does not exist.");
+									}
+									try {
+										File outputFile = new File ("Profiles.txt");
+										PrintWriter out = null;
+										out = new PrintWriter (outputFile);
+										out.println (profile1Name);
+										out.println (profile2Name);
+										out.println (profile3Name);
+										out.println (profile4Name);
+										out.println (profileNameBox.getText());
+										out.println (profile1Level);
+										out.println (profile2Level);
+										out.println (profile3Level);
+										out.println (profile4Level);
+										out.println ("1");
+										out.close ();
+									} catch (FileNotFoundException e) {
+										System.out.println ("ERROR: Level File does not exist");
+									}
+									profile5MenuItem.setText(profileNameBox.getText());
+									profile5MenuItem.setVisible(true);
+									profileNameBox.setText("");
+									createButton.setVisible(false);
+									profileNameBox.setVisible(false);
+									profileNameLabel.setVisible(false);
+									createProfileButton.setVisible(true);
+									profilesMenu.setVisible(true);
 					} else {
 						errorMessage.setVisible(true);
 						yesButton.setVisible(true);
@@ -168,7 +367,7 @@ public class MenuTest {
 	}
 
 	@FXML
-	private void handleNoButton(ActionEvent event) {
+	private void handleNoButtonAction(ActionEvent event) {
 		profileNameBox.setText("");
 		createButton.setVisible(false);
 		profileNameBox.setVisible(false);
@@ -178,18 +377,65 @@ public class MenuTest {
 		noButton.setVisible(false);
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
+		profilesMenu.setText("Profiles");
 	}
 
 	@FXML
-	private void handleYesButton(ActionEvent event) {
+	private void handleYesButtonAction(ActionEvent event) {
 		questionLabel.setVisible(true);
 		profile1Button.setVisible(true);
 		profile2Button.setVisible(true);
+		profile3Button.setVisible(true);
+		profile4Button.setVisible(true);
+		profile5Button.setVisible(true);
 	}
 
 	@FXML
-	private void handleProfile1Button(ActionEvent event) {
-		profile1.setText(profileNameBox.getText());
+	private void handleProfile1ButtonAction(ActionEvent event) {
+		String profile2Name = "";
+		String profile2Level = "";
+		String profile3Name = "";
+		String profile3Level = "";
+		String profile4Name = "";
+		String profile4Level = "";
+		String profile5Name = "";
+		String profile5Level = "";
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+			in.nextLine();
+		 	profile2Name = in.nextLine();
+			profile3Name = in.nextLine();
+			profile4Name = in.nextLine();
+			profile5Name = in.nextLine();
+			in.nextLine();
+			profile2Level = in.nextLine();
+			profile3Level = in.nextLine();
+			profile4Level = in.nextLine();
+			profile5Level = in.nextLine();
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+
+		try {
+			File outputFile = new File ("Profiles.txt");
+			PrintWriter out = null;
+			out = new PrintWriter (outputFile);
+			out.println (profileNameBox.getText());
+			out.println (profile2Name);
+			out.println (profile3Name);
+			out.println (profile4Name);
+			out.println (profile5Name);
+			out.println ("1");
+			out.println (profile2Level);
+			out.println (profile3Level);
+			out.println (profile4Level);
+			out.println (profile5Level);
+			out.close ();
+		} catch (FileNotFoundException e) {
+			System.out.println ("ERROR: Level File does not exist");
+		}
+		profile1MenuItem.setText(profileNameBox.getText());
 		profileNameBox.setText("");
 		profileNameBox.setText("");
 		createButton.setVisible(false);
@@ -201,14 +447,60 @@ public class MenuTest {
 		questionLabel.setVisible(false);
 		profile1Button.setVisible(false);
 		profile2Button.setVisible(false);
+		profile3Button.setVisible(false);
+		profile4Button.setVisible(false);
+		profile5Button.setVisible(false);
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
-		level1.setVisible(true);
+		profilesMenu.setText("Profiles");
 	}
 
 	@FXML
 	private void handleProfile2Button(ActionEvent event) {
-		profile2.setText(profileNameBox.getText());
+		String profile1Name = "";
+		String profile1Level = "";
+		String profile3Name = "";
+		String profile3Level = "";
+		String profile4Name = "";
+		String profile4Level = "";
+		String profile5Name = "";
+		String profile5Level = "";
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+		 	profile1Name = in.nextLine();
+			in.nextLine();
+			profile3Name = in.nextLine();
+			profile4Name = in.nextLine();
+			profile5Name = in.nextLine();
+			profile1Level = in.nextLine();
+			in.nextLine();
+			profile3Level = in.nextLine();
+			profile4Level = in.nextLine();
+			profile5Level = in.nextLine();
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+
+		try {
+			File outputFile = new File ("Profiles.txt");
+			PrintWriter out = null;
+			out = new PrintWriter (outputFile);
+			out.println (profile1Name);
+			out.println (profileNameBox.getText());
+			out.println (profile3Name);
+			out.println (profile4Name);
+			out.println (profile5Name);
+			out.println (profile1Level);
+			out.println ("1");
+			out.println (profile3Level);
+			out.println (profile4Level);
+			out.println (profile5Level);
+			out.close ();
+		} catch (FileNotFoundException e) {
+			System.out.println ("ERROR: Level File does not exist");
+		}
+		profile2MenuItem.setText(profileNameBox.getText());
 		profileNameBox.setText("");
 		createButton.setVisible(false);
 		profileNameBox.setVisible(false);
@@ -219,137 +511,469 @@ public class MenuTest {
 		questionLabel.setVisible(false);
 		profile1Button.setVisible(false);
 		profile2Button.setVisible(false);
+		profile3Button.setVisible(false);
+		profile4Button.setVisible(false);
+		profile5Button.setVisible(false);
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
-		level1.setVisible(true);
+		profilesMenu.setText("Profiles");
+	}
+
+	@FXML
+	private void handleProfile3Button(ActionEvent event) {
+		String profile1Name = "";
+		String profile1Level = "";
+		String profile2Name = "";
+		String profile2Level = "";
+		String profile4Name = "";
+		String profile4Level = "";
+		String profile5Name = "";
+		String profile5Level = "";
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+		 	profile1Name = in.nextLine();
+			profile2Name = in.nextLine();
+			in.nextLine();
+			profile4Name = in.nextLine();
+			profile5Name = in.nextLine();
+			profile1Level = in.nextLine();
+			profile2Level = in.nextLine();
+			in.nextLine();
+			profile4Level = in.nextLine();
+			profile5Level = in.nextLine();
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+
+		try {
+			File outputFile = new File ("Profiles.txt");
+			PrintWriter out = null;
+			out = new PrintWriter (outputFile);
+			out.println (profile1Name);
+			out.println (profile2Name);
+			out.println (profileNameBox.getText());
+			out.println (profile4Name);
+			out.println (profile5Name);
+			out.println (profile1Level);
+			out.println (profile2Level);
+			out.println ("1");
+			out.println (profile4Level);
+			out.println (profile5Level);
+			out.close ();
+		} catch (FileNotFoundException e) {
+			System.out.println ("ERROR: Level File does not exist");
+		}
+		profile3MenuItem.setText(profileNameBox.getText());
+		profileNameBox.setText("");
+		createButton.setVisible(false);
+		profileNameBox.setVisible(false);
+		profileNameLabel.setVisible(false);
+		errorMessage.setVisible(false);
+		yesButton.setVisible(false);
+		noButton.setVisible(false);
+		questionLabel.setVisible(false);
+		profile1Button.setVisible(false);
+		profile2Button.setVisible(false);
+		profile3Button.setVisible(false);
+		profile4Button.setVisible(false);
+		profile5Button.setVisible(false);
+		createProfileButton.setVisible(true);
+		profilesMenu.setVisible(true);
+		profilesMenu.setText("Profiles");
+	}
+
+	@FXML
+	private void handleProfile4Button(ActionEvent event) {
+		String profile1Name = "";
+		String profile1Level = "";
+		String profile2Name = "";
+		String profile2Level = "";
+		String profile3Name = "";
+		String profile3Level = "";
+		String profile5Name = "";
+		String profile5Level = "";
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+		 	profile1Name = in.nextLine();
+			profile2Name = in.nextLine();
+			profile3Name = in.nextLine();
+			in.nextLine();
+			profile5Name = in.nextLine();
+			profile1Level = in.nextLine();
+			profile2Level = in.nextLine();
+			profile3Level = in.nextLine();
+			in.nextLine();
+			profile5Level = in.nextLine();
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+
+		try {
+			File outputFile = new File ("Profiles.txt");
+			PrintWriter out = null;
+			out = new PrintWriter (outputFile);
+			out.println (profile1Name);
+			out.println (profile2Name);
+			out.println (profile3Name);
+			out.println (profileNameBox.getText());
+			out.println (profile5Name);
+			out.println (profile1Level);
+			out.println (profile2Level);
+			out.println (profile3Level);
+			out.println ("1");
+			out.println (profile5Level);
+			out.close ();
+		} catch (FileNotFoundException e) {
+			System.out.println ("ERROR: Level File does not exist");
+		}
+		profile4MenuItem.setText(profileNameBox.getText());
+		profileNameBox.setText("");
+		createButton.setVisible(false);
+		profileNameBox.setVisible(false);
+		profileNameLabel.setVisible(false);
+		errorMessage.setVisible(false);
+		yesButton.setVisible(false);
+		noButton.setVisible(false);
+		questionLabel.setVisible(false);
+		profile1Button.setVisible(false);
+		profile2Button.setVisible(false);
+		profile3Button.setVisible(false);
+		profile4Button.setVisible(false);
+		profile5Button.setVisible(false);
+		createProfileButton.setVisible(true);
+		profilesMenu.setVisible(true);
+		profilesMenu.setText("Profiles");
+	}
+
+	@FXML
+	private void handleProfile5Button(ActionEvent event) {
+		String profile1Name = "";
+		String profile1Level = "";
+		String profile2Name = "";
+		String profile2Level = "";
+		String profile3Name = "";
+		String profile3Level = "";
+		String profile4Name = "";
+		String profile4Level = "";
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+		 	profile1Name = in.nextLine();
+			profile2Name = in.nextLine();
+			profile3Name = in.nextLine();
+			profile4Name = in.nextLine();
+			in.nextLine();
+			profile1Level = in.nextLine();
+			profile2Level = in.nextLine();
+			profile3Level = in.nextLine();
+			profile4Level = in.nextLine();
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+
+		try {
+			File outputFile = new File ("Profiles.txt");
+			PrintWriter out = null;
+			out = new PrintWriter (outputFile);
+			out.println (profile1Name);
+			out.println (profile2Name);
+			out.println (profile3Name);
+			out.println (profile4Name);
+			out.println (profileNameBox.getText());
+			out.println (profile1Level);
+			out.println (profile2Level);
+			out.println (profile3Level);
+			out.println (profile4Level);
+			out.println ("1");
+			out.close ();
+		} catch (FileNotFoundException e) {
+			System.out.println ("ERROR: Level File does not exist");
+		}
+		profile5MenuItem.setText(profileNameBox.getText());
+		profileNameBox.setText("");
+		createButton.setVisible(false);
+		profileNameBox.setVisible(false);
+		profileNameLabel.setVisible(false);
+		errorMessage.setVisible(false);
+		yesButton.setVisible(false);
+		noButton.setVisible(false);
+		questionLabel.setVisible(false);
+		profile1Button.setVisible(false);
+		profile2Button.setVisible(false);
+		profile3Button.setVisible(false);
+		profile4Button.setVisible(false);
+		profile5Button.setVisible(false);
+		createProfileButton.setVisible(true);
+		profilesMenu.setVisible(true);
+		profilesMenu.setText("Profiles");
 	}
 
 	@FXML
 	private void guestSelected(ActionEvent event) {
 		profilesMenu.setText("Guest");
-		levelSelect.setVisible(true);
-		level1.setVisible(true);
-		level2.setVisible(true);
-		level3.setVisible(true);
-		level4.setVisible(true);
-		level5.setVisible(true);
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(true);
+		level2MenuItem.setVisible(true);
+		level3MenuItem.setVisible(true);
+		level4MenuItem.setVisible(true);
+		level5MenuItem.setVisible(true);
 	}
 
 	@FXML
 	private void profile1Selected(ActionEvent event) {
-		profilesMenu.setText(profile1.getText());
-		levelSelect.setVisible(true);
-		level1.setVisible(false);
-		level2.setVisible(false);
-		level3.setVisible(false);
-		level4.setVisible(false);
-		level5.setVisible(false);
+		profilesMenu.setText(profile1MenuItem.getText());
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(false);
+		level2MenuItem.setVisible(false);
+		level3MenuItem.setVisible(false);
+		level4MenuItem.setVisible(false);
+		level5MenuItem.setVisible(false);
 		try {
 			File f = new File("Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
 			int level = in.nextInt();
 			if (level == 1) {
-				level1.setVisible(true);
+				level1MenuItem.setVisible(true);
 			} else if (level == 2) {
-				level1.setVisible(true);
-				level2.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
 			} else if (level == 3) {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
 			} else if (level == 4) {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
-				level4.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
 			} else {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
-				level4.setVisible(true);
-				level5.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+				level5MenuItem.setVisible(true);
 			}
-		}
-		catch (FileNotFoundException exception)
-		{
+		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
 	}
 
 	@FXML
 	private void profile2Selected(ActionEvent event) {
-		profilesMenu.setText(profile2.getText());
-		levelSelect.setVisible(true);
-		level1.setVisible(false);
-		level2.setVisible(false);
-		level3.setVisible(false);
-		level4.setVisible(false);
-		level5.setVisible(false);
+		profilesMenu.setText(profile2MenuItem.getText());
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(false);
+		level2MenuItem.setVisible(false);
+		level3MenuItem.setVisible(false);
+		level4MenuItem.setVisible(false);
+		level5MenuItem.setVisible(false);
 		try {
 			File f = new File("Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
 			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
 			int level = in.nextInt();
 			if (level == 1) {
-				level1.setVisible(true);
+				level1MenuItem.setVisible(true);
 			} else if (level == 2) {
-				level1.setVisible(true);
-				level2.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
 			} else if (level == 3) {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
 			} else if (level == 4) {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
-				level4.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
 			} else {
-				level1.setVisible(true);
-				level2.setVisible(true);
-				level3.setVisible(true);
-				level4.setVisible(true);
-				level5.setVisible(true);
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+				level5MenuItem.setVisible(true);
 			}
-		}
-		catch (FileNotFoundException exception)
-		{
+		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
 	}
 
 	@FXML
-	private void profilesPressed(ActionEvent event) {
-        		resultBox.setText("Pressed");
+	private void profile3Selected(ActionEvent event) {
+		profilesMenu.setText(profile3MenuItem.getText());
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(false);
+		level2MenuItem.setVisible(false);
+		level3MenuItem.setVisible(false);
+		level4MenuItem.setVisible(false);
+		level5MenuItem.setVisible(false);
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			int level = in.nextInt();
+			if (level == 1) {
+				level1MenuItem.setVisible(true);
+			} else if (level == 2) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+			} else if (level == 3) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+			} else if (level == 4) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+			} else {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+				level5MenuItem.setVisible(true);
+			}
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+	}
+
+	@FXML
+	private void profile4Selected(ActionEvent event) {
+		profilesMenu.setText(profile4MenuItem.getText());
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(false);
+		level2MenuItem.setVisible(false);
+		level3MenuItem.setVisible(false);
+		level4MenuItem.setVisible(false);
+		level5MenuItem.setVisible(false);
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			int level = in.nextInt();
+			if (level == 1) {
+				level1MenuItem.setVisible(true);
+			} else if (level == 2) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+			} else if (level == 3) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+			} else if (level == 4) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+			} else {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+				level5MenuItem.setVisible(true);
+			}
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
+	}
+
+	@FXML
+	private void profile5Selected(ActionEvent event) {
+		profilesMenu.setText(profile5MenuItem.getText());
+		levelSelectMenu.setVisible(true);
+		level1MenuItem.setVisible(false);
+		level2MenuItem.setVisible(false);
+		level3MenuItem.setVisible(false);
+		level4MenuItem.setVisible(false);
+		level5MenuItem.setVisible(false);
+		try {
+			File f = new File("Profiles.txt");
+			Scanner in = new Scanner(f);
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			in.nextLine();
+			int level = in.nextInt();
+			if (level == 1) {
+				level1MenuItem.setVisible(true);
+			} else if (level == 2) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+			} else if (level == 3) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+			} else if (level == 4) {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+			} else {
+				level1MenuItem.setVisible(true);
+				level2MenuItem.setVisible(true);
+				level3MenuItem.setVisible(true);
+				level4MenuItem.setVisible(true);
+				level5MenuItem.setVisible(true);
+			}
+		} catch (FileNotFoundException exception) {
+			System.out.println("ERROR: Level File does not exist.");
+		}
 	}
 
 	@FXML
 	private void level1Selected(ActionEvent event) {
-		levelSelect.setText("1");
+		levelSelectMenu.setText("1");
 		playButton.setVisible(true);
 	}
 	@FXML
 	private void level2Selected(ActionEvent event) {
-		levelSelect.setText("2");
+		levelSelectMenu.setText("2");
 		playButton.setVisible(true);
 	}
 	@FXML
 	private void level3Selected(ActionEvent event) {
-		levelSelect.setText("3");
+		levelSelectMenu.setText("3");
 		playButton.setVisible(true);
 	}
 	@FXML
 	private void level4Selected(ActionEvent event) {
-		levelSelect.setText("4");
+		levelSelectMenu.setText("4");
 		playButton.setVisible(true);
 	}
 	@FXML
 	private void level5Selected(ActionEvent event) {
-		levelSelect.setText("5");
+		levelSelectMenu.setText("5");
 		playButton.setVisible(true);
 	}
 
