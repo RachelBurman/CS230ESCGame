@@ -22,7 +22,8 @@ public class Cell {
 		this.name = name;
 		this.playerPass = true;
 		this.enemyPass = true;
-	    Image image = new Image("https://www.colorcombos.com/images/colors/999999.png");
+		//https://www.colorcombos.com/images/colors/999999.png
+	    Image image = new Image("file:Default.jpg");
 		this.cellImage = image;
 		this.cellView = new ImageView(cellImage);
 		this.cellView.setFitHeight(CELL_SIZE);

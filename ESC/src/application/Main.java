@@ -16,8 +16,11 @@ public class Main extends Application {
 	private static final int WINDOW_HEIGHT = 500;
 
 	public void start(Stage primaryStage) {
+		BorderPane border = new BorderPane();
+		
 		GridPane grid = new GridPane();
-		Scene scene = new Scene(grid, WINDOW_WIDTH, WINDOW_HEIGHT);
+		border.setCenter(grid);
+		Scene scene = new Scene(border, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Map actualMap = new Map("test.txt");
 		// Enemies need to be created here
 		Player player = actualMap.getPlayer1();

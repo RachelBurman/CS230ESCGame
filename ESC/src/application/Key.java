@@ -13,11 +13,11 @@ public class Key extends Cell {
 		this.enemyPass = false;
 		Image image = null;
 		if (name.equalsIgnoreCase("red")) {
-			 image = new Image("https://cdn3.iconfinder.com/data/icons/soda-red/512/key.png");
+			 image = new Image("file:redkey.png");
 		} else if (name.equalsIgnoreCase("blue")) {
-			image = new Image ("http://www.clker.com/cliparts/j/n/p/E/e/W/blue-key-hi.png");
+			image = new Image ("file:bluekey.png");
 		} else if (name.equalsIgnoreCase("green")) {
-			image = new Image ("http://www.clker.com/cliparts/U/w/c/L/T/Z/green-key-md.png");
+			image = new Image ("file:greenkey.png");
 		}
 		super.cellImage = image;
 		super.cellView = new ImageView(cellImage);

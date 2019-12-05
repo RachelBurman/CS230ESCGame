@@ -12,7 +12,7 @@ public class DumbTargetingEnemy extends TargetingEnemy {
 		this.yLocation = info[1];
 		this.playerx = super.xLocation;
 		this.playery= super.yLocation;
-		this.EnemyImg = new Image("https://imgbin.com/png/BA0Rv63r/police-officer-cartoon-drawing-png");
+		this.EnemyImg = new Image("file:enemy.png");
 		this.EnemyView = new ImageView(this.EnemyImg);
 		this.EnemyView.setFitHeight(CELL_SIZE);
 		this.EnemyView.setFitWidth(CELL_SIZE);

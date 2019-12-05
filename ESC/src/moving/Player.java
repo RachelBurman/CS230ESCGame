@@ -22,7 +22,7 @@ public class Player extends Movable {
 		super.name = name;
 		super.xLocation = location[0];
 		super.yLocation = location[1];
-		this.playerImg = new Image("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png");
+		this.playerImg = new Image("file:player.png");
 		this.playerView = new ImageView(this.playerImg);
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);

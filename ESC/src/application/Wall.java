@@ -9,7 +9,7 @@ public class Wall extends Cell{
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-	    super.cellImage = new Image("https://img.theculturetrip.com/768x432/wp-content/uploads/2018/03/c8dad0.jpg");
+	    super.cellImage = new Image("file:wall.jpg");
 	    super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
