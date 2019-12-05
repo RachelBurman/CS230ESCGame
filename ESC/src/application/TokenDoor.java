@@ -11,7 +11,7 @@ public class TokenDoor extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-		File file = new File("./src/ToeknDoor.jpg");
+		File file = new File("./src/TokenDoor.jpg");
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

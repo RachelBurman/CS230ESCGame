@@ -160,8 +160,8 @@ public class LevelLoader {
 					} else if (s.charAt(newX) == 'S') {
 							level[newX][newY] = new Teleporter("teleporter", newX, newY, file);
 					 //Add new Cells here, new Cells created through this
-					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, H Boots, I Flipper, R redDoor,T Token, U Token Door, W Water,   Cell , #  Wall
-						// Flipper, Boots, Token, Token door
+					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, H Boots, I Flipper, R redDoor,
+						//T Token, U Token Door, W Water,   Cell , #  Wall, S teleporter
 						} else if (s.charAt(newX) == ' ') {
 						level[newX][newY] = new Cell("Cell", newX, newY);
 
