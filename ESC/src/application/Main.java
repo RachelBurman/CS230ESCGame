@@ -31,10 +31,10 @@ public class Main extends Application {
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-		Map actualMap = new Map("lvl2.txt");
+		Map actualMap = new Map(startFile);
 		// Register an event handler for key presses
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid, player, enemy1));
-		drawGame(actualMap, grid, player, enemy1);
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
+		drawGame(actualMap, grid);
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.show();
