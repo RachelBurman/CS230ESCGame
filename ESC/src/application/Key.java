@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,11 +15,14 @@ public class Key extends Cell {
 		this.enemyPass = false;
 		Image image = null;
 		if (name.equalsIgnoreCase("red")) {
-			 image = new Image("file:redkey.png");
+			File file = new File("./src/redkey.png");
+		Image cellImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue")) {
-			image = new Image ("file:bluekey.png");
+			File file = new File("./src/bluekey.png");
+		Image cellImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green")) {
-			image = new Image ("file:greenkey.png");
+			File file = new File("./src/greenkey.png");
+		Image cellImage = new Image(file.toURI().toString());
 		}
 		super.cellImage = image;
 		super.cellView = new ImageView(cellImage);

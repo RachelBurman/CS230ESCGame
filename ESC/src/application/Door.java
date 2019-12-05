@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -12,13 +14,16 @@ public class Door extends Cell {
 		this.playerPass = false;
 		this.enemyPass = false;
 		if (name.equalsIgnoreCase("red door")) {
-			 image = new Image("file:reddoor.png");
+			File file = new File("./src/reddoor.png");
+			Image cellImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue door")) {
-			image = new Image ("file:bluedoor.png");
+			File file = new File("./src/bluedoor.png");
+			Image cellImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green door")) {
-			image = new Image ("file:greendoor.png");
+			File file = new File("./src/greendoor.png");
+			Image cellImage = new Image(file.toURI().toString());
 		}
-	    
+		
 		this.cellImage = image;
 		this.cellView = new ImageView(cellImage);
 		this.cellView.setFitHeight(CELL_SIZE);

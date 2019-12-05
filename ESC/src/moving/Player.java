@@ -1,6 +1,8 @@
 package moving;
 
 
+import java.io.File;
+
 import application.Cell;
 import application.LevelLoader;
 import application.Map;
@@ -26,9 +28,9 @@ public class Player extends Movable {
 		super.yLocation = location[1];
 		super.mapActual = mapActual;
 		this.mapActual = mapActual;
-		this.playerImg = new Image("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png");
-
-		this.playerView = new ImageView(this.playerImg);
+		File file = new File("./src/player.png");
+		Image playerImg = new Image(file.toURI().toString());
+		this.playerView = new ImageView(playerImg);
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);
 

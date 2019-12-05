@@ -11,7 +11,7 @@ public class Wall extends Cell{
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-		File file = new File("./src/Wall.jpg");
+		File file = new File("./src/wall.jpg");
 	  Image image = new Image(file.toURI().toString());
 	  super.cellImage = image;
 	  super.cellView = new ImageView(cellImage);

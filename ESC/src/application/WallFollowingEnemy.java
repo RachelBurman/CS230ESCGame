@@ -15,7 +15,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 
-		File file = new File("./src/WallFollow.jpg");
+		File file = new File("./src/enemy.png");
 		this.EnemyView = new ImageView(this.EnemyImg);
 		//this.EnemyView.setFitHeight(CELL_SIZE); (needs to be in different package)
 		//this.EnemyView.setFitWidth(CELL_SIZE);

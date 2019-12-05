@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -12,8 +14,9 @@ public class Teleporter extends Cell {
 		int info[] =LevelLoader.getTeleporter(file);
 		this.playerPass = true;
 		this.enemyPass = false;
-		super.cellImage = new Image("file:teleporter.png");
-		super.cellView = new ImageView(cellImage);
+		File fileA = new File("./src/teleporter.png");
+		Image image = new Image(fileA.toURI().toString());
+		super.cellView = new ImageView(image);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
 		//Weird behaviour can't this.LinkX/Y use this, as  Cell [][] cannot access this.linkX/Y as it's superclass
