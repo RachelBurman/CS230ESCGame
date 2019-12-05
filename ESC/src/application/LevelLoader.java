@@ -82,7 +82,7 @@ public class LevelLoader {
 				in.nextLine();
 			}
 			int[] info = new int[2];
-			System.out.println(info[0]+ " a" + info[1]);
+			System.out.println(info[0]+ " a" + info[1] +"I'm in levelloader dumb"); 
 			info[0] = in.nextInt();
 			info[1] = in.nextInt();
 			in.close();
@@ -103,11 +103,8 @@ public class LevelLoader {
 				}
 				int[] info = new int[4];
 				info[0] = in.nextInt();
-				System.out.println(info[0]);
 				info[1] = in.nextInt();
-				System.out.println(info[1]);
 				info[2] = in.nextInt();
-				System.out.println(info[2]);
 				info[3] = in.nextInt();
 				in.close();
 				return info;

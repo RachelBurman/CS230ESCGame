@@ -1,6 +1,8 @@
 package moving;
 
 
+import application.Cell;
+import application.LevelLoader;
 import application.Map;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -17,15 +19,20 @@ public class Player extends Movable {
 	int tokens=0;
 	boolean flippers= false;
 	boolean boots = false;
-	public Player(String name, int[] location) {
-		super (name);
+	public Player(String name,Cell[][] mapActual, int[] location) {
+		super (name, mapActual);
 		super.name = name;
 		super.xLocation = location[0];
 		super.yLocation = location[1];
-		this.playerImg = new Image("file:player.png");
+		super.mapActual = mapActual;
+		this.mapActual = mapActual;
+		this.playerImg = new Image("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png");
+
 		this.playerView = new ImageView(this.playerImg);
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);
+
+		
 		
 	}
 	public int getTokens() {
@@ -33,8 +40,8 @@ public class Player extends Movable {
 	}
 	
 	public void teleport() {
-		int newX= map.getCell(getXLocation(), getYLocation()).getLinkX();
-		int newY= map.getCell(getXLocation(), getYLocation()).getLinkY();
+		int newX= mapActual[getXLocation()][getYLocation()].getLinkX();
+		int newY= mapActual[getXLocation()][getYLocation()].getLinkY();
 		this.xLocation = newX;
 		this.yLocation = newY;
 	}
@@ -96,9 +103,6 @@ public class Player extends Movable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	public void setMap(Map map) {
-		this.map = map;;
 	}
 
 	public void setLocation(int xLocation) {

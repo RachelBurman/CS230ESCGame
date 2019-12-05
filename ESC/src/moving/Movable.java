@@ -8,13 +8,22 @@ public abstract class Movable {
 	protected String name;
 	protected int xLocation;
 	protected int yLocation;
+	protected Cell[][] mapActual;
 	protected Map map;
 	final int CELL_SIZE= 32;
 	
-	public Movable(String name) {
+	public Movable(String name, Cell[][] mapActual) {
 		this.name = name;
+		this.mapActual = mapActual;
+	}
+	public void setMapActual(Cell[][] mapActual) {
+		this.mapActual=mapActual;
 	}
 	
+	
+	public Cell[][] getMapActual() {
+		return mapActual;
+	}
 	public int getXLocation() {
 		return xLocation;
 	}
@@ -29,34 +38,38 @@ public abstract class Movable {
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public void moveUp() {
-		if (validMove(xLocation, yLocation-1, map )) {
+		if (validMove(xLocation, yLocation-1)) {
 			this.yLocation = yLocation-1;
 		}
 	}
 	
 	public void moveDown() {
-		if (validMove(xLocation, yLocation+1, map )) {
+		if (validMove(xLocation, yLocation+1)) {
 			this.yLocation = yLocation+1;
 		}
 	}
 	public void moveRight() {
-		if (validMove(xLocation+1, yLocation, map )) {
+		if (validMove(xLocation+1, yLocation)) {
 			this.xLocation = xLocation+1;
 		}
 	}
 	
 	public void moveLeft() {
-		if (validMove(xLocation-1, yLocation, map )) {
+		if (validMove(xLocation-1, yLocation)) {
 			this.xLocation = xLocation-1;
 		}
 	}
-	public void setMap (Map map) {
-		this.map = map;
-	}
 	
-	protected boolean validMove(int newXLocation, int newYLocation, Map map) {
-		if (map.getCell(newXLocation, newYLocation).getPlayerPass()) {
+	
+	protected boolean validMove(int newXLocation, int newYLocation) {
+		if (mapActual[newXLocation][newYLocation].getPlayerPass()) {
 			return true;
 			} else {
 				return false;
