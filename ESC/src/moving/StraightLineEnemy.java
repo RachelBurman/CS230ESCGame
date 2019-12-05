@@ -12,7 +12,7 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 		
-		this.EnemyImg = new Image("https://www.tynker.com/projects/images/11c17d23871d29107e27a3dd350096500389fc83/green-stickman---pick.png");
+		this.EnemyImg = new Image("file:enemy.png");
 		this.EnemyView = new ImageView(this.EnemyImg);
 		this.EnemyView.setFitHeight(CELL_SIZE);
 		this.EnemyView.setFitWidth(CELL_SIZE);
