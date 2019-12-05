@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -9,7 +11,9 @@ public class Wall extends Cell{
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-	    super.cellImage = new Image("https://img.theculturetrip.com/768x432/wp-content/uploads/2018/03/c8dad0.jpg");
+		File file = new File("./src/Wall.jpg");
+	    Image image = new Image(file.toURI().toString());
+	    super.cellImage = image;
 	    super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);

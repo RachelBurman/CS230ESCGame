@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -23,7 +25,8 @@ public class Cell {
 		this.playerPass = true;
 		this.enemyPass = true;
 		//https://www.colorcombos.com/images/colors/999999.png
-	    Image image = new Image("file:Default.jpg");
+		File file = new File("./src/Default.jpg");
+		Image image = new Image(file.toURI().toString());
 		this.cellImage = image;
 		this.cellView = new ImageView(cellImage);
 		this.cellView.setFitHeight(CELL_SIZE);

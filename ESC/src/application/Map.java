@@ -8,7 +8,7 @@ import moving.Player;
 import moving.StraightLineEnemy;
 
 public class Map {
-	private Cell[][] mapActual;
+	Cell[][] mapActual;
 	private int mapLength;
 	private int mapHeight;
 	private int start[];
@@ -30,20 +30,44 @@ public class Map {
 		this.mapActual=LevelLoader.loadLevel(file);
 		this.start= LevelLoader.getPlayerStart(file);
 		int size[] = LevelLoader.getSize(file);
+		int count=0;
 		//Swaps for some reason
 		this.mapHeight =size[1];
 		this.mapLength = size[0];
-		this.player1 = new Player("name",LevelLoader.getPlayerStart(file));
-		this.enemy1 = new StraightLineEnemy("Straight enemy", LevelLoader.getStraightEnemy(file));
-		this.dumbList.add(new DumbTargetingEnemy("Dumb", LevelLoader.getDumbEnemy(file)));
+		this.player1 = new Player("name",mapActual,LevelLoader.getPlayerStart(file));
+		this.enemy1 = new StraightLineEnemy("Straight enemy", mapActual, LevelLoader.getStraightEnemy(file));
+		this.dumbList.add(new DumbTargetingEnemy("Dumb",mapActual, LevelLoader.getDumbEnemy(file)));
+		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
+		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
+		System.out.println(dumbList.get(0).getXLocation());
+		System.out.println(dumbList.get(0).getYLocation());
 		
 	}
 	
+
+	
+	public void setMapActual(Cell[][] mapActual) {
+		this.mapActual = mapActual;
+	}
+	
+	public void addPlayer(Player player) {
+		this.player1 = player;
+	}
+
+
 	public void removeCell (Map map, int xLocation, int yLocation) {
 		mapActual[xLocation][yLocation]= null;
 		
 	}
+	
+	public void removeCell (int xLocation, int yLocation) {
+		mapActual[xLocation][yLocation]= null;
+		
+	}
 	public void addCell(Map mapActual, int xLocation, int yLocation) {
+		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
+	}
+	public void addCell(int xLocation, int yLocation) {
 		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
 	}
 
@@ -81,7 +105,88 @@ public class Map {
 		return enemy1;
 	}
 	
+	public void updateMap(int nextX, int nextY) {
+		openDoor(nextX, nextY);
+		
+		
+	}
 	
+	public void openDoor(int nextX, int nextY) {
+		String cellName =this.getCell(nextX, nextY).getName();
+		Cell nextCell = this.getCell(nextX, nextY);
+		Player player = this.getPlayer1();
+
+		if (cellName.equalsIgnoreCase("red door") && player.getRedKey() > 0) {
+			nextCell.changePlayerPass();
+			nextCell.changeEnemyPass();
+			player.minusRedKey();
+		} else if (cellName.equalsIgnoreCase("green door") && player.getGreenKey() > 0) {
+			nextCell.changePlayerPass();
+			nextCell.changeEnemyPass();
+			player.minusGreenKey();
+		} else if (cellName.equalsIgnoreCase("blue door") && player.getBlueKey() > 0) {
+			nextCell.changePlayerPass();
+			nextCell.changeEnemyPass();
+			player.minusBlueKey();
+		} else if (cellName.equalsIgnoreCase("fire") && player.getBoots() == true) {
+			nextCell.changePlayerPass();
+		} else if (cellName.equalsIgnoreCase("water")
+				&& player.getFlippers() == true) {
+			nextCell.changePlayerPass();
+		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() == 2) {
+			nextCell.changePlayerPass();
+			nextCell.changeEnemyPass();
+			player.takeTokens();
+		}
+		
+	}
+	public void doAction() {
+		int playerXLocation = this.getPlayer1().getxLocation();
+		int playerYLocation = this.getPlayer1().getyLocation();
+		String cellName =this.getCell(playerXLocation, playerYLocation).getName();
+		
+		if (cellName.equalsIgnoreCase("red")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addRedKey();
+		} else if (cellName.equalsIgnoreCase("blue")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addBlueKey();
+		} else if (cellName.equalsIgnoreCase("green")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addGreenKey();
+		} else if (cellName.equalsIgnoreCase("boots")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().changeBoot();
+		} else if (cellName.equalsIgnoreCase("flippers")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().changeFlipper();
+		} else if (cellName.equalsIgnoreCase("token")) {
+			this.removeCell(playerXLocation, playerYLocation);
+			this.addCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addToken();
+		} else if (cellName.equalsIgnoreCase("teleporter")) {
+			this.getPlayer1().teleport();
+		}
+	}
+	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
+	public void StraightLineMove() {
+		if (enemy1.getFacing() == 'u' || enemy1.getFacing() == 'd') {
+			enemy1.moveY(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
+		} else {
+			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
+		}
+	}
+	
+	public void DumbMove() {
+		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
+		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
+		dumbList.get(0).move();
+		}
+	}
 	
 
-}

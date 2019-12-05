@@ -1,14 +1,19 @@
 package application;
 
+import java.awt.TextField;
+
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import moving.Player;
 import moving.StraightLineEnemy;
+import moving.DumbTargetingEnemy;
 import javafx.scene.Scene;
-
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 
 public class Main extends Application {
@@ -16,20 +21,20 @@ public class Main extends Application {
 	private static final int WINDOW_HEIGHT = 500;
 
 	public void start(Stage primaryStage) {
-		BorderPane border = new BorderPane();
+		BorderPane root = new BorderPane();
+		root.setTop(makeHBox());
 		
 		GridPane grid = new GridPane();
-		border.setCenter(grid);
-		Scene scene = new Scene(border, WINDOW_WIDTH, WINDOW_HEIGHT);
+		root.setCenter(grid);
+		grid.setAlignment(Pos.CENTER);
+		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 		Map actualMap = new Map("test.txt");
+		//StraightLineEnemy enemy1 = actualMap.getEnemy1();
+		
 		// Enemies need to be created here
-		Player player = actualMap.getPlayer1();
-		player.setMap(actualMap);
-		StraightLineEnemy enemy1 = actualMap.getEnemy1();
-		enemy1.setMap(actualMap);
 		// Register an event handler for key presses
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid, player, enemy1));
-		drawGame(actualMap, grid, player, enemy1);
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
+		drawGame(actualMap, grid);
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -37,8 +42,15 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	public HBox makeHBox() {
+		HBox box = new HBox();
+		Label label = new Label("test.file");
+		box.getChildren().add(label);
+		return box;
+		
+	}
 
-	public GridPane drawGame(Map actualMap, GridPane grid, Player player, StraightLineEnemy enemy1) {
+	public GridPane drawGame(Map actualMap, GridPane grid) {
 		grid.getChildren().clear();
 		
 		int scopeXmin;
@@ -46,30 +58,33 @@ public class Main extends Application {
 		int scopeYmin;
 		int scopeYmax;
 		int width = actualMap.getMapLength();
+		
 		int height = actualMap.getMapHeight();
-
-		if (player.getxLocation() - 3 < 0) {
+		int playerXLocation = actualMap.getPlayer1().getxLocation();
+		int playerYLocation = actualMap.getPlayer1().getyLocation();
+		System.out.println(" My X is" + playerXLocation+ " My Y is" + playerYLocation);
+		if (playerXLocation - 3 < 0) {
 			scopeXmin = 0;
 		} else {
-			scopeXmin = player.getxLocation() - 3;
+			scopeXmin = playerXLocation - 3;
 		}
-		if (player.getxLocation() + 4 > width) {
+		if (playerXLocation + 4 > width) {
 			scopeXmax = width;
 		} else {
-			scopeXmax = player.getxLocation() + 4;
+			scopeXmax = playerXLocation + 4;
 		}
-		if (player.getyLocation() - 3 < 0) {
+		if (playerYLocation - 3 < 0) {
 			scopeYmin = 0;
 		} else {
-			scopeYmin = player.getyLocation() - 3;
+			scopeYmin = playerYLocation - 3;
 		}
-		if (player.getyLocation() + 4 > height) {
+		if (playerYLocation + 4 > height) {
 			//System.out.println(playerY);
 			//System.out.println(y);
 			scopeYmax = height;
 			//System.out.println(scopeYmax);
 		} else {
-			scopeYmax = player.getyLocation() + 4;
+			scopeYmax = playerYLocation + 4;
 		}
 
 		for (int newY = scopeYmin; newY<scopeYmax; newY++) {
@@ -85,6 +100,9 @@ public class Main extends Application {
 			}
 		}
 		*/
+		Player player = actualMap.getPlayer1();
+		StraightLineEnemy enemy1 = actualMap.getEnemy1();
+		DumbTargetingEnemy enemy2 = actualMap.getDummieAt(0);
 		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
 		if (enemy1.getXLocation()<scopeXmax && enemy1.getXLocation()>scopeXmin) {
 			if (enemy1.getYLocation()<scopeYmax && enemy1.getYLocation()>scopeYmin) {
@@ -103,31 +121,45 @@ public class Main extends Application {
 		return grid;
 	}
 
-	public void processKeyEvent(KeyEvent event, Map actualMap, GridPane grid, Player player, StraightLineEnemy enemy1) {
+	public void processKeyEvent(KeyEvent event, Map actualMap, GridPane grid) {
+		int currentX =actualMap.getPlayer1().getxLocation();
+		int currentY =actualMap.getPlayer1().getyLocation();
 		switch (event.getCode()) {
-
+		
 		case RIGHT:
 			// Right key was pressed. So move the player right by one cell.
-			openDoor(player, actualMap, player.getxLocation() + 1, player.getyLocation());
-			player.moveRight();
+			//openDoor(player, actualMap, player.getxLocation() + 1, player.getyLocation());
+			actualMap.openDoor(currentX+1, currentY);
+			actualMap.getPlayer1().moveRight();
+			actualMap.doAction();
+			//player.moveRight();
 
 			break;
 		case LEFT:
 			// Left key was pressed. So move the player left by one cell.
-			openDoor(player, actualMap, player.getxLocation() - 1, player.getyLocation());
-			player.moveLeft();
+			//openDoor(player, actualMap, player.getxLocation() - 1, player.getyLocation());
+			actualMap.openDoor(currentX-1, currentY);
+			actualMap.getPlayer1().moveLeft();
+			actualMap.doAction();
+			//player.moveLeft();
 
 			break;
 		case UP:
 			// Up key was pressed. So move the player up by one cell.
-			openDoor(player, actualMap, player.getxLocation(), player.getyLocation() - 1);
-			player.moveUp();
+			//openDoor(player, actualMap, player.getxLocation(), player.getyLocation() - 1);
+			actualMap.openDoor(currentX, currentY-1);
+			actualMap.getPlayer1().moveUp();
+			actualMap.doAction();
+			//player.moveUp();
 
 			break;
 		case DOWN:
 			// Down key was pressed. So move the player down by one cell.
-			openDoor(player, actualMap, player.getxLocation(), player.getyLocation() + 1);
-			player.moveDown();
+			//openDoor(player, actualMap, player.getxLocation(), player.getyLocation() + 1);
+			actualMap.openDoor(currentX, currentY+1);
+			actualMap.getPlayer1().moveDown();
+			actualMap.doAction();
+			//player.moveDown();
 
 			break;
 
@@ -135,7 +167,7 @@ public class Main extends Application {
 			// Do nothing
 			break;
 		}
-
+		/*
 		int LocalXLocation = player.getxLocation();
 		int LocalYLocation = player.getyLocation();
 		if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("red")) {
@@ -164,22 +196,43 @@ public class Main extends Application {
 			player.addToken();
 		} else if (actualMap.getCell(LocalXLocation, LocalYLocation).getName().equalsIgnoreCase("teleporter")) {
 			player.teleport();
-		}
+		}*/
 
-		if (enemy1.getFacing() == 'u' || enemy1.getFacing() == 'd') {
+		/*if (enemy1.getFacing() == 'u' || enemy1.getFacing() == 'd') {
 			enemy1.moveY(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
 		} else {
 			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
-		}
-		if (player.getXLocation() == enemy1.getXLocation() && player.getYLocation() == enemy1.getYLocation()) {
+		}*/
+		
+		/*if (player.getXLocation() == enemy1.getXLocation() && player.getYLocation() == enemy1.getYLocation()) {
 			System.out.println("Game OVer");
 		} else {
 			drawGame(actualMap, grid, player, enemy1);
 		}
+		*/
+		actualMap.StraightLineMove();
+		actualMap.DumbMove();
+		loseGame(actualMap,grid);
+		
 		event.consume();
 	}
+	
+	public void loseGame (Map actualMap, GridPane grid) {
+		int playerXLocation = actualMap.getPlayer1().getxLocation();
+		int playerYLocation = actualMap.getPlayer1().getyLocation();
+		int StraightEnemyX = actualMap.getEnemy1().getXLocation();
+		int StraightEnemyY = actualMap.getEnemy1().getYLocation();
+		Map current = actualMap;
+		if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
+			System.out.println("Game OVer");
+			//current = new Map("test.txt");
+		}
+		
+		drawGame(current, grid);
 
-	public void openDoor(Player player, Map actualMap, int nextX, int nextY) {
+	}
+
+	/*public void openDoor(Player player, Map actualMap, int nextX, int nextY) {
 
 		if (actualMap.getCell(nextX, nextY).getName().equalsIgnoreCase("red door") && player.getRedKey() > 0) {
 			actualMap.getCell(nextX, nextY).changePlayerPass();
@@ -203,7 +256,7 @@ public class Main extends Application {
 			actualMap.getCell(nextX, nextY).changeEnemyPass();
 			player.takeTokens();
 		}
-	}
+	}*/
 
 
 	public static void main(String[] args) {
