@@ -72,14 +72,36 @@ public class LevelLoader {
 			return null;
 		}
 	}
-	
+	// NEW Getting WallFollowingEnemy (1,7,1)
+		public static int[] getWallFollowingEnemy(String file) {
+			try {
+				File f = new File(file);
+				Scanner in = new Scanner(f);
+				for (int i=0; i<7;i++) {
+					in.nextLine();
+				}
+				int[] info = new int[3];
+				int x = in.nextInt();// get startX
+				int y = in.nextInt();//get startY
+				int z = in.nextInt();// get directionfacing
+				info[0] = x;
+				info[1] = y;
+				info[2] = z;
+				in.close();
+				return info;
+
+			} catch (FileNotFoundException exception) {
+				System.out.println("ERROR: Level File does not exist.");
+				return null;
+			}
+		}
 	
 	
 	public static int[] getDumbEnemy(String file) {
 		try {
 			File f = new File(file);
 			Scanner in = new Scanner(f);
-			for (int i=0; i<7;i++) {
+			for (int i=0; i<10;i++) {
 				in.nextLine();
 			}
 			int[] info = new int[2];
@@ -94,12 +116,14 @@ public class LevelLoader {
 			return null;
 		}
 	}
+	
+	
 	//Method to get StraightEnemy start location
 		public static int[] getTeleporter(String file) {
 			try {
 				File f = new File(file);
 				Scanner in = new Scanner(f);
-				for (int i=0; i<9;i++) {
+				for (int i=0; i<11;i++) {
 					in.nextLine();
 				}
 				int[] info = new int[4];
@@ -122,7 +146,7 @@ public class LevelLoader {
 			Scanner in = new Scanner(f);
 			int x = in.nextInt();
 			int y = in.nextInt();
-			for (int i=0;i<12;i++) {
+			for (int i=0;i<15;i++) {
 				in.nextLine();
 			}
 			Cell[][] level = new Cell[x][y];
