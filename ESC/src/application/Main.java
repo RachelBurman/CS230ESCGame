@@ -27,7 +27,10 @@ public class Main extends Application {
 		root.setCenter(grid);
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
-		Map actualMap = new Map("test.txt");
+		Map actualMap = new Map("lvl1.txt");
+		//StraightLineEnemy enemy1 = actualMap.getEnemy1();
+
+		// Enemies need to be created here
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
 		drawGame(actualMap, grid);
@@ -43,18 +46,18 @@ public class Main extends Application {
 		Label label = new Label("test.file");
 		box.getChildren().add(label);
 		return box;
-		
+
 	}
 
 	public GridPane drawGame(Map actualMap, GridPane grid) {
 		grid.getChildren().clear();
-		
+
 		int scopeXmin;
 		int scopeXmax;
 		int scopeYmin;
 		int scopeYmax;
 		int width = actualMap.getMapLength();
-		
+
 		int height = actualMap.getMapHeight();
 		int playerXLocation = actualMap.getPlayer1().getxLocation();
 		int playerYLocation = actualMap.getPlayer1().getyLocation();
@@ -104,15 +107,15 @@ public class Main extends Application {
 			if (enemy1.getYLocation()<scopeYmax && enemy1.getYLocation()>scopeYmin) {
 				grid.add(enemy1.getEnemyView(), enemy1.getXLocation(), enemy1.getYLocation());
 			}
-			
+
 		}
 		if (actualMap.getDummieAt(0).getXLocation()<scopeXmax && actualMap.getDummieAt(0).getXLocation()>scopeXmin) {
 			if (actualMap.getDummieAt(0).getYLocation()<scopeYmax && actualMap.getDummieAt(0).getYLocation()>scopeYmin) {
 				grid.add(actualMap.getDummieAt(0).getEnemyView(), actualMap.getDummieAt(0).getXLocation(), actualMap.getDummieAt(0).getYLocation());
 			}
-			
+
 		}
-		
+
 
 		return grid;
 	}
@@ -121,7 +124,7 @@ public class Main extends Application {
 		int currentX =actualMap.getPlayer1().getxLocation();
 		int currentY =actualMap.getPlayer1().getyLocation();
 		switch (event.getCode()) {
-		
+
 		case RIGHT:
 			// Right key was pressed. So move the player right by one cell.
 			//openDoor(player, actualMap, player.getxLocation() + 1, player.getyLocation());
@@ -199,7 +202,7 @@ public class Main extends Application {
 		} else {
 			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
 		}*/
-		
+
 		/*if (player.getXLocation() == enemy1.getXLocation() && player.getYLocation() == enemy1.getYLocation()) {
 			System.out.println("Game OVer");
 		} else {
@@ -209,10 +212,10 @@ public class Main extends Application {
 		actualMap.StraightLineMove();
 		actualMap.DumbMove();
 		loseGame(actualMap,grid);
-		
+
 		event.consume();
 	}
-	
+
 	public void loseGame (Map actualMap, GridPane grid) {
 		int playerXLocation = actualMap.getPlayer1().getxLocation();
 		int playerYLocation = actualMap.getPlayer1().getyLocation();
@@ -223,7 +226,7 @@ public class Main extends Application {
 			System.out.println("Game OVer");
 			current = new Map("test.txt");
 		}
-		
+
 		drawGame(current, grid);
 
 	}
