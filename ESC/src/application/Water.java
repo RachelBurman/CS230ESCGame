@@ -11,7 +11,7 @@ public class Water extends Cell {
 	public Water(String name,int xCoordinate, int yCoordinate) {
 		super(name,xCoordinate, yCoordinate);
 		// TODO Auto-generated constructor stub
-		this.playerPass = false;
+		this.playerPass = true;
 		this.enemyPass = false;
 		File file = new File("./src/water.jpg");
 		Image cellImage = new Image(file.toURI().toString());

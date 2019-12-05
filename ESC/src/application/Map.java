@@ -64,9 +64,11 @@ public class Map {
 		mapActual[xLocation][yLocation]= null;
 		
 	}
-	public void addCell(Map mapActual, int xLocation, int yLocation) {
-		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
+	public void replaceCell(int xLocation, int yLocation) {
+		removeCell(xLocation,yLocation);
+		addCell(xLocation,yLocation);
 	}
+	
 	public void addCell(int xLocation, int yLocation) {
 		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
 	}
@@ -146,31 +148,34 @@ public class Map {
 		String cellName =this.getCell(playerXLocation, playerYLocation).getName();
 		
 		if (cellName.equalsIgnoreCase("red")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().addRedKey();
 		} else if (cellName.equalsIgnoreCase("blue")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().addBlueKey();
 		} else if (cellName.equalsIgnoreCase("green")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().addGreenKey();
 		} else if (cellName.equalsIgnoreCase("boots")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().changeBoot();
 		} else if (cellName.equalsIgnoreCase("flippers")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().changeFlipper();
 		} else if (cellName.equalsIgnoreCase("token")) {
-			this.removeCell(playerXLocation, playerYLocation);
-			this.addCell(playerXLocation, playerYLocation);
+			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().addToken();
 		} else if (cellName.equalsIgnoreCase("teleporter")) {
 			this.getPlayer1().teleport();
+		} else if (cellName.equalsIgnoreCase("red door")) {
+			this.replaceCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addToken();
+		} else if (cellName.equalsIgnoreCase("blue door")) {
+			this.replaceCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addToken();
+		} else if (cellName.equalsIgnoreCase("green door")) {
+			this.replaceCell(playerXLocation, playerYLocation);
+			this.getPlayer1().addToken();
 		}
 	}
 	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
