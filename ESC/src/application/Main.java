@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.TextField;
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -14,11 +15,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+
 public class Main extends Application {
 	private static final int WINDOW_WIDTH = 800;
+
 	private static final int WINDOW_HEIGHT = 500;
-	boolean isdead = false;
 	static final String startFile = "lvl1.txt";
+  private Stage primaryStage;
 
 	public void start(Stage primaryStage) {
 		BorderPane root = new BorderPane();
@@ -30,15 +33,16 @@ public class Main extends Application {
 
 		Map actualMap = new Map("lvl2.txt");
 		// Register an event handler for key presses
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
-		drawGame(actualMap, grid);
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid, player, enemy1));
+		drawGame(actualMap, grid, player, enemy1);
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+        }
+
 	public HBox makeHBox() {
 		HBox box = new HBox();
 		Label label = new Label(startFile);
@@ -76,7 +80,10 @@ public class Main extends Application {
 			scopeYmin = playerYLocation - 3;
 		}
 		if (playerYLocation + 4 > height) {
+			//System.out.println(playerY);
+			//System.out.println(y);
 			scopeYmax = height;
+			//System.out.println(scopeYmax);
 		} else {
 			scopeYmax = playerYLocation + 4;
 		}
@@ -125,6 +132,7 @@ public class Main extends Application {
 			actualMap.openDoor(currentX+1, currentY);
 			actualMap.getPlayer1().moveRight();
 			actualMap.doAction();
+			//player.moveRight();
 
 			break;
 		case LEFT:
@@ -133,6 +141,7 @@ public class Main extends Application {
 			actualMap.openDoor(currentX-1, currentY);
 			actualMap.getPlayer1().moveLeft();
 			actualMap.doAction();
+			//player.moveLeft();
 
 			break;
 		case UP:
@@ -141,6 +150,7 @@ public class Main extends Application {
 			actualMap.openDoor(currentX, currentY-1);
 			actualMap.getPlayer1().moveUp();
 			actualMap.doAction();
+			//player.moveUp();
 
 			break;
 		case DOWN:
@@ -149,6 +159,7 @@ public class Main extends Application {
 			actualMap.openDoor(currentX, currentY+1);
 			actualMap.getPlayer1().moveDown();
 			actualMap.doAction();
+			//player.moveDown();
 
 			break;
 
@@ -173,6 +184,7 @@ public class Main extends Application {
 		int DumbEnemyY = actualMap.getDummieAt(0).getYLocation();
 		Map current = actualMap;
 		if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
+
 			System.out.println("Game OVer");
 			current = null;
 			current =restart();
@@ -197,6 +209,8 @@ public class Main extends Application {
 		Map newMap = new Map(startFile);
 		return newMap;
 	}
+
+
 
 	public static void main(String[] args) {
 		launch(args);
