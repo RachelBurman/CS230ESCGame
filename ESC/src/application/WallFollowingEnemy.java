@@ -1,5 +1,7 @@
 package application;
 
+import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import moving.NonTargetingEnemy;
@@ -13,7 +15,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 
-		this.EnemyImg = new Image("https://www.tynker.com/projects/images/11c17d23871d29107e27a3dd350096500389fc83/green-stickman---pick.png");
+		File file = new File("./src/WallFollow.jpg");
 		this.EnemyView = new ImageView(this.EnemyImg);
 		//this.EnemyView.setFitHeight(CELL_SIZE); (needs to be in different package)
 		//this.EnemyView.setFitWidth(CELL_SIZE);
