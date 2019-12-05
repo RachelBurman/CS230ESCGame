@@ -11,7 +11,7 @@ public class Water extends Cell {
 		// TODO Auto-generated constructor stub
 		this.playerPass = false;
 		this.enemyPass = false;
-		super.cellImage = new Image("https://cdn.cultofmac.com/wp-content/uploads/2018/10/IMG_2651-2.cc38d6cb8edf491d9d4ae92851be67a5-780x585.jpg");
+		super.cellImage = new Image("file:water.jpg");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);

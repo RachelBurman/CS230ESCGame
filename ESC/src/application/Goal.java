@@ -10,7 +10,7 @@ public class Goal extends Cell {
 		// TODO Auto-generated constructor stub
 		this.playerPass = true;
 		this.enemyPass = false;
-		super.cellImage = new Image("https://media.4rgos.it/i/Argos/7426560_R_Z001A?w=750&h=440&qlt=70");
+		super.cellImage = new Image("file:goal.png");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);

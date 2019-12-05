@@ -12,7 +12,7 @@ public class Teleporter extends Cell {
 		int info[] =LevelLoader.getTeleporter(file);
 		this.playerPass = true;
 		this.enemyPass = false;
-		super.cellImage = new Image("https://vignette.wikia.nocookie.net/tpt2/images/6/61/RobloxScreenShot20170613_031040281.png/revision/latest?cb=20170613085120");
+		super.cellImage = new Image("file:teleporter.png");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);

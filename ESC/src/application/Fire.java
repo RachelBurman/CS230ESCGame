@@ -9,7 +9,7 @@ public class Fire extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-		super.cellImage = new Image("https://png.pngtree.com/png-clipart/20190918/ourmid/pngtree-flaming-fire-3406488-png-image_1737532.jpg");
+		super.cellImage = new Image("file:fire.png");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);

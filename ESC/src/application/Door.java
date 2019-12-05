@@ -12,11 +12,11 @@ public class Door extends Cell {
 		this.playerPass = false;
 		this.enemyPass = false;
 		if (name.equalsIgnoreCase("red door")) {
-			 image = new Image("https://windowsupplydirectltd.co.uk/wp-content/uploads/2017/10/TR04-Cezanne-signal-red.jpg");
+			 image = new Image("file:reddoor.png");
 		} else if (name.equalsIgnoreCase("blue door")) {
-			image = new Image ("https://cdn.shopify.com/s/files/1/2467/9369/products/il_fullxfull.1326590766_j4vi_2048x.jpg?v=1527481196");
+			image = new Image ("file:bluedoor.png");
 		} else if (name.equalsIgnoreCase("green door")) {
-			image = new Image ("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSNF92OFFw8iuImZBFQFEUWlg9ziGNTQQL5eIDah_lhz5oV19W4");
+			image = new Image ("file:greendoor.png");
 		}
 	    
 		this.cellImage = image;

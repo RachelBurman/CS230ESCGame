@@ -27,6 +27,7 @@ public class Player extends Movable {
 		super.mapActual = mapActual;
 		this.mapActual = mapActual;
 		this.playerImg = new Image("https://1001freedownloads.s3.amazonaws.com/vector/thumb/74889/1367934593.png");
+
 		this.playerView = new ImageView(this.playerImg);
 		this.playerView.setFitHeight(CELL_SIZE);
 		this.playerView.setFitWidth(CELL_SIZE);

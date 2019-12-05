@@ -12,9 +12,9 @@ public class Wall extends Cell{
 		this.playerPass = false;
 		this.enemyPass = false;
 		File file = new File("./src/Wall.jpg");
-	    Image image = new Image(file.toURI().toString());
-	    super.cellImage = image;
-	    super.cellView = new ImageView(cellImage);
+	  Image image = new Image(file.toURI().toString());
+	  super.cellImage = image;
+	  super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
 		
