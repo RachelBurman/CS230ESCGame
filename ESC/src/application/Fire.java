@@ -9,7 +9,7 @@ public class Fire extends Cell {
 
 	public Fire(String name, int xCoordinate, int yCoordinate) {
 		super(name, xCoordinate, yCoordinate);
-		this.playerPass = false;
+		this.playerPass = true;
 		this.enemyPass = false;
 		File file = new File("./src/fire.png");
 		Image cellImage = new Image(file.toURI().toString());

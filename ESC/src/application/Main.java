@@ -17,6 +17,8 @@ import javafx.scene.layout.HBox;
 public class Main extends Application {
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
+	boolean isdead = false;
+	static final String startFile = "lvl1.txt";
 
 	public void start(Stage primaryStage) {
 		BorderPane root = new BorderPane();
@@ -25,6 +27,7 @@ public class Main extends Application {
 		root.setCenter(grid);
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 		Map actualMap = new Map("lvl2.txt");
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
@@ -38,7 +41,7 @@ public class Main extends Application {
 	}
 	public HBox makeHBox() {
 		HBox box = new HBox();
-		Label label = new Label("test.file");
+		Label label = new Label(startFile);
 		box.getChildren().add(label);
 		return box;
 
@@ -107,7 +110,7 @@ public class Main extends Application {
 			}
 
 		}
-		
+
 		return grid;
 	}
 
@@ -153,7 +156,7 @@ public class Main extends Application {
 			// Do nothing
 			break;
 		}
-		
+
 		actualMap.StraightLineMove();
 		actualMap.DumbMove();
 		loseGame(actualMap,grid);
@@ -166,14 +169,33 @@ public class Main extends Application {
 		int playerYLocation = actualMap.getPlayer1().getyLocation();
 		int StraightEnemyX = actualMap.getEnemy1().getXLocation();
 		int StraightEnemyY = actualMap.getEnemy1().getYLocation();
+		int DumbEnemyX = actualMap.getDummieAt(0).getXLocation();
+		int DumbEnemyY = actualMap.getDummieAt(0).getYLocation();
 		Map current = actualMap;
 		if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
-			current = new Map("test.txt");
+			current = null;
+			current =restart();
+		} else if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
+			System.out.println("Game OVer");
+			current = null;
+			current =restart();
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire")) {
+			System.out.println("Game OVer");
+			current = null;
+			current =restart();
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")) {
+			System.out.println("Game OVer");
+			current = null;
+			current = restart();
 		}
 
 		drawGame(current, grid);
 
+	}
+	public Map restart() {
+		Map newMap = new Map(startFile);
+		return newMap;
 	}
 
 	public static void main(String[] args) {
