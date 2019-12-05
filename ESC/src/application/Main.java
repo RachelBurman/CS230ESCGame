@@ -33,7 +33,7 @@ public class Main extends Application {
 
 		Map actualMap = new Map(startFile);
 		// Register an event handler for key presses
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));	
 		drawGame(actualMap, grid);
 		try {
 			primaryStage.setScene(scene);
@@ -192,11 +192,11 @@ public class Main extends Application {
 			System.out.println("Game OVer");
 			current = null;
 			current =restart();
-		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire")) {
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire") && actualMap.getPlayer1().getBoots()==false) {
 			System.out.println("Game OVer");
 			current = null;
 			current =restart();
-		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")) {
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")&& actualMap.getPlayer1().getFlippers()==false) {
 			System.out.println("Game OVer");
 			current = null;
 			current = restart();

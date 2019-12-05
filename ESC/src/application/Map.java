@@ -130,11 +130,6 @@ public class Map {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusBlueKey();
-		} else if (cellName.equalsIgnoreCase("fire") && player.getBoots() == true) {
-			nextCell.changePlayerPass();
-		} else if (cellName.equalsIgnoreCase("water")
-				&& player.getFlippers() == true) {
-			nextCell.changePlayerPass();
 		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() == 2) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
