@@ -28,7 +28,7 @@ public class Main extends Application {
 		root.setCenter(grid);
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
-		Map actualMap = new Map("lvl1.txt");
+		Map actualMap = new Map("lvl2.txt");
 		//StraightLineEnemy enemy1 = actualMap.getEnemy1();
 		
 		// Enemies need to be created here
