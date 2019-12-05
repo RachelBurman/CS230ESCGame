@@ -9,7 +9,7 @@ public class TokenDoor extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
-		super.cellImage = new Image("https://kingfisher.scene7.com/is/image/Kingfisher/productTemplate?$baseImage=Kingfisher/5016536495741_01c");
+		super.cellImage = new Image("file:Tokendoor.jpg");
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
