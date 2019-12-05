@@ -18,14 +18,21 @@ public class Map {
 	WallFollowingEnemy[] wallFollowingList;
 	ArrayList<DumbTargetingEnemy> dumbList =new ArrayList<DumbTargetingEnemy>();
 	//SmartTargetingEnemy[] SmartTargetingList;
-	
-	
+
+
+	ArrayList<WallFollowingEnemy> wallFollowList =new ArrayList<WallFollowingEnemy>(); //New
+
 	public DumbTargetingEnemy getDummieAt(int num) {
 		return dumbList.get(num);
-		
+
 	}
-	
-	
+
+	// New
+	public WallFollowingEnemy getWallFollowAt(int num) {
+		return wallFollowList.get(num);
+	}
+
+
 	public Map (String file) {
 		this.mapActual=LevelLoader.loadLevel(file);
 		this.start= LevelLoader.getPlayerStart(file);
@@ -41,15 +48,20 @@ public class Map {
 		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
 		System.out.println(dumbList.get(0).getXLocation());
 		System.out.println(dumbList.get(0).getYLocation());
-		
-	}
-	
 
-	
+		// NEW
+		this.wallFollowList.add(new WallFollowingEnemy("Wall Following Enemy",mapActual, LevelLoader.getWallFollowingEnemy(file)));
+		System.out.println(wallFollowList.get(0).getXLocation());
+		System.out.println(wallFollowList.get(0).getYLocation());
+
+	}
+
+
+
 	public void setMapActual(Cell[][] mapActual) {
 		this.mapActual = mapActual;
 	}
-	
+
 	public void addPlayer(Player player) {
 		this.player1 = player;
 	}
@@ -57,18 +69,18 @@ public class Map {
 
 	public void removeCell (Map map, int xLocation, int yLocation) {
 		mapActual[xLocation][yLocation]= null;
-		
+
 	}
-	
+
 	public void removeCell (int xLocation, int yLocation) {
 		mapActual[xLocation][yLocation]= null;
-		
+
 	}
 	public void replaceCell(int xLocation, int yLocation) {
 		removeCell(xLocation,yLocation);
 		addCell(xLocation,yLocation);
 	}
-	
+
 	public void addCell(int xLocation, int yLocation) {
 		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
 	}
@@ -93,7 +105,7 @@ public class Map {
 		return start;
 	}
 	public Cell getCell(int x, int y) {
-		
+
 		return mapActual[x][y] ;
 	}
 
@@ -106,13 +118,13 @@ public class Map {
 	public StraightLineEnemy getEnemy1() {
 		return enemy1;
 	}
-	
+
 	public void updateMap(int nextX, int nextY) {
 		openDoor(nextX, nextY);
-		
-		
+
+
 	}
-	
+
 	public void openDoor(int nextX, int nextY) {
 		String cellName =this.getCell(nextX, nextY).getName();
 		Cell nextCell = this.getCell(nextX, nextY);
@@ -135,13 +147,13 @@ public class Map {
 			nextCell.changeEnemyPass();
 			player.takeTokens();
 		}
-		
+
 	}
 	public void doAction() {
 		int playerXLocation = this.getPlayer1().getxLocation();
 		int playerYLocation = this.getPlayer1().getyLocation();
 		String cellName =this.getCell(playerXLocation, playerYLocation).getName();
-		
+
 		if (cellName.equalsIgnoreCase("red")) {
 			this.replaceCell(playerXLocation, playerYLocation);
 			this.getPlayer1().addRedKey();
@@ -181,12 +193,22 @@ public class Map {
 			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
 		}
 	}
-	
+
 	public void DumbMove() {
 		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
 		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
 		dumbList.get(0).move();
-		}
 	}
-	
+
+	// NEW
+	public void WallFollowMove() {
+		if (wallFollowList.get(0).getFacing() == 'u' || wallFollowList.get(0).getFacing() == 'd') {
+			wallFollowList.get(0).moveY(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(), wallFollowList.get(0).getFacing());
+		} else {
+			wallFollowList.get(0).moveX(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(), wallFollowList.get(0).getFacing());
+		}
+
+	}
+}
+
 

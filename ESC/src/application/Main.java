@@ -20,7 +20,7 @@ public class Main extends Application {
 	private static final int WINDOW_WIDTH = 800;
 
 	private static final int WINDOW_HEIGHT = 500;
-	static final String startFile = "lvl1.txt";
+	static final String startFile = "test.txt";
   private Stage primaryStage;
 
 	public void start(Stage primaryStage) {
@@ -104,6 +104,9 @@ public class Main extends Application {
 		Player player = actualMap.getPlayer1();
 		StraightLineEnemy enemy1 = actualMap.getEnemy1();
 		DumbTargetingEnemy enemy2 = actualMap.getDummieAt(0);
+		
+		WallFollowingEnemy enemy3 = actualMap.getWallFollowAt(0);
+		
 		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
 		if (enemy1.getXLocation()<scopeXmax && enemy1.getXLocation()>scopeXmin) {
 			if (enemy1.getYLocation()<scopeYmax && enemy1.getYLocation()>scopeYmin) {
@@ -118,6 +121,13 @@ public class Main extends Application {
 
 		}
 
+		if (actualMap.getWallFollowAt(0).getXLocation()<scopeXmax && actualMap.getWallFollowAt(0).getXLocation()>scopeXmin) {
+			if (actualMap.getWallFollowAt(0).getYLocation()<scopeYmax && actualMap.getWallFollowAt(0).getYLocation()>scopeYmin) {
+				grid.add(actualMap.getWallFollowAt(0).getEnemyView(), actualMap.getWallFollowAt(0).getXLocation(), actualMap.getWallFollowAt(0).getYLocation());
+			}
+			
+		}
+		
 		return grid;
 	}
 
@@ -170,6 +180,7 @@ public class Main extends Application {
 
 		actualMap.StraightLineMove();
 		actualMap.DumbMove();
+		actualMap.WallFollowMove();
 		loseGame(actualMap,grid);
 
 		event.consume();
