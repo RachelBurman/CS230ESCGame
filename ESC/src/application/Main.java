@@ -31,11 +31,7 @@ public class Main extends Application {
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-		Map actualMap = new Map("lvl3.txt");
-		//StraightLineEnemy enemy1 = actualMap.getEnemy1();
-		
-		// Enemies need to be created here
-
+		Map actualMap = new Map(startFile);
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));
 		drawGame(actualMap, grid);
