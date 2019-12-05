@@ -10,39 +10,45 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneKeyPressed" prefHeight="483.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MenuTest">
    <children>
-      <Button fx:id="playButton" layoutX="259.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleStartButton" prefHeight="46.0" prefWidth="178.0" text="Play" visible="false" />
-      <Label fx:id="resultBox" alignment="CENTER" ellipsisString="" layoutX="255.0" layoutY="277.0" prefHeight="17.0" prefWidth="178.0" />
+      <Button fx:id="playButton" layoutX="259.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleStartButtonAction" prefHeight="46.0" prefWidth="178.0" text="Play" visible="false" />
+      <Label fx:id="testLabel" alignment="CENTER" ellipsisString="" layoutX="255.0" layoutY="277.0" prefHeight="17.0" prefWidth="178.0" />
       <Label alignment="CENTER" layoutX="215.0" layoutY="59.0" prefHeight="98.0" prefWidth="266.0" text="E.S.C">
          <font>
             <Font name="Impact" size="88.0" />
          </font>
       </Label>
-      <Button fx:id="createProfileButton" layoutX="259.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="46.0" prefWidth="178.0" text="Create a Profile" />
-      <MenuButton fx:id="profilesMenu" layoutX="309.0" layoutY="167.0" mnemonicParsing="false" onAction="#profilesPressed" text="Profiles">
+      <Button fx:id="createProfileButton" layoutX="259.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="46.0" prefWidth="178.0" text="Create a Profile" />
+      <MenuButton fx:id="profilesMenu" layoutX="309.0" layoutY="167.0" mnemonicParsing="false" text="Profiles">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#guestSelected" text="Guest" />
-            <MenuItem fx:id="profile1" mnemonicParsing="false" onAction="#profile1Selected" visible="false" />
-            <MenuItem fx:id="profile2" mnemonicParsing="false" onAction="#profile2Selected" visible="false" />
+            <MenuItem fx:id="profile1MenuItem" mnemonicParsing="false" onAction="#profile1Selected" visible="false" />
+            <MenuItem fx:id="profile2MenuItem" mnemonicParsing="false" onAction="#profile2Selected" visible="false" />
+            <MenuItem fx:id="profile3MenuItem" mnemonicParsing="false" onAction="#profile3Selected" />
+            <MenuItem fx:id="profile4MenuItem" mnemonicParsing="false" onAction="#profile4Selected" />
+            <MenuItem fx:id="profile5MenuItem" mnemonicParsing="false" onAction="#profile5Selected" />
         </items>
       </MenuButton>
       <TextField fx:id="profileNameBox" layoutX="274.0" layoutY="219.0" visible="false" />
-      <Button fx:id="createButton" layoutX="319.0" layoutY="244.0" mnemonicParsing="false" onAction="#createButtonPressed" text="Create" visible="false" />
+      <Button fx:id="createButton" layoutX="319.0" layoutY="244.0" mnemonicParsing="false" onAction="#handleCreateButtonAction" text="Create" visible="false" />
       <Label fx:id="profileNameLabel" layoutX="326.0" layoutY="202.0" text="Name:" visible="false" />
       <Label fx:id="errorMessage" layoutX="185.0" layoutY="269.0" text="ERROR: All profile slots taken would you like to replace one?" visible="false" />
-      <Button fx:id="yesButton" layoutX="302.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleYesButton" text="Yes" visible="false" />
-      <Button fx:id="noButton" layoutX="353.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleNoButton" text="No" visible="false" />
+      <Button fx:id="yesButton" layoutX="302.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleYesButtonAction" text="Yes" visible="false" />
+      <Button fx:id="noButton" layoutX="353.0" layoutY="286.0" mnemonicParsing="false" onAction="#handleNoButtonAction" text="No" visible="false" />
       <Label fx:id="questionLabel" layoutX="312.0" layoutY="315.0" text="Which one?" visible="false" />
-      <Button fx:id="profile1Button" layoutX="272.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile1Button" text="Profile 1" visible="false" />
-      <Button fx:id="profile2Button" layoutX="355.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile2Button" text="Profile 2" visible="false" />
-      <MenuButton fx:id="levelSelect" layoutX="315.0" layoutY="198.0" mnemonicParsing="false" text="Level" visible="false">
+      <Button fx:id="profile1Button" layoutX="174.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile1ButtonAction" text="Profile 1" visible="false" />
+      <Button fx:id="profile2Button" layoutX="244.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile2Button" text="Profile 2" visible="false" />
+      <MenuButton fx:id="levelSelectMenu" layoutX="315.0" layoutY="198.0" mnemonicParsing="false" text="Level" visible="false">
         <items>
-          <MenuItem fx:id="level1" mnemonicParsing="false" onAction="#level1Selected" text="1" visible="false" />
-            <MenuItem fx:id="level2" mnemonicParsing="false" onAction="#level2Selected" text="2" visible="false" />
-          <MenuItem fx:id="level3" mnemonicParsing="false" onAction="#level3Selected" text="3" visible="false" />
-            <MenuItem fx:id="level4" mnemonicParsing="false" onAction="#level4Selected" text="4" visible="false" />
-            <MenuItem fx:id="level5" mnemonicParsing="false" onAction="#level5Selected" text="5" visible="false" />
+          <MenuItem fx:id="level1MenuItem" mnemonicParsing="false" onAction="#level1Selected" text="1" visible="false" />
+            <MenuItem fx:id="level2MenuItem" mnemonicParsing="false" onAction="#level2Selected" text="2" visible="false" />
+          <MenuItem fx:id="level3MenuItem" mnemonicParsing="false" onAction="#level3Selected" text="3" visible="false" />
+            <MenuItem fx:id="level4MenuItem" mnemonicParsing="false" onAction="#level4Selected" text="4" visible="false" />
+            <MenuItem fx:id="level5MenuItem" mnemonicParsing="false" onAction="#level5Selected" text="5" visible="false" />
         </items>
       </MenuButton>
-      <Label fx:id="messageOfTheDay" alignment="CENTER" ellipsisString="" layoutY="380.0" prefHeight="17.0" prefWidth="707.0" />
+      <Label fx:id="messageOfTheDayLabel" alignment="CENTER" ellipsisString="" layoutY="380.0" prefHeight="17.0" prefWidth="707.0" />
+      <Button fx:id="profile3Button" layoutX="313.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile3Button" text="Profile 3" visible="false" />
+      <Button fx:id="profile4Button" layoutX="380.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile4Button" text="Profile 4" visible="false" />
+      <Button fx:id="profile5Button" layoutX="451.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile5Button" text="Profile 5" visible="false" />
    </children>
 </Pane>
