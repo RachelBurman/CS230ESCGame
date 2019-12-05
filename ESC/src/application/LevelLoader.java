@@ -60,6 +60,7 @@ public class LevelLoader {
 			int x = in.nextInt();// get startX
 			int y = in.nextInt();//get startY
 			int z = in.nextInt();// get directionfacing
+			// z is either 1,2,3,4 up =1, down = 2, right = 3, left = 4
 			info[0] = x;
 			info[1] = y;
 			info[2] = z;

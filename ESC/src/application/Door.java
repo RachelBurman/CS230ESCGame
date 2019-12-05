@@ -13,18 +13,19 @@ public class Door extends Cell {
 		Image image = null;;
 		this.playerPass = false;
 		this.enemyPass = false;
+		Image doorImage = null;
 		if (name.equalsIgnoreCase("red door")) {
 			File file = new File("./src/reddoor.png");
-			Image cellImage = new Image(file.toURI().toString());
+			doorImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue door")) {
 			File file = new File("./src/bluedoor.png");
-			Image cellImage = new Image(file.toURI().toString());
+			doorImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green door")) {
 			File file = new File("./src/greendoor.png");
-			Image cellImage = new Image(file.toURI().toString());
+			doorImage = new Image(file.toURI().toString());
 		}
 		
-		this.cellImage = image;
+		this.cellImage = doorImage;
 		this.cellView = new ImageView(cellImage);
 		this.cellView.setFitHeight(CELL_SIZE);
 		this.cellView.setFitWidth(CELL_SIZE);

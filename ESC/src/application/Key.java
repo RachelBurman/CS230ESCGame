@@ -13,24 +13,24 @@ public class Key extends Cell {
 		this.name = name;
 		this.playerPass = true;
 		this.enemyPass = false;
-		Image image = null;
+		Image keyImage = null;
 		if (name.equalsIgnoreCase("red")) {
 			File file = new File("./src/redkey.png");
-		Image cellImage = new Image(file.toURI().toString());
+			keyImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue")) {
 			File file = new File("./src/bluekey.png");
-		Image cellImage = new Image(file.toURI().toString());
+			keyImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green")) {
 			File file = new File("./src/greenkey.png");
-		Image cellImage = new Image(file.toURI().toString());
+			keyImage = new Image(file.toURI().toString());
 		}
-		super.cellImage = image;
+		super.cellImage = keyImage;
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
 		
 	}
-	public ImageView getFireView() {
+	public ImageView getKeyView() {
 		
 		return super.getView();
 		
