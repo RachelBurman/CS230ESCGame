@@ -29,20 +29,15 @@ public class DumbTargetingEnemy extends TargetingEnemy {
 	
 	public void move() {
 		this.distanceXToPlayer = getDistanceXToPlayer();
-		System.out.println(this.playerx +" a " + this.playery);
 		this.distanceYToPlayer = getDistanceYToPlayer();
-		
-		System.out.println(this.yLocation + " b "+ this.yLocation);
-		System.out.print(this.getDistanceXToPlayer());
-		System.out.print(this.getDistanceYToPlayer());
-		if (this.distanceXToPlayer >0) {
+		if (this.distanceYToPlayer <0) {
+			moveUp();
+		} else if (this.distanceYToPlayer >0) {
+			moveDown();
+		} else if (this.distanceXToPlayer >0) {
 			moveRight();
 		} else if (this.distanceXToPlayer <0) {
 			moveLeft();
-		} else if (this.distanceYToPlayer >0) {
-			moveDown();
-		} else if (this.distanceYToPlayer <0) {
-			moveUp();
 		} 
 	}
 

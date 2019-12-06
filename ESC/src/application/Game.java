@@ -1,0 +1,228 @@
+package application;
+/*
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import moving.DumbTargetingEnemy;
+import moving.Player;
+import moving.StraightLineEnemy;
+
+public class Game {
+	private int windowWidth;
+	private int windowHeight;
+	private Map actualMap;
+	private Stage primaryStage;
+	GridPane grid;
+	BorderPane root;
+	private Scene scene;
+	private String level;
+	
+	
+	GridPane grid = new GridPane();
+	root.setCenter(grid);
+	grid.setAlignment(Pos.CENTER);
+	Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+	// Register an event handler for key presses
+	
+	drawGame(actualMap, grid);
+	
+	
+	public  Game(Stage primaryStage, int windowWidth, int windowHeight) {
+		this.primaryStage = primaryStage;
+		this.windowHeight = windowHeight;
+		this.windowWidth = windowWidth;
+
+	}
+	
+	public void LoadGame(String level) {
+		this.actualMap = new Map(level);
+		this.grid = new GridPane();
+		this.root = new BorderPane();
+		root.setTop(makeHBox());
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, actualMap, grid));	
+		
+	}
+	
+	public GridPane drawGame(Map actualMap, GridPane grid) {
+		grid.getChildren().clear();
+
+		int scopeXmin;
+		int scopeXmax;
+		int scopeYmin;
+		int scopeYmax;
+		int width = actualMap.getMapLength();
+
+		int height = actualMap.getMapHeight();
+		int playerXLocation = actualMap.getPlayer1().getxLocation();
+		int playerYLocation = actualMap.getPlayer1().getyLocation();
+		System.out.println(" My X is" + playerXLocation+ " My Y is" + playerYLocation);
+		if (playerXLocation - 3 < 0) {
+			scopeXmin = 0;
+		} else {
+			scopeXmin = playerXLocation - 3;
+		}
+		if (playerXLocation + 4 > width) {
+			scopeXmax = width;
+		} else {
+			scopeXmax = playerXLocation + 4;
+		}
+		if (playerYLocation - 3 < 0) {
+			scopeYmin = 0;
+		} else {
+			scopeYmin = playerYLocation - 3;
+		}
+		if (playerYLocation + 4 > height) {
+			scopeYmax = height;
+		} else {
+			scopeYmax = playerYLocation + 4;
+		}
+
+		for (int newY = scopeYmin; newY<scopeYmax; newY++) {
+			for (int NewX = scopeXmin; NewX<scopeXmax; NewX++) {
+				grid.add(actualMap.getCell(NewX, newY).getView(), NewX, newY);
+			}
+		}
+		// Draw Grid using GridPane
+		/*for (int y = 0; y < actualMap.getMapHeight(); y++) {
+			for (int x = 0; x < actualMap.getMapLength(); x++) {
+				// Add new types of cells here
+				grid.add(actualMap.getCell(x, y).getView(), x, y);
+			}
+		}
+		
+		Player player = actualMap.getPlayer1();
+		StraightLineEnemy enemy1 = actualMap.getEnemy1();
+		DumbTargetingEnemy enemy2 = actualMap.getDummieAt(0);
+		
+		WallFollowingEnemy enemy3 = actualMap.getWallFollowAt(0);
+		
+		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
+		if (enemy1.getXLocation()<scopeXmax && enemy1.getXLocation()>scopeXmin) {
+			if (enemy1.getYLocation()<scopeYmax && enemy1.getYLocation()>scopeYmin) {
+				grid.add(enemy1.getEnemyView(), enemy1.getXLocation(), enemy1.getYLocation());
+			}
+
+		}
+		if (actualMap.getDummieAt(0).getXLocation()<scopeXmax && actualMap.getDummieAt(0).getXLocation()>scopeXmin) {
+			if (actualMap.getDummieAt(0).getYLocation()<scopeYmax && actualMap.getDummieAt(0).getYLocation()>scopeYmin) {
+				grid.add(actualMap.getDummieAt(0).getEnemyView(), actualMap.getDummieAt(0).getXLocation(), actualMap.getDummieAt(0).getYLocation());
+			}
+
+		}
+
+		if (actualMap.getWallFollowAt(0).getXLocation()<scopeXmax && actualMap.getWallFollowAt(0).getXLocation()>scopeXmin) {
+			if (actualMap.getWallFollowAt(0).getYLocation()<scopeYmax && actualMap.getWallFollowAt(0).getYLocation()>scopeYmin) {
+				grid.add(actualMap.getWallFollowAt(0).getEnemyView(), actualMap.getWallFollowAt(0).getXLocation(), actualMap.getWallFollowAt(0).getYLocation());
+			}
+			
+		}
+		
+		return grid;
+	}
+	
+	public HBox makeHBox() {
+		HBox box = new HBox();
+		Label label = new Label(startFile);
+		box.getChildren().add(label);
+		return box;
+
+	}
+	
+	public void processKeyEvent(KeyEvent event, Map actualMap, GridPane grid) {
+		int currentX =actualMap.getPlayer1().getxLocation();
+		int currentY =actualMap.getPlayer1().getyLocation();
+		switch (event.getCode()) {
+
+		case RIGHT:
+			// Right key was pressed. So move the player right by one cell.
+			//openDoor(player, actualMap, player.getxLocation() + 1, player.getyLocation());
+			actualMap.openDoor(currentX+1, currentY);
+			actualMap.getPlayer1().moveRight();
+			actualMap.doAction();
+			//player.moveRight();
+
+			break;
+		case LEFT:
+			// Left key was pressed. So move the player left by one cell.
+			//openDoor(player, actualMap, player.getxLocation() - 1, player.getyLocation());
+			actualMap.openDoor(currentX-1, currentY);
+			actualMap.getPlayer1().moveLeft();
+			actualMap.doAction();
+			//player.moveLeft();
+
+			break;
+		case UP:
+			// Up key was pressed. So move the player up by one cell.
+			//openDoor(player, actualMap, player.getxLocation(), player.getyLocation() - 1);
+			actualMap.openDoor(currentX, currentY-1);
+			actualMap.getPlayer1().moveUp();
+			actualMap.doAction();
+			//player.moveUp();
+
+			break;
+		case DOWN:
+			// Down key was pressed. So move the player down by one cell.
+			//openDoor(player, actualMap, player.getxLocation(), player.getyLocation() + 1);
+			actualMap.openDoor(currentX, currentY+1);
+			actualMap.getPlayer1().moveDown();
+			actualMap.doAction();
+			//player.moveDown();
+
+			break;
+
+		default:
+			// Do nothing
+			break;
+		}
+
+		actualMap.StraightLineMove();
+		actualMap.DumbMove();
+		actualMap.WallFollowMove();
+		loseGame(actualMap,grid);
+
+		event.consume();
+	}
+	
+	public void loseGame (Map actualMap, GridPane grid) {
+		int playerXLocation = actualMap.getPlayer1().getxLocation();
+		int playerYLocation = actualMap.getPlayer1().getyLocation();
+		int StraightEnemyX = actualMap.getEnemy1().getXLocation();
+		int StraightEnemyY = actualMap.getEnemy1().getYLocation();
+		int DumbEnemyX = actualMap.getDummieAt(0).getXLocation();
+		int DumbEnemyY = actualMap.getDummieAt(0).getYLocation();
+		Map current = actualMap;
+		if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
+
+			System.out.println("Game OVer");
+			current = null;
+			current =restart();
+		} else if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
+			System.out.println("Game OVer");
+			current = null;
+			current =restart();
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire") && actualMap.getPlayer1().getBoots()==false) {
+			System.out.println("Game OVer");
+			current = null;
+			current =restart();
+		} else if (actualMap.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")&& actualMap.getPlayer1().getFlippers()==false) {
+			System.out.println("Game OVer");
+			current = null;
+			current = restart();
+		}
+
+		drawGame(current, grid);
+
+	}
+	public Map restart() {
+		Map newMap = new Map(level);
+		return newMap;
+	}
+	
+}
+*/

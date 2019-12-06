@@ -46,13 +46,14 @@ public class Map {
 		this.dumbList.add(new DumbTargetingEnemy("Dumb",mapActual, LevelLoader.getDumbEnemy(file)));
 		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
 		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
-		System.out.println(dumbList.get(0).getXLocation());
-		System.out.println(dumbList.get(0).getYLocation());
+		//
+		//System.out.println(dumbList.get(0).getXLocation());
+		//System.out.println(dumbList.get(0).getYLocation());
 
 		// NEW
 		this.wallFollowList.add(new WallFollowingEnemy("Wall Enemy",mapActual, LevelLoader.getWallFollowingEnemy(file)));
-		System.out.println(wallFollowList.get(0).getXLocation());
-		System.out.println(wallFollowList.get(0).getYLocation());
+		//System.out.println(wallFollowList.get(0).getXLocation());
+		//System.out.println(wallFollowList.get(0).getYLocation());
 
 	}
 
@@ -124,6 +125,9 @@ public class Map {
 
 
 	}
+	public void finalize() {
+		System.out.println("Map deleted");
+	}
 
 	public void openDoor(int nextX, int nextY) {
 		String cellName =this.getCell(nextX, nextY).getName();
@@ -176,13 +180,10 @@ public class Map {
 			this.getPlayer1().teleport();
 		} else if (cellName.equalsIgnoreCase("red door")) {
 			this.replaceCell(playerXLocation, playerYLocation);
-			this.getPlayer1().addToken();
 		} else if (cellName.equalsIgnoreCase("blue door")) {
 			this.replaceCell(playerXLocation, playerYLocation);
-			this.getPlayer1().addToken();
 		} else if (cellName.equalsIgnoreCase("green door")) {
 			this.replaceCell(playerXLocation, playerYLocation);
-			this.getPlayer1().addToken();
 		}
 	}
 	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
