@@ -49,6 +49,17 @@ public class MenuTest {
 	@FXML private MenuItem level4MenuItem;
 	@FXML private MenuItem level5MenuItem;
 	@FXML private Label messageOfTheDayLabel;
+	@FXML private Label leaderboardLabel;
+	@FXML private Button leaderboardLevel1Button;
+	@FXML private Button leaderboardLevel2Button;
+	@FXML private Button leaderboardLevel3Button;
+	@FXML private Button leaderboardLevel4Button;
+	@FXML private Button leaderboardLevel5Button;
+	@FXML private Button leaderboardButton;
+	@FXML private Button backButton;
+	@FXML private Label firstTimeLabel;
+	@FXML private Label secondTimeLabel;
+	@FXML private Label thirdTimeLabel;
 
 	@FXML
 	private void initialize() {
@@ -148,6 +159,7 @@ public class MenuTest {
 
 	@FXML
 	private void handleProfileButtonAction(ActionEvent event) {
+		leaderboardButton.setVisible(false);
 		levelSelectMenu.setVisible(false);
 		playButton.setVisible(false);
 		createProfileButton.setVisible(false);
@@ -183,6 +195,7 @@ public class MenuTest {
 						profileNameLabel.setVisible(false);
 						createProfileButton.setVisible(true);
 						profilesMenu.setVisible(true);
+						leaderboardButton.setVisible(true);
 					} else if (!profile2MenuItem.isVisible())	{
 						String profile1Name = "";
 						String profile1Level = "";
@@ -221,6 +234,7 @@ public class MenuTest {
 						profileNameLabel.setVisible(false);
 						createProfileButton.setVisible(true);
 						profilesMenu.setVisible(true);
+						leaderboardButton.setVisible(true);
 					} else if (!profile3MenuItem.isVisible())	{
 							String profile1Name = "";
 							String profile1Level = "";
@@ -263,6 +277,7 @@ public class MenuTest {
 							profileNameLabel.setVisible(false);
 							createProfileButton.setVisible(true);
 							profilesMenu.setVisible(true);
+							leaderboardButton.setVisible(true);
 						} else if (!profile4MenuItem.isVisible())	{
 								String profile1Name = "";
 								String profile1Level = "";
@@ -309,6 +324,7 @@ public class MenuTest {
 								profileNameLabel.setVisible(false);
 								createProfileButton.setVisible(true);
 								profilesMenu.setVisible(true);
+								leaderboardButton.setVisible(true);
 							} else if (!profile5MenuItem.isVisible())	{
 									String profile1Name = "";
 									String profile1Level = "";
@@ -359,6 +375,7 @@ public class MenuTest {
 									profileNameLabel.setVisible(false);
 									createProfileButton.setVisible(true);
 									profilesMenu.setVisible(true);
+									leaderboardButton.setVisible(true);
 					} else {
 						errorMessage.setVisible(true);
 						yesButton.setVisible(true);
@@ -378,6 +395,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -453,6 +471,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -517,6 +536,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -581,6 +601,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -645,6 +666,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -708,6 +730,7 @@ public class MenuTest {
 		createProfileButton.setVisible(true);
 		profilesMenu.setVisible(true);
 		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
 	}
 
 	@FXML
@@ -975,6 +998,120 @@ public class MenuTest {
 	private void level5Selected(ActionEvent event) {
 		levelSelectMenu.setText("5");
 		playButton.setVisible(true);
+	}
+	
+	@FXML
+	private void handleLeaderboardButtonAction(ActionEvent event) {
+		profilesMenu.setVisible(false);
+		levelSelectMenu.setVisible(false);
+		playButton.setVisible(false);
+		createProfileButton.setVisible(false);
+		leaderboardButton.setVisible(false);
+		leaderboardLabel.setVisible(true);
+		leaderboardLevel1Button.setVisible(true);
+		leaderboardLevel2Button.setVisible(true);
+		leaderboardLevel3Button.setVisible(true);
+		leaderboardLevel4Button.setVisible(true);
+		leaderboardLevel5Button.setVisible(true);
+	}
+
+	@FXML
+	private void handleLevel1LeaderboardAction(ActionEvent event) {
+		leaderboardLabel.setText("Level 1 best times:");
+		leaderboardLevel1Button.setVisible(false);
+		leaderboardLevel2Button.setVisible(false);
+		leaderboardLevel3Button.setVisible(false);
+		leaderboardLevel4Button.setVisible(false);
+		leaderboardLevel5Button.setVisible(false);
+		firstTimeLabel.setVisible(true);
+		firstTimeLabel.setText("1:");
+		secondTimeLabel.setVisible(true);
+		secondTimeLabel.setText("2:");
+		thirdTimeLabel.setVisible(true);
+		thirdTimeLabel.setText("3:");
+		backButton.setVisible(true);
+	}
+
+	@FXML
+	private void handleLevel2LeaderboardAction(ActionEvent event) {
+		leaderboardLabel.setText("Level 2 best times:");
+		leaderboardLevel1Button.setVisible(false);
+		leaderboardLevel2Button.setVisible(false);
+		leaderboardLevel3Button.setVisible(false);
+		leaderboardLevel4Button.setVisible(false);
+		leaderboardLevel5Button.setVisible(false);
+		firstTimeLabel.setVisible(true);
+		firstTimeLabel.setText("1:");
+		secondTimeLabel.setVisible(true);
+		secondTimeLabel.setText("2");
+		thirdTimeLabel.setVisible(true);
+		thirdTimeLabel.setText("3:");
+		backButton.setVisible(true);
+	}
+
+	@FXML
+	private void handleLevel3LeaderboardAction(ActionEvent event) {
+		leaderboardLabel.setText("Level 3 best times:");
+		leaderboardLevel1Button.setVisible(false);
+		leaderboardLevel2Button.setVisible(false);
+		leaderboardLevel3Button.setVisible(false);
+		leaderboardLevel4Button.setVisible(false);
+		leaderboardLevel5Button.setVisible(false);
+		firstTimeLabel.setVisible(true);
+		firstTimeLabel.setText("1:");
+		secondTimeLabel.setVisible(true);
+		secondTimeLabel.setText("2:");
+		thirdTimeLabel.setVisible(true);
+		thirdTimeLabel.setText("3");
+		backButton.setVisible(true);
+	}
+
+	@FXML
+	private void handleLevel4LeaderboardAction(ActionEvent event) {
+		leaderboardLabel.setText("Level 4 best times:");
+		leaderboardLevel1Button.setVisible(false);
+		leaderboardLevel2Button.setVisible(false);
+		leaderboardLevel3Button.setVisible(false);
+		leaderboardLevel4Button.setVisible(false);
+		leaderboardLevel5Button.setVisible(false);
+		firstTimeLabel.setVisible(true);
+		firstTimeLabel.setText("1:");
+		secondTimeLabel.setVisible(true);
+		secondTimeLabel.setText("2:");
+		thirdTimeLabel.setVisible(true);
+		thirdTimeLabel.setText("3:");
+		backButton.setVisible(true);
+	}
+
+	@FXML
+	private void handleLevel5LeaderboardAction(ActionEvent event) {
+		leaderboardLabel.setText("Level 5 best times:");
+		leaderboardLevel1Button.setVisible(false);
+		leaderboardLevel2Button.setVisible(false);
+		leaderboardLevel3Button.setVisible(false);
+		leaderboardLevel4Button.setVisible(false);
+		leaderboardLevel5Button.setVisible(false);
+		firstTimeLabel.setVisible(true);
+		firstTimeLabel.setText("1:");
+		secondTimeLabel.setVisible(true);
+		secondTimeLabel.setText("2:");
+		thirdTimeLabel.setVisible(true);
+		thirdTimeLabel.setText("3:");
+		backButton.setVisible(true);
+	}
+
+	@FXML
+	private void handleBackButtonAction(ActionEvent event) {
+		backButton.setVisible(false);
+		leaderboardLabel.setText("Select Level");
+		leaderboardLabel.setVisible(false);
+		firstTimeLabel.setVisible(false);
+		secondTimeLabel.setVisible(false);
+		thirdTimeLabel.setVisible(false);
+		profilesMenu.setVisible(true);
+		profilesMenu.setText("Profiles");
+		leaderboardButton.setVisible(true);
+		createProfileButton.setVisible(true);
 	}
 
 	public String getHTML(String urlToRead) throws Exception {
