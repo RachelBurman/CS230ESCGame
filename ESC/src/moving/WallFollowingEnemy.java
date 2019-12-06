@@ -7,9 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import moving.NonTargetingEnemy;
 
-/*
- * Problem: Checks left first instead of the last direction it faces
- */
 
 public class WallFollowingEnemy extends NonTargetingEnemy {
 
@@ -28,7 +25,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		//this.EnemyView.setFitWidth(CELL_SIZE);
 		this.EnemyView.setFitHeight(32);
 		this.EnemyView.setFitWidth(32);
-
+		
 
 		// info[2] is either 1,2,3,4 up =1, down = 2, right = 3, left = 4
 		switch (info[2]) {
@@ -59,29 +56,23 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		boolean downOfEnemyIsGround = mapActual[xLocation][yLocation+1].getEnemyPass();
 		boolean upOfEnemyIsGround = mapActual[xLocation][yLocation-1].getEnemyPass();
 
-		boolean rightUpOfEnemyIsGround = mapActual[xLocation+1][yLocation-1].getEnemyPass(); // Top Wall
-		boolean downRightOfEnemyIsGround = mapActual[xLocation+1][yLocation+1].getEnemyPass(); // Right Wall
-		boolean leftDownOfEnemyIsGround = mapActual[xLocation-1][yLocation+1].getEnemyPass(); // Bottom Wall
-		boolean upLeftOfEnemyIsGround = mapActual[xLocation-1][yLocation-1].getEnemyPass(); // Left Wall
 		
-		if (leftOfEnemyIsGround == false && (upOfEnemyIsGround == true || upLeftOfEnemyIsGround == true)) {
-			System.out.println("Y Left is Wall, Up is Ground");
+		if (leftOfEnemyIsGround == false && upOfEnemyIsGround == true) {
+			//System.out.println("WALL UP");
 			this.facing = 'u';
-		} else if (upOfEnemyIsGround == false && (rightOfEnemyIsGround == true || rightUpOfEnemyIsGround == true)){
-			System.out.println("Y Up is Wall, Right is Ground");
+		} else if (upOfEnemyIsGround == false && rightOfEnemyIsGround == true){
+			//System.out.println("WALL RIGHT");
 			this.facing = 'r';
-			moveX(this.xLocation,this.yLocation,this.facing); //Move right
-
-
-		} else if (rightOfEnemyIsGround == false && (downOfEnemyIsGround == true || downRightOfEnemyIsGround == true)) {
-			System.out.println("Y Right is Wall, Down is Ground");
+			moveX(this.xLocation,this.yLocation,this.facing);
+		} else if (rightOfEnemyIsGround == false && downOfEnemyIsGround == true) {
+			//System.out.println("WALL DOWN");
 
 			this.facing = 'd';
-		} else if (downOfEnemyIsGround == false && (leftOfEnemyIsGround == true || leftDownOfEnemyIsGround == true)) {
-			System.out.println("Y Down is Wall, Left is Ground");
+		} else if (downOfEnemyIsGround == false && leftOfEnemyIsGround == true) {
+			//System.out.println("WALL LEFT MOVE Y");
 
 			this.facing = 'l';
-
+			
 			moveX(this.xLocation,this.yLocation,this.facing);
 
 		} else {
@@ -110,22 +101,16 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		}
 
 
-
+		
 		if(this.facing == 'u') {
 			if(leftOfEnemyIsGround == false) {
-				if (upOfEnemyIsGround == true) {	
-					
-					if(upLeftOfEnemyIsGround == true) {		
-						this.yLocation--;
-						this.xLocation--;
-						
-						this.facing = 'd';
-					} else {
-						this.yLocation--;
-						//System.out.println("OO WALL Y Location:" + this.yLocation);
-					}
+
+				if (upOfEnemyIsGround == true) {
+					this.yLocation--;
+					//System.out.println("OO WALL Y Location:" + this.yLocation);
+
 				} else {
-					this.facing = 'l';
+					this.facing = 'r';
 
 				}
 
@@ -133,17 +118,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		} else if (this.facing == 'd') {
 			if(rightOfEnemyIsGround == false) {
 				if (downOfEnemyIsGround = true) {
+					this.yLocation++;
 					//System.out.println("OOO WALL Y Location:" + this.yLocation);
 
-					if(downRightOfEnemyIsGround == true) {		
-						this.yLocation++;
-						this.xLocation++;
-						
-						this.facing = 'r';
-					} else {
-						this.yLocation++;
-						//System.out.println("OO WALL Y Location:" + this.yLocation);
-					}
 				} else {
 					this.facing = 'l';
 
@@ -163,39 +140,33 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		boolean downOfEnemyIsGround = mapActual[xLocation][yLocation+1].getEnemyPass();
 		boolean upOfEnemyIsGround = mapActual[xLocation][yLocation-1].getEnemyPass();
 
-		boolean rightUpOfEnemyIsGround = mapActual[xLocation+1][yLocation-1].getEnemyPass(); // Top Wall
-		boolean downRightOfEnemyIsGround = mapActual[xLocation+1][yLocation+1].getEnemyPass(); // Right Wall
-		boolean leftDownOfEnemyIsGround = mapActual[xLocation-1][yLocation+1].getEnemyPass(); // Bottom Wall
-		boolean upLeftOfEnemyIsGround = mapActual[xLocation-1][yLocation-1].getEnemyPass(); // Left Wall
-		
 
-	if (leftOfEnemyIsGround == false && (upOfEnemyIsGround == true || upLeftOfEnemyIsGround == true)) {
-			System.out.println("Y Left is Wall, Up is Ground");
+
+		if (leftOfEnemyIsGround == false && upOfEnemyIsGround == true) {
+			//System.out.println("WALL UP MOVE X");
 			this.facing = 'u';
 			
 			moveY(this.xLocation,this.yLocation,this.facing);
 
-		} else if (upOfEnemyIsGround == false && (rightOfEnemyIsGround == true || rightUpOfEnemyIsGround == true)){
-			System.out.println("Y Up is Wall, Right is Ground");
+		} else if (upOfEnemyIsGround == false && rightOfEnemyIsGround == true){
+			//System.out.println("WALL RIGHT MOVE X");
+
 			this.facing = 'r';
-
-
-		} else if (rightOfEnemyIsGround == false && (downOfEnemyIsGround == true || downRightOfEnemyIsGround == true)) {
-			System.out.println("Y Right is Wall, Down is Ground");
+		} else if (rightOfEnemyIsGround == false && downOfEnemyIsGround == true) {
+			//System.out.println("WALL DOWN MOVE X");
 
 			this.facing = 'd';
 			
 			moveY(this.xLocation,this.yLocation,this.facing);
 
-		} else if (downOfEnemyIsGround == false && (leftOfEnemyIsGround == true || leftDownOfEnemyIsGround == true)) {
-			System.out.println("Y Down is Wall, Left is Ground");
+		} else if (downOfEnemyIsGround == false && leftOfEnemyIsGround == true) {
+			//System.out.println("WALL LEFT MOVE X");
 
 			this.facing = 'l';
-
-
 		} else {
 
 		}
+
 
 		/*
 		 * For when no walls surround wall enemy
@@ -225,18 +196,8 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 			if(downOfEnemyIsGround == false) {
 
 				if (leftOfEnemyIsGround == true) {
+					this.xLocation--;
 					//System.out.println("OOO WALL X Location:" + this.xLocation);
-					
-					if(leftDownOfEnemyIsGround == true) {		
-						this.xLocation--;
-						this.yLocation++;
-						
-						
-						this.facing = 'd';
-					} else {
-						this.xLocation--;
-						//System.out.println("OO WALL Y Location:" + this.yLocation);
-					}
 				} else {
 					this.facing = 'u';
 				}
@@ -245,18 +206,10 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		} else if (this.facing == 'r') {
 			if(upOfEnemyIsGround == false) {
 				if (rightOfEnemyIsGround == true) {
+					this.xLocation++;
+					//System.out.println(this.xLocation);
 					//System.out.println("OOOO WALL X Location:" + this.xLocation);
 
-					if(rightUpOfEnemyIsGround == true) {		
-						this.xLocation++;
-						this.yLocation--;
-
-						
-						this.facing = 'u';
-					} else {
-						this.xLocation++;
-						//System.out.println("OO WALL Y Location:" + this.yLocation);
-					}
 				} else {
 					this.facing = 'd';
 
