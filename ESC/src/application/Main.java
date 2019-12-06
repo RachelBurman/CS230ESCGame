@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import moving.Player;
 import moving.StraightLineEnemy;
+import moving.WallFollowingEnemy;
 import moving.DumbTargetingEnemy;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
