@@ -153,7 +153,8 @@ public class LevelLoader {
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
 				String s = in.nextLine();
-				//System.out.println(s);
+				
+				System.out.println(s);
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", newX, newY);
@@ -182,9 +183,9 @@ public class LevelLoader {
 					} else if (s.charAt(newX) == 'T') {
 						level[newX][newY] = new Token("token", newX, newY);
 					} else if (s.charAt(newX) == '2') {
-						level[newX][newY] = new TokenDoor("2", newX, newY);
+						level[newX][newY] = new TokenDoor("2 door", newX, newY);
 					} else if (s.charAt(newX) == '3') {
-						level[newX][newY] = new TokenDoor("3", newX, newY);
+						level[newX][newY] = new TokenDoor("3 door", newX, newY);
 					} else if (s.charAt(newX) == 'U') {
 						level[newX][newY] = new TokenDoor("token door", newX, newY);
 					} else if (s.charAt(newX) == 'S') {

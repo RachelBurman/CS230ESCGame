@@ -12,6 +12,7 @@ public class TokenDoor extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
 		this.enemyPass = false;
+		System.out.println(name);
 		File file = null; 
 		if (name.equals("token door")) {
 			file = new File("./src/TokenDoor.jpg");
