@@ -50,7 +50,7 @@ public class Map {
 		System.out.println(dumbList.get(0).getYLocation());
 
 		// NEW
-		this.wallFollowList.add(new WallFollowingEnemy("Wall Following Enemy",mapActual, LevelLoader.getWallFollowingEnemy(file)));
+		this.wallFollowList.add(new WallFollowingEnemy("Wall Enemy",mapActual, LevelLoader.getWallFollowingEnemy(file)));
 		System.out.println(wallFollowList.get(0).getXLocation());
 		System.out.println(wallFollowList.get(0).getYLocation());
 

@@ -123,7 +123,7 @@ public class LevelLoader {
 			try {
 				File f = new File(file);
 				Scanner in = new Scanner(f);
-				for (int i=0; i<11;i++) {
+				for (int i=0; i<12;i++) {
 					in.nextLine();
 				}
 				int[] info = new int[4];
@@ -152,6 +152,7 @@ public class LevelLoader {
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
 				String s = in.nextLine();
+				System.out.println(s);
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", newX, newY);

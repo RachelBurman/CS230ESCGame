@@ -80,10 +80,7 @@ public class Main extends Application {
 			scopeYmin = playerYLocation - 3;
 		}
 		if (playerYLocation + 4 > height) {
-			//System.out.println(playerY);
-			//System.out.println(y);
 			scopeYmax = height;
-			//System.out.println(scopeYmax);
 		} else {
 			scopeYmax = playerYLocation + 4;
 		}
