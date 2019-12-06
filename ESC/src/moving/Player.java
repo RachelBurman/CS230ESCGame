@@ -64,8 +64,8 @@ public class Player extends Movable {
 		this.tokens = tokens+1;
 	}
 	
-	public void takeTokens() {
-		this.tokens = 0;
+	public void takeTokens(int num) {
+		this.tokens = this.tokens-num;
 	}
 	public void setTokens(int tokens) {
 		this.tokens = tokens;

@@ -180,14 +180,18 @@ public class LevelLoader {
 					} else if (s.charAt(newX) == 'I') {
 						level[newX][newY] = new Flipper("flippers", newX, newY);
 					} else if (s.charAt(newX) == 'T') {
-						level[newX][newY] = new Token("token", newX, newY);
-					} else if (s.charAt(newX) == 'U') {
+						level[newX][newY] = new Token("token door", newX, newY);
+					} else if (s.charAt(newX) == '2') {
+						level[newX][newY] = new Token("2 door", newX, newY);
+					} else if (s.charAt(newX) == '3') {
+						level[newX][newY] = new Token("3 door", newX, newY);
+					}else if (s.charAt(newX) == 'U') {
 						level[newX][newY] = new TokenDoor("token door", newX, newY);
 					} else if (s.charAt(newX) == 'S') {
 							level[newX][newY] = new Teleporter("teleporter", newX, newY, file);
 					 //Add new Cells here, new Cells created through this
 					 // A redKey, B bluedoor, C bluekey, D greendoor, E greenkey, F fire, G goal, H Boots, I Flipper, R redDoor,
-						//T Token, U Token Door, W Water,   Cell , #  Wall, S teleporter
+						//T Token, U Token Door, W Water,   Cell , #  Wall, S teleporter, 2 token door two, 3 token door three
 						} else if (s.charAt(newX) == ' ') {
 						level[newX][newY] = new Cell("Cell", newX, newY);
 
