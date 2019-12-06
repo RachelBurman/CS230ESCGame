@@ -16,7 +16,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 
-		File file = new File("./src/StraightEnemy.png");
+		File file = new File("./src/WallFollowing.png");
 		Image image = new Image(file.toURI().toString());
 
 		this.EnemyImg = image;
@@ -25,6 +25,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		//this.EnemyView.setFitWidth(CELL_SIZE);
 		this.EnemyView.setFitHeight(32);
 		this.EnemyView.setFitWidth(32);
+		
 
 		// info[2] is either 1,2,3,4 up =1, down = 2, right = 3, left = 4
 		switch (info[2]) {
@@ -142,7 +143,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 
 		if (leftOfEnemyIsGround == false && upOfEnemyIsGround == true) {
-			System.out.println("WALL UP MOVE X");
+			//System.out.println("WALL UP MOVE X");
 			this.facing = 'u';
 			
 			moveY(this.xLocation,this.yLocation,this.facing);
