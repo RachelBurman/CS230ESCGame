@@ -202,7 +202,6 @@ public class Game extends Application {
 		int WallFollowX = map.getWallFollowAt(0).getXLocation();
 		int WallFollowY = map.getWallFollowAt(0).getYLocation();
 		if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
-
 			System.out.println("Game OVer");
 			restart();
 		} else if (playerXLocation== StraightEnemyX && playerYLocation == StraightEnemyY) {
@@ -221,13 +220,41 @@ public class Game extends Application {
 			System.out.println("Game OVer");
 			restart();
 		}
+		upLevel();
 		drawGame(grid);
 
 	}
-	public void restart() {
+	public static void restart() {
+		
 		Map newMap = new Map(startFile);
 		
 		MapManager.sharedMapManager().setMap(newMap);
+	}
+	
+	public static void upLevel() {
+		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
+		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
+		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
+		if (current.getName().equalsIgnoreCase("goal")){
+			switch(startFile) {
+			
+			case "lvl1.txt" :
+				startFile = "lvl2.txt";
+				break;
+			case "lvl2.txt" :
+				startFile = "lvl3.txt";
+				break;
+			case "lvl3.txt" :
+				startFile = "lvl4.txt";
+				break;
+			case "lvl4.txt" :
+				startFile = "lvl5.txt";
+				break;
+			default :
+				break;
+			}
+			restart();
+		}
 	}
 
 	@Override
