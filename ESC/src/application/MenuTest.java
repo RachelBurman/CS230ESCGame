@@ -138,7 +138,7 @@ public class MenuTest {
         			break;
         		}
         		
-        		game.start(s, profilesMenu.getText());
+        		game.start(s);
 	}
 
 	@FXML

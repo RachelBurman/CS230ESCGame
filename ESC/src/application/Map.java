@@ -147,18 +147,10 @@ public class Map {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusBlueKey();
-		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() > 0 ) {
+		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() == 2) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
-			player.takeTokens(1);
-		} else if (cellName.equalsIgnoreCase("2 door") && player.getTokens() > 1 ) {
-			nextCell.changePlayerPass();
-			nextCell.changeEnemyPass();
-			player.takeTokens(2);
-		} else if (cellName.equalsIgnoreCase("3 door") && player.getTokens() > 2 ) {
-			nextCell.changePlayerPass();
-			nextCell.changeEnemyPass();
-			player.takeTokens(3);
+			player.takeTokens();
 		}
 
 	}
