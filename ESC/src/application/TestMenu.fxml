@@ -18,7 +18,7 @@
          </font>
       </Label>
       <Button fx:id="createProfileButton" layoutX="259.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleProfileButtonAction" prefHeight="46.0" prefWidth="178.0" text="Create a Profile" />
-      <MenuButton fx:id="profilesMenu" layoutX="309.0" layoutY="167.0" mnemonicParsing="false" text="Profiles">
+      <MenuButton fx:id="profilesMenu" alignment="CENTER" layoutX="309.0" layoutY="167.0" mnemonicParsing="false" text="Profiles">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#guestSelected" text="Guest" />
             <MenuItem fx:id="profile1MenuItem" mnemonicParsing="false" onAction="#profile1Selected" visible="false" />
@@ -37,7 +37,7 @@
       <Label fx:id="questionLabel" layoutX="312.0" layoutY="315.0" text="Which one?" visible="false" />
       <Button fx:id="profile1Button" layoutX="174.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile1ButtonAction" text="Profile 1" visible="false" />
       <Button fx:id="profile2Button" layoutX="244.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile2Button" text="Profile 2" visible="false" />
-      <MenuButton fx:id="levelSelectMenu" layoutX="315.0" layoutY="198.0" mnemonicParsing="false" text="Level" visible="false">
+      <MenuButton fx:id="levelSelectMenu" contentDisplay="CENTER" layoutX="315.0" layoutY="198.0" mnemonicParsing="false" text="Level" visible="false">
         <items>
           <MenuItem fx:id="level1MenuItem" mnemonicParsing="false" onAction="#level1Selected" text="1" visible="false" />
             <MenuItem fx:id="level2MenuItem" mnemonicParsing="false" onAction="#level2Selected" text="2" visible="false" />
@@ -50,5 +50,32 @@
       <Button fx:id="profile3Button" layoutX="313.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile3Button" text="Profile 3" visible="false" />
       <Button fx:id="profile4Button" layoutX="380.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile4Button" text="Profile 4" visible="false" />
       <Button fx:id="profile5Button" layoutX="451.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleProfile5Button" text="Profile 5" visible="false" />
+      <Label fx:id="leaderboardLabel" alignment="CENTER" layoutX="-9.0" layoutY="166.0" prefHeight="27.0" prefWidth="707.0" text="Select Level" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="leaderboardLevel1Button" layoutX="318.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleLevel1LeaderboardAction" text="Level 1" visible="false" />
+      <Button fx:id="leaderboardLevel2Button" layoutX="318.0" layoutY="242.0" mnemonicParsing="false" onAction="#handleLevel2LeaderboardAction" text="Level 2" visible="false" />
+      <Button fx:id="leaderboardLevel3Button" layoutX="318.0" layoutY="273.0" mnemonicParsing="false" onAction="#handleLevel3LeaderboardAction" text="Level 3" visible="false" />
+      <Button fx:id="leaderboardLevel4Button" layoutX="318.0" layoutY="303.0" mnemonicParsing="false" onAction="#handleLevel4LeaderboardAction" text="Level 4" visible="false" />
+      <Button fx:id="leaderboardLevel5Button" layoutX="318.0" layoutY="332.0" mnemonicParsing="false" onAction="#handleLevel5LeaderboardAction" text="Level 5" visible="false" />
+      <Button fx:id="leaderboardButton" layoutX="14.0" layoutY="423.0" mnemonicParsing="false" onAction="#handleLeaderboardButtonAction" prefHeight="46.0" prefWidth="85.0" text="Leaderboard" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="422.0" mnemonicParsing="false" onAction="#handleBackButtonAction" prefHeight="46.0" prefWidth="85.0" text="Back" visible="false" />
+      <Label fx:id="firstTimeLabel" alignment="CENTER" ellipsisString="" layoutX="-5.0" layoutY="200.0" prefHeight="46.0" prefWidth="707.0" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="secondTimeLabel" alignment="CENTER" ellipsisString="" layoutX="-5.0" layoutY="232.0" prefHeight="46.0" prefWidth="707.0" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="thirdTimeLabel" alignment="CENTER" ellipsisString="" layoutX="-5.0" layoutY="263.0" prefHeight="46.0" prefWidth="707.0" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
