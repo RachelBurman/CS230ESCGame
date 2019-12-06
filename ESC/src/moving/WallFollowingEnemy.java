@@ -1,7 +1,8 @@
-package application;
+package moving;
 
 import java.io.File;
 
+import application.Cell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import moving.NonTargetingEnemy;

@@ -73,6 +73,7 @@ public class LevelLoader {
 		}
 	}
 	// NEW Getting WallFollowingEnemy (1,7,1)
+	// (2,1,1), (21,5,1), (1,13,1), (1,14,1) (3,18,1)
 		public static int[] getWallFollowingEnemy(String file) {
 			try {
 				File f = new File(file);

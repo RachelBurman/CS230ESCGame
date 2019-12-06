@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import moving.DumbTargetingEnemy;
 import moving.Player;
 import moving.StraightLineEnemy;
+import moving.WallFollowingEnemy;
 
 public class Map {
 	Cell[][] mapActual;
