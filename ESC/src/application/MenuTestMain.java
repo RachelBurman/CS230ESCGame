@@ -15,9 +15,6 @@ import javafx.scene.image.ImageView;
 
 public class MenuTestMain extends Application {
 
-	@FXML private MenuItem profile1;
-	@FXML private MenuItem profile2;
-
 	public void start(Stage primaryStage) {
 		try {
 			Pane root = (Pane)FXMLLoader.load(getClass().getResource("TestMenu.fxml"));
