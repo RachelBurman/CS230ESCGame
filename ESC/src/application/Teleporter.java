@@ -14,7 +14,7 @@ public class Teleporter extends Cell {
 		int info[] =LevelLoader.getTeleporter(file);
 		this.playerPass = true;
 		this.enemyPass = false;
-		File fileA = new File("./src/teleporter.png");
+		File fileA = new File("ESC/src/teleporter.png");
 		Image image = new Image(fileA.toURI().toString());
 		super.cellView = new ImageView(image);
 		super.cellView.setFitHeight(CELL_SIZE);

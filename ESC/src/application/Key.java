@@ -15,13 +15,13 @@ public class Key extends Cell {
 		this.enemyPass = false;
 		Image keyImage = null;
 		if (name.equalsIgnoreCase("red")) {
-			File file = new File("./src/redkey.png");
+			File file = new File("ESC/src/redkey.png");
 			keyImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue")) {
-			File file = new File("./src/bluekey.png");
+			File file = new File("ESC/src/bluekey.png");
 			keyImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green")) {
-			File file = new File("./src/greenkey.png");
+			File file = new File("ESC/src/greenkey.png");
 			keyImage = new Image(file.toURI().toString());
 		}
 		super.cellImage = keyImage;

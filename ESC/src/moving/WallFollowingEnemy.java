@@ -16,7 +16,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 
-		File file = new File("./src/WallFollowing.png");
+		File file = new File("ESC/src/WallFollowing.png");
 		Image image = new Image(file.toURI().toString());
 
 		this.EnemyImg = image;

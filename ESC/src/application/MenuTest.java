@@ -120,19 +120,19 @@ public class MenuTest {
         		String s = "test.txt";
         		switch (levelSelectMenu.getText()) {
         		case "1" :
-        			s = "lvl1.txt";
+        			s = "ESC/lvl1.txt";
         			break;
         		case "2" :
-        			s = "lvl2.txt";
+        			s = "ESC/lvl2.txt";
         			break;
         		case "3" :
-        			s = "lvl3.txt";
+        			s = "ESC/lvl3.txt";
         			break;
         		case "4" :
-        			s = "lvl4.txt";
+        			s = "ESC/lvl4.txt";
         			break;
         		case "5" :
-        			s = "lvl5.txt";
+        			s = "ESC/lvl5.txt";
         			break;
         		default:
         			break;

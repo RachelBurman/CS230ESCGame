@@ -19,8 +19,6 @@ public class MenuTestMain extends Application {
 		try {
 			Pane root = (Pane)FXMLLoader.load(getClass().getResource("TestMenu.fxml"));
 			Scene scene = new Scene(root,707,483);
-
-			//scene.profile1.setVisible(true);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");
 			primaryStage.show();

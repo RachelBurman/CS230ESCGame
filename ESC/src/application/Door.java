@@ -15,13 +15,13 @@ public class Door extends Cell {
 		this.enemyPass = false;
 		Image doorImage = null;
 		if (name.equalsIgnoreCase("red door")) {
-			File file = new File("./src/reddoor.png");
+			File file = new File("ESC/src/reddoor.png");
 			doorImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("blue door")) {
-			File file = new File("./src/bluedoor.png");
+			File file = new File("ESC/src/bluedoor.png");
 			doorImage = new Image(file.toURI().toString());
 		} else if (name.equalsIgnoreCase("green door")) {
-			File file = new File("./src/greendoor.png");
+			File file = new File("ESC/src/greendoor.png");
 			doorImage = new Image(file.toURI().toString());
 		}
 		

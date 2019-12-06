@@ -16,7 +16,7 @@ public class DumbTargetingEnemy extends TargetingEnemy {
 		this.playerx = super.xLocation;
 		this.playery= super.yLocation;
 
-		File file = new File("./src/Dumb.png");
+		File file = new File("ESC/src/Dumb.png");
 	  Image image = new Image(file.toURI().toString());
 		this.EnemyImg = image;
 		this.EnemyView = new ImageView(this.EnemyImg);
