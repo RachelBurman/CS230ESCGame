@@ -117,7 +117,28 @@ public class MenuTest {
 	@FXML
 	private void handleStartButtonAction(ActionEvent event) {
         		Game game = new Game();
-        		game.start();
+        		String s = "test.txt";
+        		switch (levelSelectMenu.getText()) {
+        		case "1" :
+        			s = "lvl1.txt";
+        			break;
+        		case "2" :
+        			s = "lvl2.txt";
+        			break;	
+        		case "3" :
+        			s = "lvl3.txt";
+        			break;
+        		case "4" :
+        			s = "lvl4.txt";
+        			break;
+        		case "5" :
+        			s = "lvl5.txt";
+        			break;
+        		default:
+        			break;
+        		}
+        		
+        		game.start(s);
 	}
 
 	@FXML
