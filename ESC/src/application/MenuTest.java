@@ -54,7 +54,7 @@ public class MenuTest {
 	private void initialize() {
 		String s = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			if(in.hasNextLine()) {
 				s = in.nextLine();
@@ -124,7 +124,7 @@ public class MenuTest {
         			break;
         		case "2" :
         			s = "lvl2.txt";
-        			break;	
+        			break;
         		case "3" :
         			s = "lvl3.txt";
         			break;
@@ -137,13 +137,13 @@ public class MenuTest {
         		default:
         			break;
         		}
-        		
+
         		game.start(s);
 	}
 
 	@FXML
 	private void paneKeyPressed(KeyEvent event) {
-        		
+
 	}
 
 	@FXML
@@ -162,7 +162,7 @@ public class MenuTest {
 					if(!profile1MenuItem.isVisible())
 					{
 						try {
-							File outputFile = new File ("Profiles.txt");
+							File outputFile = new File ("ESC/Profiles.txt");
 							PrintWriter out = null;
 							out = new PrintWriter (outputFile);
 							out.println (profileNameBox.getText());
@@ -187,7 +187,7 @@ public class MenuTest {
 						String profile1Name = "";
 						String profile1Level = "";
 						try {
-							File f = new File("Profiles.txt");
+							File f = new File("ESC/Profiles.txt");
 							Scanner in = new Scanner(f);
 						 	profile1Name = in.nextLine();
 							in.nextLine();
@@ -199,7 +199,7 @@ public class MenuTest {
 							System.out.println("ERROR: Level File does not exist.");
 						}
 						try {
-							File outputFile = new File ("Profiles.txt");
+							File outputFile = new File ("ESC/Profiles.txt");
 							PrintWriter out = null;
 							out = new PrintWriter (outputFile);
 							out.println (profile1Name);
@@ -227,7 +227,7 @@ public class MenuTest {
 							String profile2Name = "";
 							String profile2Level = "";
 							try {
-								File f = new File("Profiles.txt");
+								File f = new File("ESC/Profiles.txt");
 								Scanner in = new Scanner(f);
 							 	profile1Name = in.nextLine();
 								profile2Name = in.nextLine();
@@ -240,7 +240,7 @@ public class MenuTest {
 								System.out.println("ERROR: Level File does not exist.");
 							}
 							try {
-								File outputFile = new File ("Profiles.txt");
+								File outputFile = new File ("ESC/Profiles.txt");
 								PrintWriter out = null;
 								out = new PrintWriter (outputFile);
 								out.println (profile1Name);
@@ -271,7 +271,7 @@ public class MenuTest {
 								String profile3Name = "";
 								String profile3Level = "";
 								try {
-									File f = new File("Profiles.txt");
+									File f = new File("ESC/Profiles.txt");
 									Scanner in = new Scanner(f);
 								 	profile1Name = in.nextLine();
 									profile2Name = in.nextLine();
@@ -285,7 +285,7 @@ public class MenuTest {
 									System.out.println("ERROR: Level File does not exist.");
 								}
 								try {
-									File outputFile = new File ("Profiles.txt");
+									File outputFile = new File ("ESC/Profiles.txt");
 									PrintWriter out = null;
 									out = new PrintWriter (outputFile);
 									out.println (profile1Name);
@@ -319,7 +319,7 @@ public class MenuTest {
 									String profile4Name = "";
 									String profile4Level = "";
 									try {
-										File f = new File("Profiles.txt");
+										File f = new File("ESC/Profiles.txt");
 										Scanner in = new Scanner(f);
 									 	profile1Name = in.nextLine();
 										profile2Name = in.nextLine();
@@ -334,7 +334,7 @@ public class MenuTest {
 										System.out.println("ERROR: Level File does not exist.");
 									}
 									try {
-										File outputFile = new File ("Profiles.txt");
+										File outputFile = new File ("ESC/Profiles.txt");
 										PrintWriter out = null;
 										out = new PrintWriter (outputFile);
 										out.println (profile1Name);
@@ -401,7 +401,7 @@ public class MenuTest {
 		String profile5Name = "";
 		String profile5Level = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 		 	profile2Name = in.nextLine();
@@ -418,7 +418,7 @@ public class MenuTest {
 		}
 
 		try {
-			File outputFile = new File ("Profiles.txt");
+			File outputFile = new File ("ESC/Profiles.txt");
 			PrintWriter out = null;
 			out = new PrintWriter (outputFile);
 			out.println (profileNameBox.getText());
@@ -466,7 +466,7 @@ public class MenuTest {
 		String profile5Name = "";
 		String profile5Level = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 		 	profile1Name = in.nextLine();
 			in.nextLine();
@@ -483,7 +483,7 @@ public class MenuTest {
 		}
 
 		try {
-			File outputFile = new File ("Profiles.txt");
+			File outputFile = new File ("ESC/Profiles.txt");
 			PrintWriter out = null;
 			out = new PrintWriter (outputFile);
 			out.println (profile1Name);
@@ -530,7 +530,7 @@ public class MenuTest {
 		String profile5Name = "";
 		String profile5Level = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 		 	profile1Name = in.nextLine();
 			profile2Name = in.nextLine();
@@ -547,7 +547,7 @@ public class MenuTest {
 		}
 
 		try {
-			File outputFile = new File ("Profiles.txt");
+			File outputFile = new File ("ESC/Profiles.txt");
 			PrintWriter out = null;
 			out = new PrintWriter (outputFile);
 			out.println (profile1Name);
@@ -594,7 +594,7 @@ public class MenuTest {
 		String profile5Name = "";
 		String profile5Level = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 		 	profile1Name = in.nextLine();
 			profile2Name = in.nextLine();
@@ -611,7 +611,7 @@ public class MenuTest {
 		}
 
 		try {
-			File outputFile = new File ("Profiles.txt");
+			File outputFile = new File ("ESC/Profiles.txt");
 			PrintWriter out = null;
 			out = new PrintWriter (outputFile);
 			out.println (profile1Name);
@@ -658,7 +658,7 @@ public class MenuTest {
 		String profile4Name = "";
 		String profile4Level = "";
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 		 	profile1Name = in.nextLine();
 			profile2Name = in.nextLine();
@@ -674,7 +674,7 @@ public class MenuTest {
 		}
 
 		try {
-			File outputFile = new File ("Profiles.txt");
+			File outputFile = new File ("ESC/Profiles.txt");
 			PrintWriter out = null;
 			out = new PrintWriter (outputFile);
 			out.println (profile1Name);
@@ -731,7 +731,7 @@ public class MenuTest {
 		level4MenuItem.setVisible(false);
 		level5MenuItem.setVisible(false);
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
@@ -775,7 +775,7 @@ public class MenuTest {
 		level4MenuItem.setVisible(false);
 		level5MenuItem.setVisible(false);
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
@@ -820,7 +820,7 @@ public class MenuTest {
 		level4MenuItem.setVisible(false);
 		level5MenuItem.setVisible(false);
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
@@ -866,7 +866,7 @@ public class MenuTest {
 		level4MenuItem.setVisible(false);
 		level5MenuItem.setVisible(false);
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
@@ -913,7 +913,7 @@ public class MenuTest {
 		level4MenuItem.setVisible(false);
 		level5MenuItem.setVisible(false);
 		try {
-			File f = new File("Profiles.txt");
+			File f = new File("ESC/Profiles.txt");
 			Scanner in = new Scanner(f);
 			in.nextLine();
 			in.nextLine();
