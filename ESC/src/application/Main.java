@@ -21,7 +21,7 @@ public class Main extends Application {
 	private static final int WINDOW_WIDTH = 800;
 
 	private static final int WINDOW_HEIGHT = 500;
-	static final String startFile = "test.txt";
+	static final String startFile = "lvl1.txt";
   private Stage primaryStage;
 
 	public void start(Stage primaryStage) {
