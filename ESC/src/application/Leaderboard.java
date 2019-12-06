@@ -8,10 +8,11 @@ import java.util.Scanner;
 
 public class Leaderboard {
 
-	public static void getLeaderboard(String levelName) {
+	public static String[] getLeaderboard(String levelName) {
 		
+		String[] timesTaken = {"","",""};
 		try {
-			File f = new File(levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -19,20 +20,21 @@ public class Leaderboard {
 			for (int i=0;i<3;i++) {
 				timeTaken = in.nextInt();
 				userName = in.next();
-				System.out.println("Place " + (i + 1) + " " + userName + " took " + timeTaken + " seconds.");
+				timesTaken[i] = (userName + " took " + timeTaken + " seconds.");
 			}
 
 			in.close();
 		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
+		return timesTaken;
 		
 	}
 	
 	public static String[][] getCurrentRecords(String levelName) {
 		
 		try {
-			File f = new File(levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			String timeTaken;
 			String userName;
@@ -61,7 +63,7 @@ public class Leaderboard {
 	public static void checkNewLevelComplete(String levelName, int timeTakenNew, String userNameNew) {
 		
 		try {
-			File f = new File(levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -104,7 +106,7 @@ public class Leaderboard {
 			
 			
 			try {
-			FileWriter writer = new FileWriter(levelName + "leaderboard.txt");
+			FileWriter writer = new FileWriter("ESC/" + levelName + "leaderboard.txt");
 			
 			String outputContent = "";
 			for (int i=0;i<3;i++) {
