@@ -215,6 +215,11 @@ public class Map {
 		}
 
 	}
+	
+	/*public void upLevel() {
+		if 
+	}
+	*/
 }
 
 
