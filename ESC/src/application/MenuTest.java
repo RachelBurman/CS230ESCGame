@@ -1024,11 +1024,12 @@ public class MenuTest {
 		leaderboardLevel4Button.setVisible(false);
 		leaderboardLevel5Button.setVisible(false);
 		firstTimeLabel.setVisible(true);
-		firstTimeLabel.setText("1:");
+		String[] bestTimes = Leaderboard.getLeaderboard("lvl1");
+		firstTimeLabel.setText("1:" + bestTimes[0]);
 		secondTimeLabel.setVisible(true);
-		secondTimeLabel.setText("2:");
+		secondTimeLabel.setText("2:" + bestTimes[1]);
 		thirdTimeLabel.setVisible(true);
-		thirdTimeLabel.setText("3:");
+		thirdTimeLabel.setText("3:" + bestTimes[2]);
 		backButton.setVisible(true);
 	}
 
@@ -1041,11 +1042,12 @@ public class MenuTest {
 		leaderboardLevel4Button.setVisible(false);
 		leaderboardLevel5Button.setVisible(false);
 		firstTimeLabel.setVisible(true);
-		firstTimeLabel.setText("1:");
+		String[] bestTimes = Leaderboard.getLeaderboard("lvl2");
+		firstTimeLabel.setText("1:" + bestTimes[0]);
 		secondTimeLabel.setVisible(true);
-		secondTimeLabel.setText("2");
+		secondTimeLabel.setText("2:" + bestTimes[1]);
 		thirdTimeLabel.setVisible(true);
-		thirdTimeLabel.setText("3:");
+		thirdTimeLabel.setText("3:" + bestTimes[2]);
 		backButton.setVisible(true);
 	}
 
@@ -1058,11 +1060,12 @@ public class MenuTest {
 		leaderboardLevel4Button.setVisible(false);
 		leaderboardLevel5Button.setVisible(false);
 		firstTimeLabel.setVisible(true);
-		firstTimeLabel.setText("1:");
+		String[] bestTimes = Leaderboard.getLeaderboard("lvl3");
+		firstTimeLabel.setText("1:" + bestTimes[0]);
 		secondTimeLabel.setVisible(true);
-		secondTimeLabel.setText("2:");
+		secondTimeLabel.setText("2:" + bestTimes[1]);
 		thirdTimeLabel.setVisible(true);
-		thirdTimeLabel.setText("3");
+		thirdTimeLabel.setText("3:" + bestTimes[2]);
 		backButton.setVisible(true);
 	}
 
@@ -1075,11 +1078,12 @@ public class MenuTest {
 		leaderboardLevel4Button.setVisible(false);
 		leaderboardLevel5Button.setVisible(false);
 		firstTimeLabel.setVisible(true);
-		firstTimeLabel.setText("1:");
+		String[] bestTimes = Leaderboard.getLeaderboard("lvl4");
+		firstTimeLabel.setText("1:" + bestTimes[0]);
 		secondTimeLabel.setVisible(true);
-		secondTimeLabel.setText("2:");
+		secondTimeLabel.setText("2:" + bestTimes[1]);
 		thirdTimeLabel.setVisible(true);
-		thirdTimeLabel.setText("3:");
+		thirdTimeLabel.setText("3:" + bestTimes[2]);
 		backButton.setVisible(true);
 	}
 
@@ -1092,11 +1096,12 @@ public class MenuTest {
 		leaderboardLevel4Button.setVisible(false);
 		leaderboardLevel5Button.setVisible(false);
 		firstTimeLabel.setVisible(true);
-		firstTimeLabel.setText("1:");
+		String[] bestTimes = Leaderboard.getLeaderboard("lvl5");
+		firstTimeLabel.setText("1:" + bestTimes[0]);
 		secondTimeLabel.setVisible(true);
-		secondTimeLabel.setText("2:");
+		secondTimeLabel.setText("2:" + bestTimes[1]);
 		thirdTimeLabel.setVisible(true);
-		thirdTimeLabel.setText("3:");
+		thirdTimeLabel.setText("3:" + bestTimes[2]);
 		backButton.setVisible(true);
 	}
 
