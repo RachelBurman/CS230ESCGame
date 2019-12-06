@@ -17,15 +17,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 
-public class Game /*extends Application*/ {
+public class Game extends Application {
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
-	static String startFile = "test.txt";
+	static String startFile;
 	private Stage primaryStage;
 
 	//public void start(Stage primaryStage) {
   public void start(String startFile) {
 	  	Stage primaryStage = new Stage();
+	  	this.startFile = startFile;
 		BorderPane root = new BorderPane();
 		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
@@ -33,7 +34,7 @@ public class Game /*extends Application*/ {
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-		MapManager.sharedMapManager().setMap(new Map(startFile));
+		MapManager.sharedMapManager().setMap(new Map(this.startFile));
 		
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));	
@@ -220,13 +221,19 @@ public class Game /*extends Application*/ {
 			System.out.println("Game OVer");
 			restart();
 		}
-
 		drawGame(grid);
 
 	}
 	public void restart() {
 		Map newMap = new Map(startFile);
+		
 		MapManager.sharedMapManager().setMap(newMap);
+	}
+
+	@Override
+	public void start(Stage arg0) throws Exception {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

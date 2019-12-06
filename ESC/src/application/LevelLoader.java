@@ -181,6 +181,10 @@ public class LevelLoader {
 						level[newX][newY] = new Flipper("flippers", newX, newY);
 					} else if (s.charAt(newX) == 'T') {
 						level[newX][newY] = new Token("token", newX, newY);
+					} else if (s.charAt(newX) == '2') {
+						level[newX][newY] = new Token("2 door", newX, newY);
+					} else if (s.charAt(newX) == '3') {
+						level[newX][newY] = new Token("3 door", newX, newY);
 					} else if (s.charAt(newX) == 'U') {
 						level[newX][newY] = new TokenDoor("token door", newX, newY);
 					} else if (s.charAt(newX) == 'S') {
