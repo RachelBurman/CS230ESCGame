@@ -73,6 +73,7 @@ public class LevelLoader {
 		}
 	}
 	// NEW Getting WallFollowingEnemy (1,7,1)
+	// (2,1,1), (21,5,1), (1,13,1), (1,14,1) (3,18,1)
 		public static int[] getWallFollowingEnemy(String file) {
 			try {
 				File f = new File(file);
@@ -105,7 +106,7 @@ public class LevelLoader {
 				in.nextLine();
 			}
 			int[] info = new int[2];
-			System.out.println(info[0]+ " a" + info[1] +"I'm in levelloader dumb"); 
+			//System.out.println(info[0]+ " a" + info[1] +"I'm in levelloader dumb"); 
 			info[0] = in.nextInt();
 			info[1] = in.nextInt();
 			in.close();
@@ -123,7 +124,7 @@ public class LevelLoader {
 			try {
 				File f = new File(file);
 				Scanner in = new Scanner(f);
-				for (int i=0; i<11;i++) {
+				for (int i=0; i<12;i++) {
 					in.nextLine();
 				}
 				int[] info = new int[4];
@@ -152,6 +153,7 @@ public class LevelLoader {
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
 				String s = in.nextLine();
+				//System.out.println(s);
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", newX, newY);

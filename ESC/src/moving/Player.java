@@ -44,8 +44,20 @@ public class Player extends Movable {
 	public void teleport() {
 		int newX= mapActual[getXLocation()][getYLocation()].getLinkX();
 		int newY= mapActual[getXLocation()][getYLocation()].getLinkY();
-		this.xLocation = newX;
-		this.yLocation = newY;
+		if (facing == 'u') {
+			this.xLocation = newX;
+			this.yLocation = newY-1;
+		} else if (facing == 'd') {
+			this.xLocation = newX;
+			this.yLocation = newY+1;
+		} else if (facing == 'r') {
+			this.xLocation = newX+1;
+			this.yLocation = newY;
+		} else if (facing == 'l') {
+			this.xLocation = newX-1;
+			this.yLocation = newY;
+		}
+		
 	}
 	
 	public void addToken() {

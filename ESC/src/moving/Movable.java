@@ -11,6 +11,7 @@ public abstract class Movable {
 	protected Cell[][] mapActual;
 	protected Map map;
 	final int CELL_SIZE= 32;
+	protected char facing;
 	
 	public Movable(String name, Cell[][] mapActual) {
 		this.name = name;
@@ -47,23 +48,27 @@ public abstract class Movable {
 	public void moveUp() {
 		if (validMove(xLocation, yLocation-1)) {
 			this.yLocation = yLocation-1;
+			this.facing = 'u';
 		}
 	}
 	
 	public void moveDown() {
 		if (validMove(xLocation, yLocation+1)) {
 			this.yLocation = yLocation+1;
+			this.facing = 'd';
 		}
 	}
 	public void moveRight() {
 		if (validMove(xLocation+1, yLocation)) {
 			this.xLocation = xLocation+1;
+			this.facing = 'r';
 		}
 	}
 	
 	public void moveLeft() {
 		if (validMove(xLocation-1, yLocation)) {
 			this.xLocation = xLocation-1;
+			this.facing = 'l';
 		}
 	}
 	
