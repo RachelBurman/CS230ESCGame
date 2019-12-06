@@ -1,8 +1,12 @@
 package application;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import moving.DumbTargetingEnemy;
 import moving.Player;
 import moving.StraightLineEnemy;
@@ -134,26 +138,53 @@ public class Map {
 		String cellName =this.getCell(nextX, nextY).getName();
 		Cell nextCell = this.getCell(nextX, nextY);
 		Player player = this.getPlayer1();
-
+		
+		
 		if (cellName.equalsIgnoreCase("red door") && player.getRedKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusRedKey();
+			
+			Map.playDoorNoise();
+
+			
 		} else if (cellName.equalsIgnoreCase("green door") && player.getGreenKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusGreenKey();
+			
+			Map.playDoorNoise();
+
+			
 		} else if (cellName.equalsIgnoreCase("blue door") && player.getBlueKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusBlueKey();
+			
+			Map.playDoorNoise();
+
+			
 		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() == 2) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.takeTokens();
+			
+			Map.playDoorNoise();
+			
+
 		}
 
 	}
+	
+	private static void playDoorNoise() {
+		String musicFileLocation = "./src/jail_cell_door.mp3";     
+
+		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
+		
+		mediaPlayer.play();
+	}
+	
 	public void doAction() {
 		int playerXLocation = this.getPlayer1().getxLocation();
 		int playerYLocation = this.getPlayer1().getyLocation();

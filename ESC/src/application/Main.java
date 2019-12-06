@@ -17,14 +17,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 
-public class Main extends Application {
+public class Main /*extends Application*/ {
 	private static final int WINDOW_WIDTH = 800;
 
 	private static final int WINDOW_HEIGHT = 500;
-	static final String startFile = "test.txt";
+	static final String startFile = "lvl1.txt";
   private Stage primaryStage;
 
-	public void start(Stage primaryStage) {
+	//public void start(Stage primaryStage) {
+  public void start() {
+	  Stage primaryStage = new Stage();
 		BorderPane root = new BorderPane();
 		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
@@ -230,6 +232,6 @@ public class Main extends Application {
 
 
 	public static void main(String[] args) {
-		launch(args);
+		//launch(args);
 	}
 }
