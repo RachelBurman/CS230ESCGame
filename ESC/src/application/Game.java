@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import moving.DumbTargetingEnemy;
 import moving.Player;
 import moving.StraightLineEnemy;
+import moving.WallFollowingEnemy;
 
 public class Game {
 	private int windowWidth;
@@ -24,6 +25,7 @@ public class Game {
 	private String startFile;
 	
 	
+	
 	public  Game(Stage primaryStage, int windowWidth, int windowHeight, String startFile) {
 		this.primaryStage = primaryStage;
 		this.windowHeight = windowHeight;
@@ -33,15 +35,18 @@ public class Game {
 	}
 	
 	public void startGame() {
+		BorderPane root = new BorderPane();
+		root.setTop(makeHBox());
+		GridPane grid = new GridPane();
+		root.setCenter(grid);
+		grid.setAlignment(Pos.CENTER);
+		Scene scene = new Scene(root, 800, 500);
+
 		MapManager.sharedMapManager().setMap(new Map(startFile));
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));
+		
+		// Register an event handler for key presses
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));	
 		drawGame(grid);
-		try {
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 	}
 	

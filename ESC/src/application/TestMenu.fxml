@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneKeyPressed" prefHeight="483.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MenuTest">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#paneKeyPressed" prefHeight="483.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuTest">
    <children>
       <Button fx:id="playButton" layoutX="259.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleStartButtonAction" prefHeight="46.0" prefWidth="178.0" text="Play" visible="false" />
       <Label fx:id="testLabel" alignment="CENTER" ellipsisString="" layoutX="255.0" layoutY="277.0" prefHeight="17.0" prefWidth="178.0" />

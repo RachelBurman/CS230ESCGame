@@ -25,18 +25,7 @@ public class Main extends Application {
   private Stage primaryStage;
 
 	public void start(Stage primaryStage) {
-		BorderPane root = new BorderPane();
-		root.setTop(makeHBox());
-		GridPane grid = new GridPane();
-		root.setCenter(grid);
-		grid.setAlignment(Pos.CENTER);
-		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
-
-		MapManager.sharedMapManager().setMap(new Map(startFile));
 		
-		// Register an event handler for key presses
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));	
-		drawGame(grid);
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.show();

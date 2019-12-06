@@ -1,4 +1,6 @@
-/*import javafx.application.Application;
+package application;
+
+import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -18,7 +20,7 @@ public class MenuTestMain extends Application {
 
 	public void start(Stage primaryStage) {
 		try {
-			Pane root = (Pane)FXMLLoader.load(getClass().getResource("/TestMenu.fxml"));
+			Pane root = (Pane)FXMLLoader.load(getClass().getResource("TestMenu.fxml"));
 			Scene scene = new Scene(root,707,483);
 
 			//scene.profile1.setVisible(true);
@@ -34,4 +36,4 @@ public class MenuTestMain extends Application {
 		launch(args);
 	}
 }
-*/
+
