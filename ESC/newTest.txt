@@ -1,0 +1,14 @@
+Size 32 8
+Start 1 1
+StraightEnemy 25 5 2
+WallEnemy 14 5 2
+Dumb Enemy 
+Teleporter 3 4 30 6
+################################
+# #   #######WWWGWWW#I         #            
+# # #   E   #WWWWWWW###### ### #            
+# # ####### #WWWWWWW#        # #
+# #S#       ###   ##########D# #
+# ###FFF#####       W        # #
+#          H#       W        #S#
+################################SiSize

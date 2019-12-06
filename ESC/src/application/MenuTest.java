@@ -116,34 +116,34 @@ public class MenuTest {
 
 	@FXML
 	private void handleStartButtonAction(ActionEvent event) {
-        		testLabel.setText("Pressed");
+        		Game game = new Game();
+        		String s = "test.txt";
+        		switch (levelSelectMenu.getText()) {
+        		case "1" :
+        			s = "lvl1.txt";
+        			break;
+        		case "2" :
+        			s = "lvl2.txt";
+        			break;	
+        		case "3" :
+        			s = "lvl3.txt";
+        			break;
+        		case "4" :
+        			s = "lvl4.txt";
+        			break;
+        		case "5" :
+        			s = "lvl5.txt";
+        			break;
+        		default:
+        			break;
+        		}
+        		
+        		game.start(s);
 	}
 
 	@FXML
 	private void paneKeyPressed(KeyEvent event) {
-        		switch (event.getCode()) {
-
-		    case RIGHT:
-		    	// Right key was pressed. So move the player right by one cell.
-	        	testLabel.setText("Right");
-	        	break;
-		    case LEFT:
-		    	// Right key was pressed. So move the player right by one cell.
-	        	testLabel.setText("Left");
-	        	break;
-		    case UP:
-		    	// Right key was pressed. So move the player right by one cell.
-	        	testLabel.setText("Up");
-	        	break;
-		    case DOWN:
-		    	// Right key was pressed. So move the player right by one cell.
-	        	testLabel.setText("Down");
-	        	break;
-	        default:
-	        	// Do nothing
-	        	break;
-		}
-		event.consume();
+        		
 	}
 
 	@FXML
