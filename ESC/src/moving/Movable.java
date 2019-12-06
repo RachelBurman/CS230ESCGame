@@ -10,7 +10,7 @@ public abstract class Movable {
 	protected int yLocation;
 	protected Cell[][] mapActual;
 	protected Map map;
-	final int CELL_SIZE= 32;
+	final int CELL_SIZE= 50;
 	protected char facing;
 	
 	public Movable(String name, Cell[][] mapActual) {

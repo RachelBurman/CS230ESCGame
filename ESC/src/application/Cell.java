@@ -12,7 +12,7 @@ public class Cell {
 	String name;
 	Image cellImage;
 	ImageView cellView;
-	final int CELL_SIZE= 32;
+	final int CELL_SIZE= 50;
 	int xCoordinate;
 	int yCoordinate;
 	boolean playerPass;
