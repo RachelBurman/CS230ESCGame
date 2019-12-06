@@ -8,6 +8,8 @@ import application.LevelLoader;
 import application.Map;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 public class Player extends Movable {
@@ -105,6 +107,7 @@ public class Player extends Movable {
 	}
 	public void minusRedKey() {
 		this.redKey = redKey-1;
+
 	}
 	
 	public void minusBlueKey() {
