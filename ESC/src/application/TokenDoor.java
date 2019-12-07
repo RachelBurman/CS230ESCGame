@@ -5,9 +5,20 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/*
+* This class represents a token door at coordinates x and y
+* @author Group 31 
+* @version 3.0
+*/
 public class TokenDoor extends Cell {
 	int tokensNeeded;
 
+	/*
+	* Creates a token door at the given x and y coordinates
+	* @param name used to identify how many tokens it takes to open the token door
+	* @param xCoordinate the x coordinate of a token door
+	* @param yCoordinate the y coordinate of a token door
+	*/
 	public TokenDoor(String name, int xCoordinate, int yCoordinate) {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = false;
@@ -30,6 +41,11 @@ public class TokenDoor extends Cell {
 		super.cellView.setFitWidth(CELL_SIZE);
 		
 	}
+	
+	/*
+	* Gets the image view of a token door
+	* @param image viewer class type of a token door
+	*/
 	public ImageView getTokenDoorView() {
 		
 		return super.getView();
