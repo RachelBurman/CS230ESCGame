@@ -90,7 +90,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 				if (upOfEnemyIsGround == false) { 
 					if (rightOfEnemyIsGround == false) {
 						this.facing = 'd';
-						this.yLocation++;
+						//this.yLocation++;
+						moveY(this.xLocation,this.yLocation,this.facing);		
+
 					} else {
 						this.facing = 'r';
 						moveX(this.xLocation,this.yLocation,this.facing);		
@@ -115,7 +117,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 				} else if (rightOfEnemyIsGround == false) {
 					this.facing = 'd';
-					this.yLocation++;
+					//this.yLocation++;
+					moveY(this.xLocation,this.yLocation,this.facing);		
+
 
 				} else if (downOfEnemyIsGround == false) {
 					this.facing = 'l';
@@ -123,15 +127,15 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 				}
 			}
 
-		}
-
-		if(this.facing == 'd') {
+		} else if(this.facing == 'd') {
 
 			if (rightOfEnemyIsGround == false) { 
 				if (downOfEnemyIsGround == false) {
 					if (leftOfEnemyIsGround == false) {
 						this.facing = 'u';
-						this.yLocation--;
+						//this.yLocation--;
+						moveY(this.xLocation,this.yLocation,this.facing);		
+
 					} else {
 						this.facing = 'l';
 						moveX(this.xLocation,this.yLocation,this.facing);		
@@ -156,7 +160,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 				} else if (leftOfEnemyIsGround = false) {
 					this.facing = 'u';
-					this.yLocation--;
+					//this.yLocation--;
+					moveY(this.xLocation,this.yLocation,this.facing);		
+
 
 				} else if (upOfEnemyIsGround == false) {
 					this.facing = 'r';
@@ -211,7 +217,8 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 				if (leftOfEnemyIsGround == false) { 
 					if (upOfEnemyIsGround == false) {
 						this.facing = 'r';
-						this.xLocation++;
+						//this.xLocation++;
+						moveX(this.xLocation, this.yLocation,this.facing);
 					} else {
 						this.facing = 'u';
 						moveY(this.xLocation,this.yLocation,this.facing);		
@@ -220,7 +227,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 					if(leftDownOfEnemyIsGround == true) {		
 						this.xLocation--;
 						this.yLocation++;
-						
+
 
 						this.facing = 'd';
 						//facingWillNotChange = true;
@@ -238,7 +245,8 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 				} else if (upOfEnemyIsGround == false) {
 					this.facing = 'r';
-					this.xLocation++;
+					//this.xLocation++;
+					moveX(this.xLocation,this.yLocation,this.facing);		
 
 
 				} else if (rightOfEnemyIsGround == false) {
@@ -246,15 +254,15 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 					moveY(this.xLocation,this.yLocation,this.facing);		
 				}
 			}
-		}
-
-		if(this.facing == 'r') {
+		} else if(this.facing == 'r') {
 
 			if (upOfEnemyIsGround == false) { 
 				if (rightOfEnemyIsGround == false) { 
 					if (downOfEnemyIsGround == false) {
 						this.facing = 'l';
-						this.xLocation--;
+						//this.xLocation--;
+						moveX(this.xLocation,this.yLocation,this.facing);		
+
 					} else {
 						this.facing = 'd';
 						moveY(this.xLocation,this.yLocation,this.facing);		
@@ -263,7 +271,7 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 					if(rightUpOfEnemyIsGround == true) {		
 						this.xLocation++;
 						this.yLocation--;
-						
+
 
 						this.facing = 'u';
 
@@ -281,7 +289,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 				} else if (downOfEnemyIsGround == false) {
 					this.facing = 'l';
-					this.xLocation--;
+					//this.xLocation--;
+					moveY(this.xLocation,this.yLocation,this.facing);		
+
 
 
 				} else if (leftOfEnemyIsGround == false) {

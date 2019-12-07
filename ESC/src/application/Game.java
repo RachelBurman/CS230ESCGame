@@ -1,6 +1,10 @@
 package application;
 
 import java.awt.TextField;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -18,13 +22,18 @@ import javafx.scene.layout.HBox;
 
 
 public class Game extends Application {
+	private static final String PROFILES_FILE = "./Profiles.txt";
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
-	static String startFile;
-	private Stage primaryStage;
+	private static String startFile;
+	private static long startTime;
+	private static String profile;
+	private static String username;
 
 	//public void start(Stage primaryStage) {
-  public void start(String startFile) {
+  public void start(String startFile, String profile, String username) {
+	  	this.profile = profile;
+	  	this.username = username;
 	  	Stage primaryStage = new Stage();
 	  	this.startFile = startFile;
 		BorderPane root = new BorderPane();
@@ -39,6 +48,7 @@ public class Game extends Application {
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));	
 		drawGame(grid);
+                startTime = System.nanoTime();
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");
@@ -226,37 +236,231 @@ public class Game extends Application {
 	}
 	public static void restart() {
 		
-		Map newMap = new Map(startFile);
-		
-		MapManager.sharedMapManager().setMap(newMap);
+            startTime = System.nanoTime();
+          
+            Map newMap = new Map(startFile);	
+            MapManager.sharedMapManager().setMap(newMap);
+            
 	}
 	
 	public static void upLevel() {
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
+                
+                long endTime = System.nanoTime();
+                long duration;
+                duration = (endTime - startTime) / 1000000000;
+                
+                Map map = MapManager.sharedMapManager().getMap();
+                
 		if (current.getName().equalsIgnoreCase("goal")){
 			switch(startFile) {
 			
 			case "./lvl1.txt" :
+				updateProfileLevel(profile);
+                            Leaderboard.checkNewLevelComplete("lvl1", (int)duration, username);
 				startFile = "./lvl2.txt";
 				break;
 			case "./lvl2.txt" :
+				updateProfileLevel(profile);
+                            Leaderboard.checkNewLevelComplete("lvl2", (int)duration, username);
 				startFile = "./lvl3.txt";
 				break;
 			case "./lvl3.txt" :
+				updateProfileLevel(profile);
+                            Leaderboard.checkNewLevelComplete("lvl3", (int)duration, username);
 				startFile = "./lvl4.txt";
 				break;
 			case "./lvl4.txt" :
+				updateProfileLevel(profile);
+                            Leaderboard.checkNewLevelComplete("lvl4", (int)duration, username);
 				startFile = "./lvl5.txt";
 				break;
 			default :
+                            Leaderboard.checkNewLevelComplete("lvl5", (int)duration, username);
 				break;
 			}
 			restart();
 		}
 	}
 
+	private static void updateProfileLevel(String user)
+	{
+		String line = "";
+		int howManyProfiles = 0;
+		String profile1Name = "";
+        int profile1Level = 0;
+        String profile2Name = "";
+        int profile2Level = 0;
+        String profile3Name = "";
+        int profile3Level = 0;
+        String profile4Name = "";
+        int profile4Level = 0;
+        String profile5Name = "";
+        int profile5Level = 0;
+        try {
+            File f = new File(PROFILES_FILE);
+            Scanner in = new Scanner(f);
+            if ( in .hasNextLine()) {
+            	profile1Name = in .nextLine();
+            	howManyProfiles++;
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile2Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile3Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile4Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile5Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if (howManyProfiles>0) {
+            	profile1Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>1) {
+            	profile2Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>2) {
+            	profile3Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>3) {
+            	profile4Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>4) {
+            	profile5Level = in .nextInt();
+            }
+        } catch (FileNotFoundException exception) {
+            System.out.println("ERROR: Level File does not exist.");
+        }
+		switch(user) {
+		case "Profile 1" :
+	        try {
+	            File outputFile = new File(PROFILES_FILE);
+	            PrintWriter out = null;
+	            out = new PrintWriter(outputFile);
+	            out.println(profile1Name);
+	            out.println(profile2Name);
+	            out.println(profile3Name);
+	            out.println(profile4Name);
+	            out.println(profile5Name);
+	            out.println(profile1Level+1);
+	            out.println(profile2Level);
+	            out.println(profile3Level);
+	            out.println(profile4Level);
+	            out.println(profile5Level);
+	            out.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("ERROR: Level File does not exist");
+	        }
+			break;
+		case "Profile 2" :
+	        try {
+	            File outputFile = new File(PROFILES_FILE);
+	            PrintWriter out = null;
+	            out = new PrintWriter(outputFile);
+	            out.println(profile1Name);
+	            out.println(profile2Name);
+	            out.println(profile3Name);
+	            out.println(profile4Name);
+	            out.println(profile5Name);
+	            out.println(profile1Level);
+	            out.println(profile2Level+1);
+	            out.println(profile3Level);
+	            out.println(profile4Level);
+	            out.println(profile5Level);
+	            out.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("ERROR: Level File does not exist");
+	        }
+			break;
+		case "Profile 3" :
+			try {
+	            File outputFile = new File(PROFILES_FILE);
+	            PrintWriter out = null;
+	            out = new PrintWriter(outputFile);
+	            out.println(profile1Name);
+	            out.println(profile2Name);
+	            out.println(profile3Name);
+	            out.println(profile4Name);
+	            out.println(profile5Name);
+	            out.println(profile1Level);
+	            out.println(profile2Level);
+	            out.println(profile3Level+1);
+	            out.println(profile4Level);
+	            out.println(profile5Level);
+	            out.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("ERROR: Level File does not exist");
+	        }
+			break;
+		case "Profile 4" :
+			try {
+	            File outputFile = new File(PROFILES_FILE);
+	            PrintWriter out = null;
+	            out = new PrintWriter(outputFile);
+	            out.println(profile1Name);
+	            out.println(profile2Name);
+	            out.println(profile3Name);
+	            out.println(profile4Name);
+	            out.println(profile5Name);
+	            out.println(profile1Level);
+	            out.println(profile2Level);
+	            out.println(profile3Level);
+	            out.println(profile4Level+1);
+	            out.println(profile5Level);
+	            out.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("ERROR: Level File does not exist");
+	        }
+			break;
+		case "Profile 5" :
+			try {
+	            File outputFile = new File(PROFILES_FILE);
+	            PrintWriter out = null;
+	            out = new PrintWriter(outputFile);
+	            out.println(profile1Name);
+	            out.println(profile2Name);
+	            out.println(profile3Name);
+	            out.println(profile4Name);
+	            out.println(profile5Name);
+	            out.println(profile1Level);
+	            out.println(profile2Level);
+	            out.println(profile3Level);
+	            out.println(profile4Level);
+	            out.println(profile5Level+1);
+	            out.close();
+	        } catch (FileNotFoundException e) {
+	            System.out.println("ERROR: Level File does not exist");
+	        }
+			break;
+		default :
+			break;
+		}
+	}
 	@Override
 	public void start(Stage arg0) throws Exception {
 		// TODO Auto-generated method stub
