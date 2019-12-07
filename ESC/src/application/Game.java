@@ -28,9 +28,11 @@ public class Game extends Application {
 	private static long startTime;
 	private static String user;
 	private static Stage primaryStage;
+	private static String profile;
 
 	// public void start(Stage primaryStage) {
 	public void start(String startFile, String user) {
+		this.profile = profile;
 		this.user = user;
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
@@ -294,7 +296,7 @@ public class Game extends Application {
 				MapManager.sharedMapManager().setMap(null);
 				break;
 			}
-			
+
 		}
 	}
 

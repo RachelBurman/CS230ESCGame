@@ -1,3 +1,4 @@
+ESC/src/application/MenuTest.java
 package application;
 
 import javafx.application.Application;
@@ -20,38 +21,37 @@ import java.util.Scanner;
 import java.io.*;
 import java.net.*;
 
-/**
- * MenuController.java
- * @version 3.5.0
- * @author Maciej Brzyski 986076
- */
-
-/**
- * This class controls the menu, and all the actions that
- * can be done within it
- */
-
-public class MenuController {
-	//Path to the txt file holding profiles.
+public class MenuTest {
     private final String PROFILES_FILE = "./Profiles.txt";
-    @FXML private Label errorMessage;
-    @FXML private Label profileNameLabel;
-    @FXML private Label questionLabel;
-    @FXML private Label messageOfTheDayLabel;
-    @FXML private Label leaderboardLabel;
-    @FXML private Label firstTimeLabel;
-    @FXML private Label secondTimeLabel;
-    @FXML private Label thirdTimeLabel;
-    @FXML private Button createButton;
+    @FXML private Label testLabel;
     @FXML private Button playButton;
+    @FXML private MenuButton profilesMenu;
+    @FXML private MenuItem profile1MenuItem;
+    @FXML private MenuItem profile2MenuItem;
+    @FXML private MenuItem profile3MenuItem;
+    @FXML private MenuItem profile4MenuItem;
+    @FXML private MenuItem profile5MenuItem;
+    @FXML private TextField profileNameBox;
+    @FXML private Label profileNameLabel;
+    @FXML private Button createButton;
+    @FXML private Label errorMessage;
     @FXML private Button yesButton;
     @FXML private Button noButton;
+    @FXML private Label questionLabel;
     @FXML private Button profile1Button;
     @FXML private Button profile2Button;
     @FXML private Button profile3Button;
     @FXML private Button profile4Button;
     @FXML private Button profile5Button;
     @FXML private Button createProfileButton;
+    @FXML private MenuButton levelSelectMenu;
+    @FXML private MenuItem level1MenuItem;
+    @FXML private MenuItem level2MenuItem;
+    @FXML private MenuItem level3MenuItem;
+    @FXML private MenuItem level4MenuItem;
+    @FXML private MenuItem level5MenuItem;
+    @FXML private Label messageOfTheDayLabel;
+    @FXML private Label leaderboardLabel;
     @FXML private Button leaderboardLevel1Button;
     @FXML private Button leaderboardLevel2Button;
     @FXML private Button leaderboardLevel3Button;
@@ -59,41 +59,72 @@ public class MenuController {
     @FXML private Button leaderboardLevel5Button;
     @FXML private Button leaderboardButton;
     @FXML private Button backButton;
-    @FXML private MenuButton profilesMenu;
-    @FXML private MenuButton levelSelectMenu;
-    @FXML private MenuItem profile1MenuItem;
-    @FXML private MenuItem profile2MenuItem;
-    @FXML private MenuItem profile3MenuItem;
-    @FXML private MenuItem profile4MenuItem;
-    @FXML private MenuItem profile5MenuItem;
-    @FXML private MenuItem level1MenuItem;
-    @FXML private MenuItem level2MenuItem;
-    @FXML private MenuItem level3MenuItem;
-    @FXML private MenuItem level4MenuItem;
-    @FXML private MenuItem level5MenuItem;
-    @FXML private TextField profileNameBox;
-    
-    /**
-     * Runs when the menu is opened.
-     * Gets profiles from the Profiles.txt.
-     * Displays the message of the day.
-     */
+    @FXML private Label firstTimeLabel;
+    @FXML private Label secondTimeLabel;
+    @FXML private Label thirdTimeLabel;
+
     @FXML
     private void initialize() {
-        profile1MenuItem.setVisible(false);
-        profile2MenuItem.setVisible(false);
-        profile3MenuItem.setVisible(false);
-        profile4MenuItem.setVisible(false);
-        profile5MenuItem.setVisible(false);
-        getProfiles();
+        String s = "";
+        try {
+            File f = new File(PROFILES_FILE);
+            Scanner in = new Scanner(f);
+            if ( in .hasNextLine()) {
+                s = in .nextLine();
+                if (!(s.equals(""))) {
+                    profile1MenuItem.setText(s);
+                    profile1MenuItem.setVisible(true);
+                    profile2MenuItem.setVisible(false);
+                    profile3MenuItem.setVisible(false);
+                    profile4MenuItem.setVisible(false);
+                    profile5MenuItem.setVisible(false);
+                    if ( in .hasNextLine()) {
+                        s = in .nextLine();
+                        if (!(s.equals(""))) {
+                            profile2MenuItem.setText(s);
+                            profile2MenuItem.setVisible(true);
+                            profile3MenuItem.setVisible(false);
+                            profile4MenuItem.setVisible(false);
+                            profile5MenuItem.setVisible(false);
+                            if ( in .hasNextLine()) {
+                                s = in .nextLine();
+                                if (!(s.equals(""))) {
+                                    profile3MenuItem.setText(s);
+                                    profile3MenuItem.setVisible(true);
+                                    profile4MenuItem.setVisible(false);
+                                    profile5MenuItem.setVisible(false);
+                                    if ( in .hasNextLine()) {
+                                        s = in .nextLine();
+                                        if (!(s.equals(""))) {
+                                            profile4MenuItem.setText(s);
+                                            profile4MenuItem.setVisible(true);
+                                            profile5MenuItem.setVisible(false);
+                                            if ( in .hasNextLine()) {
+                                                s = in .nextLine();
+                                                if (!(s.equals(""))) {
+                                                    profile5MenuItem.setText(s);
+                                                    profile5MenuItem.setVisible(true);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (FileNotFoundException exception) {
+            System.out.println("ERROR: File not found");
+            profile1MenuItem.setVisible(false);
+            profile2MenuItem.setVisible(false);
+            profile3MenuItem.setVisible(false);
+            profile4MenuItem.setVisible(false);
+            profile5MenuItem.setVisible(false);
+        }
         messageOfTheDayLabel.setText(getMessage());
     }
 
-    /**
-     * Runs the game when the play button is pressed.
-     * Chooses the level based on what the user selected.
-     * @param event playButton pressed.
-     */
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
         Game game = new Game();
@@ -117,14 +148,15 @@ public class MenuController {
             default:
                 break;
         }
-        game.start(s, profilesMenu.getText());
+
+        game.start(s);
     }
-    
-    
-    /**
-     * Takes the user to the create profile section.
-     * @param event createProfileButton pressed.
-     */
+
+    @FXML
+    private void paneKeyPressed(KeyEvent event) {
+
+    }
+
     @FXML
     private void handleProfileButtonAction(ActionEvent event) {
         leaderboardButton.setVisible(false);
@@ -137,11 +169,6 @@ public class MenuController {
         profileNameLabel.setVisible(true);
     }
 
-    /**
-     * Creates a profile if there are slots free,
-     * otherwise displays a replace a profile section.
-     * @param event createButton pressed.
-     */
     @FXML
     private void handleCreateButtonAction(ActionEvent event) {
         if (!profile1MenuItem.isVisible()) {
@@ -345,10 +372,6 @@ public class MenuController {
         }
     }
 
-    /**
-     * Goes back to the menu without changing any profiles.
-     * @param event noButton pressed.
-     */
     @FXML
     private void handleNoButtonAction(ActionEvent event) {
         profileNameBox.setText("");
@@ -364,10 +387,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Asks the user which profile to replace, and presents him options.
-     * @param event yesButton pressed.
-     */
     @FXML
     private void handleYesButtonAction(ActionEvent event) {
         questionLabel.setVisible(true);
@@ -378,11 +397,6 @@ public class MenuController {
         profile5Button.setVisible(true);
     }
 
-    /**
-     * Replaces Profile 1 with the new profile.
-     * Goes back to the menu.
-     * @param event profile1Button pressed.
-     */
     @FXML
     private void handleProfile1ButtonAction(ActionEvent event) {
         String profile2Name = "";
@@ -447,11 +461,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Replaces Profile 2 with the new profile.
-     * Goes back to the menu.
-     * @param event profile2Button pressed.
-     */
     @FXML
     private void handleProfile2Button(ActionEvent event) {
         String profile1Name = "";
@@ -515,11 +524,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Replaces Profile 3 with the new profile.
-     * Goes back to the menu.
-     * @param event profile3Button pressed.
-     */
     @FXML
     private void handleProfile3Button(ActionEvent event) {
         String profile1Name = "";
@@ -583,11 +587,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Replaces Profile 4 with the new profile.
-     * Goes back to the menu.
-     * @param event profile4Button pressed.
-     */
     @FXML
     private void handleProfile4Button(ActionEvent event) {
         String profile1Name = "";
@@ -651,11 +650,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Replaces Profile 5 with the new profile.
-     * Goes back to the menu.
-     * @param event profile5Button pressed.
-     */
     @FXML
     private void handleProfile5Button(ActionEvent event) {
         String profile1Name = "";
@@ -719,10 +713,6 @@ public class MenuController {
         leaderboardButton.setVisible(true);
     }
 
-    /**
-     * Displays the levels menu with all levels avaliable, because the user selected guest.
-     * @param event guestMenuItem selected.
-     */
     @FXML
     private void guestSelected(ActionEvent event) {
         profilesMenu.setText("Guest");
@@ -734,13 +724,9 @@ public class MenuController {
         level5MenuItem.setVisible(true);
     }
 
-    /**
-     * Displays the levels menu with the levels avaliable to the 1st Profile. 
-     * @param event profile1MenuItem selected.
-     */
     @FXML
     private void profile1Selected(ActionEvent event) {
-        profilesMenu.setText("Profile 1");
+        profilesMenu.setText(profile1MenuItem.getText());
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -782,13 +768,9 @@ public class MenuController {
         }
     }
 
-    /**
-     * Displays the levels menu with the levels avaliable to the 2nd Profile. 
-     * @param event profile2MenuItem selected.
-     */
     @FXML
     private void profile2Selected(ActionEvent event) {
-        profilesMenu.setText("Profile 2");
+        profilesMenu.setText(profile2MenuItem.getText());
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -831,13 +813,9 @@ public class MenuController {
         }
     }
 
-    /**
-     * Displays the levels menu with the levels avaliable to the 3rd Profile. 
-     * @param event profile3MenuItem selected.
-     */
     @FXML
     private void profile3Selected(ActionEvent event) {
-        profilesMenu.setText("Profile 3");
+        profilesMenu.setText(profile3MenuItem.getText());
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -881,13 +859,9 @@ public class MenuController {
         }
     }
 
-    /**
-     * Displays the levels menu with the levels avaliable to the 4th Profile. 
-     * @param event profile4MenuItem selected.
-     */
     @FXML
     private void profile4Selected(ActionEvent event) {
-        profilesMenu.setText("Profile 4");
+        profilesMenu.setText(profile4MenuItem.getText());
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -932,13 +906,9 @@ public class MenuController {
         }
     }
 
-    /**
-     * Displays the levels menu with the levels avaliable to the 5th Profile. 
-     * @param event profile5MenuItem selected.
-     */
     @FXML
     private void profile5Selected(ActionEvent event) {
-        profilesMenu.setText("Profile 5");
+        profilesMenu.setText(profile5MenuItem.getText());
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -984,60 +954,32 @@ public class MenuController {
         }
     }
 
-    /**
-     * Changes the text in levelsMenu to "1" and makes the play button visible.
-     * @param event level1MenuItem selected.
-     */
     @FXML
     private void level1Selected(ActionEvent event) {
         levelSelectMenu.setText("1");
         playButton.setVisible(true);
     }
-    
-    /**
-     * Changes the text in levelsMenu to "2" and makes the play button visible.
-     * @param event level2MenuItem selected.
-     */
     @FXML
     private void level2Selected(ActionEvent event) {
         levelSelectMenu.setText("2");
         playButton.setVisible(true);
     }
-    
-    /**
-     * Changes the text in levelsMenu to "3" and makes the play button visible.
-     * @param event level3MenuItem selected.
-     */
     @FXML
     private void level3Selected(ActionEvent event) {
         levelSelectMenu.setText("3");
         playButton.setVisible(true);
     }
-    
-    /**
-     * Changes the text in levelsMenu to "4" and makes the play button visible.
-     * @param event level4MenuItem selected.
-     */
     @FXML
     private void level4Selected(ActionEvent event) {
         levelSelectMenu.setText("4");
         playButton.setVisible(true);
     }
-    
-    /**
-     * Changes the text in levelsMenu to "5" and makes the play button visible.
-     * @param event level5MenuItem selected.
-     */
     @FXML
     private void level5Selected(ActionEvent event) {
         levelSelectMenu.setText("5");
         playButton.setVisible(true);
     }
 
-    /**
-     * Displays the leaderboard menu.
-     * @param event leaderboardButton pressed.
-     */
     @FXML
     private void handleLeaderboardButtonAction(ActionEvent event) {
         profilesMenu.setVisible(false);
@@ -1053,10 +995,6 @@ public class MenuController {
         leaderboardLevel5Button.setVisible(true);
     }
 
-    /**
-     * Displays the level 1 leaderboard.
-     * @param event leaderboardLevel1Button pressed.
-     */
     @FXML
     private void handleLevel1LeaderboardAction(ActionEvent event) {
         leaderboardLabel.setText("Level 1 best times:");
@@ -1075,10 +1013,6 @@ public class MenuController {
         backButton.setVisible(true);
     }
 
-    /**
-     * Displays the level 2 leaderboard.
-     * @param event leaderboardLevel2Button pressed.
-     */
     @FXML
     private void handleLevel2LeaderboardAction(ActionEvent event) {
         leaderboardLabel.setText("Level 2 best times:");
@@ -1097,10 +1031,6 @@ public class MenuController {
         backButton.setVisible(true);
     }
 
-    /**
-     * Displays the level 3 leaderboard.
-     * @param event leaderboardLevel3Button pressed.
-     */
     @FXML
     private void handleLevel3LeaderboardAction(ActionEvent event) {
         leaderboardLabel.setText("Level 3 best times:");
@@ -1119,10 +1049,6 @@ public class MenuController {
         backButton.setVisible(true);
     }
 
-    /**
-     * Displays the level 4 leaderboard.
-     * @param event leaderboardLevel4Button pressed.
-     */
     @FXML
     private void handleLevel4LeaderboardAction(ActionEvent event) {
         leaderboardLabel.setText("Level 4 best times:");
@@ -1141,10 +1067,6 @@ public class MenuController {
         backButton.setVisible(true);
     }
 
-    /**
-     * Displays the level 5 leaderboard.
-     * @param event leaderboardLevel5Button pressed.
-     */
     @FXML
     private void handleLevel5LeaderboardAction(ActionEvent event) {
         leaderboardLabel.setText("Level 5 best times:");
@@ -1163,10 +1085,6 @@ public class MenuController {
         backButton.setVisible(true);
     }
 
-    /**
-     * Goes back from the leaderboard menu to the menu.
-     * @param event backButton pressed.
-     */
     @FXML
     private void handleBackButtonAction(ActionEvent event) {
         backButton.setVisible(false);
@@ -1180,63 +1098,8 @@ public class MenuController {
         leaderboardButton.setVisible(true);
         createProfileButton.setVisible(true);
     }
-    
-    /**
-     * Gets profiles from a text file. 
-     * Displays them as MenuItems in the profilesMenu.
-     */
-    private void getProfiles() {
-    	String line = "";
-    	try {
-            File f = new File(PROFILES_FILE);
-            Scanner in = new Scanner(f);
-            if ( in .hasNextLine()) {
-                line = in .nextLine();
-                if (!(line.equals(""))) {
-                    profile1MenuItem.setText(line);
-                    profile1MenuItem.setVisible(true);
-                }
-            }
-            if ( in .hasNextLine()) {
-            	line = in .nextLine();
-                if (!(line.equals(""))) {
-                	profile2MenuItem.setText(line);
-                    profile2MenuItem.setVisible(true);
-                }
-            }
-            if ( in .hasNextLine()) {
-            	line = in .nextLine();
-                if (!(line.equals(""))) {
-                	profile3MenuItem.setText(line);
-                    profile3MenuItem.setVisible(true);
-                }
-            }
-            if ( in .hasNextLine()) {
-            	line = in .nextLine();
-                if (!(line.equals(""))) {
-                	profile4MenuItem.setText(line);
-                    profile4MenuItem.setVisible(true);
-                }
-            }
-            if ( in .hasNextLine()) {
-            	line = in .nextLine();
-                if (!(line.equals(""))) {
-                	profile5MenuItem.setText(line);
-                    profile5MenuItem.setVisible(true);
-                }
-            }
-        } catch (FileNotFoundException exception) {
-            System.out.println("ERROR: File not found");
-        }
-    }
-    
-    /**
-     * Gets a String from a website.
-     * @param urlToRead the website to get the String from.
-     * @return the String from the website.
-     * @throws Exception all exceptions really.
-     */
-    private String getHTML(String urlToRead) throws Exception {
+
+    public String getHTML(String urlToRead) throws Exception {
         StringBuilder result = new StringBuilder();
         URL url = new URL(urlToRead);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -1250,18 +1113,16 @@ public class MenuController {
         return result.toString();
     }
 
-    /**
-     * Gets the message of the day using the algorithm specified.
-     * @return the message of the day.
-     */
-    private String getMessage() {
+    public String getMessage() {
         URL url = null;
         HttpURLConnection con = null;
         String s = "";
         try {
             s = getHTML("http://cswebcat.swan.ac.uk/puzzle");
         } catch (Exception exception) {
+
         }
+
         String sr = "";
         for (int i = 0; i < s.length(); i++) {
             char letter = s.charAt(i);
