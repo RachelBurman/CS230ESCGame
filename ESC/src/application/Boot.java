@@ -5,6 +5,11 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/*
+* This class represents a boot at coordinates x and y
+* @author Group 31 
+* @version 2.0
+*/
 public class Boot extends Cell {
 
 	/*
