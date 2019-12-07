@@ -118,6 +118,10 @@ public class MenuController {
                 break;
         }
         game.start(s, profilesMenu.getText());
+        profilesMenu.setText("Profiles");
+        levelSelectMenu.setText("Level");
+        levelSelectMenu.setVisible(false);
+        playButton.setVisible(false);
     }
     
     

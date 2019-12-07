@@ -19,12 +19,12 @@ public class Leaderboard {
 		try {
 			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
-			int timeTaken;
+			String timeTaken;
 			String userName;
 			
 			for (int i=0;i<3;i++) {
-				timeTaken = in.nextInt();
-				userName = in.next();
+				timeTaken = in.nextLine();
+				userName = in.nextLine();
 				timesTaken[i] = (userName + " took " + timeTaken + " seconds.");
 			}
 
