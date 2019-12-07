@@ -8,11 +8,16 @@ import java.util.Scanner;
 
 public class Leaderboard {
 
+    /*
+    * Gets the current leaderboards from the given leaderboards text file and outputs it in a formatted sentence
+    * @param levelName the name of a level you wish to checks leaderboard
+    * @return an array of seconds it took a player to complete a level and their user name
+    */
 	public static String[] getLeaderboard(String levelName) {
 		
 		String[] timesTaken = {"","",""};
 		try {
-			File f = new File("./" + levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -31,10 +36,15 @@ public class Leaderboard {
 		
 	}
 	
+        /*
+        * Gets the current leaderboard data
+        * @param levelName the name of a level you wish to checks leaderboard
+        * @retun a 2d array of each record in the leaderboard
+        */
 	public static String[][] getCurrentRecords(String levelName) {
 		
 		try {
-			File f = new File("./" + levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			String timeTaken;
 			String userName;
@@ -60,10 +70,16 @@ public class Leaderboard {
 		
 	}
 	
+        /*
+        * checks if a new user attempt at a level deserves to be on the leaderboard
+        * @param levelName the name of a level which has been comepleted
+        * @param timeTakenNew the time it took the user to complete said level
+        * @param userNameNew the user name of the player who completed said level
+        */
 	public static void checkNewLevelComplete(String levelName, int timeTakenNew, String userNameNew) {
 		
 		try {
-			File f = new File("./" + levelName + "leaderboard.txt");
+			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -106,7 +122,7 @@ public class Leaderboard {
 			
 			
 			try {
-			FileWriter writer = new FileWriter("./" + levelName + "leaderboard.txt");
+			FileWriter writer = new FileWriter("ESC/" + levelName + "leaderboard.txt");
 			
 			String outputContent = "";
 			for (int i=0;i<3;i++) {
