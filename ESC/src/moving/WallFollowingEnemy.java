@@ -218,8 +218,9 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 					}
 				} else {
 					if(leftDownOfEnemyIsGround == true) {		
-						this.yLocation++;
 						this.xLocation--;
+						this.yLocation++;
+						
 
 						this.facing = 'd';
 						//facingWillNotChange = true;
@@ -227,17 +228,15 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 
 					} else {
 						this.xLocation--;
-
-					}
-					if (leftOfEnemyIsGround == true) {
-						this.xLocation--;
-						//System.out.println("OOO WALL X Location:" + this.xLocation);
-					} else {
-						this.facing = 'u';
 					}
 				}
 			} else {
-				if (upOfEnemyIsGround == false) {
+				if (leftOfEnemyIsGround == false) {
+					this.facing = 'u';
+					moveY(this.xLocation,this.yLocation,this.facing);		
+
+
+				} else if (upOfEnemyIsGround == false) {
 					this.facing = 'r';
 					this.xLocation++;
 
@@ -245,55 +244,50 @@ public class WallFollowingEnemy extends NonTargetingEnemy {
 				} else if (rightOfEnemyIsGround == false) {
 					this.facing = 'd';
 					moveY(this.xLocation,this.yLocation,this.facing);		
+				}
+			}
+		}
+
+		if(this.facing == 'r') {
+
+			if (upOfEnemyIsGround == false) { 
+				if (rightOfEnemyIsGround == false) { 
+					if (downOfEnemyIsGround == false) {
+						this.facing = 'l';
+						this.xLocation--;
+					} else {
+						this.facing = 'd';
+						moveY(this.xLocation,this.yLocation,this.facing);		
+					}
+				} else {
+					if(rightUpOfEnemyIsGround == true) {		
+						this.xLocation++;
+						this.yLocation--;
+						
+
+						this.facing = 'u';
+
+
+					} else {
+						this.xLocation++;
+					}
+				}
+			} else {
+
+				if (rightOfEnemyIsGround == false) {
+					this.facing = 'd';
+					moveY(this.xLocation,this.yLocation,this.facing);		
 
 
 				} else if (downOfEnemyIsGround == false) {
 					this.facing = 'l';
 					this.xLocation--;
-				}
-			}
-
-			if(this.facing == 'r') {
-
-				if (upOfEnemyIsGround == false) { 
-					if (rightOfEnemyIsGround == false) { 
-						if (downOfEnemyIsGround == false) {
-							this.facing = 'l';
-							this.xLocation--;
-						} else {
-							this.facing = 'd';
-							moveY(this.xLocation,this.yLocation,this.facing);		
-						}
-					} else {
-						if(rightUpOfEnemyIsGround == true) {		
-							this.yLocation--;
-							this.xLocation++;
-
-							this.facing = 'u';
 
 
-						} else {
-							this.xLocation++;
+				} else if (leftOfEnemyIsGround == false) {
+					this.facing = 'u';
+					moveY(this.xLocation,this.yLocation,this.facing);		
 
-						}
-					}
-				} else {
-
-					if (rightOfEnemyIsGround == false) {
-						this.facing = 'd';
-						moveY(this.xLocation,this.yLocation,this.facing);		
-
-
-					} else if (downOfEnemyIsGround == false) {
-						this.facing = 'l';
-						this.xLocation--;
-
-
-					} else if (leftOfEnemyIsGround == false) {
-						this.facing = 'u';
-						moveY(this.xLocation,this.yLocation,this.facing);		
-
-					}
 				}
 			}
 		}
