@@ -248,7 +248,7 @@ public class Game extends Application {
 				startFile = "./lvl4.txt";
 				break;
 			case "./lvl4.txt" :
-				startFile = "./lvl3.txt";
+				startFile = "./lvl5.txt";
 				break;
 			default :
 				break;
