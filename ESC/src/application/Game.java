@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
@@ -21,6 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class Game extends Application {
+	
 	private static final String PROFILES_FILE = "./Profiles.txt";
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
@@ -30,12 +30,13 @@ public class Game extends Application {
 	private static Stage primaryStage;
 	private static String profile;
 
-	// public void start(Stage primaryStage) {
 	public void start(String startFile, String profile, String username) {
+		
 		this.profile = profile;
 		this.username = username;
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
+		
 		BorderPane root = new BorderPane();
 		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
@@ -49,6 +50,7 @@ public class Game extends Application {
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));
 		drawGame(grid);
 		startTime = System.nanoTime();
+		
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");
@@ -58,9 +60,11 @@ public class Game extends Application {
 		}
 
 		System.out.println("Start method ended");
+		
 	}
 
 	public HBox makeHBox() {
+		
 		HBox box = new HBox();
 		Label label = new Label(startFile);
 		box.getChildren().add(label);
@@ -69,19 +73,19 @@ public class Game extends Application {
 	}
 
 	public GridPane drawGame(GridPane grid) {
+		
 		grid.getChildren().clear();
 		Map map = MapManager.sharedMapManager().getMap();
+		
 		int scopeXmin;
 		int scopeXmax;
 		int scopeYmin;
 		int scopeYmax;
 		int width = map.getMapLength();
-
 		int height = map.getMapHeight();
 		int playerXLocation = map.getPlayer1().getxLocation();
 		int playerYLocation = map.getPlayer1().getyLocation();
-		// System.out.println(" My X is" + playerXLocation+ " My Y is" +
-		// playerYLocation);
+		
 		if (playerXLocation - 3 < 0) {
 			scopeXmin = 0;
 		} else {
@@ -117,7 +121,6 @@ public class Game extends Application {
 		Player player = map.getPlayer1();
 		StraightLineEnemy enemy1 = map.getEnemy1();
 		DumbTargetingEnemy enemy2 = map.getDummieAt(0);
-
 		WallFollowingEnemy enemy3 = map.getWallFollowAt(0);
 
 		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
@@ -145,12 +148,16 @@ public class Game extends Application {
 		}
 
 		return grid;
+		
 	}
 
 	public void processKeyEvent(KeyEvent event, GridPane grid) {
+		
 		Map map = MapManager.sharedMapManager().getMap();
+		
 		int currentX = map.getPlayer1().getxLocation();
 		int currentY = map.getPlayer1().getyLocation();
+		
 		switch (event.getCode()) {
 
 		case RIGHT:
@@ -193,7 +200,6 @@ public class Game extends Application {
 			// player.moveDown();
 
 			break;
-
 		default:
 			// Do nothing
 			break;
@@ -205,10 +211,13 @@ public class Game extends Application {
 		loseGame(grid);
 
 		event.consume();
+		
 	}
 
 	public void loseGame(GridPane grid) {
+		
 		Map map = MapManager.sharedMapManager().getMap();
+		
 		int playerXLocation = map.getPlayer1().getxLocation();
 		int playerYLocation = map.getPlayer1().getyLocation();
 		int StraightEnemyX = map.getEnemy1().getXLocation();
@@ -217,6 +226,7 @@ public class Game extends Application {
 		int DumbEnemyY = map.getDummieAt(0).getYLocation();
 		int WallFollowX = map.getWallFollowAt(0).getXLocation();
 		int WallFollowY = map.getWallFollowAt(0).getYLocation();
+		
 		if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
 			restart();
@@ -238,6 +248,7 @@ public class Game extends Application {
 			System.out.println("Game OVer");
 			restart();
 		}
+		
 		upLevel();
 		drawGame(grid);
 
@@ -253,6 +264,7 @@ public class Game extends Application {
 	}
 
 	public static void upLevel() {
+		
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
@@ -302,9 +314,11 @@ public class Game extends Application {
 			}
 
 		}
+		
 	}
 
 	private static void updateProfileLevel(String user) {
+		
 		String line = "";
 		int howManyProfiles = 0;
 		String profile1Name = "";
@@ -317,6 +331,7 @@ public class Game extends Application {
 		int profile4Level = 0;
 		String profile5Name = "";
 		int profile5Level = 0;
+		
 		try {
 			File f = new File(PROFILES_FILE);
 			Scanner in = new Scanner(f);
@@ -374,6 +389,7 @@ public class Game extends Application {
 		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
+		
 		switch (user) {
 		case "Profile 1":
 			try {
@@ -483,11 +499,14 @@ public class Game extends Application {
 	}
 
 	public Stage getGameStage() {
+		
 		return primaryStage;
+		
 	}
 
 	@Override
 	public void start(Stage arg0) throws Exception {
+		
 		// TODO Auto-generated method stub
 
 	}
