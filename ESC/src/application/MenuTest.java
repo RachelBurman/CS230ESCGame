@@ -21,7 +21,7 @@ import java.io.*;
 import java.net.*;
 
 public class MenuTest {
-    private final String PROFILES_FILE = "ESC/Profiles.txt";
+    private final String PROFILES_FILE = "./Profiles.txt";
     @FXML private Label testLabel;
     @FXML private Button playButton;
     @FXML private MenuButton profilesMenu;
