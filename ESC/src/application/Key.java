@@ -41,6 +41,11 @@ public class Key extends Cell {
 		super.cellView.setFitWidth(CELL_SIZE);
 		
 	}
+	
+	/*
+	* Gets the image view of a key cell
+	* @return the image viewer of a key cell
+	*/
 	public ImageView getKeyView() {
 		
 		return super.getView();
