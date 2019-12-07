@@ -10,23 +10,23 @@ import javafx.scene.image.ImageView;
 * @version 3.0
 */
 public class Cell {
-	String name;
-	Image cellImage;
-	ImageView cellView;
-	final int CELL_SIZE= 75;
-	int xCoordinate;
-	int yCoordinate;
-	boolean playerPass;
-	boolean enemyPass;
-	int linkX;
-	int linkY;
+	private String name;
+	private Image cellImage;
+	private ImageView cellView;
+	private final int CELL_SIZE= 75;
+	private int xCoordinate;
+	private int yCoordinate;
+	private boolean playerPass;
+	private boolean enemyPass;
+	private int linkX;
+	private int linkY;
 	
         /*
         * Sets a default cell at point x,y
         */
 	public Cell(String name, int xCoordinate, int yCoordinate ) {
-		this.name = name;
-                
+		
+		this.name = name;                
 		this.playerPass = true;
 		this.enemyPass = true;
                 
@@ -39,6 +39,7 @@ public class Cell {
                 
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
+		
 	}
 	
         /*
@@ -46,7 +47,9 @@ public class Cell {
         * @return the links x coordinate
         */
 	public int getLinkX() {
+		
 		return linkX;
+		
 	}
 
         /*
@@ -54,7 +57,9 @@ public class Cell {
         * @param linkX integer x coordinate value of a teleporter
         */
 	public void setLinkX(int linkX) {
+		
 		this.linkX = linkX;
+		
 	}
 
         /*
@@ -62,7 +67,9 @@ public class Cell {
         * @return the links y coordinate
         */
 	public int getLinkY() {
+		
 		return linkY;
+		
 	}
 
         /*
@@ -70,7 +77,9 @@ public class Cell {
          @param linkY integer y coordinate value of a teleporter
         */
 	public void setLinkY(int linkY) {
+		
 		this.linkY = linkY;
+		
 	}
 
 	/*
@@ -78,7 +87,9 @@ public class Cell {
         * @param cellImage a compiled image class type to be displayed
         */
 	public void setCellImage(Image cellImage) {
+		
 		this.cellImage = cellImage;
+		
 	}
 
         /*
@@ -86,7 +97,9 @@ public class Cell {
         * @param cellView a compiled image view class type to be displayed
         */
 	public void setCellView(ImageView cellView) {
+		
 		this.cellView = cellView;
+		
 	}
 
         /*
@@ -94,7 +107,9 @@ public class Cell {
         * @return cellImage a image class with an image already attatched
         */
 	public Image getImage( ) {
+		
 		return this.cellImage;
+		
 	}
         
         /*
@@ -102,21 +117,27 @@ public class Cell {
         * @returns cellView a image view class with an image already attatched
         */
 	public ImageView getView( ) {
+		
 		return this.cellView;
+		
 	}
 	
         /*
-        * 
+        * Gets the check to see if a player can enter a cell
         */
 	public boolean getPlayerPass () {
+		
 		return this.playerPass;
+		
 	}
         
         /*
-        *
+        * Gets the check to see if an enemy can enter a cell
         */
 	public boolean getEnemyPass () {
+		
 		return this.enemyPass;
+		
 	}
 
         /*
@@ -124,7 +145,9 @@ public class Cell {
         * @return CELL_SIZE the size of a cell in pixels
         */
 	public int getCELL_SIZE() {
+		
 		return CELL_SIZE;
+		
 	}
 
         /*
@@ -132,7 +155,9 @@ public class Cell {
         * @return xCoordinate the x coordinate of a cell
         */
 	public int getxCoordinate() {
+		
 		return xCoordinate;
+		
 	}
 
         /*
@@ -140,7 +165,9 @@ public class Cell {
         * @return yCoordinate the y coordinate of a cell
         */
 	public int getyCoordinate() {
+		
 		return yCoordinate;
+		
 	}
 
         /*
@@ -148,13 +175,16 @@ public class Cell {
         * @return name the name entered when the cell was created
         */
 	public String getName() {
+		
 		return name;
+		
 	}
 	
         /*
         * Sets the player pass to equal true
         */
 	public void changePlayerPass() {
+		
 		this.playerPass = true;
 		
 	}
@@ -162,7 +192,9 @@ public class Cell {
         * Sets the enemy pass to equal true
         */
 	public void changeEnemyPass() {
+		
 		this.enemyPass = true;
+		
 		
 	}
 	
