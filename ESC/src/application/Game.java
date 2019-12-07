@@ -20,13 +20,14 @@ import javafx.scene.layout.HBox;
 public class Game extends Application {
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
-	static String startFile;
+	String startFile;
 	private Stage primaryStage;
 
 	//public void start(Stage primaryStage) {
   public void start(String startFile) {
 	  	Stage primaryStage = new Stage();
 	  	this.startFile = startFile;
+	  	System.out.println(startFile);
 		BorderPane root = new BorderPane();
 		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
@@ -182,7 +183,7 @@ public class Game extends Application {
 			// Do nothing
 			break;
 		}
-
+		loseGame(grid);
 		map.StraightLineMove();
 		map.DumbMove();
 		map.WallFollowMove();
