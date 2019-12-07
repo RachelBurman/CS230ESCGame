@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -12,7 +11,6 @@ import javafx.scene.image.ImageView;
 */
 public class Goal extends Cell {
 
-
 	/*
 	* Creates a goal cell at the given x and y coordinates
 	* @param name the name of a goal cell
@@ -20,12 +18,15 @@ public class Goal extends Cell {
 	* @param yCoordinate the y coordinate of a goal cell
 	*/
 	public Goal(String name, int xCoordinate, int yCoordinate) {
+		
 		super(name, xCoordinate, yCoordinate);
-		// TODO Auto-generated constructor stub
+
 		this.playerPass = true;
 		this.enemyPass = false;
+		
 		File file = new File("./src/goal.png");
 		Image cellImage = new Image(file.toURI().toString());
+		
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
@@ -41,4 +42,5 @@ public class Goal extends Cell {
 		return super.getView();
 		
 	}
+	
 }
