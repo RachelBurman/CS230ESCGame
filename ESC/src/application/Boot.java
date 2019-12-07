@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -19,6 +18,7 @@ public class Boot extends Cell {
 	* @param yCoordinate the y coordinate of a boot cell
 	*/
 	public Boot(String name, int xCoordinate, int yCoordinate) {
+		
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = true;
 		this.enemyPass = false;
@@ -39,5 +39,5 @@ public class Boot extends Cell {
 		return super.getView();
 		
 	}
-
+	
 }
