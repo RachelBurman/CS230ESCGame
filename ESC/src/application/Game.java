@@ -240,20 +240,25 @@ public class Game extends Application {
 			
 			case "./lvl1.txt" :
 				startFile = "./lvl2.txt";
+				restart();
 				break;
 			case "./lvl2.txt" :
 				startFile = "./lvl3.txt";
+				restart();
 				break;
 			case "./lvl3.txt" :
 				startFile = "./lvl4.txt";
+				restart();
 				break;
 			case "./lvl4.txt" :
 				startFile = "./lvl5.txt";
+				restart();
 				break;
 			default :
+				
 				break;
 			}
-			restart();
+			
 		}
 	}
 
