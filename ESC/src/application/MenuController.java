@@ -167,7 +167,7 @@ public class MenuController {
             default:
                 break;
         }
-        game.start(s, profilesMenu.getText(), name);
+        game.start(s, profilesMenu.getText());
     }
 
     @FXML

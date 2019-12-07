@@ -29,12 +29,11 @@ public class Game extends Application {
 	private static String user;
 	private static Stage primaryStage;
 	private static String profile;
-	private static String username;
 
 	// public void start(Stage primaryStage) {
-	public void start(String startFile, String profile, String username) {
+	public void start(String startFile, String user) {
 		this.profile = profile;
-		this.username = username;
+		this.user = user;
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
 		BorderPane root = new BorderPane();
@@ -268,31 +267,35 @@ public class Game extends Application {
 			switch (startFile) {
 
 			case "./lvl1.txt":
-				updateProfileLevel(profile);
-				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, username);
+				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
+				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, user);
 				startFile = "./lvl2.txt";
 				restart();
 				break;
 			case "./lvl2.txt":
-				updateProfileLevel(profile);
-				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, username);
+				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
+				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, user);
 				startFile = "./lvl3.txt";
 				restart();
 				break;
 			case "./lvl3.txt":
-				updateProfileLevel(profile);
-				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, username);
+				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
+				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, user);
 				startFile = "./lvl4.txt";
 				restart();
 				break;
 			case "./lvl4.txt":
-				updateProfileLevel(profile);
-				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, username);
+				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
+				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, user);
 				startFile = "./lvl5.txt";
 				restart();
 				break;
 			default:
-				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, username);
+				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, user);
 				WinWindow.display(primaryStage);
 				MapManager.sharedMapManager().setMap(null);
 				break;
