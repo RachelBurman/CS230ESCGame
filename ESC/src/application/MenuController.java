@@ -1,4 +1,3 @@
-ESC/src/application/MenuTest.java
 package application;
 
 import javafx.application.Application;
@@ -21,7 +20,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.net.*;
 
-public class MenuTest {
+public class MenuController {
     private final String PROFILES_FILE = "./Profiles.txt";
     @FXML private Label testLabel;
     @FXML private Button playButton;
@@ -128,7 +127,27 @@ public class MenuTest {
     @FXML
     private void handleStartButtonAction(ActionEvent event) {
         Game game = new Game();
+        String name = "";
         String s = "./test.txt";
+        switch (profilesMenu.getText()) {
+        case "Profile 1":
+            name = profile1MenuItem.getText();
+            break;
+        case "Profile 2":
+        	name = profile2MenuItem.getText();
+            break;
+        case "Profile 3":
+        	name = profile3MenuItem.getText();
+            break;
+        case "Profile 4":
+        	name = profile4MenuItem.getText();
+            break;
+        case "Profile 5":
+        	name = profile5MenuItem.getText();;
+            break;
+        default:
+            break;
+    }
         switch (levelSelectMenu.getText()) {
             case "1":
                 s = "./lvl1.txt";
@@ -148,8 +167,7 @@ public class MenuTest {
             default:
                 break;
         }
-
-        game.start(s);
+        game.start(s, profilesMenu.getText(), name);
     }
 
     @FXML
