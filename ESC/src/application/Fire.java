@@ -11,7 +11,7 @@ public class Fire extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = true;
 		this.enemyPass = false;
-		File file = new File("ESC/src/fire.png");
+		File file = new File("./src/fire.png");
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

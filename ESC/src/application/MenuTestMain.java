@@ -17,7 +17,7 @@ public class MenuTestMain extends Application {
 
 	public void start(Stage primaryStage) {
 		try {
-			Pane root = (Pane)FXMLLoader.load(getClass().getResource("TestMenu.fxml"));
+			Pane root = (Pane)FXMLLoader.load(getClass().getResource("Menu.fxml"));
 			Scene scene = new Scene(root,707,483);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");

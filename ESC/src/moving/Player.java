@@ -28,7 +28,7 @@ public class Player extends Movable {
 		super.yLocation = location[1];
 		super.mapActual = mapActual;
 		this.mapActual = mapActual;
-		File file = new File("ESC/src/player.png");
+		File file = new File("./src/player.png");
 		Image playerImg = new Image(file.toURI().toString());
 		this.playerView = new ImageView(playerImg);
 		this.playerView.setFitHeight(CELL_SIZE);
