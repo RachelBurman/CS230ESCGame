@@ -10,16 +10,16 @@ import javafx.scene.image.ImageView;
 * @version 3.0
 */
 public class Cell {
-	private String name;
-	private Image cellImage;
-	private ImageView cellView;
-	private final int CELL_SIZE= 75;
-	private int xCoordinate;
-	private int yCoordinate;
-	private boolean playerPass;
-	private boolean enemyPass;
-	private int linkX;
-	private int linkY;
+	protected String name;
+	protected Image cellImage;
+	protected ImageView cellView;
+	protected final int CELL_SIZE= 75;
+	protected int xCoordinate;
+	protected int yCoordinate;
+	protected boolean playerPass;
+	protected boolean enemyPass;
+	protected int linkX;
+	protected int linkY;
 	
         /*
         * Sets a default cell at point x,y
