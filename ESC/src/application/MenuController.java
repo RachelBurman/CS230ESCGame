@@ -143,7 +143,6 @@ public class MenuController {
         levelSelectMenu.setText("Level");
         levelSelectMenu.setVisible(false);
         profilesMenu.setText("Profiles");
-        profilesMenu.setVisible(false);
     }
 
     /**
