@@ -285,6 +285,8 @@ public class Game extends Application {
 
 	private static void updateProfileLevel(String user)
 	{
+		String line = "";
+		int howManyProfiles = 0;
 		String profile1Name = "";
         int profile1Level = 0;
         String profile2Name = "";
@@ -298,20 +300,57 @@ public class Game extends Application {
         try {
             File f = new File(PROFILES_FILE);
             Scanner in = new Scanner(f);
-            profile1Name = in .nextLine();
-            profile2Name = in .nextLine(); 
-            profile3Name = in .nextLine();
-            profile4Name = in .nextLine();
-            profile5Name = in .nextLine();
-            profile1Level = in .nextInt();
-            in.nextLine();
-            profile2Level = in .nextInt();
-            in.nextLine();
-            profile3Level = in .nextInt();
-            in.nextLine();
-            profile4Level = in .nextInt();
-            in.nextLine();
-            profile5Level = in .nextInt();;
+            if ( in .hasNextLine()) {
+            	profile1Name = in .nextLine();
+            	howManyProfiles++;
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile2Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile3Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile4Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if ( in .hasNextLine()) {
+                line = in .nextLine();
+                if (!(line.equals(""))) {
+                	profile5Name = line;
+                	howManyProfiles++;
+                }
+            }
+            if (howManyProfiles>0) {
+            	profile1Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>1) {
+            	profile2Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>2) {
+            	profile3Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>3) {
+            	profile4Level = in .nextInt();
+                in.nextLine();
+            }
+            if (howManyProfiles>4) {
+            	profile5Level = in .nextInt();
+            }
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
