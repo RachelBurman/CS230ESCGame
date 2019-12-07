@@ -32,7 +32,7 @@ public class WinWindow {
 
 		layout.setAlignment(Pos.CENTER);
 
-		Scene scene1 = new Scene(layout, 300, 250);
+		Scene scene1 = new Scene(layout, 200, 150);
 
 		popupwindow.setScene(scene1);
 

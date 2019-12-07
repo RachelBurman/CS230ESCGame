@@ -268,24 +268,28 @@ public class Game extends Application {
 
 			case "./lvl1.txt":
 				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, user);
 				startFile = "./lvl2.txt";
 				restart();
 				break;
 			case "./lvl2.txt":
 				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, user);
 				startFile = "./lvl3.txt";
 				restart();
 				break;
 			case "./lvl3.txt":
 				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, user);
 				startFile = "./lvl4.txt";
 				restart();
 				break;
 			case "./lvl4.txt":
 				updateProfileLevel(user);
+				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, user);
 				startFile = "./lvl5.txt";
 				restart();
