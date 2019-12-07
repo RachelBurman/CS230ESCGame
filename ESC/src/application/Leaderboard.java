@@ -12,7 +12,7 @@ public class Leaderboard {
 		
 		String[] timesTaken = {"","",""};
 		try {
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -34,7 +34,7 @@ public class Leaderboard {
 	public static String[][] getCurrentRecords(String levelName) {
 		
 		try {
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			String timeTaken;
 			String userName;
@@ -63,7 +63,7 @@ public class Leaderboard {
 	public static void checkNewLevelComplete(String levelName, int timeTakenNew, String userNameNew) {
 		
 		try {
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			int timeTaken;
 			String userName;
@@ -106,7 +106,7 @@ public class Leaderboard {
 			
 			
 			try {
-			FileWriter writer = new FileWriter("ESC/" + levelName + "leaderboard.txt");
+			FileWriter writer = new FileWriter("./" + levelName + "leaderboard.txt");
 			
 			String outputContent = "";
 			for (int i=0;i<3;i++) {
