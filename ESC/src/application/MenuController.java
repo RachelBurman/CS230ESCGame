@@ -117,7 +117,7 @@ public class MenuController {
             default:
                 break;
         }
-        game.start(s);
+        game.start(s, profilesMenu.getText());
     }
     
     
