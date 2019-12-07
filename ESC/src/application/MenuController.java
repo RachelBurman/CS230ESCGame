@@ -740,7 +740,7 @@ public class MenuController {
      */
     @FXML
     private void profile1Selected(ActionEvent event) {
-        profilesMenu.setText(profile1MenuItem.getText());
+        profilesMenu.setText("Profile 1");
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -788,7 +788,7 @@ public class MenuController {
      */
     @FXML
     private void profile2Selected(ActionEvent event) {
-        profilesMenu.setText(profile2MenuItem.getText());
+        profilesMenu.setText("Profile 2");
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -837,7 +837,7 @@ public class MenuController {
      */
     @FXML
     private void profile3Selected(ActionEvent event) {
-        profilesMenu.setText(profile3MenuItem.getText());
+        profilesMenu.setText("Profile 3");
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -887,7 +887,7 @@ public class MenuController {
      */
     @FXML
     private void profile4Selected(ActionEvent event) {
-        profilesMenu.setText(profile4MenuItem.getText());
+        profilesMenu.setText("Profile 4");
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
@@ -938,7 +938,7 @@ public class MenuController {
      */
     @FXML
     private void profile5Selected(ActionEvent event) {
-        profilesMenu.setText(profile5MenuItem.getText());
+        profilesMenu.setText("Profile 5");
         levelSelectMenu.setVisible(true);
         level1MenuItem.setVisible(false);
         level2MenuItem.setVisible(false);
