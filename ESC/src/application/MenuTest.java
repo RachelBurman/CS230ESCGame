@@ -128,22 +128,22 @@ public class MenuTest {
 	@FXML
 	private void handleStartButtonAction(ActionEvent event) {
         		Game game = new Game();
-        		String s = "test.txt";
+        		String s = "./test.txt";
         		switch (levelSelectMenu.getText()) {
         		case "1" :
-        			s = "ESC/lvl1.txt";
+        			s = "./lvl1.txt";
         			break;
         		case "2" :
-        			s = "ESC/lvl2.txt";
+        			s = "./lvl2.txt";
         			break;
         		case "3" :
-        			s = "ESC/lvl3.txt";
+        			s = "./lvl3.txt";
         			break;
         		case "4" :
-        			s = "ESC/lvl4.txt";
+        			s = "./lvl4.txt";
         			break;
         		case "5" :
-        			s = "ESC/lvl5.txt";
+        			s = "./lvl5.txt";
         			break;
         		default:
         			break;

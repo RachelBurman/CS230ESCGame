@@ -12,7 +12,7 @@ public class Goal extends Cell {
 		// TODO Auto-generated constructor stub
 		this.playerPass = true;
 		this.enemyPass = false;
-		File file = new File("ESC/src/goal.png");
+		File file = new File("./src/goal.png");
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

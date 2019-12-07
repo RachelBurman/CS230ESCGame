@@ -238,17 +238,17 @@ public class Game extends Application {
 		if (current.getName().equalsIgnoreCase("goal")){
 			switch(startFile) {
 			
-			case "lvl1.txt" :
-				startFile = "lvl2.txt";
+			case "./lvl1.txt" :
+				startFile = "./lvl2.txt";
 				break;
-			case "lvl2.txt" :
-				startFile = "lvl3.txt";
+			case "./lvl2.txt" :
+				startFile = "./lvl3.txt";
 				break;
-			case "lvl3.txt" :
-				startFile = "lvl4.txt";
+			case "./lvl3.txt" :
+				startFile = "./lvl4.txt";
 				break;
-			case "lvl4.txt" :
-				startFile = "lvl5.txt";
+			case "./lvl4.txt" :
+				startFile = "./lvl3.txt";
 				break;
 			default :
 				break;

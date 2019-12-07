@@ -25,7 +25,7 @@ public class Cell {
 		this.playerPass = true;
 		this.enemyPass = true;
 		//https://www.colorcombos.com/images/colors/999999.png
-		File file = new File("ESC/src/Default.jpg");
+		File file = new File("./src/Default.jpg");
 		Image image = new Image(file.toURI().toString());
 		this.cellImage = image;
 		this.cellView = new ImageView(cellImage);
