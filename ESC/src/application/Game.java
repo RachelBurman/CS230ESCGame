@@ -20,14 +20,13 @@ import javafx.scene.layout.HBox;
 public class Game extends Application {
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 500;
-	String startFile;
-	private Stage primaryStage;
+	static String startFile;
+	private static long startTime;
 
 	//public void start(Stage primaryStage) {
   public void start(String startFile) {
 	  	Stage primaryStage = new Stage();
 	  	this.startFile = startFile;
-	  	System.out.println(startFile);
 		BorderPane root = new BorderPane();
 		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
@@ -40,6 +39,7 @@ public class Game extends Application {
 		// Register an event handler for key presses
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));	
 		drawGame(grid);
+                startTime = System.nanoTime();
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");
@@ -183,7 +183,7 @@ public class Game extends Application {
 			// Do nothing
 			break;
 		}
-		loseGame(grid);
+
 		map.StraightLineMove();
 		map.DumbMove();
 		map.WallFollowMove();
@@ -227,39 +227,48 @@ public class Game extends Application {
 	}
 	public static void restart() {
 		
-		Map newMap = new Map(startFile);
-		
-		MapManager.sharedMapManager().setMap(newMap);
+            startTime = System.nanoTime();
+          
+            Map newMap = new Map(startFile);	
+            MapManager.sharedMapManager().setMap(newMap);
+            
 	}
 	
 	public static void upLevel() {
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
+                
+                long endTime = System.nanoTime();
+                long duration;
+                duration = (endTime - startTime) / 1000000000;
+                
+                Map map = MapManager.sharedMapManager().getMap();
+                
 		if (current.getName().equalsIgnoreCase("goal")){
 			switch(startFile) {
 			
 			case "./lvl1.txt" :
+                            Leaderboard.checkNewLevelComplete("lvl1", (int)duration, map.getPlayer1().getName());
 				startFile = "./lvl2.txt";
-				restart();
 				break;
 			case "./lvl2.txt" :
+                            Leaderboard.checkNewLevelComplete("lvl2", (int)duration, map.getPlayer1().getName());
 				startFile = "./lvl3.txt";
-				restart();
 				break;
 			case "./lvl3.txt" :
+                            Leaderboard.checkNewLevelComplete("lvl3", (int)duration, map.getPlayer1().getName());
 				startFile = "./lvl4.txt";
-				restart();
 				break;
 			case "./lvl4.txt" :
+                            Leaderboard.checkNewLevelComplete("lvl4", (int)duration, map.getPlayer1().getName());
 				startFile = "./lvl5.txt";
-				restart();
 				break;
 			default :
-				
+                            Leaderboard.checkNewLevelComplete("lvl5", (int)duration, map.getPlayer1().getName());
 				break;
 			}
-			
+			restart();
 		}
 	}
 
