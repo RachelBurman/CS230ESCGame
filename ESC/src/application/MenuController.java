@@ -760,7 +760,7 @@ public class MenuController {
     }
 
     /**
-     * Displays the levels menu with the levels avaliable to the 1st Profile. 
+     * Displays the levels menu with the levels avaliable to the 1st Profile.
      * @param event profile1MenuItem selected.
      */
     @FXML
@@ -808,7 +808,7 @@ public class MenuController {
     }
 
     /**
-     * Displays the levels menu with the levels avaliable to the 2nd Profile. 
+     * Displays the levels menu with the levels avaliable to the 2nd Profile.
      * @param event profile2MenuItem selected.
      */
     @FXML
@@ -857,7 +857,7 @@ public class MenuController {
     }
 
     /**
-     * Displays the levels menu with the levels avaliable to the 3rd Profile. 
+     * Displays the levels menu with the levels avaliable to the 3rd Profile.
      * @param event profile3MenuItem selected.
      */
     @FXML
@@ -907,7 +907,7 @@ public class MenuController {
     }
 
     /**
-     * Displays the levels menu with the levels avaliable to the 4th Profile. 
+     * Displays the levels menu with the levels avaliable to the 4th Profile.
      * @param event profile4MenuItem selected.
      */
     @FXML
@@ -958,7 +958,7 @@ public class MenuController {
     }
 
     /**
-     * Displays the levels menu with the levels avaliable to the 5th Profile. 
+     * Displays the levels menu with the levels avaliable to the 5th Profile.
      * @param event profile5MenuItem selected.
      */
     @FXML
@@ -1018,7 +1018,7 @@ public class MenuController {
         levelSelectMenu.setText("1");
         playButton.setVisible(true);
     }
-    
+
     /**
      * Changes the text in levelsMenu to "2" and makes the play button visible.
      * @param event level2MenuItem selected.
@@ -1028,7 +1028,7 @@ public class MenuController {
         levelSelectMenu.setText("2");
         playButton.setVisible(true);
     }
-    
+
     /**
      * Changes the text in levelsMenu to "3" and makes the play button visible.
      * @param event level3MenuItem selected.
@@ -1038,7 +1038,7 @@ public class MenuController {
         levelSelectMenu.setText("3");
         playButton.setVisible(true);
     }
-    
+
     /**
      * Changes the text in levelsMenu to "4" and makes the play button visible.
      * @param event level4MenuItem selected.
@@ -1048,7 +1048,7 @@ public class MenuController {
         levelSelectMenu.setText("4");
         playButton.setVisible(true);
     }
-    
+
     /**
      * Changes the text in levelsMenu to "5" and makes the play button visible.
      * @param event level5MenuItem selected.
@@ -1265,9 +1265,9 @@ public class MenuController {
         } catch (Exception exception) {}
         return result;
     }
-    
+
     /**
-     * Gets profiles from a text file. 
+     * Gets profiles from a text file.
      * Displays them as MenuItems in the profilesMenu.
      */
     private void getProfiles() {

@@ -9,21 +9,22 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class WinWindow {
+public class LevelChangeWindow {
 
-	public static void display(Stage gameStage) {
+	public static void display(String fileName) {
 		Stage popupwindow = new Stage();
 
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("Game completed!!!");
+		String level = fileName;
+		level.replaceAll("[^0-9.]", "");
+		popupwindow.setTitle("Well done!");
 
-		Label label1 = new Label("You have completed the game!!!");
+		Label label1 = new Label("You have completed level" + level + "!");
 
-		Button button1 = new Button("Return to main menu");
+		Button button1 = new Button("Continue");
 
 		button1.setOnAction(e -> {
 			popupwindow.close();
-			gameStage.close();
 		});
 
 		VBox layout = new VBox(10);
@@ -41,3 +42,4 @@ public class WinWindow {
 	}
 
 }
+
