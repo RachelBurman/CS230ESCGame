@@ -16,6 +16,7 @@ public class Leaderboard {
 	public static String[] getLeaderboard(String levelName) {
 		
 		String[] timesTaken = {"","",""};
+		
 		try {
 			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
@@ -29,9 +30,11 @@ public class Leaderboard {
 			}
 
 			in.close();
+			
 		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
+		
 		return timesTaken;
 		
 	}
@@ -51,8 +54,7 @@ public class Leaderboard {
 			
 			String[][] records = {{"","",""},{"","",""}};
 			
-			for (int i=0;i<3;i++) {
-				
+			for (int i=0;i<3;i++) {	
 				timeTaken = in.next();
 				userName = in.next();
 				
@@ -61,6 +63,7 @@ public class Leaderboard {
 			}
 			
 			in.close();
+			
 			return records;
 
 		} catch (FileNotFoundException exception) {
@@ -81,6 +84,7 @@ public class Leaderboard {
 		try {
 			File f = new File("ESC/" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
+			
 			int timeTaken;
 			String userName;
 			boolean flag = false;
@@ -88,12 +92,9 @@ public class Leaderboard {
 			String[][] recordsOld = getCurrentRecords(levelName);
 			String[][] recordsNew = {{"","",""},{"","",""}};
 			
-			
 			for (int i=0;i<3;i++) {
 				timeTaken = in.nextInt();
 				userName = in.next();
-				//System.out.println(recordsOld[0][i]);
-				//System.out.println(timeTakenNew);
 				
 				if (flag == false) {
 					if (Integer.parseInt(recordsOld[0][i]) > timeTakenNew) {
@@ -102,24 +103,19 @@ public class Leaderboard {
 					
 						recordsNew[0][i] = Integer.toString(timeTakenNew);
 						recordsNew[1][i] = userNameNew;
-						//System.out.println(recordsNew[i][0] + recordsNew[i][1]);
-					
-					
+				
 					} else {
+						
 						recordsNew[0][i] = recordsOld[0][i];
 						recordsNew[1][i] = recordsOld[1][i];
-						//System.out.println(recordsNew[0][i] + recordsNew[1][i]);
+						
 					}
 				} else {
-					//System.out.println(recordsNew[0][i]);
 					recordsNew[0][i] = recordsOld[0][i-1];
 					recordsNew[1][i] = recordsOld[1][i-1];
 				}
-				
-
-				
+					
 			}
-			
 			
 			try {
 			FileWriter writer = new FileWriter("ESC/" + levelName + "leaderboard.txt");
@@ -135,13 +131,11 @@ public class Leaderboard {
 				
 			}
 			
-			
 			writer.write(outputContent);
 			writer.close();
 			} catch (IOException exception) {
 				System.out.println("ERROR: Level File does not exist.");
-			}
-					
+			}		
 					
 			in.close();
 		} catch (FileNotFoundException exception) {
