@@ -1,9 +1,12 @@
 package application;
 
+import javafx.scene.layout.GridPane;
+
 public class MapManager {
 	
 	private static MapManager onlyMapManager;
 	private Map map;
+	private GridPane grid =new GridPane();
 	
 	
 	private MapManager() {
@@ -25,5 +28,14 @@ public class MapManager {
 	public void setMap(Map map) {
 		this.map = map;
 	}
+
+	public GridPane getGrid() {
+		return grid;
+	}
+
+	public void setGrid(GridPane grid) {
+		this.grid = grid;
+	}
+	
 
 }
