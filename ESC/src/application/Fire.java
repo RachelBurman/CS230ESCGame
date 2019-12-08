@@ -5,17 +5,17 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
-* This class represents a fire cell at coordinates x and y
+* This class represents a fire cell at coordinates x and y.
 * @author Group 31 
 * @version 2.0
 */
 public class Fire extends Cell {
 
 	/**
-	* Creates a fire cell at the given x and y coordinates
-	* @param name the name of the cell
-	* @param xCoordinate the x coordinate of a fire cell
-	* @param yCoordinate the y coordinate of a fire cell
+	* Creates a fire cell at the given x and y coordinates.
+	* @param name the name of the cell.
+	* @param xCoordinate the x coordinate of a fire cell.
+	* @param yCoordinate the y coordinate of a fire cell.
 	*/
 	public Fire(String name, int xCoordinate, int yCoordinate) {
 		
@@ -33,8 +33,8 @@ public class Fire extends Cell {
 	}
 	
 	/**
-	* Gets the image view of a fire cell
-	* @return the image viewer class type of a fire cell
+	* Gets the image view of a fire cell.
+	* @return the image viewer class type of a fire cell.
 	*/
 	public ImageView getFireView() {
 		
