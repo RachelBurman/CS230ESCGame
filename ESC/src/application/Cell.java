@@ -4,8 +4,8 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
-* This class represents a cell at coordinates x and y
+/**
+* This class makes a cell which is an item that contains all the information for 1 tile.
 * @author Group 31 
 * @version 3.0
 */
@@ -21,8 +21,9 @@ public class Cell {
 	protected int linkX;
 	protected int linkY;
 	
-        /*
-        * Sets a default cell at point x,y
+        /**
+        * Creates a default cell at point with X, Y Coordinates and it's name
+        * 
         */
 	public Cell(String name, int xCoordinate, int yCoordinate ) {
 		
@@ -42,7 +43,7 @@ public class Cell {
 		
 	}
 	
-        /*
+        /**
         * gets the x coordinate of a link of a teleporter
         * @return the links x coordinate
         */
@@ -52,7 +53,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Sets the x coordinate of a link of a teleporter
         * @param linkX integer x coordinate value of a teleporter
         */
@@ -62,7 +63,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * gets the y coordinate of a link of a teleporter
         * @return the links y coordinate
         */
@@ -72,7 +73,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Sets the y coordinate of a link of a teleporter
          @param linkY integer y coordinate value of a teleporter
         */
@@ -82,7 +83,7 @@ public class Cell {
 		
 	}
 
-	/*
+		/**
         * Sets the cell image
         * @param cellImage a compiled image class type to be displayed
         */
@@ -92,7 +93,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Sets the cell view imageviewer
         * @param cellView a compiled image view class type to be displayed
         */
@@ -102,7 +103,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Gets the private cell image image class type variable
         * @return cellImage a image class with an image already attatched
         */
@@ -112,7 +113,7 @@ public class Cell {
 		
 	}
         
-        /*
+        /**
         * Gets the cell view image view class type variable
         * @returns cellView a image view class with an image already attatched
         */
@@ -122,7 +123,7 @@ public class Cell {
 		
 	}
 	
-        /*
+        /**
         * Gets the check to see if a player can enter a cell
         */
 	public boolean getPlayerPass () {
@@ -131,7 +132,7 @@ public class Cell {
 		
 	}
         
-        /*
+        /**
         * Gets the check to see if an enemy can enter a cell
         */
 	public boolean getEnemyPass () {
@@ -140,7 +141,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Gets the standard cell size of a cell
         * @return CELL_SIZE the size of a cell in pixels
         */
@@ -150,7 +151,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Gets the x coordinate of a cell
         * @return xCoordinate the x coordinate of a cell
         */
@@ -160,7 +161,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Gets the y coordinate of a cell
         * @return yCoordinate the y coordinate of a cell
         */
@@ -170,7 +171,7 @@ public class Cell {
 		
 	}
 
-        /*
+        /**
         * Gets the name of a cell. Used to identify a cell type
         * @return name the name entered when the cell was created
         */
@@ -180,7 +181,7 @@ public class Cell {
 		
 	}
 	
-        /*
+        /**
         * Sets the player pass to equal true
         */
 	public void changePlayerPass() {
@@ -188,7 +189,7 @@ public class Cell {
 		this.playerPass = true;
 		
 	}
-        /*
+        /**
         * Sets the enemy pass to equal true
         */
 	public void changeEnemyPass() {
