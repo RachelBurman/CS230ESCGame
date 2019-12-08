@@ -94,69 +94,104 @@ public class Map {
 		this.player1 = player;
 	}
 
-	/** Deletes the cell at x and y location.
-	 * 
-	 * @param X Location of the cell.
-	 * @param Y Location of the cell.
-	 *
-	 */
-
-	public void removeCell (int xLocation, int yLocation) {
+	private void removeCell (int xLocation, int yLocation) {
 		mapActual[xLocation][yLocation]= null;
 
 	}
+	/**
+	 * Removes the cell at X and Y coordinates and adds a default one back in place of it.
+	 * @param xLocation
+	 * @param yLocation
+	 */
 	public void replaceCell(int xLocation, int yLocation) {
 		removeCell(xLocation,yLocation);
 		addCell(xLocation,yLocation);
 	}
 
-	public void addCell(int xLocation, int yLocation) {
+	private void addCell(int xLocation, int yLocation) {
 		this.mapActual[xLocation][yLocation] = new Cell("Cell", xLocation, yLocation);
 	}
 
-
+	/**
+	 * Returns the map of cells.
+	 * @return 2D array of Cells
+	 */
 	public Cell[][] getMapActual() {
 		return mapActual;
 	}
 
-
+	/**
+	 * Returns the length/width of the map.
+	 * @return length of Map
+	 */
 	public int getMapLength() {
 		return mapLength;
 	}
 
-
+	/**
+	 * Returns the height of the map.
+	 * @return height of Map
+	 */
 	public int getMapHeight() {
 		return mapHeight;
 	}
 
-
+	/**
+	 * Returns the player start location.
+	 * @return array with x and y location of player start
+	 */
 	public int[] getStart() {
 		return start;
 	}
+	
+	/**
+	 * Returns the cell at location X and Y.
+	 * @param x location of cell.
+	 * @param y location of cell.
+	 * @return the cell obejct at location X and Y
+	 */
 	public Cell getCell(int x, int y) {
 
 		return mapActual[x][y] ;
 	}
 
-
+	/**
+	 * Returns the player object.
+	 * @return player object
+	 */
 	public Player getPlayer1() {
 		return player1;
 	}
 
-
+	/**
+	 * Returns StrightLine Enemy object.
+	 * @return StraightLineEnemy
+	 */
 	public StraightLineEnemy getEnemy1() {
 		return enemy1;
 	}
-
+	
+	/**
+	 * Updates the map at location X and Y.
+	 * @param next X location
+	 * @param next Y location
+	 */
 	public void updateMap(int nextX, int nextY) {
 		openDoor(nextX, nextY);
 
 
 	}
+	/**
+	 * Check if the map object is about to be deleted.
+	 */
 	public void finalize() {
 		System.out.println("Map deleted");
 	}
-
+	/**
+	 * Changes Cell access for certain cells based on location X and Y.
+	 * @param next X location
+	 * @param next Y location
+	 */
 	public void openDoor(int nextX, int nextY) {
 		String cellName =this.getCell(nextX, nextY).getName();
 		Cell nextCell = this.getCell(nextX, nextY);
@@ -203,7 +238,9 @@ public class Map {
 			
 			}
 	}
-	
+	/**
+	 * Plays music when door opens.
+	 */
 	private static void playDoorNoise() {
 		String musicFileLocation = "./src/jail_cell_door.mp3";     
 
@@ -212,10 +249,10 @@ public class Map {
 		
 		mediaPlayer.play();
 	}
-	
-	
-	
-	
+	/**
+	 * Check when player is on a specific cell.
+	 * Then adds keys or tokens or teleports them somewhere
+	 */
 	public void doAction() {
 		int playerXLocation = this.getPlayer1().getxLocation();
 		int playerYLocation = this.getPlayer1().getyLocation();
@@ -250,6 +287,9 @@ public class Map {
 		}
 	}
 	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
+	/**
+	 * Moves StraightLine enemy one step.
+	 */
 	public void StraightLineMove() {
 		if (enemy1.getFacing() == 'u' || enemy1.getFacing() == 'd') {
 			enemy1.moveY(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
@@ -257,14 +297,18 @@ public class Map {
 			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
 		}
 	}
-
+	/**
+	 * Moves Dumb enemy one step.
+	 */
 	public void DumbMove() {
 		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
 		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
 		dumbList.get(0).move();
 	}
 
-	// NEW
+	/**
+	 * Moves Dumb enemy one step.
+	 */
 	public void WallFollowMove() {
 		if (wallFollowList.get(0).getFacing() == 'u' || wallFollowList.get(0).getFacing() == 'd') {
 			wallFollowList.get(0).moveY(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(), wallFollowList.get(0).getFacing());
