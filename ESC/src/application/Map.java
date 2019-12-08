@@ -202,39 +202,39 @@ public class Map {
 			nextCell.changeEnemyPass();
 			player.minusRedKey();
 			
-			Map.playDoorNoise();
+			playDoorNoise();
 			
 		} else if (cellName.equalsIgnoreCase("green door") && player.getGreenKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusGreenKey();
 			
-			Map.playDoorNoise();
+			playDoorNoise();
 			
 		} else if (cellName.equalsIgnoreCase("blue door") && player.getBlueKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusBlueKey();
 			
-			//Map.playDoorNoise();
+			playDoorNoise();
 			
 		}else if (cellName.equalsIgnoreCase("token door") && player.getTokens() > 0 ) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			
-			Map.playDoorNoise();
+			playDoorNoise();
 			
 		} else if (cellName.equalsIgnoreCase("2 door") && player.getTokens() > 1 ) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			
-			Map.playDoorNoise();
+			playDoorNoise();
 			
 		} else if (cellName.equalsIgnoreCase("3 door") && player.getTokens() > 2 ) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			
-			Map.playDoorNoise();
+			playDoorNoise();
 			
 			}
 	}
@@ -242,13 +242,36 @@ public class Map {
 	 * Plays music when door opens.
 	 */
 	private static void playDoorNoise() {
-		String musicFileLocation = "./src/jail_cell_door.mp3";     
+		String musicFileLocation = "./src/door_open.mp3";     
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
 		
 		mediaPlayer.play();
 	}
+	/**
+	 * Plays music when on water.
+	 */
+	private static void playWaterSound() {
+		String musicFileLocation = "./src/water.mp3";     
+
+		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
+		
+		mediaPlayer.play();
+	}
+	/**
+	 * Plays music when on fire.
+	 */
+	private static void playFireSound() {
+		String musicFileLocation = "./src/fire.mp3";     
+
+		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
+		
+		mediaPlayer.play();
+	}
+	
 	/**
 	 * Check when player is on a specific cell.
 	 * Then adds keys or tokens or teleports them somewhere
@@ -284,6 +307,10 @@ public class Map {
 			this.replaceCell(playerXLocation, playerYLocation);
 		} else if (cellName.equalsIgnoreCase("green door")) {
 			this.replaceCell(playerXLocation, playerYLocation);
+		} else if (cellName.equalsIgnoreCase("water")) {
+			playWaterSound();
+		} else if (cellName.equalsIgnoreCase("fire")) {
+			playFireSound();
 		}
 	}
 	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
