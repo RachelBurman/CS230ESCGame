@@ -9,7 +9,12 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class LevelChangeWindow {
-
+	
+	
+	/**
+	 * Make a window for changing level
+	 * @param fileName
+	 */
 	public static void display(String fileName) {
 		Stage popupwindow = new Stage();
 
