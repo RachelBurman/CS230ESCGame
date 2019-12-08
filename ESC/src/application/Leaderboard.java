@@ -65,8 +65,8 @@ public class Leaderboard {
 			//retrieves the data out of the leaderboard text file and outputs into a format the program can
 			//carry out comparisons on the data
 			for (int i=0; i<3; i++) {	
-				timeTaken = in.next();
-				userName = in.next();
+				timeTaken = in.nextLine();
+				userName = in.nextLine();
 
 				//0 being the time of a given i
 				//1 being the user name of a given i
