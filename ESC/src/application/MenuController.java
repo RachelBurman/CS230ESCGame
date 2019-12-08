@@ -81,6 +81,8 @@ public class MenuController {
     @FXML
     private void initialize() {
         String s = "";
+        //Sets all profiles to invisible so we can only set the ones 
+        //we have to visible.
         profile1MenuItem.setVisible(false);
         profile2MenuItem.setVisible(false);
         profile3MenuItem.setVisible(false);
@@ -100,6 +102,7 @@ public class MenuController {
         Game game = new Game();
         String name = "";
         String s = "./test.txt";
+        //Switches based on the profile playing the game.
         switch (profilesMenu.getText()) {
         case "Profile 1":
             name = profile1MenuItem.getText();
@@ -118,7 +121,8 @@ public class MenuController {
             break;
         default:
             break;
-    }
+        }
+        //Switches based on the level selected by the user.
         switch (levelSelectMenu.getText()) {
             case "1":
                 s = "./lvl1.txt";
@@ -139,6 +143,7 @@ public class MenuController {
                 break;
         }
         game.start(s, profilesMenu.getText(), name);
+        //Resets the menu to the original state.
         playButton.setVisible(false);
         levelSelectMenu.setText("Level");
         levelSelectMenu.setVisible(false);
@@ -168,6 +173,8 @@ public class MenuController {
      */
     @FXML
     private void handleCreateButtonAction(ActionEvent event) {
+    	//Checks if profile 1 exists.
+    	//If not makes that the new profile 1.
         if (!profile1MenuItem.isVisible()) {
             try {
                 File outputFile = new File(PROFILES_FILE);
@@ -192,6 +199,8 @@ public class MenuController {
             createProfileButton.setVisible(true);
             profilesMenu.setVisible(true);
             leaderboardButton.setVisible(true);
+        //Checks if profile 2 exists.
+        //If not makes that the new profile 2.
         } else if (!profile2MenuItem.isVisible()) {
             String profile1Name = "";
             String profile1Level = "";
@@ -227,6 +236,8 @@ public class MenuController {
             createProfileButton.setVisible(true);
             profilesMenu.setVisible(true);
             leaderboardButton.setVisible(true);
+        //Checks if profile 3 exists.
+        //If not makes that the new profile 3.
         } else if (!profile3MenuItem.isVisible()) {
             String profile1Name = "";
             String profile1Level = "";
@@ -267,6 +278,8 @@ public class MenuController {
             createProfileButton.setVisible(true);
             profilesMenu.setVisible(true);
             leaderboardButton.setVisible(true);
+        //Checks if profile 4 exists.
+        //If not makes that the new profile 4.
         } else if (!profile4MenuItem.isVisible()) {
             String profile1Name = "";
             String profile1Level = "";
@@ -312,6 +325,8 @@ public class MenuController {
             createProfileButton.setVisible(true);
             profilesMenu.setVisible(true);
             leaderboardButton.setVisible(true);
+        //Checks if profile 5 exists.
+        //If not makes that the new profile 5.
         } else if (!profile5MenuItem.isVisible()) {
             String profile1Name = "";
             String profile1Level = "";
@@ -362,6 +377,8 @@ public class MenuController {
             createProfileButton.setVisible(true);
             profilesMenu.setVisible(true);
             leaderboardButton.setVisible(true);
+        //Displays the ERROR message and asks the user if he wants to replace 
+        //one of the profiles.
         } else {
             errorMessage.setVisible(true);
             yesButton.setVisible(true);
@@ -431,7 +448,7 @@ public class MenuController {
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
-
+        //Changes the Profiles.txt accordingly.
         try {
             File outputFile = new File(PROFILES_FILE);
             PrintWriter out = null;
@@ -450,6 +467,7 @@ public class MenuController {
         } catch (FileNotFoundException e) {
             System.out.println("ERROR: Level File does not exist");
         }
+        //Changes everything back to the main menu.
         profile1MenuItem.setText(profileNameBox.getText());
         profileNameBox.setText("");
         profileNameBox.setText("");
@@ -500,7 +518,7 @@ public class MenuController {
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
-
+        //Changes the Profiles.txt accordingly.
         try {
             File outputFile = new File(PROFILES_FILE);
             PrintWriter out = null;
@@ -519,6 +537,7 @@ public class MenuController {
         } catch (FileNotFoundException e) {
             System.out.println("ERROR: Level File does not exist");
         }
+        //Changes everything back to the main menu.
         profile2MenuItem.setText(profileNameBox.getText());
         profileNameBox.setText("");
         createButton.setVisible(false);
@@ -568,7 +587,7 @@ public class MenuController {
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
-
+        //Changes the Profiles.txt accordingly.
         try {
             File outputFile = new File(PROFILES_FILE);
             PrintWriter out = null;
@@ -587,6 +606,7 @@ public class MenuController {
         } catch (FileNotFoundException e) {
             System.out.println("ERROR: Level File does not exist");
         }
+        //Changes everything back to the main menu.
         profile3MenuItem.setText(profileNameBox.getText());
         profileNameBox.setText("");
         createButton.setVisible(false);
@@ -636,7 +656,7 @@ public class MenuController {
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
-
+        //Changes the Profiles.txt accordingly.
         try {
             File outputFile = new File(PROFILES_FILE);
             PrintWriter out = null;
@@ -655,6 +675,7 @@ public class MenuController {
         } catch (FileNotFoundException e) {
             System.out.println("ERROR: Level File does not exist");
         }
+        //Changes everything back to the main menu.
         profile4MenuItem.setText(profileNameBox.getText());
         profileNameBox.setText("");
         createButton.setVisible(false);
@@ -704,7 +725,7 @@ public class MenuController {
         } catch (FileNotFoundException exception) {
             System.out.println("ERROR: Level File does not exist.");
         }
-
+        //Changes the Profiles.txt accordingly.
         try {
             File outputFile = new File(PROFILES_FILE);
             PrintWriter out = null;
@@ -723,6 +744,7 @@ public class MenuController {
         } catch (FileNotFoundException e) {
             System.out.println("ERROR: Level File does not exist");
         }
+        //Changes everything back to the main menu.
         profile5MenuItem.setText(profileNameBox.getText());
         profileNameBox.setText("");
         createButton.setVisible(false);
@@ -1238,7 +1260,7 @@ public class MenuController {
         } catch (Exception exception) {
 
         }
-
+        //Decrypts the key.
         String sr = "";
         for (int i = 0; i < s.length(); i++) {
             char letter = s.charAt(i);
