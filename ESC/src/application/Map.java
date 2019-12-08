@@ -11,6 +11,11 @@ import moving.Player;
 import moving.StraightLineEnemy;
 import moving.WallFollowingEnemy;
 
+/**
+* This class represents the map that the game is played on.
+* @author Group 31 
+* @version 3.0
+*/
 public class Map {
 	Cell[][] mapActual;
 	private int mapLength;
@@ -22,21 +27,13 @@ public class Map {
 	WallFollowingEnemy[] wallFollowingList;
 	ArrayList<DumbTargetingEnemy> dumbList =new ArrayList<DumbTargetingEnemy>();
 	//SmartTargetingEnemy[] SmartTargetingList;
-
-
 	ArrayList<WallFollowingEnemy> wallFollowList =new ArrayList<WallFollowingEnemy>(); //New
-
-	public DumbTargetingEnemy getDummieAt(int num) {
-		return dumbList.get(num);
-
-	}
-
-	// New
-	public WallFollowingEnemy getWallFollowAt(int num) {
-		return wallFollowList.get(num);
-	}
-
-
+	
+	/**
+	 * Constructor for making a Map object.
+	 * Just needs the file where information is stored
+	 * @param THe name/path of the file.
+	 */
 	public Map (String file) {
 		this.mapActual=LevelLoader.loadLevel(file);
 		this.start= LevelLoader.getPlayerStart(file);
@@ -60,22 +57,49 @@ public class Map {
 		//System.out.println(wallFollowList.get(0).getYLocation());
 
 	}
+	
+	/**
+	 * Returns the Enemy at position number.
+	 * @param Index of Dumb Enemy
+	 * @return The Enemy at that index
+	 */
+	public DumbTargetingEnemy getDummieAt(int num) {
+		return dumbList.get(num);
+
+	}
+
+	/**
+	 * Returns the Enemy at position number.
+	 * @param Index of WallFollowingEnemy
+	 * @return Enemy at that index
+	 */
+	public WallFollowingEnemy getWallFollowAt(int num) {
+		return wallFollowList.get(num);
+	}
 
 
-
+	/**
+	 * Set the map of cells.
+	 * @param 2D array of Cells
+	 */
 	public void setMapActual(Cell[][] mapActual) {
 		this.mapActual = mapActual;
 	}
-
+	
+	/**
+	 * Add the player to the Map.
+	 * @param player
+	 */
 	public void addPlayer(Player player) {
 		this.player1 = player;
 	}
 
-
-	public void removeCell (Map map, int xLocation, int yLocation) {
-		mapActual[xLocation][yLocation]= null;
-
-	}
+	/** Deletes the cell at x and y location.
+	 * 
+	 * @param X Location of the cell.
+	 * @param Y Location of the cell.
+	 *
+	 */
 
 	public void removeCell (int xLocation, int yLocation) {
 		mapActual[xLocation][yLocation]= null;
