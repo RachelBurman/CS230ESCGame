@@ -25,7 +25,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
+/**
+ * This class is made for the game to actually run.
+ * It is also used to set a few of the JavaFX elements.
+ * @author Jonathan
+ * @version 1.5
+ *
+ */
 public class Game extends Application {
 
 	private static final String PROFILES_FILE = "./Profiles.txt";
@@ -41,6 +47,13 @@ public class Game extends Application {
 	private static String profile;
 	VBox boxA = new VBox();
 
+	/**
+	 * Method to start the actual game with the level and person information.
+	 * Also starts the JavaFX elements to display the game.
+	 * @param startFile- String of the textfile with the level
+	 * @param profile- profile of the person playing
+	 * @param username- username of the person playing
+	 */
 	public void start(String startFile, String profile, String username) {
 
 		this.profile = profile;
@@ -76,7 +89,11 @@ public class Game extends Application {
 
 	}
 
-
+	/**
+	 * Builds the GUI elements above the game.
+	 * Includes number of keys, tokens for the player to see.
+	 * @return a vertical box with the elements inside
+	 */
 	public VBox topGUI() {
 		boxA.getChildren().clear();
 		HBox first = topGUIA();
@@ -85,7 +102,7 @@ public class Game extends Application {
 		return boxA;
 
 	}
-	public HBox topGUIA() {
+	private HBox topGUIA() {
 		HBox box1 = new HBox();
 		Player player1 = MapManager.sharedMapManager().getMap().getPlayer1();
 		Label file = new Label("Current level" +startFile);
@@ -113,7 +130,7 @@ public class Game extends Application {
 		box1.setSpacing(30);
 		return box1;
 	}
-	public HBox topGUIB() {
+	private HBox topGUIB() {
 		HBox box2 = new HBox();
 		box2.getChildren().clear();
 		Player player1 =MapManager.sharedMapManager().getMap().getPlayer1();
@@ -153,7 +170,11 @@ public class Game extends Application {
 
 
 	}
-
+	/**
+	 * A method to draw the game outfor the user to see
+	 * @param the current grid that is showing the game
+	 * @return the grid that has the updated information for it to be displayed
+	 */
 	public GridPane drawGame(GridPane grid) {
 
 		grid.getChildren().clear();
@@ -232,7 +253,12 @@ public class Game extends Application {
 		return grid;
 
 	}
-
+	/**
+	 * Method to detect directional key presses and then use it to move the player around the game.
+	 * Then returns he GUI and the grid updated
+	 * @param event - the keyboard press
+	 * @param grid - the current grid that is shown to the player
+	 */
 	public void processKeyEvent(KeyEvent event, GridPane grid) {
 
 		Map map = MapManager.sharedMapManager().getMap();
@@ -295,7 +321,11 @@ public class Game extends Application {
 		event.consume();
 
 	}
-
+	/**
+	 * Detects when the player loses the game.
+	 * Then restarts the game
+	 * @param grid that the player is on 
+	 */
 	public void loseGame(GridPane grid) {
 
 		Map map = MapManager.sharedMapManager().getMap();
@@ -335,8 +365,8 @@ public class Game extends Application {
 		drawGame(grid);
 
 	}
-
-	public static void restart() {
+	
+	private static void restart() {
 
 		startTime = System.nanoTime();
 
@@ -345,7 +375,7 @@ public class Game extends Application {
 
 	}
 
-	public static void upLevel() {
+	private static void upLevel() {
 
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
@@ -579,6 +609,10 @@ public class Game extends Application {
 		}
 
 	}
+	/**
+	 * Returns the gameStage
+	 * @return primaryStage
+	 */
 
 	public Stage getGameStage() {
 
