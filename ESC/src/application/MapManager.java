@@ -6,7 +6,6 @@ public class MapManager {
 	
 	private static MapManager onlyMapManager;
 	private Map map;
-	private GridPane grid =new GridPane();
 	
 	
 	private MapManager() {
@@ -37,20 +36,7 @@ public class MapManager {
 	public void setMap(Map map) {
 		this.map = map;
 	}
-	/**
-	 * Returns GridPane of the game
-	 * @return grid
-	 */
-	public GridPane getGrid() {
-		return grid;
-	}
-	/***
-	 * Set the GridPane of the game
-	 * @param gridpane
-	 */
-	public void setGrid(GridPane grid) {
-		this.grid = grid;
-	}
+
 	
 
 }
