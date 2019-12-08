@@ -380,7 +380,7 @@ public class Game extends Application {
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
-
+		GridPane grid = MapManager.sharedMapManager().getGrid();
 		long endTime = System.nanoTime();
 		long duration;
 		duration = (endTime - startTime) / 1000000000;
@@ -420,6 +420,7 @@ public class Game extends Application {
 				break;
 			default:
 				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, username);
+				grid.getChildren().clear();
 				WinWindow.display(primaryStage);
 				MapManager.sharedMapManager().setMap(null);
 				break;
