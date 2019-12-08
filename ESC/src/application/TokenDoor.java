@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -11,6 +10,7 @@ import javafx.scene.image.ImageView;
 * @version 3.0
 */
 public class TokenDoor extends Cell {
+	
 	int tokensNeeded;
 
 	/*
@@ -20,10 +20,14 @@ public class TokenDoor extends Cell {
 	* @param yCoordinate the y coordinate of a token door
 	*/
 	public TokenDoor(String name, int xCoordinate, int yCoordinate) {
+		
 		super(name, xCoordinate, yCoordinate);
+		
 		this.playerPass = false;
 		this.enemyPass = false;
+		
 		System.out.println(name);
+		
 		File file = null; 
 		if (name.equals("token door")) {
 			file = new File("./src/TokenDoor.jpg");
@@ -35,6 +39,7 @@ public class TokenDoor extends Cell {
 			file = new File("./src/Tokendoor3.jpg");
 			tokensNeeded = 3;
 		}
+		
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
 		super.cellView.setFitHeight(CELL_SIZE);

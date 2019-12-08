@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,25 +27,27 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class Game extends Application {
+
 	private static final String PROFILES_FILE = "./Profiles.txt";
 	private static final int WINDOW_WIDTH = 800;
 	private static final int WINDOW_HEIGHT = 600;
 	private static final int IMAGE_SIZE = 32;
 	private static final Font FONT_SIZE = new Font(18);
 	private static String startFile;
-	
+
 	private static long startTime;
 	private static String username;
 	private static Stage primaryStage;
 	private static String profile;
 	VBox boxA = new VBox();
 
-	// public void start(Stage primaryStage) {
 	public void start(String startFile, String profile, String username) {
+
 		this.profile = profile;
 		this.username = username;
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
+
 		BorderPane root = new BorderPane();
 		GridPane grid = new GridPane();
 		root.setCenter(grid);
@@ -55,13 +56,14 @@ public class Game extends Application {
 
 		MapManager.sharedMapManager().setMap(new Map(this.startFile));
 		root.setTop(topGUI());
-		
+
 
 		// Register an event handler for key presses
-		
+
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));
 		drawGame(grid);
 		startTime = System.nanoTime();
+
 		try {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("E.S.C");
@@ -71,8 +73,9 @@ public class Game extends Application {
 		}
 
 		System.out.println("Start method ended");
+
 	}
-	 
+
 
 	public VBox topGUI() {
 		boxA.getChildren().clear();
@@ -137,7 +140,7 @@ public class Game extends Application {
 		} else {
 			flipper.setVisible(false);
 		}
-		
+
 		box2.getChildren().add(bootsView);
 		box2.getChildren().add(boot);
 		if (player1.getBoots()==true) {
@@ -147,24 +150,24 @@ public class Game extends Application {
 		}
 		box2.setSpacing(30);
 		return box2;
-		
-		
+
+
 	}
 
 	public GridPane drawGame(GridPane grid) {
+
 		grid.getChildren().clear();
 		Map map = MapManager.sharedMapManager().getMap();
+
 		int scopeXmin;
 		int scopeXmax;
 		int scopeYmin;
 		int scopeYmax;
 		int width = map.getMapLength();
-
 		int height = map.getMapHeight();
 		int playerXLocation = map.getPlayer1().getxLocation();
 		int playerYLocation = map.getPlayer1().getyLocation();
-		// System.out.println(" My X is" + playerXLocation+ " My Y is" +
-		// playerYLocation);
+
 		if (playerXLocation - 3 < 0) {
 			scopeXmin = 0;
 		} else {
@@ -200,7 +203,6 @@ public class Game extends Application {
 		Player player = map.getPlayer1();
 		StraightLineEnemy enemy1 = map.getEnemy1();
 		DumbTargetingEnemy enemy2 = map.getDummieAt(0);
-
 		WallFollowingEnemy enemy3 = map.getWallFollowAt(0);
 
 		grid.add(player.getPlayerView(), player.getxLocation(), player.getyLocation());
@@ -228,12 +230,16 @@ public class Game extends Application {
 		}
 
 		return grid;
+
 	}
 
 	public void processKeyEvent(KeyEvent event, GridPane grid) {
+
 		Map map = MapManager.sharedMapManager().getMap();
+
 		int currentX = map.getPlayer1().getxLocation();
 		int currentY = map.getPlayer1().getyLocation();
+
 		switch (event.getCode()) {
 
 		case RIGHT:
@@ -276,7 +282,6 @@ public class Game extends Application {
 			// player.moveDown();
 
 			break;
-
 		default:
 			// Do nothing
 			break;
@@ -288,10 +293,13 @@ public class Game extends Application {
 		loseGame(grid);
 
 		event.consume();
+
 	}
 
 	public void loseGame(GridPane grid) {
+
 		Map map = MapManager.sharedMapManager().getMap();
+
 		int playerXLocation = map.getPlayer1().getxLocation();
 		int playerYLocation = map.getPlayer1().getyLocation();
 		int StraightEnemyX = map.getEnemy1().getXLocation();
@@ -300,6 +308,7 @@ public class Game extends Application {
 		int DumbEnemyY = map.getDummieAt(0).getYLocation();
 		int WallFollowX = map.getWallFollowAt(0).getXLocation();
 		int WallFollowY = map.getWallFollowAt(0).getYLocation();
+
 		if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
 			restart();
@@ -321,6 +330,7 @@ public class Game extends Application {
 			System.out.println("Game OVer");
 			restart();
 		}
+
 		upLevel();
 		drawGame(grid);
 
@@ -336,6 +346,7 @@ public class Game extends Application {
 	}
 
 	public static void upLevel() {
+
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
@@ -385,9 +396,11 @@ public class Game extends Application {
 			}
 
 		}
+
 	}
 
 	private static void updateProfileLevel(String user) {
+
 		String line = "";
 		int howManyProfiles = 0;
 		String profile1Name = "";
@@ -400,6 +413,7 @@ public class Game extends Application {
 		int profile4Level = 0;
 		String profile5Name = "";
 		int profile5Level = 0;
+
 		try {
 			File f = new File(PROFILES_FILE);
 			Scanner in = new Scanner(f);
@@ -457,6 +471,7 @@ public class Game extends Application {
 		} catch (FileNotFoundException exception) {
 			System.out.println("ERROR: Level File does not exist.");
 		}
+
 		switch (user) {
 		case "Profile 1":
 			try {
@@ -566,11 +581,14 @@ public class Game extends Application {
 	}
 
 	public Stage getGameStage() {
+
 		return primaryStage;
+
 	}
 
 	@Override
 	public void start(Stage arg0) throws Exception {
+
 		// TODO Auto-generated method stub
 
 	}
