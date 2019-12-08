@@ -23,6 +23,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 /**
@@ -340,23 +342,29 @@ public class Game extends Application {
 
 		if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		} else if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		} else if (playerXLocation == DumbEnemyX && playerYLocation == DumbEnemyY) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		} else if (playerXLocation == WallFollowX && playerYLocation == WallFollowY) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire")
 				&& map.getPlayer1().getBoots() == false) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")
 				&& map.getPlayer1().getFlippers() == false) {
 			System.out.println("Game OVer");
+			playFail();
 			restart(grid);
 		}
 
@@ -371,6 +379,29 @@ public class Game extends Application {
 		Map newMap = new Map(startFile);
 		MapManager.sharedMapManager().setMap(newMap);
 
+	}
+	
+	/**
+	 * Plays music when win.
+	 */
+	private static void playApplause() {
+		String musicFileLocation = "./src/applause.mp3";     
+
+		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
+		
+		mediaPlayer.play();
+	}
+	/**
+	 * Plays music when lose.
+	 */
+	private static void playFail() {
+		String musicFileLocation = "./src/fail.mp3";     
+
+		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
+		
+		mediaPlayer.play();
 	}
 
 	private static void upLevel(GridPane grid) {
@@ -389,6 +420,7 @@ public class Game extends Application {
 			switch (startFile) {
 
 			case "./lvl1.txt":
+				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, username);
@@ -396,6 +428,7 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl2.txt":
+				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, username);
@@ -403,6 +436,7 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl3.txt":
+				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, username);
@@ -410,6 +444,7 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl4.txt":
+				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, username);
@@ -417,6 +452,7 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			default:
+				playApplause();
 				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, username);
 				grid.getChildren().clear();
 				WinWindow.display(primaryStage);
