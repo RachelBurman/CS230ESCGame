@@ -5,24 +5,25 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
-* This class represents a teleporter at coordinates x and y
+/**
+* This class represents a teleporter at coordinates x and y.
 * @author Group 31 
 * @version 5.0
 */
 public class Teleporter extends Cell {
 	int linkX;
 	int linkY;
-	/*
-	* Creates a teleporter at the given x and y coordinates
-	* @param name the name of the teleporter
-	* @param xCoordinate the x coordinate of a teleporter
-	* @param yCoordinate the y coordinate of a teleporter
-	* @param file the file name of the level the teleporter is located in
+	/**
+	* Creates a teleporter at the given x and y coordinates.
+	* @param name the name of the teleporter.
+	* @param xCoordinate the x coordinate of a teleporter.
+	* @param yCoordinate the y coordinate of a teleporter.
+	* @param file the file name of the level the teleporter is located in.
 	*/
 	public Teleporter(String name,int xCoordinate, int yCoordinate, String file) {
 		
 		super(name, xCoordinate, yCoordinate);
+		//gets the link data from the level
 		int info[] =LevelLoader.getTeleporter(file);
 		this.playerPass = true;
 		this.enemyPass = false;
@@ -31,7 +32,7 @@ public class Teleporter extends Cell {
 		super.cellView = new ImageView(image);
 		super.cellView.setFitHeight(CELL_SIZE);
 		super.cellView.setFitWidth(CELL_SIZE);
-		//Weird behaviour can't this.LinkX/Y use this, as  Cell [][] cannot access this.linkX/Y as it's superclass
+		//sets the link data so when a player lands on the teleporter they go to the right location
 		if (info[0]==xCoordinate && info[1] == yCoordinate) {
 			super.linkX = info[2];
 			super.linkY = info[3];
@@ -43,8 +44,7 @@ public class Teleporter extends Cell {
 			this.linkX = info [0];
 			this.linkY = info[1];
 		}
-		// TODO Auto-generated constructor stub
+
 	}
-	
 
 }

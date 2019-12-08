@@ -4,18 +4,18 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
-* This class represents a key cell at coordinates x and y
+/**
+* This class represents a key cell at coordinates x and y.
 * @author Group 31 
 * @version 3.0
 */
 public class Key extends Cell {
 
-	/*
-	* Creates a key at the given x and y coordinates
-	* @param name the name of a key used to identify which door the key opens
-	* @param xCoordiante the x coordinate of a key cell
-	* @param yCoordinate the y coordinate of a key cell
+	/**
+	* Creates a key at the given x and y coordinates.
+	* @param name the name of a key used to identify which door the key opens.
+	* @param xCoordiante the x coordinate of a key cell.
+	* @param yCoordinate the y coordinate of a key cell.
 	*/
 	public Key(String name, int xCoordinate, int yCoordinate) {
 		
@@ -25,6 +25,7 @@ public class Key extends Cell {
 		this.playerPass = true;
 		this.enemyPass = false;
 		
+		//sets the right image for a key depending on what colour door the key opens
 		Image keyImage = null;
 		if (name.equalsIgnoreCase("red")) {
 			File file = new File("./src/redkey.png");
@@ -44,9 +45,9 @@ public class Key extends Cell {
 		
 	}
 	
-	/*
-	* Gets the image view of a key cell
-	* @return the image viewer of a key cell
+	/**
+	* Gets the image view of a key cell.
+	* @return the image viewer of a key cell.
 	*/
 	public ImageView getKeyView() {
 		

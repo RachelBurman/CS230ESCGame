@@ -4,18 +4,18 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
-* This class represents a wall at coordinates x and y
+/**
+* This class represents a wall at coordinates x and y.
 * @author Group 31 
 * @version 3.0
 */
 public class Wall extends Cell{
 	
-	/*
-	* Creates a wall at the given x and y coordinate
-	* @param name the name of a wall cell
-	* @param xCoordinate the x coordinate of a wall cell
-	* @param yCoordinate the y coordinate of a wall cell
+	/**
+	* Creates a wall at the given x and y coordinate.
+	* @param name the name of a wall cell.
+	* @param xCoordinate the x coordinate of a wall cell.
+	* @param yCoordinate the y coordinate of a wall cell.
 	*/
 	public Wall (String name, int xCoordinate, int yCoordinate) {
 		
@@ -33,7 +33,7 @@ public class Wall extends Cell{
 		
 	}
 	
-	/*
+	/**
 	* Gets the image view of a wall cell
 	* @return an image viewer class of a wall cell
 	*/

@@ -4,14 +4,14 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
+/**
 * This class represents a door at coordinates x and y
 * @author Group 31 
 * @version 2.0
 */
 public class Door extends Cell {
 
-	/*
+	/**
 	* Creates a door at the given x and y coordinates
 	* @param name the colour code of a door
 	* @param xCoordinate the x coordinate of a door cell
@@ -26,7 +26,7 @@ public class Door extends Cell {
 		this.playerPass = false;
 		this.enemyPass = false;
 		
-		
+		//gets the right image of a door depending on what colour door it is
 		Image doorImage = null;
 		if (name.equalsIgnoreCase("red door")) {
 			File file = new File("./src/reddoor.png");
