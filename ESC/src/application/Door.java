@@ -25,9 +25,7 @@ public class Door extends Cell {
 		Image image = null;;
 		this.playerPass = false;
 		this.enemyPass = false;
-		this.cellView = new ImageView(cellImage);
-		this.cellView.setFitHeight(CELL_SIZE);
-		this.cellView.setFitWidth(CELL_SIZE);
+		
 		
 		Image doorImage = null;
 		if (name.equalsIgnoreCase("red door")) {
@@ -40,6 +38,9 @@ public class Door extends Cell {
 			File file = new File("./src/greendoor.png");
 			doorImage = new Image(file.toURI().toString());
 		}
+		this.cellView = new ImageView(doorImage);
+		this.cellView.setFitHeight(CELL_SIZE);
+		this.cellView.setFitWidth(CELL_SIZE);
 			
 	}
 
