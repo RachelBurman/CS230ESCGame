@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 * @version 3.0
 */
 public class Cell {
+	//protected as the subclasses of cell require to use these variables.
 	protected String name;
 	protected Image cellImage;
 	protected ImageView cellView;
@@ -27,6 +28,7 @@ public class Cell {
         */
 	public Cell(String name, int xCoordinate, int yCoordinate ) {
 		
+		//sets default properties of a cell
 		this.name = name;                
 		this.playerPass = true;
 		this.enemyPass = true;
