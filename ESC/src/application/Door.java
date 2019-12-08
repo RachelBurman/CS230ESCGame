@@ -25,7 +25,6 @@ public class Door extends Cell {
 		Image image = null;;
 		this.playerPass = false;
 		this.enemyPass = false;
-		this.cellImage = doorImage;
 		this.cellView = new ImageView(cellImage);
 		this.cellView.setFitHeight(CELL_SIZE);
 		this.cellView.setFitWidth(CELL_SIZE);

@@ -13,7 +13,7 @@ public class Cell {
 	protected String name;
 	protected Image cellImage;
 	protected ImageView cellView;
-	protected final int CELL_SIZE= 75;
+	protected final int CELL_SIZE= 70;
 	protected int xCoordinate;
 	protected int yCoordinate;
 	protected boolean playerPass;

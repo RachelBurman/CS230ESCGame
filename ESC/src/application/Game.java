@@ -1,12 +1,13 @@
 package application;
 
-import java.awt.TextField;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import moving.Player;
@@ -14,21 +15,31 @@ import moving.StraightLineEnemy;
 import moving.WallFollowingEnemy;
 import moving.DumbTargetingEnemy;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Game extends Application {
 	private static final String PROFILES_FILE = "./Profiles.txt";
 	private static final int WINDOW_WIDTH = 800;
-	private static final int WINDOW_HEIGHT = 500;
+	private static final int WINDOW_HEIGHT = 600;
+	private static final int IMAGE_SIZE = 32;
+	private static final Font FONT_SIZE = new Font(18);
 	private static String startFile;
+	
 	private static long startTime;
 	private static String username;
 	private static Stage primaryStage;
 	private static String profile;
+	VBox boxA = new VBox();
 
 	// public void start(Stage primaryStage) {
 	public void start(String startFile, String profile, String username) {
@@ -37,15 +48,17 @@ public class Game extends Application {
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
 		BorderPane root = new BorderPane();
-		root.setTop(makeHBox());
 		GridPane grid = new GridPane();
 		root.setCenter(grid);
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 		MapManager.sharedMapManager().setMap(new Map(this.startFile));
+		root.setTop(topGUI());
+		
 
 		// Register an event handler for key presses
+		
 		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));
 		drawGame(grid);
 		startTime = System.nanoTime();
@@ -59,13 +72,83 @@ public class Game extends Application {
 
 		System.out.println("Start method ended");
 	}
+	 
 
-	public HBox makeHBox() {
-		HBox box = new HBox();
-		Label label = new Label(startFile);
-		box.getChildren().add(label);
-		return box;
+	public VBox topGUI() {
+		boxA.getChildren().clear();
+		HBox first = topGUIA();
+		HBox second = topGUIB();
+		boxA.getChildren().addAll(first,second);
+		return boxA;
 
+	}
+	public HBox topGUIA() {
+		HBox box1 = new HBox();
+		Player player1 = MapManager.sharedMapManager().getMap().getPlayer1();
+		Label file = new Label("Current level" +startFile);
+		file.setFont(FONT_SIZE);
+		Label tokens = new Label("Tokens: " + player1.getTokens());
+		tokens.setFont(FONT_SIZE);
+		Label red = new Label("Red Keys: " + player1.getRedKey());
+		red.setTextFill(Color.web("#FF0000"));
+		red.setFont(FONT_SIZE);
+		Label green = new Label("Green Keys: " + player1.getGreenKey());
+		green.setTextFill(Color.web("#008000"));
+		green.setFont(FONT_SIZE);
+		Label blue = new Label("Blue Keys: " + player1.getBlueKey());
+		blue.setTextFill(Color.web("#0000FF"));
+		blue.setFont(FONT_SIZE);
+		Button back = new Button("Save & Quit");
+		back.setAlignment(Pos.TOP_RIGHT);
+		back.setFont(new Font(14));
+		back.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override public void handle(ActionEvent e) {
+		    	primaryStage.close();
+		    }
+		});
+		box1.getChildren().addAll(file, tokens, red, green, blue,back);
+		box1.setSpacing(30);
+		return box1;
+	}
+	public HBox topGUIB() {
+		HBox box2 = new HBox();
+		box2.getChildren().clear();
+		Player player1 =MapManager.sharedMapManager().getMap().getPlayer1();
+		File flipperFile = new File("./src/flipper.png");
+		Image flipperImage = new Image(flipperFile.toURI().toString());
+		ImageView flipperView = new ImageView(flipperImage);
+		flipperView.setFitHeight(IMAGE_SIZE);
+		flipperView.setFitWidth(IMAGE_SIZE);
+		File bootsFile = new File("./src/boot.jpg");
+		Image bootsImage = new Image(bootsFile.toURI().toString());
+		ImageView bootsView = new ImageView(bootsImage);
+		bootsView.setFitHeight(IMAGE_SIZE);
+		bootsView.setFitWidth(IMAGE_SIZE);
+		Label boot = new Label();
+		boot.setText("Boots on");
+		boot.setFont(FONT_SIZE);
+		Label flipper = new Label();
+		flipper.setText("Flipper on");
+		flipper.setFont(FONT_SIZE);
+		box2.getChildren().add(flipperView);
+		box2.getChildren().add(flipper);
+		if (player1.getFlippers()==true) {
+			flipper.setVisible(true);
+		} else {
+			flipper.setVisible(false);
+		}
+		
+		box2.getChildren().add(bootsView);
+		box2.getChildren().add(boot);
+		if (player1.getBoots()==true) {
+			boot.setVisible(true);
+		} else {
+			boot.setVisible(false);
+		}
+		box2.setSpacing(30);
+		return box2;
+		
+		
 	}
 
 	public GridPane drawGame(GridPane grid) {
@@ -198,7 +281,7 @@ public class Game extends Application {
 			// Do nothing
 			break;
 		}
-
+		topGUI();
 		map.StraightLineMove();
 		map.DumbMove();
 		map.WallFollowMove();
