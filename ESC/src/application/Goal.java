@@ -4,18 +4,18 @@ import java.io.File;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/*
-* This class represents a goal at coordinates x and y
+/**
+* This class represents a goal at coordinates x and y.
 * @author Group 31 
 * @version 4.0
 */
 public class Goal extends Cell {
 
-	/*
-	* Creates a goal cell at the given x and y coordinates
-	* @param name the name of a goal cell
-	* @param xCoordinate the x coordinate of a goal cell
-	* @param yCoordinate the y coordinate of a goal cell
+	/**
+	* Creates a goal cell at the given x and y coordinates.
+	* @param name the name of a goal cell.
+	* @param xCoordinate the x coordinate of a goal cell.
+	* @param yCoordinate the y coordinate of a goal cell.
 	*/
 	public Goal(String name, int xCoordinate, int yCoordinate) {
 		
@@ -33,9 +33,9 @@ public class Goal extends Cell {
 		
 	}
 	
-	/*
-	* Gets the image view of a goal cell
-	* @return an image viewer class type of a goal cell
+	/**
+	* Gets the image view of a goal cell.
+	* @return an image viewer class type of a goal cell.
 	*/
 	public ImageView getGoalView() {
 		
