@@ -1,19 +1,19 @@
-20 // map size x
-10 // map size y
-1  // player start x
-8  // player start y
-18 // straight enemy x
-8  // straight enemy y
-4  // straight enemy direction
-18 // wall following x
-1  // wall following y
-2  // wall following direction
-0  // dumb target x
-0  // dumb target y
-8  // teleporter 1 x
-2  // teleporter 1 y
-12 // teleporter 2 x
-2  // teleporter 2 y
+20
+10
+1
+8
+18
+8
+4
+18
+1
+2
+0
+0
+8 
+2
+12
+2
 ####################
 #A   R    2        #  
 #    #  A #    T   #
@@ -24,7 +24,3 @@
 ### ## ##E## ## ## #
 #                  #
 ####################
-// A redKey, B bluedoor, C bluekey, D greendoor, E greenkey
-// F fire, G goal, H Boots, I Flipper, R redDoor
-// T Token, U Token Door, W Water,   Cell , #  Wall, S teleporter 
-// 2 TokenDoor2, 3 TokenDoor3

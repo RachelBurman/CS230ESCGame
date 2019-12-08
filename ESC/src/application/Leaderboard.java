@@ -19,7 +19,7 @@ public class Leaderboard {
 		
 		try {
 			//opens the leaderboard file for a given level
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			String timeTaken;
 			String userName;
@@ -50,7 +50,7 @@ public class Leaderboard {
 		
 		try {
 			//opens the leaderboard file for a given level
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			String timeTaken;
 			String userName;
@@ -90,11 +90,11 @@ public class Leaderboard {
 		
 		try {
 			//opens the leaderboard file for a given level
-			File f = new File("ESC/" + levelName + "leaderboard.txt");
+			File f = new File("./" + levelName + "leaderboard.txt");
 			Scanner in = new Scanner(f);
 			
-			int timeTaken;
-			String userName;
+			//int timeTaken;
+			//String userName;
 			//flag is used to see if a record has taken the place of another in the leaderboards
 			boolean flag = false;
 			
@@ -104,8 +104,8 @@ public class Leaderboard {
 			
 			//compares every record in the leaderboard file against the new time to enter
 			for (int i=0;i<3;i++) {
-				timeTaken = in.nextInt();
-				userName = in.next();
+				//timeTaken = in.nextInt();
+				//userName = in.next();
 				
 				if (flag == false) {
 					if (Integer.parseInt(recordsOld[0][i]) > timeTakenNew) {
@@ -131,7 +131,7 @@ public class Leaderboard {
 			
 			//to write to the leaderboard file
 			try {
-			FileWriter writer = new FileWriter("ESC/" + levelName + "leaderboard.txt");
+			FileWriter writer = new FileWriter("./" + levelName + "leaderboard.txt");
 			
 			//compiles the data to be written to the text file
 			String outputContent = "";
