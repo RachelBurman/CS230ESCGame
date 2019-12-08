@@ -62,7 +62,7 @@ public class Game extends Application {
 		this.startFile = startFile;
 		
 		BorderPane root = new BorderPane();
-		GridPane grid = MapManager.sharedMapManager().getGrid();
+		GridPane grid = new GridPane();
 		root.setCenter(grid);
 		grid.setAlignment(Pos.CENTER);
 		Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -73,8 +73,8 @@ public class Game extends Application {
 
 		// Register an event handler for key presses
 
-		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event));
-		drawGame();
+		scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event, grid));
+		drawGame(grid);
 		startTime = System.nanoTime();
 
 		try {
@@ -175,8 +175,8 @@ public class Game extends Application {
 	 * @param the current grid that is showing the game
 	 * @return the grid that has the updated information for it to be displayed
 	 */
-	public GridPane drawGame() {
-		GridPane grid = MapManager.sharedMapManager().getGrid();
+	public GridPane drawGame(GridPane grid) {
+		
 		grid.getChildren().clear();
 		Map map = MapManager.sharedMapManager().getMap();
 
@@ -258,10 +258,9 @@ public class Game extends Application {
 	 * Then returns he GUI and the grid updated
 	 * @param event - the keyboard press
 	 */
-	public void processKeyEvent(KeyEvent event) {
+	public void processKeyEvent(KeyEvent event, GridPane grid) {
 
 		Map map = MapManager.sharedMapManager().getMap();
-		GridPane grid = MapManager.sharedMapManager().getGrid();
 		int currentX = map.getPlayer1().getxLocation();
 		int currentY = map.getPlayer1().getyLocation();
 
@@ -312,11 +311,11 @@ public class Game extends Application {
 			break;
 		}
 		topGUI();
-		loseGame();
+		loseGame(grid);
 		map.StraightLineMove();
 		map.DumbMove();
 		map.WallFollowMove();
-		loseGame();
+		loseGame(grid);
 
 		event.consume();
 
@@ -326,8 +325,8 @@ public class Game extends Application {
 	 * Then restarts the game
 	 * @param grid that the player is on 
 	 */
-	public void loseGame() {
-		GridPane grid = MapManager.sharedMapManager().getGrid();
+	public void loseGame(GridPane grid) {
+		
 		Map map = MapManager.sharedMapManager().getMap();
 
 		int playerXLocation = map.getPlayer1().getxLocation();
@@ -341,33 +340,32 @@ public class Game extends Application {
 
 		if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		} else if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		} else if (playerXLocation == DumbEnemyX && playerYLocation == DumbEnemyY) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		} else if (playerXLocation == WallFollowX && playerYLocation == WallFollowY) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire")
 				&& map.getPlayer1().getBoots() == false) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")
 				&& map.getPlayer1().getFlippers() == false) {
 			System.out.println("Game OVer");
-			restart();
+			restart(grid);
 		}
 
-		upLevel();
-		drawGame();
+		upLevel(grid);
+		drawGame(grid);
 
 	}
 	
-	private static void restart() {
-		GridPane grid = MapManager.sharedMapManager().getGrid();
+	private static void restart(GridPane grid) {
 		startTime = System.nanoTime();
 		grid.getChildren().clear();
 		Map newMap = new Map(startFile);
@@ -375,12 +373,12 @@ public class Game extends Application {
 
 	}
 
-	private static void upLevel() {
+	private static void upLevel(GridPane grid) {
 
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
-		GridPane grid = MapManager.sharedMapManager().getGrid();
+		
 		long endTime = System.nanoTime();
 		long duration;
 		duration = (endTime - startTime) / 1000000000;
@@ -395,28 +393,28 @@ public class Game extends Application {
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, username);
 				startFile = "./lvl2.txt";
-				restart();
+				restart(grid);
 				break;
 			case "./lvl2.txt":
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, username);
 				startFile = "./lvl3.txt";
-				restart();
+				restart(grid);
 				break;
 			case "./lvl3.txt":
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, username);
 				startFile = "./lvl4.txt";
-				restart();
+				restart(grid);
 				break;
 			case "./lvl4.txt":
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, username);
 				startFile = "./lvl5.txt";
-				restart();
+				restart(grid);
 				break;
 			default:
 				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, username);
