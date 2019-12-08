@@ -11,17 +11,21 @@ import javafx.scene.image.ImageView;
 */
 public class Boot extends Cell {
 
-	/*
-	* Creates a boot to be displayed onto the game map
-	* @param name name of the cell type
-	* @param xCoordinate the x coordinate of a boot cell
-	* @param yCoordinate the y coordinate of a boot cell
+	/**
+	* Creates a boot to be displayed onto the game map.
+	* @param name name of the cell type.
+	* @param xCoordinate the x coordinate of a boot cell.
+	* @param yCoordinate the y coordinate of a boot cell.
 	*/
 	public Boot(String name, int xCoordinate, int yCoordinate) {
 		
 		super(name, xCoordinate, yCoordinate);
+		
+		//A player can pass through the cell but an enemy cannot.
 		this.playerPass = true;
 		this.enemyPass = false;
+		
+		//gets the image of a boot to display to the user
 		File file = new File("./src/boot.jpg");
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
