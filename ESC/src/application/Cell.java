@@ -1,20 +1,22 @@
 package application;
 
 import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Cell.
- * @author Group 31 
+ *
+ * @author Group 31
  * @version 3.0
  */
 public class Cell {
-	//protected as the subclasses of cell require to use these variables.
+	// protected as the subclasses of cell require to use these variables.
 	protected String name;
 	protected Image cellImage;
 	protected ImageView cellView;
-	protected static final int CELL_SIZE= 70;
+	protected static final int CELL_SIZE = 70;
 	protected int xCoordinate;
 	protected int yCoordinate;
 	protected boolean playerPass;
@@ -24,14 +26,15 @@ public class Cell {
 
 	/**
 	 * Constructor of Cell class.
-	 * @param name The name associated with the cell.
+	 *
+	 * @param name        The name associated with the cell.
 	 * @param xCoordinate The x coordinate of cell.
 	 * @param yCoordinate The y coordinate of cell.
 	 */
 	public Cell(String name, int xCoordinate, int yCoordinate) {
 
-		//sets default properties of a cell
-		this.name = name;                
+		// sets default properties of a cell
+		this.name = name;
 		this.playerPass = true;
 		this.enemyPass = true;
 
@@ -49,6 +52,7 @@ public class Cell {
 
 	/**
 	 * Gets the x coordinate of a link of a teleporter.
+	 *
 	 * @return linkX An x coordinate value of a teleporter.
 	 */
 	public int getLinkX() {
@@ -59,6 +63,7 @@ public class Cell {
 
 	/**
 	 * Sets the x coordinate of a link of a teleporter.
+	 *
 	 * @param linkX An x coordinate value of a teleporter.
 	 */
 	public void setLinkX(int linkX) {
@@ -69,6 +74,7 @@ public class Cell {
 
 	/**
 	 * Gets the y coordinate of a link of a teleporter.
+	 *
 	 * @return linkY A y coordinate value of a teleporter.
 	 */
 	public int getLinkY() {
@@ -79,6 +85,7 @@ public class Cell {
 
 	/**
 	 * Sets the y coordinate of a link of a teleporter.
+	 *
 	 * @param linkY A y coordinate value of a teleporter.
 	 */
 	public void setLinkY(int linkY) {
@@ -89,6 +96,7 @@ public class Cell {
 
 	/**
 	 * Sets the cell Image.
+	 *
 	 * @param cellImage An Image of cell.
 	 */
 	public void setCellImage(Image cellImage) {
@@ -99,6 +107,7 @@ public class Cell {
 
 	/**
 	 * Sets the cell Image View.
+	 *
 	 * @param cellView An image view with cell image already attached.
 	 */
 	public void setCellView(ImageView cellView) {
@@ -109,6 +118,7 @@ public class Cell {
 
 	/**
 	 * Gets the image of specific cell.
+	 *
 	 * @return cellImage An Image of cell.
 	 */
 	public Image getImage() {
@@ -129,6 +139,7 @@ public class Cell {
 
 	/**
 	 * Gets the check to see if a player can enter a cell.
+	 *
 	 * @return playerPass Return true if possible for player to move onto cell.
 	 */
 	public boolean getPlayerPass() {
@@ -139,6 +150,7 @@ public class Cell {
 
 	/**
 	 * Gets the check to see if an enemy can enter a cell.
+	 *
 	 * @return enemyPass Return true if possible for enemy to move onto cell.
 	 */
 	public boolean getEnemyPass() {
@@ -149,6 +161,7 @@ public class Cell {
 
 	/**
 	 * Gets the standard cell size of a cell.
+	 *
 	 * @return CELL_SIZE The size of a cell in pixels.
 	 */
 	public int getCELL_SIZE() {
@@ -159,6 +172,7 @@ public class Cell {
 
 	/**
 	 * Gets the x coordinate of a cell.
+	 *
 	 * @return xCoordinate The x coordinate of a cell.
 	 */
 	public int getxCoordinate() {
@@ -169,6 +183,7 @@ public class Cell {
 
 	/**
 	 * Gets the y coordinate of a cell.
+	 *
 	 * @return yCoordinate The y coordinate of a cell.
 	 */
 	public int getyCoordinate() {
@@ -179,6 +194,7 @@ public class Cell {
 
 	/**
 	 * Gets the name of cell for identification of cell.
+	 *
 	 * @return name The name associated with the cell.
 	 */
 	public String getName() {
@@ -195,7 +211,7 @@ public class Cell {
 		this.playerPass = true;
 
 	}
-	
+
 	/**
 	 * Method that changes the enemy pass to equal true.
 	 */

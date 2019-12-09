@@ -4,15 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.stage.Stage;
-import moving.Player;
-import moving.StraightLineEnemy;
-import moving.WallFollowingEnemy;
-import moving.DumbTargetingEnemy;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,13 +19,18 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import moving.DumbTargetingEnemy;
+import moving.Player;
+import moving.StraightLineEnemy;
+import moving.WallFollowingEnemy;
+
 /**
- * This class is made for the game to actually run.
- * It is also used to set a few of the JavaFX elements.
+ * This class is made for the game to actually run. It is also used to set a few
+ * of the JavaFX elements.
+ *
  * @author Jonathan
  * @version 1.5
  *
@@ -50,8 +51,9 @@ public class Game extends Application {
 	VBox boxA = new VBox();
 
 	/**
-	 * Method to start the actual game with the level and person information.
-	 * Also starts the JavaFX elements to display the game.
+	 * Method to start the actual game with the level and person information. Also
+	 * starts the JavaFX elements to display the game.
+	 *
 	 * @param startFile- String of the textfile with the level
 	 * @param profile- profile of the person playing
 	 * @param username- username of the person playing
@@ -62,7 +64,7 @@ public class Game extends Application {
 		this.username = username;
 		this.primaryStage = new Stage();
 		this.startFile = startFile;
-		
+
 		BorderPane root = new BorderPane();
 		GridPane grid = new GridPane();
 		root.setCenter(grid);
@@ -71,7 +73,6 @@ public class Game extends Application {
 
 		MapManager.sharedMapManager().setMap(new Map(this.startFile));
 		root.setTop(topGUI());
-
 
 		// Register an event handler for key presses
 
@@ -92,22 +93,24 @@ public class Game extends Application {
 	}
 
 	/**
-	 * Builds the GUI elements above the game.
-	 * Includes number of keys, tokens for the player to see.
+	 * Builds the GUI elements above the game. Includes number of keys, tokens for
+	 * the player to see.
+	 *
 	 * @return a vertical box with the elements inside
 	 */
 	public VBox topGUI() {
 		boxA.getChildren().clear();
 		HBox first = topGUIA();
 		HBox second = topGUIB();
-		boxA.getChildren().addAll(first,second);
+		boxA.getChildren().addAll(first, second);
 		return boxA;
 
 	}
+
 	private HBox topGUIA() {
 		HBox box1 = new HBox();
 		Player player1 = MapManager.sharedMapManager().getMap().getPlayer1();
-		Label file = new Label("Current level" +startFile);
+		Label file = new Label("Current level" + startFile);
 		file.setFont(FONT_SIZE);
 		Label tokens = new Label("Tokens: " + player1.getTokens());
 		tokens.setFont(FONT_SIZE);
@@ -124,18 +127,20 @@ public class Game extends Application {
 		back.setAlignment(Pos.TOP_RIGHT);
 		back.setFont(new Font(14));
 		back.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		    	primaryStage.close();
-		    }
+			@Override
+			public void handle(ActionEvent e) {
+				primaryStage.close();
+			}
 		});
-		box1.getChildren().addAll(file, tokens, red, green, blue,back);
+		box1.getChildren().addAll(file, tokens, red, green, blue, back);
 		box1.setSpacing(30);
 		return box1;
 	}
+
 	private HBox topGUIB() {
 		HBox box2 = new HBox();
 		box2.getChildren().clear();
-		Player player1 =MapManager.sharedMapManager().getMap().getPlayer1();
+		Player player1 = MapManager.sharedMapManager().getMap().getPlayer1();
 		File flipperFile = new File("./src/flipper.png");
 		Image flipperImage = new Image(flipperFile.toURI().toString());
 		ImageView flipperView = new ImageView(flipperImage);
@@ -154,7 +159,7 @@ public class Game extends Application {
 		flipper.setFont(FONT_SIZE);
 		box2.getChildren().add(flipperView);
 		box2.getChildren().add(flipper);
-		if (player1.getFlippers()==true) {
+		if (player1.getFlippers() == true) {
 			flipper.setVisible(true);
 		} else {
 			flipper.setVisible(false);
@@ -162,7 +167,7 @@ public class Game extends Application {
 
 		box2.getChildren().add(bootsView);
 		box2.getChildren().add(boot);
-		if (player1.getBoots()==true) {
+		if (player1.getBoots() == true) {
 			boot.setVisible(true);
 		} else {
 			boot.setVisible(false);
@@ -170,15 +175,15 @@ public class Game extends Application {
 		box2.setSpacing(30);
 		return box2;
 
-
 	}
+
 	/**
 	 * A method to draw the game outfor the user to see
 	 * @param grid the current grid that is showing the game
 	 * @return the grid that has the updated information for it to be displayed
 	 */
 	public GridPane drawGame(GridPane grid) {
-		
+
 		grid.getChildren().clear();
 		Map map = MapManager.sharedMapManager().getMap();
 
@@ -219,8 +224,8 @@ public class Game extends Application {
 		}
 		// Draw Grid using GridPane
 		/*
-		 * for (int y = 0; y < actualMap.getMapHeight(); y++) { for (int x = 0;
-		 * x < actualMap.getMapLength(); x++) { // Add new types of cells here
+		 * for (int y = 0; y < actualMap.getMapHeight(); y++) { for (int x = 0; x <
+		 * actualMap.getMapLength(); x++) { // Add new types of cells here
 		 * grid.add(actualMap.getCell(x, y).getView(), x, y); } }
 		 */
 		Player player = map.getPlayer1();
@@ -255,9 +260,11 @@ public class Game extends Application {
 		return grid;
 
 	}
+
 	/**
-	 * Method to detect directional key presses and then use it to move the player around the game.
-	 * Then returns he GUI and the grid updated
+	 * Method to detect directional key presses and then use it to move the player
+	 * around the game. Then returns he GUI and the grid updated
+	 *
 	 * @param event - the keyboard press
 	 * @param grid the current grid that is showing the game
 	 */
@@ -323,13 +330,14 @@ public class Game extends Application {
 		event.consume();
 
 	}
+
 	/**
-	 * Detects when the player loses the game.
-	 * Then restarts the game
-	 * @param grid that the player is on 
+	 * Detects when the player loses the game. Then restarts the game
+	 *
+	 * @param grid that the player is on
 	 */
 	public void loseGame(GridPane grid) {
-		
+
 		Map map = MapManager.sharedMapManager().getMap();
 
 		int playerXLocation = map.getPlayer1().getxLocation();
@@ -343,29 +351,28 @@ public class Game extends Application {
 
 		if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
 			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
 			restart(grid);
 		} else if (playerXLocation == StraightEnemyX && playerYLocation == StraightEnemyY) {
-			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
+
 			restart(grid);
 		} else if (playerXLocation == DumbEnemyX && playerYLocation == DumbEnemyY) {
-			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
+
 			restart(grid);
 		} else if (playerXLocation == WallFollowX && playerYLocation == WallFollowY) {
-			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
+
 			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("fire")
 				&& map.getPlayer1().getBoots() == false) {
-			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
+
 			restart(grid);
 		} else if (map.getCell(playerXLocation, playerYLocation).getName().equalsIgnoreCase("water")
 				&& map.getPlayer1().getFlippers() == false) {
-			System.out.println("Game OVer");
-			playFail();
+			LoseWindow.display(primaryStage);
 			restart(grid);
 		}
 
@@ -373,7 +380,7 @@ public class Game extends Application {
 		drawGame(grid);
 
 	}
-	
+
 	private static void restart(GridPane grid) {
 		startTime = System.nanoTime();
 		grid.getChildren().clear();
@@ -381,36 +388,13 @@ public class Game extends Application {
 		MapManager.sharedMapManager().setMap(newMap);
 
 	}
-	
-	/**
-	 * Plays music when win.
-	 */
-	private static void playApplause() {
-		String musicFileLocation = "./src/applause.mp3";     
-
-		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
-		mediaPlayer.play();
-	}
-	/**
-	 * Plays music when lose.
-	 */
-	private static void playFail() {
-		String musicFileLocation = "./src/fail.mp3";     
-
-		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
-		mediaPlayer.play();
-	}
 
 	private static void upLevel(GridPane grid) {
 
 		int playerX = MapManager.sharedMapManager().getMap().getPlayer1().getxLocation();
 		int playerY = MapManager.sharedMapManager().getMap().getPlayer1().getyLocation();
 		Cell current = MapManager.sharedMapManager().getMap().getCell(playerX, playerY);
-		
+
 		long endTime = System.nanoTime();
 		long duration;
 		duration = (endTime - startTime) / 1000000000;
@@ -421,7 +405,7 @@ public class Game extends Application {
 			switch (startFile) {
 
 			case "./lvl1.txt":
-				playApplause();
+
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl1", (int) duration, username);
@@ -429,7 +413,6 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl2.txt":
-				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl2", (int) duration, username);
@@ -437,7 +420,6 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl3.txt":
-				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl3", (int) duration, username);
@@ -445,7 +427,6 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			case "./lvl4.txt":
-				playApplause();
 				updateProfileLevel(profile);
 				LevelChangeWindow.display(startFile);
 				Leaderboard.checkNewLevelComplete("lvl4", (int) duration, username);
@@ -453,11 +434,11 @@ public class Game extends Application {
 				restart(grid);
 				break;
 			default:
-				playApplause();
 				Leaderboard.checkNewLevelComplete("lvl5", (int) duration, username);
 				grid.getChildren().clear();
 				WinWindow.display(primaryStage);
 				MapManager.sharedMapManager().setMap(null);
+
 				break;
 			}
 
@@ -645,8 +626,10 @@ public class Game extends Application {
 		}
 
 	}
+
 	/**
 	 * Returns the gameStage
+	 *
 	 * @return primaryStage
 	 */
 

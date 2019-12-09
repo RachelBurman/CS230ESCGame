@@ -2,7 +2,6 @@ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -12,11 +11,17 @@ import java.util.Scanner;
  * third 3 StraightLineEnemy location followed by 1,2,3,4 as up,down,right,left
  *
  */
+/**
+ * This class contains all attributes and behaviours of Level Loader.
+ *
+ * @author Group 31
+ * @version 3.0
+ */
 public class LevelLoader {
 
 	/**
 	 * Method to get size of map.
-	 * 
+	 *
 	 * @param file Level file
 	 * @return array with dimensions of map in X and Y
 	 */
@@ -45,7 +50,7 @@ public class LevelLoader {
 
 	/**
 	 * Method to get Player start location in X and Y coordinates.
-	 * 
+	 *
 	 * @param file Level file
 	 * @return array with player start location , X and Y.
 	 */
@@ -72,7 +77,7 @@ public class LevelLoader {
 
 	/**
 	 * Method to get Straight Line enemy information.
-	 * 
+	 *
 	 * @param file Level file
 	 * @return array with Straight Enemy information
 	 */
@@ -108,7 +113,7 @@ public class LevelLoader {
 
 	/**
 	 * Method to get information about the wall following enemy.
-	 * 
+	 *
 	 * @param file Level file
 	 * @return Wall Following enemy information in an array
 	 */
@@ -143,7 +148,7 @@ public class LevelLoader {
 
 	/**
 	 * Method to get Dumb enemy information.
-	 * 
+	 *
 	 * @param file Level file.
 	 * @return array wth dumb enemy information
 	 */
@@ -174,7 +179,7 @@ public class LevelLoader {
 
 	/**
 	 * Get Teleporter link information
-	 * 
+	 *
 	 * @param file Level file
 	 * @return teleporter link information in an array
 	 */
@@ -227,8 +232,6 @@ public class LevelLoader {
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
 				String s = in.nextLine();
-
-				System.out.println(s);
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", newX, newY);

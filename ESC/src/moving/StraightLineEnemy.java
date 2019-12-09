@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * This class represents all attributes and behaviours of a StriaghtLine Enemy.
+ * 
  * @author Group 31
  * @version 3.0
  */
@@ -17,12 +18,14 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 
 	/**
 	 * Constructor of StraightLine Enemy.
-	 * @param name The name of the the enemy type.
+	 * 
+	 * @param name      The name of the the enemy type.
 	 * @param mapActual The map associated with StraightLine Enemy.
-	 * @param info The array containing information on positioning and direction of enemy.
+	 * @param info      The array containing information on positioning and
+	 *                  direction of enemy.
 	 */
 	public StraightLineEnemy(String name, Cell[][] mapActual, int[] info) {
-		super(name,mapActual, info);
+		super(name, mapActual, info);
 		this.xLocation = info[0];
 		this.yLocation = info[1];
 		File file = new File("./src/StraightEnemy.png");
@@ -51,16 +54,17 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 			break;
 		}
 	}
-	
+
 	/**
-	 * Method that checks enemy's surroundings and decides whether
-	 * to move vertically or not.
+	 * Method that checks enemy's surroundings and decides whether to move
+	 * vertically or not.
+	 * 
 	 * @param xLocation The x coordinate of enemy according to its map.
 	 * @param yLocation The y coordinate of enemy according to its map.
-	 * @param facing The direction enemy is facing prior to moving.
+	 * @param facing    The direction enemy is facing prior to moving.
 	 */
 	public void moveY(int xLocation, int yLocation, char facing) {
-		if (mapActual[xLocation][yLocation-1].getEnemyPass()==false && facing == 'u') {
+		if (mapActual[xLocation][yLocation - 1].getEnemyPass() == false && facing == 'u') {
 			this.facing = 'd';
 		} else if (mapActual[xLocation][yLocation + 1].getEnemyPass() == false && facing == 'd') {
 			this.facing = 'u';
@@ -69,18 +73,19 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 			this.yLocation = yLocation + 1;
 		} else if (facing == 'd') {
 			this.yLocation = yLocation - 1;
-		} 
+		}
 	}
-	
+
 	/**
-	 * Method that checks enemy's surroundings and decides whether
-	 * to move horizontally or not. 
+	 * Method that checks enemy's surroundings and decides whether to move
+	 * horizontally or not.
+	 * 
 	 * @param xLocation The x coordinate of enemy according to its map.
 	 * @param yLocation The y coordinate of enemy according to its map.
-	 * @param facing The direction enemy is facing prior to moving.
+	 * @param facing    The direction enemy is facing prior to moving.
 	 */
 	public void moveX(int xLocation, int yLocation, char facing) {
-		if ( facing == 'r') {
+		if (facing == 'r') {
 			if (mapActual[xLocation + 1][yLocation].getEnemyPass() == false) {
 				this.facing = 'l';
 			}
@@ -94,8 +99,7 @@ public class StraightLineEnemy extends NonTargetingEnemy {
 			this.xLocation = xLocation + 1;
 		} else if (this.facing == 'l') {
 			this.xLocation = xLocation - 1;
-		} 
+		}
 	}
 
 }
-
