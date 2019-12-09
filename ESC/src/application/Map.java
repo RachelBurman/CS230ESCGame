@@ -32,7 +32,7 @@ public class Map {
 	/**
 	 * Constructor for making a Map object.
 	 * Just needs the file where information is stored
-	 * @param THe name/path of the file.
+	 * @param file The name/path of the file.
 	 */
 	public Map (String file) {
 		this.mapActual=LevelLoader.loadLevel(file);
@@ -60,7 +60,7 @@ public class Map {
 	
 	/**
 	 * Returns the Enemy at position number.
-	 * @param Index of Dumb Enemy
+	 * @param num Index of Dumb Enemy
 	 * @return The Enemy at that index
 	 */
 	public DumbTargetingEnemy getDummieAt(int num) {
@@ -70,7 +70,7 @@ public class Map {
 
 	/**
 	 * Returns the Enemy at position number.
-	 * @param Index of WallFollowingEnemy
+	 * @param num Index of WallFollowingEnemy
 	 * @return Enemy at that index
 	 */
 	public WallFollowingEnemy getWallFollowAt(int num) {
@@ -80,7 +80,7 @@ public class Map {
 
 	/**
 	 * Set the map of cells.
-	 * @param 2D array of Cells
+	 * @param mapActual 2D array of Cells
 	 */
 	public void setMapActual(Cell[][] mapActual) {
 		this.mapActual = mapActual;
@@ -88,7 +88,7 @@ public class Map {
 	
 	/**
 	 * Add the player to the Map.
-	 * @param player
+	 * @param player The player to be added.
 	 */
 	public void addPlayer(Player player) {
 		this.player1 = player;
@@ -100,8 +100,8 @@ public class Map {
 	}
 	/**
 	 * Removes the cell at X and Y coordinates and adds a default one back in place of it.
-	 * @param xLocation
-	 * @param yLocation
+	 * @param xLocation The x location of the cell.
+	 * @param yLocation The y location of the cell.
 	 */
 	public void replaceCell(int xLocation, int yLocation) {
 		removeCell(xLocation,yLocation);
@@ -173,8 +173,8 @@ public class Map {
 	
 	/**
 	 * Updates the map at location X and Y.
-	 * @param next X location
-	 * @param next Y location
+	 * @param nextX next X location
+	 * @param nextY next Y location
 	 */
 	public void updateMap(int nextX, int nextY) {
 		openDoor(nextX, nextY);
@@ -189,8 +189,8 @@ public class Map {
 	}
 	/**
 	 * Changes Cell access for certain cells based on location X and Y.
-	 * @param next X location
-	 * @param next Y location
+	 * @param nextX next X location
+	 * @param nextY next Y location
 	 */
 	public void openDoor(int nextX, int nextY) {
 		String cellName =this.getCell(nextX, nextY).getName();

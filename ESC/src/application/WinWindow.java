@@ -13,7 +13,7 @@ public class WinWindow {
 	
 	/**
 	 * Make a window to display a message when the game is won
-	 * @param the stage you want to change
+	 * @param gameStage the stage you want to change
 	 */
 	public static void display(Stage gameStage) {
 		Stage popupwindow = new Stage();

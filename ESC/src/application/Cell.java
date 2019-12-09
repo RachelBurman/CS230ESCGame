@@ -119,7 +119,7 @@ public class Cell {
 
 	/**
 	 * Gets the image view with cell image already attached.
-	 * @returns cellView An image view with cell image already attached.
+	 * @return cellView An image view with cell image already attached.
 	 */
 	public ImageView getView() {
 

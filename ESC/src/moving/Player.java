@@ -46,7 +46,7 @@ public class Player extends Movable {
 	
 	/**
 	 * Getter method for amount of tokens.
-	 * @return
+	 * @return The amount of tokens held by the player.
 	 */
 	public int getTokens() {
 		return tokens;

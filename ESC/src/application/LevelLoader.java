@@ -17,8 +17,8 @@ public class LevelLoader {
 	/**
 	 * Method to get size of map.
 	 * 
-	 * @param level file
-	 * @return array with dimensions of map in X & Y
+	 * @param file Level file
+	 * @return array with dimensions of map in X and Y
 	 */
 	public static int[] getSize(String file) {
 
@@ -46,7 +46,7 @@ public class LevelLoader {
 	/**
 	 * Method to get Player start location in X and Y coordinates.
 	 * 
-	 * @param level file
+	 * @param file Level file
 	 * @return array with player start location , X and Y.
 	 */
 	public static int[] getPlayerStart(String file) {
@@ -73,7 +73,7 @@ public class LevelLoader {
 	/**
 	 * Method to get Straight Line enemy information.
 	 * 
-	 * @param level file
+	 * @param file Level file
 	 * @return array with Straight Enemy information
 	 */
 	public static int[] getStraightEnemy(String file) {
@@ -109,7 +109,7 @@ public class LevelLoader {
 	/**
 	 * Method to get information about the wall following enemy.
 	 * 
-	 * @param level file
+	 * @param file Level file
 	 * @return Wall Following enemy information in an array
 	 */
 	public static int[] getWallFollowingEnemy(String file) {
@@ -144,7 +144,7 @@ public class LevelLoader {
 	/**
 	 * Method to get Dumb enemy information.
 	 * 
-	 * @param level file
+	 * @param file Level file.
 	 * @return array wth dumb enemy information
 	 */
 	public static int[] getDumbEnemy(String file) {
@@ -175,7 +175,7 @@ public class LevelLoader {
 	/**
 	 * Get Teleporter link information
 	 * 
-	 * @param level file
+	 * @param file Level file
 	 * @return teleporter link information in an array
 	 */
 	public static int[] getTeleporter(String file) {
@@ -208,7 +208,7 @@ public class LevelLoader {
 	// Load file
 	/**
 	 * Load the level into an Array for the map.
-	 * @param level file
+	 * @param file Level file.
 	 * @return 2D Cell array
 	 */
 	public static Cell[][] loadLevel(String file) {

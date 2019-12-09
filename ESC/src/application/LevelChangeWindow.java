@@ -13,7 +13,7 @@ public class LevelChangeWindow {
 	
 	/**
 	 * Make a window for changing level
-	 * @param fileName
+	 * @param fileName The name of the file.
 	 */
 	public static void display(String fileName) {
 		Stage popupwindow = new Stage();

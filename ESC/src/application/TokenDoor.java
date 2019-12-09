@@ -50,7 +50,7 @@ public class TokenDoor extends Cell {
 
 	/**
 	 * Gets the image view of a token door.
-	 * @param image view of a token door.
+	 * @return image view of a token door.
 	 */
 	public ImageView getTokenDoorView() {
 

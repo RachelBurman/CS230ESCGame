@@ -65,7 +65,7 @@ public abstract class TargetingEnemy extends Enemy {
 
 	/**
 	 * Setter method for player y coordinate in relation to enemy.
-	 * @param The player y coordinate in relation to enemy.
+	 * @param playery The player y coordinate in relation to enemy.
 	 */
 	public void setPlayery(int playery) {
 		this.playery = playery;

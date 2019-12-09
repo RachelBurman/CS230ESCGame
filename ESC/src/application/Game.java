@@ -174,7 +174,7 @@ public class Game extends Application {
 	}
 	/**
 	 * A method to draw the game outfor the user to see
-	 * @param the current grid that is showing the game
+	 * @param grid the current grid that is showing the game
 	 * @return the grid that has the updated information for it to be displayed
 	 */
 	public GridPane drawGame(GridPane grid) {
@@ -259,6 +259,7 @@ public class Game extends Application {
 	 * Method to detect directional key presses and then use it to move the player around the game.
 	 * Then returns he GUI and the grid updated
 	 * @param event - the keyboard press
+	 * @param grid the current grid that is showing the game
 	 */
 	public void processKeyEvent(KeyEvent event, GridPane grid) {
 

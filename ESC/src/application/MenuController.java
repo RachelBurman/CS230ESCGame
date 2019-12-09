@@ -73,12 +73,12 @@ public class MenuController {
     @FXML private MenuItem level5MenuItem;
     @FXML private TextField profileNameBox;
 
+    @FXML
     /**
      * Runs when the menu is opened.
      * Gets profiles from the Profiles.txt.
      * Displays the message of the day.
      */
-    @FXML
     private void initialize() {
         String s = "";
         //Sets all profiles to invisible so we can only set the ones 

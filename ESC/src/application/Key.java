@@ -15,7 +15,7 @@ public class Key extends Cell {
 	 * Constructor of Key.
 	 * Creates a key at the given x and y coordinates.
 	 * @param name The name of a key used to identify which door the key opens.
-	 * @param xCoordiante The x coordinate of a key cell.
+	 * @param xCoordinate The x coordinate of a key cell.
 	 * @param yCoordinate The y coordinate of a key cell.
 	 */
 	public Key(String name, int xCoordinate, int yCoordinate) {
