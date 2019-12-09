@@ -2,12 +2,19 @@ package application;
 
 import javafx.scene.layout.GridPane;
 
+/**
+ * This class contains all attributes and behaviours of Map Manager.
+ * @author Group 31
+ * @version 3.0
+ */
 public class MapManager {
 	
 	private static MapManager onlyMapManager;
 	private Map map;
 	
-	
+	/**
+	 * Empty MapManager constructor.
+	 */
 	private MapManager() {
 		
 	}

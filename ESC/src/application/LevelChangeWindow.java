@@ -12,6 +12,11 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * This class contains all attributes and behaviours of Level Change Window.
+ * @author Group 31
+ * @version 3.0
+ */
 public class LevelChangeWindow {
 	
 	

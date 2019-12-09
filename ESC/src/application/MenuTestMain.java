@@ -12,7 +12,10 @@ import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+/**
+ * @author Group 31
+ * @version 3.0
+ */
 public class MenuTestMain extends Application {
 
 	public void start(Stage primaryStage) {

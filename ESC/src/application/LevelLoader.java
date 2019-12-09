@@ -12,6 +12,11 @@ import java.util.Scanner;
  * third 3 StraightLineEnemy location followed by 1,2,3,4 as up,down,right,left
  *
  */
+/**
+ * This class contains all attributes and behaviours of Level Loader.
+ * @author Group 31
+ * @version 3.0
+ */
 public class LevelLoader {
 
 	/**
