@@ -45,7 +45,7 @@ public class LevelChangeWindow {
 
 		layout.setAlignment(Pos.CENTER);
 
-		Scene scene1 = new Scene(layout, 200, 150);
+		Scene scene1 = new Scene(layout, 300,100);
 
 		popupwindow.setScene(scene1);
 		playApplause();
