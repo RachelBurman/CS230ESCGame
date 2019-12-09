@@ -14,13 +14,15 @@ import javafx.stage.Stage;
 
 /**
  * This class contains all attributes and behaviours of WinWindow.
+ * 
  * @author Group 31
- * @version 3.0 
+ * @version 3.0
  */
 public class WinWindow {
-	
+
 	/**
 	 * Make a window to display a message when the game is won
+	 * 
 	 * @param the stage you want to change
 	 */
 	public static void display(Stage gameStage) {
@@ -40,7 +42,7 @@ public class WinWindow {
 
 		VBox layout = new VBox(10);
 
-		layout.getChildren().add( button1);
+		layout.getChildren().add(button1);
 
 		layout.setAlignment(Pos.CENTER);
 
@@ -51,20 +53,17 @@ public class WinWindow {
 		popupwindow.showAndWait();
 
 	}
+
 	/**
 	 * Plays music when win.
 	 */
 	private static void playApplause() {
-		String musicFileLocation = "./src/applause.mp3";     
+		String musicFileLocation = "./src/applause.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
-	
-	
-	
-
 
 }

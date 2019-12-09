@@ -2,7 +2,6 @@ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -14,6 +13,7 @@ import java.util.Scanner;
  */
 /**
  * This class contains all attributes and behaviours of Level Loader.
+ * 
  * @author Group 31
  * @version 3.0
  */
@@ -213,6 +213,7 @@ public class LevelLoader {
 	// Load file
 	/**
 	 * Load the level into an Array for the map.
+	 * 
 	 * @param level file
 	 * @return 2D Cell array
 	 */

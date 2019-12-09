@@ -14,14 +14,15 @@ import javafx.stage.Stage;
 
 /**
  * This class contains all attributes and behaviours of Level Change Window.
+ * 
  * @author Group 31
  * @version 3.0
  */
 public class LevelChangeWindow {
-	
-	
+
 	/**
 	 * Make a window for changing level
+	 * 
 	 * @param fileName
 	 */
 	public static void display(String fileName) {
@@ -41,26 +42,27 @@ public class LevelChangeWindow {
 		});
 
 		VBox layout = new VBox(10);
-		layout.getChildren().addAll(label,button);
+		layout.getChildren().addAll(label, button);
 
 		layout.setAlignment(Pos.CENTER);
 
-		Scene scene1 = new Scene(layout, 300,100);
+		Scene scene1 = new Scene(layout, 300, 100);
 
 		popupwindow.setScene(scene1);
 		playApplause();
 		popupwindow.showAndWait();
 
 	}
+
 	/**
 	 * Plays music when win.
 	 */
 	private static void playApplause() {
-		String musicFileLocation = "./src/applause.mp3";     
+		String musicFileLocation = "./src/applause.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
 

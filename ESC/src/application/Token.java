@@ -7,15 +7,16 @@ import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Token.
- * @author Group 31 
+ * 
+ * @author Group 31
  * @version 2.0
  */
 public class Token extends Cell {
 
 	/**
-	 * Constructor of Token.
-	 * Creates a token at the given x and y coordinates.
-	 * @param name The name of a token.
+	 * Constructor of Token. Creates a token at the given x and y coordinates.
+	 * 
+	 * @param name        The name of a token.
 	 * @param xCoordinate The x coordinate of a token cell.
 	 * @param yCoordinate The y coordinate of a token cell.
 	 */
@@ -23,7 +24,7 @@ public class Token extends Cell {
 		super(name, xCoordinate, yCoordinate);
 		this.playerPass = true;
 		this.enemyPass = false;
-		
+
 		File file = new File("./src/Token.png");
 		Image cellImage = new Image(file.toURI().toString());
 		super.cellView = new ImageView(cellImage);
@@ -33,6 +34,7 @@ public class Token extends Cell {
 
 	/**
 	 * Gets the image view of a token.
+	 * 
 	 * @return the image view of a token.
 	 */
 	public ImageView getTokenView() {

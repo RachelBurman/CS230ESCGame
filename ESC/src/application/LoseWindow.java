@@ -14,14 +14,15 @@ import javafx.stage.Stage;
 
 /**
  * This class contains all attributes and behaviours of LoseWindow.
+ * 
  * @author Group 31
  * @version 3.0
  */
 public class LoseWindow {
-	
-	
+
 	/**
 	 * Make a window to display a message when the game is won
+	 * 
 	 * @param the stage you want to change
 	 */
 	public static void display(Stage gameStage) {
@@ -45,7 +46,7 @@ public class LoseWindow {
 
 		VBox layout = new VBox(10);
 
-		layout.getChildren().add( button1);
+		layout.getChildren().add(button1);
 
 		layout.setAlignment(Pos.CENTER);
 
@@ -56,16 +57,16 @@ public class LoseWindow {
 		popupwindow.showAndWait();
 
 	}
-	
+
 	/**
 	 * Plays music when lose.
 	 */
 	private static void playFail() {
-		String musicFileLocation = "./src/fail.mp3";     
+		String musicFileLocation = "./src/fail.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
 

@@ -1,20 +1,23 @@
 package application;
 
 import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Fire.
- * @author Group 31 
+ * 
+ * @author Group 31
  * @version 2.0
  */
 public class Fire extends Cell {
 
 	/**
-	 * Constructor of Fire Cell.
-	 * Creates a fire cell at the given x and y coordinates.
-	 * @param name the name of the cell.
+	 * Constructor of Fire Cell. Creates a fire cell at the given x and y
+	 * coordinates.
+	 * 
+	 * @param name        the name of the cell.
 	 * @param xCoordinate the x coordinate of a fire cell.
 	 * @param yCoordinate the y coordinate of a fire cell.
 	 */
@@ -35,6 +38,7 @@ public class Fire extends Cell {
 
 	/**
 	 * Gets the image view of a fire cell.
+	 * 
 	 * @return The image view of a fire cell.
 	 */
 	public ImageView getFireView() {

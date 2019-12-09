@@ -1,24 +1,26 @@
 package application;
 
 import java.io.File;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Wall.
- * @author Group 31 
+ * 
+ * @author Group 31
  * @version 3.0
  */
-public class Wall extends Cell{
+public class Wall extends Cell {
 
 	/**
-	 * Constructor of Wall.
-	 * Creates a wall at the given x and y coordinate.
-	 * @param name The name of a wall cell.
+	 * Constructor of Wall. Creates a wall at the given x and y coordinate.
+	 * 
+	 * @param name        The name of a wall cell.
 	 * @param xCoordinate The x coordinate of a wall cell.
 	 * @param yCoordinate The y coordinate of a wall cell.
 	 */
-	public Wall (String name, int xCoordinate, int yCoordinate) {
+	public Wall(String name, int xCoordinate, int yCoordinate) {
 
 		super(name, xCoordinate, yCoordinate);
 
@@ -36,6 +38,7 @@ public class Wall extends Cell{
 
 	/**
 	 * Gets the image view of a wall cell.
+	 * 
 	 * @return An image view of a wall cell.
 	 */
 	public ImageView getWallView() {

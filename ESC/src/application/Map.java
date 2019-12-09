@@ -3,7 +3,6 @@ package application;
 import java.io.File;
 import java.util.ArrayList;
 
-import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import moving.DumbTargetingEnemy;
@@ -12,10 +11,11 @@ import moving.StraightLineEnemy;
 import moving.WallFollowingEnemy;
 
 /**
-* This class represents the map that the game is played on.
-* @author Group 31 
-* @version 3.0
-*/
+ * This class represents the map that the game is played on.
+ * 
+ * @author Group 31
+ * @version 3.0
+ */
 public class Map {
 	Cell[][] mapActual;
 	private int mapLength;
@@ -25,41 +25,44 @@ public class Map {
 	private StraightLineEnemy enemy1;
 	StraightLineEnemy[] straightEnemyList;
 	WallFollowingEnemy[] wallFollowingList;
-	ArrayList<DumbTargetingEnemy> dumbList =new ArrayList<DumbTargetingEnemy>();
-	//SmartTargetingEnemy[] SmartTargetingList;
-	ArrayList<WallFollowingEnemy> wallFollowList =new ArrayList<WallFollowingEnemy>(); //New
-	
+	ArrayList<DumbTargetingEnemy> dumbList = new ArrayList<DumbTargetingEnemy>();
+	// SmartTargetingEnemy[] SmartTargetingList;
+	ArrayList<WallFollowingEnemy> wallFollowList = new ArrayList<WallFollowingEnemy>(); // New
+
 	/**
-	 * Constructor for making a Map object.
-	 * Just needs the file where information is stored
+	 * Constructor for making a Map object. Just needs the file where information is
+	 * stored
+	 * 
 	 * @param THe name/path of the file.
 	 */
-	public Map (String file) {
-		this.mapActual=LevelLoader.loadLevel(file);
-		this.start= LevelLoader.getPlayerStart(file);
+	public Map(String file) {
+		this.mapActual = LevelLoader.loadLevel(file);
+		this.start = LevelLoader.getPlayerStart(file);
 		int size[] = LevelLoader.getSize(file);
-		int count=0;
-		//Swaps for some reason
-		this.mapHeight =size[1];
+		int count = 0;
+		// Swaps for some reason
+		this.mapHeight = size[1];
 		this.mapLength = size[0];
-		this.player1 = new Player("name",mapActual,LevelLoader.getPlayerStart(file));
+		this.player1 = new Player("name", mapActual, LevelLoader.getPlayerStart(file));
 		this.enemy1 = new StraightLineEnemy("Straight enemy", mapActual, LevelLoader.getStraightEnemy(file));
-		this.dumbList.add(new DumbTargetingEnemy("Dumb",mapActual, LevelLoader.getDumbEnemy(file)));
+		this.dumbList.add(new DumbTargetingEnemy("Dumb", mapActual, LevelLoader.getDumbEnemy(file)));
 		this.dumbList.get(0).setPlayerx(this.player1.getxLocation());
 		this.dumbList.get(0).setPlayery(this.player1.getyLocation());
 		//
-		//System.out.println(dumbList.get(0).getXLocation());
-		//System.out.println(dumbList.get(0).getYLocation());
+		// System.out.println(dumbList.get(0).getXLocation());
+		// System.out.println(dumbList.get(0).getYLocation());
 
 		// NEW
-		this.wallFollowList.add(new WallFollowingEnemy("Wall Enemy",mapActual, LevelLoader.getWallFollowingEnemy(file)));
-		//System.out.println(wallFollowList.get(0).getXLocation());
-		//System.out.println(wallFollowList.get(0).getYLocation());
+		this.wallFollowList
+				.add(new WallFollowingEnemy("Wall Enemy", mapActual, LevelLoader.getWallFollowingEnemy(file)));
+		// System.out.println(wallFollowList.get(0).getXLocation());
+		// System.out.println(wallFollowList.get(0).getYLocation());
 
 	}
-	
+
 	/**
 	 * Returns the Enemy at position number.
+	 * 
 	 * @param Index of Dumb Enemy
 	 * @return The Enemy at that index
 	 */
@@ -70,6 +73,7 @@ public class Map {
 
 	/**
 	 * Returns the Enemy at position number.
+	 * 
 	 * @param Index of WallFollowingEnemy
 	 * @return Enemy at that index
 	 */
@@ -77,35 +81,39 @@ public class Map {
 		return wallFollowList.get(num);
 	}
 
-
 	/**
 	 * Set the map of cells.
+	 * 
 	 * @param 2D array of Cells
 	 */
 	public void setMapActual(Cell[][] mapActual) {
 		this.mapActual = mapActual;
 	}
-	
+
 	/**
 	 * Add the player to the Map.
+	 * 
 	 * @param player
 	 */
 	public void addPlayer(Player player) {
 		this.player1 = player;
 	}
 
-	private void removeCell (int xLocation, int yLocation) {
-		mapActual[xLocation][yLocation]= null;
+	private void removeCell(int xLocation, int yLocation) {
+		mapActual[xLocation][yLocation] = null;
 
 	}
+
 	/**
-	 * Removes the cell at X and Y coordinates and adds a default one back in place of it.
+	 * Removes the cell at X and Y coordinates and adds a default one back in place
+	 * of it.
+	 * 
 	 * @param xLocation
 	 * @param yLocation
 	 */
 	public void replaceCell(int xLocation, int yLocation) {
-		removeCell(xLocation,yLocation);
-		addCell(xLocation,yLocation);
+		removeCell(xLocation, yLocation);
+		addCell(xLocation, yLocation);
 	}
 
 	private void addCell(int xLocation, int yLocation) {
@@ -114,6 +122,7 @@ public class Map {
 
 	/**
 	 * Returns the map of cells.
+	 * 
 	 * @return 2D array of Cells
 	 */
 	public Cell[][] getMapActual() {
@@ -122,6 +131,7 @@ public class Map {
 
 	/**
 	 * Returns the length/width of the map.
+	 * 
 	 * @return length of Map
 	 */
 	public int getMapLength() {
@@ -130,6 +140,7 @@ public class Map {
 
 	/**
 	 * Returns the height of the map.
+	 * 
 	 * @return height of Map
 	 */
 	public int getMapHeight() {
@@ -138,25 +149,28 @@ public class Map {
 
 	/**
 	 * Returns the player start location.
+	 * 
 	 * @return array with x and y location of player start
 	 */
 	public int[] getStart() {
 		return start;
 	}
-	
+
 	/**
 	 * Returns the cell at location X and Y.
+	 * 
 	 * @param x location of cell.
 	 * @param y location of cell.
 	 * @return the cell obejct at location X and Y
 	 */
 	public Cell getCell(int x, int y) {
 
-		return mapActual[x][y] ;
+		return mapActual[x][y];
 	}
 
 	/**
 	 * Returns the player object.
+	 * 
 	 * @return player object
 	 */
 	public Player getPlayer1() {
@@ -165,35 +179,39 @@ public class Map {
 
 	/**
 	 * Returns StrightLine Enemy object.
+	 * 
 	 * @return StraightLineEnemy
 	 */
 	public StraightLineEnemy getEnemy1() {
 		return enemy1;
 	}
-	
+
 	/**
 	 * Updates the map at location X and Y.
+	 * 
 	 * @param next X location
 	 * @param next Y location
 	 */
 	public void updateMap(int nextX, int nextY) {
 		openDoor(nextX, nextY);
 
-
 	}
+
 	/**
 	 * Check if the map object is about to be deleted.
 	 */
 	public void finalize() {
 		System.out.println("Map deleted");
 	}
+
 	/**
 	 * Changes Cell access for certain cells based on location X and Y.
+	 * 
 	 * @param next X location
 	 * @param next Y location
 	 */
 	public void openDoor(int nextX, int nextY) {
-		String cellName =this.getCell(nextX, nextY).getName();
+		String cellName = this.getCell(nextX, nextY).getName();
 		Cell nextCell = this.getCell(nextX, nextY);
 		Player player = this.getPlayer1();
 
@@ -201,85 +219,88 @@ public class Map {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusRedKey();
-			
+
 			playDoorNoise();
-			
+
 		} else if (cellName.equalsIgnoreCase("green door") && player.getGreenKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusGreenKey();
-			
+
 			playDoorNoise();
-			
+
 		} else if (cellName.equalsIgnoreCase("blue door") && player.getBlueKey() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
 			player.minusBlueKey();
-			
+
 			playDoorNoise();
-			
-		}else if (cellName.equalsIgnoreCase("token door") && player.getTokens() > 0 ) {
+
+		} else if (cellName.equalsIgnoreCase("token door") && player.getTokens() > 0) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
-			
+
 			playDoorNoise();
-			
-		} else if (cellName.equalsIgnoreCase("2 door") && player.getTokens() > 1 ) {
+
+		} else if (cellName.equalsIgnoreCase("2 door") && player.getTokens() > 1) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
-			
+
 			playDoorNoise();
-			
-		} else if (cellName.equalsIgnoreCase("3 door") && player.getTokens() > 2 ) {
+
+		} else if (cellName.equalsIgnoreCase("3 door") && player.getTokens() > 2) {
 			nextCell.changePlayerPass();
 			nextCell.changeEnemyPass();
-			
+
 			playDoorNoise();
-			
-			}
+
+		}
 	}
+
 	/**
 	 * Plays music when door opens.
 	 */
 	private static void playDoorNoise() {
-		String musicFileLocation = "./src/door_open.mp3";     
+		String musicFileLocation = "./src/door_open.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
+
 	/**
 	 * Plays music when on water.
 	 */
 	private static void playWaterSound() {
-		String musicFileLocation = "./src/water.mp3";     
+		String musicFileLocation = "./src/water.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
+
 	/**
 	 * Plays music when on fire.
 	 */
 	private static void playFireSound() {
-		String musicFileLocation = "./src/fire.mp3";     
+		String musicFileLocation = "./src/fire.mp3";
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
-		
+
 		mediaPlayer.play();
 	}
-	
+
 	/**
-	 * Check when player is on a specific cell.
-	 * Then adds keys or tokens or teleports them somewhere
+	 * Check when player is on a specific cell. Then adds keys or tokens or
+	 * teleports them somewhere
 	 */
 	public void doAction() {
 		int playerXLocation = this.getPlayer1().getxLocation();
 		int playerYLocation = this.getPlayer1().getyLocation();
-		String cellName =this.getCell(playerXLocation, playerYLocation).getName();
+		String cellName = this.getCell(playerXLocation, playerYLocation).getName();
 
 		if (cellName.equalsIgnoreCase("red")) {
 			this.replaceCell(playerXLocation, playerYLocation);
@@ -313,7 +334,8 @@ public class Map {
 			playFireSound();
 		}
 	}
-	//THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
+
+	// THIS WILL NEED CHANGING TO ACCOMODATE MORE ENEMIES
 	/**
 	 * Moves StraightLine enemy one step.
 	 */
@@ -324,6 +346,7 @@ public class Map {
 			enemy1.moveX(enemy1.getXLocation(), enemy1.getYLocation(), enemy1.getFacing());
 		}
 	}
+
 	/**
 	 * Moves Dumb enemy one step.
 	 */
@@ -338,14 +361,13 @@ public class Map {
 	 */
 	public void WallFollowMove() {
 		if (wallFollowList.get(0).getFacing() == 'u' || wallFollowList.get(0).getFacing() == 'd') {
-			wallFollowList.get(0).moveY(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(), wallFollowList.get(0).getFacing());
+			wallFollowList.get(0).moveY(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(),
+					wallFollowList.get(0).getFacing());
 		} else {
-			wallFollowList.get(0).moveX(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(), wallFollowList.get(0).getFacing());
+			wallFollowList.get(0).moveX(wallFollowList.get(0).getXLocation(), wallFollowList.get(0).getYLocation(),
+					wallFollowList.get(0).getFacing());
 		}
 
 	}
-	
-	
+
 }
-
-
