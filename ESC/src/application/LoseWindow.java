@@ -12,7 +12,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class WinWindow {
+public class LoseWindow {
+	
 	
 	/**
 	 * Make a window to display a message when the game is won
@@ -22,13 +23,17 @@ public class WinWindow {
 		Stage popupwindow = new Stage();
 
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("Game completed!!!");
+		popupwindow.setTitle("You died!!!");
 
-		Label label1 = new Label("You have completed the game!!!");
+		Label label1 = new Label("Try again!!!");
 
-		Button button1 = new Button("Return to main menu");
+		Button button1 = new Button("Return to level");
+		Button button2 = new Button("Return to menu");
 
 		button1.setOnAction(e -> {
+			popupwindow.close();
+		});
+		button2.setOnAction(e -> {
 			popupwindow.close();
 			gameStage.close();
 		});
@@ -42,24 +47,21 @@ public class WinWindow {
 		Scene scene1 = new Scene(layout, 200, 150);
 
 		popupwindow.setScene(scene1);
-		playApplause();
+		playFail();
 		popupwindow.showAndWait();
 
 	}
+	
 	/**
-	 * Plays music when win.
+	 * Plays music when lose.
 	 */
-	private static void playApplause() {
-		String musicFileLocation = "./src/applause.mp3";     
+	private static void playFail() {
+		String musicFileLocation = "./src/fail.mp3";     
 
 		Media doorSound = new Media(new File(musicFileLocation).toURI().toString());
 		MediaPlayer mediaPlayer = new MediaPlayer(doorSound);
 		
 		mediaPlayer.play();
 	}
-	
-	
-	
-
 
 }

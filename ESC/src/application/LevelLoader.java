@@ -227,8 +227,6 @@ public class LevelLoader {
 			Cell[][] level = new Cell[x][y];
 			for (int newY = 0; newY < y; newY++) {
 				String s = in.nextLine();
-
-				System.out.println(s);
 				for (int newX = 0; newX < x; newX++) {
 					if (s.charAt(newX) == '#') {
 						level[newX][newY] = new Wall("wall", newX, newY);
