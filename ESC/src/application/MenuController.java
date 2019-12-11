@@ -129,7 +129,7 @@ public class MenuController {
 	/**
 	 * Runs the game when the play button is pressed. Chooses the level based on
 	 * what the user selected.
-	 * 
+	 *
 	 * @param event playButton pressed.
 	 */
 	@FXML
@@ -188,7 +188,7 @@ public class MenuController {
 
 	/**
 	 * Takes the user to the create profile section.
-	 * 
+	 *
 	 * @param event createProfileButton pressed.
 	 */
 	@FXML
@@ -206,7 +206,7 @@ public class MenuController {
 	/**
 	 * Creates a profile if there are slots free, otherwise displays a replace a
 	 * profile section.
-	 * 
+	 *
 	 * @param event createButton pressed.
 	 */
 	@FXML
@@ -436,7 +436,7 @@ public class MenuController {
 
 	/**
 	 * Goes back to the menu without changing any profiles.
-	 * 
+	 *
 	 * @param event noButton pressed.
 	 */
 	@FXML
@@ -456,7 +456,7 @@ public class MenuController {
 
 	/**
 	 * Asks the user which profile to replace, and presents him options.
-	 * 
+	 *
 	 * @param event yesButton pressed.
 	 */
 	@FXML
@@ -471,7 +471,7 @@ public class MenuController {
 
 	/**
 	 * Replaces Profile 1 with the new profile. Goes back to the menu.
-	 * 
+	 *
 	 * @param event profile1Button pressed.
 	 */
 	@FXML
@@ -543,7 +543,7 @@ public class MenuController {
 
 	/**
 	 * Replaces Profile 2 with the new profile. Goes back to the menu.
-	 * 
+	 *
 	 * @param event profile2Button pressed.
 	 */
 	@FXML
@@ -614,7 +614,7 @@ public class MenuController {
 
 	/**
 	 * Replaces Profile 3 with the new profile. Goes back to the menu.
-	 * 
+	 *
 	 * @param event profile3Button pressed.
 	 */
 	@FXML
@@ -685,7 +685,7 @@ public class MenuController {
 
 	/**
 	 * Replaces Profile 4 with the new profile. Goes back to the menu.
-	 * 
+	 *
 	 * @param event profile4Button pressed.
 	 */
 	@FXML
@@ -756,7 +756,7 @@ public class MenuController {
 
 	/**
 	 * Replaces Profile 5 with the new profile. Goes back to the menu.
-	 * 
+	 *
 	 * @param event profile5Button pressed.
 	 */
 	@FXML
@@ -827,7 +827,7 @@ public class MenuController {
 	/**
 	 * Displays the levels menu with all levels avaliable, because the user selected
 	 * guest.
-	 * 
+	 *
 	 * @param event guestMenuItem selected.
 	 */
 	@FXML
@@ -843,7 +843,7 @@ public class MenuController {
 
 	/**
 	 * Displays the levels menu with the levels avaliable to the 1st Profile.
-	 * 
+	 *
 	 * @param event profile1MenuItem selected.
 	 */
 	@FXML
@@ -892,7 +892,7 @@ public class MenuController {
 
 	/**
 	 * Displays the levels menu with the levels avaliable to the 2nd Profile.
-	 * 
+	 *
 	 * @param event profile2MenuItem selected.
 	 */
 	@FXML
@@ -942,7 +942,7 @@ public class MenuController {
 
 	/**
 	 * Displays the levels menu with the levels avaliable to the 3rd Profile.
-	 * 
+	 *
 	 * @param event profile3MenuItem selected.
 	 */
 	@FXML
@@ -993,7 +993,7 @@ public class MenuController {
 
 	/**
 	 * Displays the levels menu with the levels avaliable to the 4th Profile.
-	 * 
+	 *
 	 * @param event profile4MenuItem selected.
 	 */
 	@FXML
@@ -1045,7 +1045,7 @@ public class MenuController {
 
 	/**
 	 * Displays the levels menu with the levels avaliable to the 5th Profile.
-	 * 
+	 *
 	 * @param event profile5MenuItem selected.
 	 */
 	@FXML
@@ -1098,7 +1098,7 @@ public class MenuController {
 
 	/**
 	 * Changes the text in levelsMenu to "1" and makes the play button visible.
-	 * 
+	 *
 	 * @param event level1MenuItem selected.
 	 */
 	@FXML
@@ -1109,7 +1109,7 @@ public class MenuController {
 
 	/**
 	 * Changes the text in levelsMenu to "2" and makes the play button visible.
-	 * 
+	 *
 	 * @param event level2MenuItem selected.
 	 */
 	@FXML
@@ -1120,7 +1120,7 @@ public class MenuController {
 
 	/**
 	 * Changes the text in levelsMenu to "3" and makes the play button visible.
-	 * 
+	 *
 	 * @param event level3MenuItem selected.
 	 */
 	@FXML
@@ -1131,7 +1131,7 @@ public class MenuController {
 
 	/**
 	 * Changes the text in levelsMenu to "4" and makes the play button visible.
-	 * 
+	 *
 	 * @param event level4MenuItem selected.
 	 */
 	@FXML
@@ -1142,7 +1142,7 @@ public class MenuController {
 
 	/**
 	 * Changes the text in levelsMenu to "5" and makes the play button visible.
-	 * 
+	 *
 	 * @param event level5MenuItem selected.
 	 */
 	@FXML
@@ -1153,7 +1153,7 @@ public class MenuController {
 
 	/**
 	 * Displays the leaderboard menu.
-	 * 
+	 *
 	 * @param event leaderboardButton pressed.
 	 */
 	@FXML
@@ -1173,7 +1173,7 @@ public class MenuController {
 
 	/**
 	 * Displays the level 1 leaderboard.
-	 * 
+	 *
 	 * @param event leaderboardLevel1Button pressed.
 	 */
 	@FXML
@@ -1196,7 +1196,7 @@ public class MenuController {
 
 	/**
 	 * Displays the level 2 leaderboard.
-	 * 
+	 *
 	 * @param event leaderboardLevel2Button pressed.
 	 */
 	@FXML
@@ -1219,7 +1219,7 @@ public class MenuController {
 
 	/**
 	 * Displays the level 3 leaderboard.
-	 * 
+	 *
 	 * @param event leaderboardLevel3Button pressed.
 	 */
 	@FXML
@@ -1242,7 +1242,7 @@ public class MenuController {
 
 	/**
 	 * Displays the level 4 leaderboard.
-	 * 
+	 *
 	 * @param event leaderboardLevel4Button pressed.
 	 */
 	@FXML
@@ -1265,7 +1265,7 @@ public class MenuController {
 
 	/**
 	 * Displays the level 5 leaderboard.
-	 * 
+	 *
 	 * @param event leaderboardLevel5Button pressed.
 	 */
 	@FXML
@@ -1288,7 +1288,7 @@ public class MenuController {
 
 	/**
 	 * Goes back from the leaderboard menu to the menu.
-	 * 
+	 *
 	 * @param event backButton pressed.
 	 */
 	@FXML
@@ -1307,7 +1307,7 @@ public class MenuController {
 
 	/**
 	 * Gets a String from a website.
-	 * 
+	 *
 	 * @param urlToRead the website to get the String from.
 	 * @return the String from the website.
 	 * @throws Exception all exceptions really.
@@ -1328,7 +1328,7 @@ public class MenuController {
 
 	/**
 	 * Gets the message of the day using the algorithm specified.
-	 * 
+	 *
 	 * @return the message of the day.
 	 */
 	private String getMessage() {

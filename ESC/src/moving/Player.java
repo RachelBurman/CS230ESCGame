@@ -8,7 +8,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * This class represents all attributes and behaviours of a Player.
- * 
+ *
  * @author Group 31
  * @version 3.0
  */
@@ -25,7 +25,7 @@ public class Player extends Movable {
 
 	/**
 	 * Constructor of Player.
-	 * 
+	 *
 	 * @param name      The Player name.
 	 * @param mapActual The map of Player.
 	 * @param location  The array containing location information.
@@ -47,8 +47,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for amount of tokens.
-	 * 
-	 * @return
+	 * @return The amount of tokens held by the player.
 	 */
 	public int getTokens() {
 		return tokens;
@@ -85,7 +84,7 @@ public class Player extends Movable {
 
 	/**
 	 * Method that removes tokens from token amount.
-	 * 
+	 *
 	 * @param num The amount of removed tokens.
 	 */
 	public void takeTokens(int num) {
@@ -94,7 +93,7 @@ public class Player extends Movable {
 
 	/**
 	 * Setter method for amount of tokens.
-	 * 
+	 *
 	 * @param tokens The amount of tokens.
 	 */
 	public void setTokens(int tokens) {
@@ -103,7 +102,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for checking if flippers have been acquired.
-	 * 
+	 *
 	 * @return Return true when flippers are acquired.
 	 */
 	public boolean getFlippers() {
@@ -112,7 +111,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for checking if boots have been acquired.
-	 * 
+	 *
 	 * @return Return true when boots are are acquired.
 	 */
 	public boolean getBoots() {
@@ -156,7 +155,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method that increments amount of red keys for player.
-	 * 
+	 *
 	 * @return Amount of red keys acquired.
 	 */
 	public int getRedKey() {
@@ -165,7 +164,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method that increments amount of green keys for player.
-	 * 
+	 *
 	 * @return Amount of green keys acquired.
 	 */
 	public int getGreenKey() {
@@ -174,7 +173,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method that increments amount of blue keys for player.
-	 * 
+	 *
 	 * @return Amount of blue keys acquired.
 	 */
 	public int getBlueKey() {
@@ -211,7 +210,7 @@ public class Player extends Movable {
 
 	/**
 	 * Setter method for player x coordinate.
-	 * 
+	 *
 	 * @param xLocation The player's x coordinate.
 	 */
 	public void setLocation(int xLocation) {
@@ -220,7 +219,7 @@ public class Player extends Movable {
 
 	/**
 	 * Setter method for player y coordinate.
-	 * 
+	 *
 	 * @param yLocation The player's y coordinate.
 	 */
 	public void setyLocation(int yLocation) {
@@ -236,7 +235,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for x coordinate of Player
-	 * 
+	 *
 	 * @return Return Player's x coordinate.
 	 */
 	public int getxLocation() {
@@ -245,7 +244,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for y coordinate of Player
-	 * 
+	 *
 	 * @return Return Player's y coordinate.
 	 */
 	public int getyLocation() {
@@ -254,7 +253,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for player image.
-	 * 
+	 *
 	 * @return Return Player's Image.
 	 */
 	public Image getPlayerImg() {
@@ -263,7 +262,7 @@ public class Player extends Movable {
 
 	/**
 	 * Getter method for Player Image View.
-	 * 
+	 *
 	 * @return Return Player's Image View.
 	 */
 	public ImageView getPlayerView() {

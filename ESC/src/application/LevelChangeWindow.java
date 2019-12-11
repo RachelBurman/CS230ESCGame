@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 /**
  * This class contains all attributes and behaviours of Level Change Window.
- * 
+ *
  * @author Group 31
  * @version 3.0
  */
@@ -22,8 +22,7 @@ public class LevelChangeWindow {
 
 	/**
 	 * Make a window for changing level
-	 * 
-	 * @param fileName
+	 * @param fileName The name of the file.
 	 */
 	public static void display(String fileName) {
 		Stage popupwindow = new Stage();

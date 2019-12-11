@@ -7,18 +7,17 @@ import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Key.
- * 
+ *
  * @author Group 31
  * @version 3.0
  */
 public class Key extends Cell {
 
 	/**
-	 * Constructor of Key. Creates a key at the given x and y coordinates.
-	 * 
-	 * @param name        The name of a key used to identify which door the key
-	 *                    opens.
-	 * @param xCoordiante The x coordinate of a key cell.
+	 * Constructor of Key.
+	 * Creates a key at the given x and y coordinates.
+	 * @param name The name of a key used to identify which door the key opens.
+	 * @param xCoordinate The x coordinate of a key cell.
 	 * @param yCoordinate The y coordinate of a key cell.
 	 */
 	public Key(String name, int xCoordinate, int yCoordinate) {
@@ -51,7 +50,7 @@ public class Key extends Cell {
 
 	/**
 	 * Gets the image view of a key cell.
-	 * 
+	 *
 	 * @return The image view of a key cell.
 	 */
 	public ImageView getKeyView() {

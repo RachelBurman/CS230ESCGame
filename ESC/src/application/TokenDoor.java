@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 
 /**
  * This class contains all attributes and behaviours of Token Door.
- * 
+ *
  * @author Group 31
  * @version 3.0
  */
@@ -17,7 +17,7 @@ public class TokenDoor extends Cell {
 
 	/**
 	 * Creates a token door at the given x and y coordinates.
-	 * 
+	 *
 	 * @param name        Identifies how many tokens it takes to open the token
 	 *                    door.
 	 * @param xCoordinate The x coordinate of a token door.
@@ -54,8 +54,7 @@ public class TokenDoor extends Cell {
 
 	/**
 	 * Gets the image view of a token door.
-	 * 
-	 * @param image view of a token door.
+	 * @return image view of a token door.
 	 */
 	public ImageView getTokenDoorView() {
 

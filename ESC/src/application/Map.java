@@ -12,7 +12,7 @@ import moving.WallFollowingEnemy;
 
 /**
  * This class represents the map that the game is played on.
- * 
+ *
  * @author Group 31
  * @version 3.0
  */
@@ -30,10 +30,9 @@ public class Map {
 	ArrayList<WallFollowingEnemy> wallFollowList = new ArrayList<WallFollowingEnemy>(); // New
 
 	/**
-	 * Constructor for making a Map object. Just needs the file where information is
-	 * stored
-	 * 
-	 * @param THe name/path of the file.
+	 * Constructor for making a Map object.
+	 * Just needs the file where information is stored
+	 * @param file The name/path of the file.
 	 */
 	public Map(String file) {
 		this.mapActual = LevelLoader.loadLevel(file);
@@ -62,8 +61,7 @@ public class Map {
 
 	/**
 	 * Returns the Enemy at position number.
-	 * 
-	 * @param Index of Dumb Enemy
+	 * @param num Index of Dumb Enemy
 	 * @return The Enemy at that index
 	 */
 	public DumbTargetingEnemy getDummieAt(int num) {
@@ -73,8 +71,7 @@ public class Map {
 
 	/**
 	 * Returns the Enemy at position number.
-	 * 
-	 * @param Index of WallFollowingEnemy
+	 * @param num Index of WallFollowingEnemy
 	 * @return Enemy at that index
 	 */
 	public WallFollowingEnemy getWallFollowAt(int num) {
@@ -83,8 +80,7 @@ public class Map {
 
 	/**
 	 * Set the map of cells.
-	 * 
-	 * @param 2D array of Cells
+	 * @param mapActual 2D array of Cells
 	 */
 	public void setMapActual(Cell[][] mapActual) {
 		this.mapActual = mapActual;
@@ -92,8 +88,7 @@ public class Map {
 
 	/**
 	 * Add the player to the Map.
-	 * 
-	 * @param player
+	 * @param player The player to be added.
 	 */
 	public void addPlayer(Player player) {
 		this.player1 = player;
@@ -105,11 +100,9 @@ public class Map {
 	}
 
 	/**
-	 * Removes the cell at X and Y coordinates and adds a default one back in place
-	 * of it.
-	 * 
-	 * @param xLocation
-	 * @param yLocation
+	 * Removes the cell at X and Y coordinates and adds a default one back in place of it.
+	 * @param xLocation The x location of the cell.
+	 * @param yLocation The y location of the cell.
 	 */
 	public void replaceCell(int xLocation, int yLocation) {
 		removeCell(xLocation, yLocation);
@@ -122,7 +115,7 @@ public class Map {
 
 	/**
 	 * Returns the map of cells.
-	 * 
+	 *
 	 * @return 2D array of Cells
 	 */
 	public Cell[][] getMapActual() {
@@ -131,7 +124,7 @@ public class Map {
 
 	/**
 	 * Returns the length/width of the map.
-	 * 
+	 *
 	 * @return length of Map
 	 */
 	public int getMapLength() {
@@ -140,7 +133,7 @@ public class Map {
 
 	/**
 	 * Returns the height of the map.
-	 * 
+	 *
 	 * @return height of Map
 	 */
 	public int getMapHeight() {
@@ -149,7 +142,7 @@ public class Map {
 
 	/**
 	 * Returns the player start location.
-	 * 
+	 *
 	 * @return array with x and y location of player start
 	 */
 	public int[] getStart() {
@@ -158,7 +151,7 @@ public class Map {
 
 	/**
 	 * Returns the cell at location X and Y.
-	 * 
+	 *
 	 * @param x location of cell.
 	 * @param y location of cell.
 	 * @return the cell obejct at location X and Y
@@ -170,7 +163,7 @@ public class Map {
 
 	/**
 	 * Returns the player object.
-	 * 
+	 *
 	 * @return player object
 	 */
 	public Player getPlayer1() {
@@ -179,7 +172,7 @@ public class Map {
 
 	/**
 	 * Returns StrightLine Enemy object.
-	 * 
+	 *
 	 * @return StraightLineEnemy
 	 */
 	public StraightLineEnemy getEnemy1() {
@@ -188,9 +181,8 @@ public class Map {
 
 	/**
 	 * Updates the map at location X and Y.
-	 * 
-	 * @param next X location
-	 * @param next Y location
+	 * @param nextX next X location
+	 * @param nextY next Y location
 	 */
 	public void updateMap(int nextX, int nextY) {
 		openDoor(nextX, nextY);
@@ -206,9 +198,8 @@ public class Map {
 
 	/**
 	 * Changes Cell access for certain cells based on location X and Y.
-	 * 
-	 * @param next X location
-	 * @param next Y location
+	 * @param nextX next X location
+	 * @param nextY next Y location
 	 */
 	public void openDoor(int nextX, int nextY) {
 		String cellName = this.getCell(nextX, nextY).getName();

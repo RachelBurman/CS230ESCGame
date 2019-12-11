@@ -30,7 +30,7 @@ import moving.WallFollowingEnemy;
 /**
  * This class is made for the game to actually run. It is also used to set a few
  * of the JavaFX elements.
- * 
+ *
  * @author Jonathan
  * @version 1.5
  *
@@ -53,7 +53,7 @@ public class Game extends Application {
 	/**
 	 * Method to start the actual game with the level and person information. Also
 	 * starts the JavaFX elements to display the game.
-	 * 
+	 *
 	 * @param startFile- String of the textfile with the level
 	 * @param profile- profile of the person playing
 	 * @param username- username of the person playing
@@ -95,7 +95,7 @@ public class Game extends Application {
 	/**
 	 * Builds the GUI elements above the game. Includes number of keys, tokens for
 	 * the player to see.
-	 * 
+	 *
 	 * @return a vertical box with the elements inside
 	 */
 	public VBox topGUI() {
@@ -179,8 +179,7 @@ public class Game extends Application {
 
 	/**
 	 * A method to draw the game outfor the user to see
-	 * 
-	 * @param the current grid that is showing the game
+	 * @param grid the current grid that is showing the game
 	 * @return the grid that has the updated information for it to be displayed
 	 */
 	public GridPane drawGame(GridPane grid) {
@@ -265,8 +264,9 @@ public class Game extends Application {
 	/**
 	 * Method to detect directional key presses and then use it to move the player
 	 * around the game. Then returns he GUI and the grid updated
-	 * 
+	 *
 	 * @param event - the keyboard press
+	 * @param grid the current grid that is showing the game
 	 */
 	public void processKeyEvent(KeyEvent event, GridPane grid) {
 
@@ -333,7 +333,7 @@ public class Game extends Application {
 
 	/**
 	 * Detects when the player loses the game. Then restarts the game
-	 * 
+	 *
 	 * @param grid that the player is on
 	 */
 	public void loseGame(GridPane grid) {
@@ -629,7 +629,7 @@ public class Game extends Application {
 
 	/**
 	 * Returns the gameStage
-	 * 
+	 *
 	 * @return primaryStage
 	 */
 
